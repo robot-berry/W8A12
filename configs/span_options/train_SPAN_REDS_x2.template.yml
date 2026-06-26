@@ -1,0 +1,96 @@
+# Official SPAN/BasicSR training config adapted for local REDS x2.
+name: official_SPAN_REDS_x2_f48
+model_type: SRModel
+scale: 2
+num_gpu: 1
+manual_seed: 10
+
+datasets:
+  train:
+    name: REDS_train
+    type: PairedImageDataset
+    dataroot_gt: G:/REDS/train_sharp
+    dataroot_lq: G:/REDS/train/train_sharp_bicubic/X2
+    meta_info_file: G:/UESTC/feitengspan1/configs/meta_info_REDS_train_GT.txt
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+
+    gt_size: 192
+    use_hflip: true
+    use_rot: true
+
+    num_worker_per_gpu: 4
+    batch_size_per_gpu: 4
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+
+  val:
+    name: REDS_val
+    type: PairedImageDataset
+    dataroot_gt: G:/REDS/val_sharp
+    dataroot_lq: G:/REDS/val/val_sharp_bicubic/X2
+    meta_info_file: G:/UESTC/feitengspan1/configs/meta_info_REDS_val_GT.txt
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+
+network_g:
+  type: SPAN
+  num_in_ch: 3
+  num_out_ch: 3
+  feature_channels: 48
+  upscale: 2
+  bias: true
+  img_range: 255.
+  rgb_mean: [0.4488, 0.4371, 0.4040]
+
+path:
+  experiments_root: G:/UESTC/feitengspan1/runs/official_span
+  pretrain_network_g: ~
+  strict_load_g: true
+  resume_state: ~
+
+train:
+  ema_decay: 0.999
+  optim_g:
+    type: Adam
+    lr: !!float 1e-4
+    weight_decay: 0
+    betas: [0.9, 0.99]
+
+  scheduler:
+    type: MultiStepLR
+    milestones: [200000]
+    gamma: 0.5
+
+  total_iter: 300000
+  warmup_iter: -1
+
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+
+val:
+  val_freq: !!float 5e3
+  save_img: false
+  pbar: true
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 2
+      test_y_channel: false
+
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5e3
+  use_tb_logger: false
+  wandb:
+    project: ~
+    resume_id: ~
+
+dist_params:
+  backend: nccl
+  port: 29500

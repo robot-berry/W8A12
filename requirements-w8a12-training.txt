@@ -1,0 +1,14 @@
+torch
+torchvision
+numpy
+opencv-python
+Pillow
+PyYAML
+tqdm
+scipy
+lmdb
+requests
+tb-nightly
+future
+yapf
+addict

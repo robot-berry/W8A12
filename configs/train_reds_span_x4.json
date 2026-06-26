@@ -1,0 +1,6 @@
+{
+  "train_command": "python train/train_reds_span.py --train-hr G:/REDS/train_sharp --val-hr G:/REDS/val_sharp --scale 4 --channels 48 --num-blocks 6 --patch-size 192 --batch-size 16 --epochs 200 --amp --output runs/tinyspan_reds_x4_full",
+  "dataset": "REDS HR frames, LR generated on the fly by bicubic downsampling",
+  "model": "TinySPAN: head conv + 6 SPAB + concat + PixelShuffle",
+  "quantization_target": "uint8 activation, int8 weight, int32 accumulator for FPGA"
+}
