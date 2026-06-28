@@ -2,10 +2,9 @@
   "status": "PASS",
   "repository": "https://github.com/robot-berry/W8A12.git",
   "branch": "codex/w8a12-3lane-delivery-draft",
-  "commit": "1ddc9657bc586db2d87be06f1545f113b18c9b2d",
-  "commit_message": "Add W8A12 3-lane contest delivery draft",
+  "verification_mode": "branch-level push evidence",
   "uploaded_tree": "W8A12_3lane/",
   "source_export": "W8A12_3lane/output/github_upload/robot-berry_W8A12_upload_tree",
   "pull_request_url": "https://github.com/robot-berry/W8A12/pull/new/codex/w8a12-3lane-delivery-draft",
-  "note": "Draft delivery upload; final contest completion still requires four board validation reports."
+  "note": "Draft delivery upload. This evidence is branch-based instead of self-hashing the commit that contains this file; final contest completion still requires four board validation reports."
 }
