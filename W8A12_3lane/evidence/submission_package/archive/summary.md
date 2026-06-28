@@ -5,8 +5,8 @@ Status: INCOMPLETE
 | Field | Value |
 | --- | --- |
 | archive | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\submission_package\archive\W8A12_3lane_submission_current.zip` |
-| bytes | `2318562` |
-| sha256 | `70c12bd45e58364c1836f97886ec061e834f9eee5e650d2a82d24215cb9eae22` |
+| bytes | `2318764` |
+| sha256 | `277e1209d8b08cdfe755f78dad3cd7f99dd3d7403a72f51908e754d93a414023` |
 | manifest | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\submission_package\submission_manifest.json` |
 | manifest status | `INCOMPLETE` |
 | archived file count | `335` |
