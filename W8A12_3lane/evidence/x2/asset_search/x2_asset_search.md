@@ -1,0 +1,114 @@
+# x2 Asset Search
+
+状态：READY
+
+## Required W8A12 x2 Assets
+
+| Item | Status | Path |
+| --- | --- | --- |
+| `w8a12_rtl_manifest` | OK | `rtl/generated/reds_span_x2_f48_w8a12/span_w8a12_rtl_manifest.json` |
+| `w8a12_postprocess_manifest` | OK | `rtl/generated/reds_span_x2_f48_w8a12/postprocess/span_w8a12_postprocess_manifest.json` |
+| `w8a12_quant_plan` | OK | `runs/reds_span_quant_plan/reds_span_x2_f48_w8a12/span_w8a12_quant_plan.json` |
+
+## Found x2 Assets
+
+### manifests
+- `rtl/generated/official_span_x2/official_span_manifest.json`
+- `rtl/generated/reds_span_x2_f48_w8a12/span_w8a12_rtl_manifest.json`
+- `rtl/generated/reds_span_x2_f48_w8a12/postprocess/span_w8a12_postprocess_manifest.json`
+
+### postprocess
+- `rtl/generated/reds_span_x2_f48_w8a12/postprocess/span_w8a12_postprocess_manifest.json`
+
+### quant_or_w8a12_json
+- `runs/w8a12_halo_conv1_compare/tile20x20_h21_bpp4_ol1_tl4/conv1_frame_summary.json`
+- `runs/w8a12_halo_conv1_compare/tile2x2_h1_bpp3_ol8_tl16/conv1_frame_summary.json`
+- `runs/reds_span_quant_plan/block1_c1c2_streamed_frame_2x2_w8a12_rtl/block1_c1c2_summary.json`
+- `runs/reds_span_quant_plan/block1_c1_streamed_frame_2x2_w8a12_rtl/block1_c1_summary.json`
+- `runs/reds_span_quant_plan/block1_frame_engine_2x2_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/block1_streamed_frame_2x2_w8a12_rtl/block1_summary.json`
+- `runs/reds_span_quant_plan/block2_streamed_frame_2x2_w8a12_rtl/block2_summary.json`
+- `runs/reds_span_quant_plan/block3_streamed_frame_2x2_w8a12_rtl/block3_summary.json`
+- `runs/reds_span_quant_plan/block_1_frame_2x2_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/block_2_frame_2x2_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/block_3_frame_2x2_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/block_4_frame_2x2_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/block_5_frame_2x2_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/block_6_frame_2x2_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/conv1_frame_2x2_w8a12_rtl/conv1_frame_summary.json`
+- `runs/reds_span_quant_plan/conv1_spab6_streamed_frame_2x2_w8a12_rtl/conv1_spab6_summary.json`
+- `runs/reds_span_quant_plan/conv1_to_spab_chain_frame_2x2_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/feature_line_window_20x20_w8a12_rtl_20260618_fix/feature_line_window_summary.json`
+- `runs/reds_span_quant_plan/feature_line_window_2x2_windbg/feature_line_window_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_probe_compile_2x2_20260626/b1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_probe_compile_2x2_20260626/b6_act1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_probe_compile_2x2_20260626/block6_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_probe_compile_2x2_20260626/feat0_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_probe_compile_2x2_20260626/tail_streamed_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_probe_compile_2x2_20260626/trunk_taps_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_h21_ol1_tl4_sl1_w8a12_rtl/b1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_h21_ol1_tl4_sl1_w8a12_rtl/b6_act1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_h21_ol1_tl4_sl1_w8a12_rtl/block6_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_h21_ol1_tl4_sl1_w8a12_rtl/feat0_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_h21_ol1_tl4_sl1_w8a12_rtl/tail_streamed_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_h21_ol1_tl4_sl1_w8a12_rtl/trunk_taps_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_ol1_tl4_sl1_w8a12_rtl/b1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_ol1_tl4_sl1_w8a12_rtl/b6_act1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_ol1_tl4_sl1_w8a12_rtl/block6_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_ol1_tl4_sl1_w8a12_rtl/feat0_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_ol1_tl4_sl1_w8a12_rtl/tail_streamed_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_20x20_baboon_raw_ol1_tl4_sl1_w8a12_rtl/trunk_taps_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_packfix_w8a12_rtl/b1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_packfix_w8a12_rtl/b6_act1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_packfix_w8a12_rtl/block6_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_packfix_w8a12_rtl/feat0_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_packfix_w8a12_rtl/tail_streamed_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_packfix_w8a12_rtl/trunk_taps_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_raw_smoke_w8a12_rtl/b1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_raw_smoke_w8a12_rtl/b6_act1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_raw_smoke_w8a12_rtl/block6_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_raw_smoke_w8a12_rtl/feat0_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_raw_smoke_w8a12_rtl/tail_streamed_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_raw_smoke_w8a12_rtl/trunk_taps_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_w8a12_rtl/b1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_w8a12_rtl/b6_act1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_w8a12_rtl/block6_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_w8a12_rtl/feat0_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_ol1_tl4_sl1_w8a12_rtl/trunk_taps_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_w8a12_rtl/b1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_w8a12_rtl/b6_act1_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_w8a12_rtl/block6_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_w8a12_rtl/feat0_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_w8a12_rtl/tail_streamed_summary.json`
+- `runs/reds_span_quant_plan/front_tail_rgb_runtime_blockgroup_diag_2x2_w8a12_rtl/trunk_taps_summary.json`
+- `runs/reds_span_quant_plan/full_image_frame_2x2_to_8x8_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/full_image_frame_2x2_to_8x8_w8a12_rtl/rgb_compare_summary.json`
+- `runs/reds_span_quant_plan/full_streamed_rgb_2x2_to_8x8_w8a12_rtl/full_streamed_summary.json`
+- `runs/reds_span_quant_plan/full_streamed_rgb_2x2_to_8x8_w8a12_rtl/rgb_compare_summary.json`
+- `runs/reds_span_quant_plan/reds_000_00000002_x4_2x2_w8a12_integer_ref/span_w8a12_integer_reference_summary.json`
+- `runs/reds_span_quant_plan/reds_000_00000002_x4_2x2_w8a12_plan_ref/quant_plan_summary.json`
+- `runs/reds_span_quant_plan/reds_000_00000002_x4_2x2_w8a12_plan_ref_resfix/quant_plan_summary.json`
+- `runs/reds_span_quant_plan/reds_000_seq_0_1_2x2_w8a12_rtl/w8a12_sequence_summary.json`
+- `runs/reds_span_quant_plan/reds_000_seq_2_2_2x2_w8a12_rtl/w8a12_sequence_summary.json`
+- `runs/reds_span_quant_plan/reds_000_seq_2_2_2x2_w8a12_rtl_padfix/w8a12_sequence_summary.json`
+- `runs/reds_span_quant_plan/reds_000_seq_2_2_2x2_w8a12_rtl_padfix_resfix/w8a12_sequence_summary.json`
+- `runs/reds_span_quant_plan/reds_000_seq_3_3_2x2_w8a12_rtl_autoref/w8a12_sequence_summary.json`
+- `runs/reds_span_quant_plan/reds_000_seq_3_3_2x2_w8a12_rtl_bias_q31/w8a12_sequence_summary.json`
+- `runs/reds_span_quant_plan/reds_000_seq_3_3_2x2_w8a12_rtl_symmetric_round/w8a12_sequence_summary.json`
+- `runs/reds_span_quant_plan/reds_000_seq_3_3_2x2_w8a12_rtl_symmetric_round_normfix/w8a12_sequence_summary.json`
+- `runs/reds_span_quant_plan/reds_span_x2_f48_w8a12/span_w8a12_quant_plan.json`
+- `runs/reds_span_quant_plan/reds_val000_00000000_full_image_2x2_to_8x8_w8a12_rtl/feature_compare_summary.json`
+- `runs/reds_span_quant_plan/reds_val000_00000000_full_image_2x2_to_8x8_w8a12_rtl/rgb_compare_summary.json`
+- `runs/reds_span_quant_plan/reds_val000_00000000_full_image_2x2_to_8x8_w8a12_rtl/w8a12_reference_rgb888_summary.json`
+- `runs/reds_span_quant_plan/reds_val000_00000000_full_image_2x2_to_8x8_w8a12_rtl/w8a12_rtl_rgb888_summary.json`
+- ... 59 more
+
+### logs
+- `runs/official_span_logs_x2/train_stdout.log`
+- `runs/tinyspan_distill/video_x2_c32_b4_reds_temporal/train_stderr.log`
+- `runs/tinyspan_distill/video_x2_c32_b4_reds_temporal/train_stdout.log`
+- `runs/official_span/official_SPAN_REDS_x2_f48/train_official_SPAN_REDS_x2_f48_20260524_161741.log`
+
+## Conclusion
+
+x2 W8A12 export exists

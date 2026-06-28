@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "scale": 2,
+  "gt_dir": "G:/REDS/val_sharp",
+  "lq_dir": "G:/REDS/val/val_sharp_bicubic/X2",
+  "pair_count": 3000,
+  "methods": [
+    {
+      "name": "nearest",
+      "psnr_rgb_avg": 29.09687679518846,
+      "psnr_y_avg": 29.116649915178048,
+      "ssim_y_avg": 0.987689945509647
+    },
+    {
+      "name": "bilinear",
+      "psnr_rgb_avg": 29.721769984427763,
+      "psnr_y_avg": 29.735852831505596,
+      "ssim_y_avg": 0.9888668993472678
+    },
+    {
+      "name": "bicubic",
+      "psnr_rgb_avg": 30.864501790325235,
+      "psnr_y_avg": 30.885546903480616,
+      "ssim_y_avg": 0.9914437641736191
+    }
+  ],
+  "span_fp32_psnr_db": 34.4297,
+  "w8a12_fixed_psnr_db": null,
+  "board_psnr_db": null
+}

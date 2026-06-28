@@ -1,0 +1,136 @@
+{
+  "status": "PASS",
+  "limits": {
+    "lut": 218600,
+    "ff": 437200,
+    "bram": 545,
+    "dsp": 900,
+    "uram": 0
+  },
+  "rows": [
+    {
+      "name": "A4 MAC core TAP_PAR=8",
+      "scope": "single reusable lane MAC primitive; timing report not available in this legacy gate",
+      "source": "W8A12_3lane/evidence/resource/A4_lane_mac_core_ooc/xc7z045_resource_gate.json",
+      "status": "RESOURCE_PASS",
+      "resource_pass": true,
+      "timing_pass": null,
+      "metrics": {
+        "lut": 51.0,
+        "ff": 49.0,
+        "bram": 0.0,
+        "dsp": 8.0,
+        "uram": 0.0
+      },
+      "limits": {
+        "lut": 218600.0,
+        "ff": 437200.0,
+        "bram": 545.0,
+        "dsp": 900.0,
+        "uram": 0.0
+      },
+      "usage_pct": {
+        "lut": "0.02%",
+        "ff": "0.01%",
+        "bram": "0.00%",
+        "dsp": "0.89%",
+        "uram": "NA"
+      },
+      "wns_ns": null,
+      "whs_ns": null
+    },
+    {
+      "name": "A4 single-lane scheduler",
+      "scope": "one 16-channel output lane scheduler",
+      "source": "W8A12_3lane/evidence/resource/A4_single_lane_mac_scheduler_ooc/ooc_summary.json",
+      "status": "PASS",
+      "resource_pass": true,
+      "timing_pass": true,
+      "metrics": {
+        "lut": 41003.0,
+        "ff": 85414.0,
+        "bram": 0.0,
+        "dsp": 224.0,
+        "uram": 0.0
+      },
+      "limits": {
+        "lut": 218600.0,
+        "ff": 437200.0,
+        "bram": 545.0,
+        "dsp": 900.0,
+        "uram": 0.0
+      },
+      "usage_pct": {
+        "lut": "18.76%",
+        "ff": "19.54%",
+        "bram": "0.00%",
+        "dsp": "24.89%",
+        "uram": "NA"
+      },
+      "wns_ns": 1.261,
+      "whs_ns": 0.072
+    },
+    {
+      "name": "A4 3-lane scheduler",
+      "scope": "three 16-channel output lanes, 48 output channels total",
+      "source": "W8A12_3lane/evidence/resource/A4_3lane_mac_scheduler_ooc/ooc_summary.json",
+      "status": "PASS",
+      "resource_pass": true,
+      "timing_pass": true,
+      "metrics": {
+        "lut": 123182.0,
+        "ff": 256222.0,
+        "bram": 0.0,
+        "dsp": 672.0,
+        "uram": 0.0
+      },
+      "limits": {
+        "lut": 218600.0,
+        "ff": 437200.0,
+        "bram": 545.0,
+        "dsp": 900.0,
+        "uram": 0.0
+      },
+      "usage_pct": {
+        "lut": "56.35%",
+        "ff": "58.61%",
+        "bram": "0.00%",
+        "dsp": "74.67%",
+        "uram": "NA"
+      },
+      "wns_ns": 1.188,
+      "whs_ns": 0.072
+    },
+    {
+      "name": "accelerator top shell",
+      "scope": "control/status shell only, not full datapath resource",
+      "source": "W8A12_3lane/evidence/top/accel_top_ooc/ooc_summary.json",
+      "status": "PASS",
+      "resource_pass": true,
+      "timing_pass": true,
+      "metrics": {
+        "lut": 0.0,
+        "ff": 5.0,
+        "bram": 0.0,
+        "dsp": 0.0,
+        "uram": 0.0
+      },
+      "limits": {
+        "lut": 218600.0,
+        "ff": 437200.0,
+        "bram": 545.0,
+        "dsp": 900.0,
+        "uram": 0.0
+      },
+      "usage_pct": {
+        "lut": "0.00%",
+        "ff": "0.00%",
+        "bram": "0.00%",
+        "dsp": "0.00%",
+        "uram": "NA"
+      },
+      "wns_ns": 9.13,
+      "whs_ns": 0.071
+    }
+  ]
+}

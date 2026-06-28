@@ -1,0 +1,210 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:delivery_wrapper",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_w8a12_stagehash_true2x2_acceptance.ps1"
+    },
+    {
+      "name": "file:delivery_preflight",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_w8a12_board_recovery_preflight.ps1"
+    },
+    {
+      "name": "file:root_wrapper",
+      "pass": true,
+      "detail": "scripts/run_w8a12_stagehash_true2x2_acceptance.ps1"
+    },
+    {
+      "name": "file:root_preflight",
+      "pass": true,
+      "detail": "scripts/run_w8a12_board_recovery_preflight.ps1"
+    },
+    {
+      "name": "file:jtag_precondition_tool",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/summarize_jtag_precondition.py"
+    },
+    {
+      "name": "file:jtag_recovery_tool",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/generate_jtag_recovery_checklist.py"
+    },
+    {
+      "name": "file:jtag_recovery_doc",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/jtag_recovery_checklist.md"
+    },
+    {
+      "name": "file:jtag_precondition_current",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_probe/jtag_precondition_current/summary.md"
+    },
+    {
+      "name": "file:recovery_preflight_current",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_probe/recovery_preflight_current/board_recovery_preflight_summary.md"
+    },
+    {
+      "name": "file:jtag_recovery_checklist",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_probe/jtag_recovery_checklist/summary.md"
+    },
+    {
+      "name": "file:scripts/run_w8a12_board_recovery_preflight.ps1",
+      "pass": true,
+      "detail": "scripts/run_w8a12_board_recovery_preflight.ps1"
+    },
+    {
+      "name": "file:scripts/run_w8a12_stagehash_true2x2_acceptance.ps1",
+      "pass": true,
+      "detail": "scripts/run_w8a12_stagehash_true2x2_acceptance.ps1"
+    },
+    {
+      "name": "file:scripts/probe_vivado_hw_targets.ps1",
+      "pass": true,
+      "detail": "scripts/probe_vivado_hw_targets.ps1"
+    },
+    {
+      "name": "file:scripts/probe_vivado_hw_targets.tcl",
+      "pass": true,
+      "detail": "scripts/probe_vivado_hw_targets.tcl"
+    },
+    {
+      "name": "file:scripts/check_usb_jtag_devices.ps1",
+      "pass": true,
+      "detail": "scripts/check_usb_jtag_devices.ps1"
+    },
+    {
+      "name": "file:scripts/cleanup_vivado_processes.ps1",
+      "pass": true,
+      "detail": "scripts/cleanup_vivado_processes.ps1"
+    },
+    {
+      "name": "file:scripts/run_xsct_psu_init_only.ps1",
+      "pass": true,
+      "detail": "scripts/run_xsct_psu_init_only.ps1"
+    },
+    {
+      "name": "file:scripts/run_xsct_psu_init_only.tcl",
+      "pass": true,
+      "detail": "scripts/run_xsct_psu_init_only.tcl"
+    },
+    {
+      "name": "file:scripts/run_jtag_w8a12_tile_writer_smoke.ps1",
+      "pass": true,
+      "detail": "scripts/run_jtag_w8a12_tile_writer_smoke.ps1"
+    },
+    {
+      "name": "file:scripts/jtag_rgb_transfer.tcl",
+      "pass": true,
+      "detail": "scripts/jtag_rgb_transfer.tcl"
+    },
+    {
+      "name": "file:scripts/compare_jtag_w8a12_span_output.ps1",
+      "pass": true,
+      "detail": "scripts/compare_jtag_w8a12_span_output.ps1"
+    },
+    {
+      "name": "file:scripts/run_read_jtag_w8a12_tile_writer_regs.ps1",
+      "pass": true,
+      "detail": "scripts/run_read_jtag_w8a12_tile_writer_regs.ps1"
+    },
+    {
+      "name": "file:scripts/read_jtag_w8a12_tile_writer_regs.tcl",
+      "pass": true,
+      "detail": "scripts/read_jtag_w8a12_tile_writer_regs.tcl"
+    },
+    {
+      "name": "file:scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.ps1",
+      "pass": true,
+      "detail": "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.ps1"
+    },
+    {
+      "name": "file:scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.tcl",
+      "pass": true,
+      "detail": "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.tcl"
+    },
+    {
+      "name": "file:scripts/create_vivado_jtag_w8a12_tile_writer_bd_project.tcl",
+      "pass": true,
+      "detail": "scripts/create_vivado_jtag_w8a12_tile_writer_bd_project.tcl"
+    },
+    {
+      "name": "delivery_wrapper_delegates_to_root",
+      "pass": true,
+      "detail": "W8A12_3lane wrapper delegates from repo root"
+    },
+    {
+      "name": "delivery_preflight_delegates_to_root",
+      "pass": true,
+      "detail": "W8A12_3lane preflight delegates from repo root"
+    },
+    {
+      "name": "root_preflight_runs_usb_precondition_and_optional_acceptance",
+      "pass": true,
+      "detail": "board recovery preflight step chain"
+    },
+    {
+      "name": "root_wrapper_runs_probe_psu_smoke_regread",
+      "pass": true,
+      "detail": "root wrapper step chain"
+    },
+    {
+      "name": "root_wrapper_records_expected_hashes",
+      "pass": true,
+      "detail": "stage-hash expected values"
+    },
+    {
+      "name": "report_records_bitstream_and_target0",
+      "pass": true,
+      "detail": "stage-hash report has build and target-fail evidence"
+    },
+    {
+      "name": "docs_list_board_root_dependencies",
+      "pass": true,
+      "detail": "submission scope lists board root scripts"
+    },
+    {
+      "name": "upload_plan_mentions_board_root_dependencies",
+      "pass": true,
+      "detail": "upload plan board script scope"
+    },
+    {
+      "name": "index_mentions_stagehash_wrapper",
+      "pass": true,
+      "detail": "delivery index wrapper row"
+    },
+    {
+      "name": "index_mentions_recovery_preflight",
+      "pass": true,
+      "detail": "delivery index recovery preflight row"
+    },
+    {
+      "name": "workflow_mentions_stagehash_wrapper",
+      "pass": true,
+      "detail": "workflow current stage-hash wrapper state"
+    },
+    {
+      "name": "jtag_precondition_has_current_counts",
+      "pass": true,
+      "detail": "current board/JTAG precondition evidence"
+    },
+    {
+      "name": "recovery_preflight_has_current_blocked_evidence",
+      "pass": true,
+      "detail": "current board recovery preflight evidence"
+    },
+    {
+      "name": "jtag_recovery_doc_has_physical_steps",
+      "pass": true,
+      "detail": "physical JTAG recovery runbook"
+    },
+    {
+      "name": "jtag_recovery_evidence_has_current_blocked_state",
+      "pass": true,
+      "detail": "current physical/JTAG recovery evidence"
+    }
+  ]
+}

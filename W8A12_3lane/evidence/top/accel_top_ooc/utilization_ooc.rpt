@@ -1,0 +1,28 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Sun Jun 28 00:17:33 2026
+| Host         : robot running 64-bit major release  (build 9200)
+| Command      : report_utilization -file G:/UESTC/feitengspan1/W8A12_3lane/evidence/top/accel_top_ooc/utilization_ooc.rpt -hierarchical
+| Design       : w8a12_3lane_accel_top_ooc_top
+| Device       : xczu19eg-ffvc1760-2-i
+| Speed File   : -2
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-------------------------------+--------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|            Instance           | Module | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++-------------------------------+--------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| w8a12_3lane_accel_top_ooc_top |  (top) |          0 |          0 |       0 |    0 |   5 |      0 |      0 |    0 |          0 |
++-------------------------------+--------+------------+------------+---------+------+-----+--------+--------+------+------------+
+
+

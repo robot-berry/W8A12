@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "tag": "accel_top",
+  "utilization_report": "W8A12_3lane\\evidence\\top\\accel_top_ooc\\utilization_ooc.rpt",
+  "timing_report": "W8A12_3lane\\evidence\\top\\accel_top_ooc\\timing_ooc.rpt",
+  "resource_gate": {
+    "pass": true,
+    "metrics": {
+      "lut": 0.0,
+      "ff": 5.0,
+      "bram": 0.0,
+      "dsp": 0.0,
+      "uram": 0.0
+    },
+    "limits": {
+      "lut": 218600,
+      "ff": 437200,
+      "bram": 545,
+      "dsp": 900,
+      "uram": 0
+    },
+    "checks": [
+      {
+        "metric": "lut",
+        "value": 0.0,
+        "limit": 218600,
+        "pass": true
+      },
+      {
+        "metric": "ff",
+        "value": 5.0,
+        "limit": 437200,
+        "pass": true
+      },
+      {
+        "metric": "bram",
+        "value": 0.0,
+        "limit": 545,
+        "pass": true
+      },
+      {
+        "metric": "dsp",
+        "value": 0.0,
+        "limit": 900,
+        "pass": true
+      },
+      {
+        "metric": "uram",
+        "value": 0.0,
+        "limit": 0,
+        "pass": true
+      }
+    ]
+  },
+  "timing": {
+    "exists": true,
+    "pass": true,
+    "wns_ns": 9.13,
+    "whs_ns": 0.071
+  }
+}

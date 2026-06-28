@@ -1,0 +1,141 @@
+{
+  "status": "PASS",
+  "top": "W8A12_3lane/rtl/top/w8a12_3lane_accel_top.v",
+  "checks": [
+    {
+      "name": "text:module w8a12_3lane_accel_top",
+      "pass": true,
+      "detail": "module w8a12_3lane_accel_top"
+    },
+    {
+      "name": "text:w8a12_3lane_tile_pipeline_shell",
+      "pass": true,
+      "detail": "w8a12_3lane_tile_pipeline_shell"
+    },
+    {
+      "name": "text:status_o",
+      "pass": true,
+      "detail": "status_o"
+    },
+    {
+      "name": "text:frame_done_o",
+      "pass": true,
+      "detail": "frame_done_o"
+    },
+    {
+      "name": "text:error_o",
+      "pass": true,
+      "detail": "error_o"
+    },
+    {
+      "name": "text:irq_o",
+      "pass": true,
+      "detail": "irq_o"
+    },
+    {
+      "name": "text:busy_o",
+      "pass": true,
+      "detail": "busy_o"
+    },
+    {
+      "name": "text:load_start_o",
+      "pass": true,
+      "detail": "load_start_o"
+    },
+    {
+      "name": "text:conv1_start_o",
+      "pass": true,
+      "detail": "conv1_start_o"
+    },
+    {
+      "name": "text:spab_start_o",
+      "pass": true,
+      "detail": "spab_start_o"
+    },
+    {
+      "name": "text:tail_start_o",
+      "pass": true,
+      "detail": "tail_start_o"
+    },
+    {
+      "name": "text:write_start_o",
+      "pass": true,
+      "detail": "write_start_o"
+    },
+    {
+      "name": "port:start_i",
+      "pass": true,
+      "detail": "start_i"
+    },
+    {
+      "name": "port:clear_i",
+      "pass": true,
+      "detail": "clear_i"
+    },
+    {
+      "name": "port:load_done_i",
+      "pass": true,
+      "detail": "load_done_i"
+    },
+    {
+      "name": "port:load_error_i",
+      "pass": true,
+      "detail": "load_error_i"
+    },
+    {
+      "name": "port:conv1_done_i",
+      "pass": true,
+      "detail": "conv1_done_i"
+    },
+    {
+      "name": "port:conv1_error_i",
+      "pass": true,
+      "detail": "conv1_error_i"
+    },
+    {
+      "name": "port:spab_done_i",
+      "pass": true,
+      "detail": "spab_done_i"
+    },
+    {
+      "name": "port:spab_error_i",
+      "pass": true,
+      "detail": "spab_error_i"
+    },
+    {
+      "name": "port:tail_done_i",
+      "pass": true,
+      "detail": "tail_done_i"
+    },
+    {
+      "name": "port:tail_error_i",
+      "pass": true,
+      "detail": "tail_error_i"
+    },
+    {
+      "name": "port:write_done_i",
+      "pass": true,
+      "detail": "write_done_i"
+    },
+    {
+      "name": "port:write_error_i",
+      "pass": true,
+      "detail": "write_error_i"
+    },
+    {
+      "name": "status_has_phase_bits",
+      "pass": true,
+      "detail": "phase_o [7:5]"
+    },
+    {
+      "name": "status_has_block_bits",
+      "pass": true,
+      "detail": "block_idx_o [10:8]"
+    },
+    {
+      "name": "clear_resets_shell",
+      "pass": true,
+      "detail": "rst | clear_i"
+    }
+  ]
+}

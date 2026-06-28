@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:audit_tool",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/audit_contest_delivery.py"
+    },
+    {
+      "name": "file:gate_runner",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_delivery_gates.ps1"
+    },
+    {
+      "name": "manifest_not_forced_incomplete",
+      "pass": true,
+      "detail": "final PASS manifests remain valid"
+    },
+    {
+      "name": "includes_all_flow_static_gates",
+      "pass": true,
+      "detail": "flow-static audit gates"
+    },
+    {
+      "name": "includes_core_reference_gates",
+      "pass": true,
+      "detail": "A0-A3 gates"
+    },
+    {
+      "name": "includes_mac_dsp_mapping_doc",
+      "pass": true,
+      "detail": "MAC/DSP mapping policy doc gate"
+    },
+    {
+      "name": "includes_submission_scope_doc",
+      "pass": true,
+      "detail": "submission scope policy doc gate"
+    },
+    {
+      "name": "includes_contest_report_gate",
+      "pass": true,
+      "detail": "contest report doc gate"
+    },
+    {
+      "name": "includes_report_static_gate",
+      "pass": true,
+      "detail": "contest report static evidence gate"
+    },
+    {
+      "name": "includes_report_pdf_gate",
+      "pass": true,
+      "detail": "contest report PDF evidence gate"
+    },
+    {
+      "name": "includes_ppa_summary_gate",
+      "pass": true,
+      "detail": "PPA summary evidence gate"
+    },
+    {
+      "name": "includes_quality_metric_completion_gate",
+      "pass": true,
+      "detail": "quality metric completion evidence gate"
+    },
+    {
+      "name": "includes_vivado_ooc_gates",
+      "pass": true,
+      "detail": "Vivado/xsim/OOC gates"
+    },
+    {
+      "name": "includes_board_gates",
+      "pass": true,
+      "detail": "board gates"
+    },
+    {
+      "name": "includes_x2_gates",
+      "pass": true,
+      "detail": "x2 W8A12 gates"
+    },
+    {
+      "name": "gate_order_support_before_audit",
+      "pass": true,
+      "detail": "support files are generated before strict audit"
+    },
+    {
+      "name": "gate_order_final_manifests_after_audit",
+      "pass": true,
+      "detail": "final manifests refresh after strict audit"
+    },
+    {
+      "name": "gate_order_final_archive_after_final_submission",
+      "pass": true,
+      "detail": "final archive is regenerated before final delivery manifest"
+    }
+  ]
+}

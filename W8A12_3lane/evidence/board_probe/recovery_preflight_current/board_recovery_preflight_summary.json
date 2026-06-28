@@ -1,0 +1,35 @@
+﻿{
+    "status":  "BLOCKED",
+    "output_dir":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_current",
+    "precondition_summary":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\jtag_precondition_current",
+    "usb_known_jtag_candidate_count":  0,
+    "vivado_target_count":  "not_checked",
+    "run_stagehash_acceptance_requested":  false,
+    "steps":  {
+                  "usb":  {
+                              "exit":  [
+                                           "USB_JTAG_DIAG_TXT=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_current\\usb\\usb_jtag_devices.txt",
+                                           "USB_JTAG_DIAG_JSON=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_current\\usb\\usb_jtag_devices.json",
+                                           "USB_JTAG_DIAG_MATCH_COUNT=3",
+                                           "USB_JTAG_DIAG_KNOWN_CANDIDATE_COUNT=0",
+                                           "USB_JTAG_DIAG_PNP_HISTORY_KNOWN_CANDIDATE_COUNT=4",
+                                           "USB_JTAG_DIAG_PNP_HISTORY_KNOWN_VIDPID_COUNT=3",
+                                           0
+                                       ],
+                              "log":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_current\\usb_step.log",
+                              "output_dir":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_current\\usb",
+                              "known_jtag_candidate_count":  0
+                          },
+                  "vivado_probe":  {
+                                       "exit":  "skipped",
+                                       "reason":  "USB known JTAG candidate count is 0; use -ForceVivadoProbe to run Vivado anyway",
+                                       "output_dir":  ""
+                                   },
+                  "precondition":  {
+                                       "exit":  0,
+                                       "log":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_current\\precondition_summary_step.log",
+                                       "output_dir":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\jtag_precondition_current",
+                                       "status":  "BLOCKED"
+                                   }
+              }
+}

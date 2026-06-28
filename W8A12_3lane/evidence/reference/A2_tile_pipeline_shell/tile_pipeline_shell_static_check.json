@@ -1,0 +1,115 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "exists:W8A12_3lane/docs/a2_a3_tile_scheduler_contract.md",
+      "pass": true,
+      "details": "W8A12_3lane/docs/a2_a3_tile_scheduler_contract.md"
+    },
+    {
+      "name": "exists:W8A12_3lane/rtl/span/w8a12_3lane_tile_pipeline_shell.v",
+      "pass": true,
+      "details": "W8A12_3lane/rtl/span/w8a12_3lane_tile_pipeline_shell.v"
+    },
+    {
+      "name": "exists:W8A12_3lane/sim/tb_w8a12_3lane_tile_pipeline_shell.sv",
+      "pass": true,
+      "details": "W8A12_3lane/sim/tb_w8a12_3lane_tile_pipeline_shell.sv"
+    },
+    {
+      "name": "exists:W8A12_3lane/scripts/run_vivado_sim_w8a12_3lane_tile_pipeline_shell.tcl",
+      "pass": true,
+      "details": "W8A12_3lane/scripts/run_vivado_sim_w8a12_3lane_tile_pipeline_shell.tcl"
+    },
+    {
+      "name": "exists:W8A12_3lane/scripts/run_vivado_sim_w8a12_3lane_tile_pipeline_shell.ps1",
+      "pass": true,
+      "details": "W8A12_3lane/scripts/run_vivado_sim_w8a12_3lane_tile_pipeline_shell.ps1"
+    },
+    {
+      "name": "phase:PH_IDLE",
+      "pass": true,
+      "details": "phase defined in RTL"
+    },
+    {
+      "name": "phase:PH_LOAD",
+      "pass": true,
+      "details": "phase defined in RTL"
+    },
+    {
+      "name": "phase:PH_CONV1",
+      "pass": true,
+      "details": "phase defined in RTL"
+    },
+    {
+      "name": "phase:PH_SPAB",
+      "pass": true,
+      "details": "phase defined in RTL"
+    },
+    {
+      "name": "phase:PH_TAIL",
+      "pass": true,
+      "details": "phase defined in RTL"
+    },
+    {
+      "name": "phase:PH_WRITE",
+      "pass": true,
+      "details": "phase defined in RTL"
+    },
+    {
+      "name": "phase:PH_DONE",
+      "pass": true,
+      "details": "phase defined in RTL"
+    },
+    {
+      "name": "phase:PH_ERROR",
+      "pass": true,
+      "details": "phase defined in RTL"
+    },
+    {
+      "name": "blocks_param_6",
+      "pass": true,
+      "details": "default BLOCKS=6"
+    },
+    {
+      "name": "lane_valid_all",
+      "pass": true,
+      "details": "all 3 lanes enabled"
+    },
+    {
+      "name": "read_pingpong",
+      "pass": true,
+      "details": "read buffer follows block parity"
+    },
+    {
+      "name": "write_pingpong",
+      "pass": true,
+      "details": "write buffer inverse block parity"
+    },
+    {
+      "name": "six_block_exit",
+      "pass": true,
+      "details": "SPAB exits after BLOCKS"
+    },
+    {
+      "name": "tb_six_spab",
+      "pass": true,
+      "details": "TB drives six SPAB completions"
+    },
+    {
+      "name": "tb_pass_banner",
+      "pass": true,
+      "details": "TB pass banner"
+    },
+    {
+      "name": "tcl_adds_rtl",
+      "pass": true,
+      "details": "Tcl adds shell RTL"
+    },
+    {
+      "name": "tcl_adds_tb",
+      "pass": true,
+      "details": "Tcl adds shell TB"
+    }
+  ]
+}

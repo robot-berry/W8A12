@@ -1,0 +1,12 @@
+﻿# Accelerator Top Simulation
+
+Status: PASS
+
+| Item | Value |
+| --- | --- |
+| top | tb_w8a12_3lane_accel_top |
+| pass_line | PASS w8a12_3lane_accel_top spab_count=6 cycles=24 status=0000edcb |
+| simulate_log | G:\UESTC\feitengspan1\build\vivado_w8a12_3lane_accel_top_sim\w8a12_3lane_accel_top_sim.sim\sim_1\behav\xsim\simulate.log |
+| vivado_log | G:\UESTC\feitengspan1\W8A12_3lane\evidence\top\accel_top_sim\vivado_accel_top_sim.log |
+| expected | control/status shell sequences load, conv1, 6 SPAB blocks, tail, write and latches done/irq |
+

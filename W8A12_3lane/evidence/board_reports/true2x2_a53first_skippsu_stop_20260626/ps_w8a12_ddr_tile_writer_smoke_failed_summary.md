@@ -1,0 +1,69 @@
+﻿# W8A12 DDR Tile-Writer 上板 Smoke 失败记录
+
+时间：2026-06-26 23:50:15
+
+## 本次目标
+
+- 路线：PS/XSCT 写 DDR 输入帧，PL 端 AXI master 从 DDR 读整帧并在硬件内完成 tile/halo/W8A12，再写回 DDR。
+- 输入/输出：`2 x 2 -> 8 x 8`，x4。
+- PL 时钟：`50 MHz`。
+- 控制寄存器基地址：`0xA0000000`。
+- DDR 输入基地址：`0x10000000`。
+- DDR 输出基地址：`0x11000000`。
+- bitstream：`G:\UESTC\feitengspan1\b\w8a12_2x2_samplelatch_20260626_2229\psw8a12ddr_true2x2_samplelatch_20260626_2229\ps_w8a12_ddr_tile_writer.runs\impl_1\psw8a12ddr_wrapper.bit`。
+
+## 失败阶段
+
+- 阶段：`XSCT DDR/控制/硬件状态检查`。
+- 原因：`XSCT did not report W8A12_DDR_TILE_WRITER_XSCT_PASS=1`。
+
+本次未完成板端输出逐字节比较；如果失败发生在 bitstream 下载前，则没有进入 DDR 写入、PL 计算或 DDR 读回阶段。
+
+## 已捕获调试寄存器
+
+| 寄存器/解码 | 数值 |
+| --- | --- |
+| DEBUG_STATE | `` |
+| RGB 输出计数 | `` |
+| DEBUG_C1_DETAIL | `` |
+| DEBUG_C1 首因 | `未记录` |
+| DEBUG_C2_DETAIL | `` |
+| DEBUG_C2 首因 | `未记录` |
+| DEBUG_C3_DETAIL | `` |
+| DEBUG_C3 首因 | `未记录` |
+| DEBUG_ATT_DETAIL | `` |
+| DEBUG_SPAB_FLAGS | `` |
+| SPAB 置位标志 | `未记录` |
+| tail feat0 hash | `` |
+| tail block6 hash | `` |
+| tail b1 hash | `` |
+| tail b6_act1 hash | `` |
+| tail RGB q hash | `` |
+| SPAB block1 C1 sample0 | `` |
+| SPAB block1 C1 sample1 | `` |
+| SPAB block1 C1 sample2 | `` |
+| SPAB block1 C1 sample3 | `` |
+| SPAB block1 input hash | `` |
+| SPAB block1 C1/act1 hash | `` |
+| SPAB block1 C2/act2 hash | `` |
+| SPAB block1 C2 replay hash | `` |
+| SPAB block1 C2 window hash | `` |
+| SPAB block1 C1 raw hash | `` |
+| writeback wr_data hash | `` |
+| writeback wr_data range/count | `` |
+| writeback wr_data first | `` |
+| writeback wr_data last | `` |
+| SPAB block1 C3 hash | `` |
+| SPAB block1 residual hash | `` |
+| SPAB block1 attention/output hash | `` |
+
+## 资源和时序报告
+
+- utilization：`未找到`
+- timing：`未找到`
+
+## 日志
+
+- program log：`G:\UESTC\feitengspan1\board_runs\w8a12_ps_ddr_tile_writer_smoke\true2x2_a53first_skippsu_stop_20260626\program\program_ps_w8a12_tile_writer_bitstream.log`
+- XSCT log：`G:\UESTC\feitengspan1\board_runs\w8a12_ps_ddr_tile_writer_smoke\true2x2_a53first_skippsu_stop_20260626\run_xsct_ps_w8a12_ddr_tile_writer_smoke.log`
+- preflight log：``

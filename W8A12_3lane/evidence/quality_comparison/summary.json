@@ -1,0 +1,114 @@
+{
+  "status": "PASS",
+  "missing_inputs": [],
+  "rows": [
+    {
+      "scale": 4,
+      "method": "nearest",
+      "psnr_rgb_db": 25.09205612769393,
+      "psnr_y_db": 25.107668112938835,
+      "ssim_y": 0.9691362019004537,
+      "delta_vs_bicubic_rgb_db": -1.2028587723515827,
+      "note": "traditional interpolation"
+    },
+    {
+      "scale": 4,
+      "method": "bilinear",
+      "psnr_rgb_db": 25.76696657429135,
+      "psnr_y_db": 25.773390963976077,
+      "ssim_y": 0.972568799924675,
+      "delta_vs_bicubic_rgb_db": -0.5279483257541635,
+      "note": "traditional interpolation"
+    },
+    {
+      "scale": 4,
+      "method": "bicubic",
+      "psnr_rgb_db": 26.294914900045512,
+      "psnr_y_db": 26.298010112214104,
+      "ssim_y": 0.9758248191033593,
+      "delta_vs_bicubic_rgb_db": 0.0,
+      "note": "traditional interpolation"
+    },
+    {
+      "scale": 2,
+      "method": "nearest",
+      "psnr_rgb_db": 29.09687679518846,
+      "psnr_y_db": 29.116649915178048,
+      "ssim_y": 0.987689945509647,
+      "delta_vs_bicubic_rgb_db": -1.7676249951367744,
+      "note": "traditional interpolation"
+    },
+    {
+      "scale": 2,
+      "method": "bilinear",
+      "psnr_rgb_db": 29.721769984427763,
+      "psnr_y_db": 29.735852831505596,
+      "ssim_y": 0.9888668993472678,
+      "delta_vs_bicubic_rgb_db": -1.1427318058974727,
+      "note": "traditional interpolation"
+    },
+    {
+      "scale": 2,
+      "method": "bicubic",
+      "psnr_rgb_db": 30.864501790325235,
+      "psnr_y_db": 30.885546903480616,
+      "ssim_y": 0.9914437641736191,
+      "delta_vs_bicubic_rgb_db": 0.0,
+      "note": "traditional interpolation"
+    },
+    {
+      "scale": 4,
+      "method": "SPAN FP32",
+      "psnr_rgb_db": 28.3118,
+      "psnr_y_db": null,
+      "ssim_y": null,
+      "delta_vs_bicubic_rgb_db": 2.0168850999544894,
+      "note": "training log"
+    },
+    {
+      "scale": 4,
+      "method": "W8A12 fixed",
+      "psnr_rgb_db": null,
+      "psnr_y_db": null,
+      "ssim_y": null,
+      "delta_vs_bicubic_rgb_db": null,
+      "note": "fixed-point reference"
+    },
+    {
+      "scale": 4,
+      "method": "board",
+      "psnr_rgb_db": null,
+      "psnr_y_db": null,
+      "ssim_y": null,
+      "delta_vs_bicubic_rgb_db": null,
+      "note": "A7 720p board report"
+    },
+    {
+      "scale": 2,
+      "method": "SPAN FP32",
+      "psnr_rgb_db": 34.4297,
+      "psnr_y_db": null,
+      "ssim_y": null,
+      "delta_vs_bicubic_rgb_db": 3.5651982096747616,
+      "note": "training log"
+    },
+    {
+      "scale": 2,
+      "method": "W8A12 fixed",
+      "psnr_rgb_db": null,
+      "psnr_y_db": null,
+      "ssim_y": null,
+      "delta_vs_bicubic_rgb_db": null,
+      "note": "fixed-point reference"
+    },
+    {
+      "scale": 2,
+      "method": "board",
+      "psnr_rgb_db": null,
+      "psnr_y_db": null,
+      "ssim_y": null,
+      "delta_vs_bicubic_rgb_db": null,
+      "note": "x2 720p board report"
+    }
+  ]
+}

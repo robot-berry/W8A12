@@ -1,0 +1,155 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:runner",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_hard_gate_queue.ps1"
+    },
+    {
+      "name": "file:delivery_runner",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_delivery_gates.ps1"
+    },
+    {
+      "name": "file:queue_tool",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/generate_hard_gate_execution_queue.py"
+    },
+    {
+      "name": "file:doc",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/delivery_gate_runner.md"
+    },
+    {
+      "name": "delivery_runner_powershell_parse",
+      "pass": true,
+      "detail": "parse ok"
+    },
+    {
+      "name": "delivery_runner_param_first",
+      "pass": true,
+      "detail": "param block is first statement"
+    },
+    {
+      "name": "delivery_runner_skip_flags",
+      "pass": true,
+      "detail": "SkipVivado/SkipX2/ContinueOnError"
+    },
+    {
+      "name": "delivery_runner_allowed_exit_codes",
+      "pass": true,
+      "detail": "missing evidence plan can be incomplete"
+    },
+    {
+      "name": "delivery_runner_safe_file_interpolation",
+      "pass": true,
+      "detail": "no invalid $File: interpolation"
+    },
+    {
+      "name": "delivery_runner_summary_interpolation",
+      "pass": true,
+      "detail": "summary rows expand step names"
+    },
+    {
+      "name": "delivery_runner_stagehash_static",
+      "pass": true,
+      "detail": "stage-hash static gate"
+    },
+    {
+      "name": "delivery_runner_jtag_recovery_checklist",
+      "pass": true,
+      "detail": "JTAG recovery checklist gate"
+    },
+    {
+      "name": "delivery_runner_contest_report_pdf",
+      "pass": true,
+      "detail": "contest report PDF gate"
+    },
+    {
+      "name": "delivery_runner_evidence_matrix",
+      "pass": true,
+      "detail": "delivery evidence matrix gate"
+    },
+    {
+      "name": "delivery_runner_final_gates",
+      "pass": true,
+      "detail": "final manifest/audit gates"
+    },
+    {
+      "name": "delivery_runner_jtag_recovery_before_stagehash_static",
+      "pass": true,
+      "detail": "recovery evidence generated before stage-hash static check"
+    },
+    {
+      "name": "delivery_runner_matrix_before_final_archive",
+      "pass": true,
+      "detail": "evidence matrix is generated after audit and before final archive"
+    },
+    {
+      "name": "supports_start_at",
+      "pass": true,
+      "detail": "resume from step"
+    },
+    {
+      "name": "supports_only_category",
+      "pass": true,
+      "detail": "category filter"
+    },
+    {
+      "name": "supports_continue_on_error",
+      "pass": true,
+      "detail": "continue on error"
+    },
+    {
+      "name": "supports_dry_run",
+      "pass": true,
+      "detail": "dry-run mode"
+    },
+    {
+      "name": "writes_hard_gate_runs",
+      "pass": true,
+      "detail": "run output directory"
+    },
+    {
+      "name": "captures_stdout_stderr",
+      "pass": true,
+      "detail": "stdout/stderr logs"
+    },
+    {
+      "name": "records_commands",
+      "pass": true,
+      "detail": "per-step commands"
+    },
+    {
+      "name": "checks_required_evidence",
+      "pass": true,
+      "detail": "evidence validation"
+    },
+    {
+      "name": "queue_marks_external_process",
+      "pass": true,
+      "detail": "hard gates flagged external"
+    },
+    {
+      "name": "queue_has_all_hard_names",
+      "pass": true,
+      "detail": "representative hard gates"
+    },
+    {
+      "name": "queue_orders_probe_before_board",
+      "pass": true,
+      "detail": "probe before A5"
+    },
+    {
+      "name": "doc_lists_hard_queue_runner",
+      "pass": true,
+      "detail": "hard queue runner documented"
+    },
+    {
+      "name": "doc_lists_categories",
+      "pass": true,
+      "detail": "category examples documented"
+    }
+  ]
+}

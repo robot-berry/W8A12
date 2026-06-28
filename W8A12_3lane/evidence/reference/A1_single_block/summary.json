@@ -1,0 +1,130 @@
+{
+  "status": "PASS",
+  "stage": "A1_single_block",
+  "block": 1,
+  "rtl_manifest": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x4_f48_w8a12\\span_w8a12_rtl_manifest.json",
+  "postprocess_manifest": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x4_f48_w8a12\\postprocess\\span_w8a12_postprocess_manifest.json",
+  "activation_bits": 12,
+  "height": 4,
+  "width": 4,
+  "channels": 48,
+  "lanes": 3,
+  "out_ch_per_lane": 16,
+  "bit_exact_lane_stitch": true,
+  "hash_algorithm": "rotl5_xor_indexed_v1",
+  "hashes": {
+    "block_input_hash": "0x47766845",
+    "c1_raw_hash": "0x080D3C47",
+    "act1_hash": "0x608EB896",
+    "c2_raw_hash": "0x0A7D238A",
+    "act2_hash": "0x17B3C9F8",
+    "c3_raw_hash": "0x19F8FA9A",
+    "sim_att_hash": "0x9EBD7351",
+    "block_output_hash": "0xD12E1B43"
+  },
+  "lane_hashes": {
+    "c1_raw": {
+      "lane0_hash": "0xD21FCF34",
+      "lane1_hash": "0xA25E2E5A",
+      "lane2_hash": "0xE8914DF4"
+    },
+    "c2_raw": {
+      "lane0_hash": "0x5B8DA8F5",
+      "lane1_hash": "0x032C3FF2",
+      "lane2_hash": "0x72DB948A"
+    },
+    "c3_raw": {
+      "lane0_hash": "0x1787A3F4",
+      "lane1_hash": "0x04E8A39A",
+      "lane2_hash": "0xB13C415F"
+    },
+    "block_output": {
+      "lane0_hash": "0xBF95ADDD",
+      "lane1_hash": "0x3520C3E6",
+      "lane2_hash": "0xB1849F67"
+    }
+  },
+  "outputs": {
+    "block_input_npy": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\block_input.npy",
+    "c1_raw_npy": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1_raw.npy",
+    "act1_npy": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\act1.npy",
+    "c2_raw_npy": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2_raw.npy",
+    "act2_npy": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\act2.npy",
+    "c3_raw_npy": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3_raw.npy",
+    "sim_att_npy": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\sim_att.npy",
+    "block_output_npy": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\block_output.npy",
+    "sv_defines": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\a1_3lane_files.vh"
+  },
+  "postprocess_mems": {
+    "act1_lut": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x4_f48_w8a12\\postprocess\\mem\\block_1_act1_silu_s12.mem",
+    "act2_lut": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x4_f48_w8a12\\postprocess\\mem\\block_1_act2_silu_s12.mem",
+    "attention_lut": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x4_f48_w8a12\\postprocess\\mem\\block_1_attention_sim_att_s12.mem"
+  },
+  "attention_requant": {
+    "out3_multiplier_q31": 80193,
+    "residual_multiplier_q31": 1123025,
+    "shift": 31
+  },
+  "lane_mem_files": {
+    "c1": {
+      "lane0": {
+        "weight_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane0_block_1_c1_r_w_i8.mem",
+        "bias_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane0_block_1_c1_r_bias_i64.mem",
+        "requant_q31_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane0_block_1_c1_r_requant_q31.mem",
+        "requant_shift_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane0_block_1_c1_r_requant_shift_u8.mem"
+      },
+      "lane1": {
+        "weight_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane1_block_1_c1_r_w_i8.mem",
+        "bias_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane1_block_1_c1_r_bias_i64.mem",
+        "requant_q31_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane1_block_1_c1_r_requant_q31.mem",
+        "requant_shift_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane1_block_1_c1_r_requant_shift_u8.mem"
+      },
+      "lane2": {
+        "weight_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane2_block_1_c1_r_w_i8.mem",
+        "bias_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane2_block_1_c1_r_bias_i64.mem",
+        "requant_q31_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane2_block_1_c1_r_requant_q31.mem",
+        "requant_shift_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c1\\lane_mems\\lane2_block_1_c1_r_requant_shift_u8.mem"
+      }
+    },
+    "c2": {
+      "lane0": {
+        "weight_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane0_block_1_c2_r_w_i8.mem",
+        "bias_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane0_block_1_c2_r_bias_i64.mem",
+        "requant_q31_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane0_block_1_c2_r_requant_q31.mem",
+        "requant_shift_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane0_block_1_c2_r_requant_shift_u8.mem"
+      },
+      "lane1": {
+        "weight_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane1_block_1_c2_r_w_i8.mem",
+        "bias_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane1_block_1_c2_r_bias_i64.mem",
+        "requant_q31_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane1_block_1_c2_r_requant_q31.mem",
+        "requant_shift_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane1_block_1_c2_r_requant_shift_u8.mem"
+      },
+      "lane2": {
+        "weight_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane2_block_1_c2_r_w_i8.mem",
+        "bias_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane2_block_1_c2_r_bias_i64.mem",
+        "requant_q31_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane2_block_1_c2_r_requant_q31.mem",
+        "requant_shift_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c2\\lane_mems\\lane2_block_1_c2_r_requant_shift_u8.mem"
+      }
+    },
+    "c3": {
+      "lane0": {
+        "weight_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane0_block_1_c3_r_w_i8.mem",
+        "bias_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane0_block_1_c3_r_bias_i64.mem",
+        "requant_q31_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane0_block_1_c3_r_requant_q31.mem",
+        "requant_shift_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane0_block_1_c3_r_requant_shift_u8.mem"
+      },
+      "lane1": {
+        "weight_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane1_block_1_c3_r_w_i8.mem",
+        "bias_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane1_block_1_c3_r_bias_i64.mem",
+        "requant_q31_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane1_block_1_c3_r_requant_q31.mem",
+        "requant_shift_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane1_block_1_c3_r_requant_shift_u8.mem"
+      },
+      "lane2": {
+        "weight_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane2_block_1_c3_r_w_i8.mem",
+        "bias_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane2_block_1_c3_r_bias_i64.mem",
+        "requant_q31_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane2_block_1_c3_r_requant_q31.mem",
+        "requant_shift_mem": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A1_single_block\\c3\\lane_mems\\lane2_block_1_c3_r_requant_shift_u8.mem"
+      }
+    }
+  }
+}

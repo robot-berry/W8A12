@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "root_tool:tools/calibrate_span_activation_scales.py",
+      "pass": true,
+      "detail": "tools/calibrate_span_activation_scales.py"
+    },
+    {
+      "name": "root_tool:tools/export_span_w8a12_quant_plan.py",
+      "pass": true,
+      "detail": "tools/export_span_w8a12_quant_plan.py"
+    },
+    {
+      "name": "root_tool:tools/export_span_quant_plan_to_rtl.py",
+      "pass": true,
+      "detail": "tools/export_span_quant_plan_to_rtl.py"
+    },
+    {
+      "name": "root_tool:tools/export_span_w8a12_postprocess_to_rtl.py",
+      "pass": true,
+      "detail": "tools/export_span_w8a12_postprocess_to_rtl.py"
+    },
+    {
+      "name": "root_tool:tools/check_span_w8a12_rtl_export.py",
+      "pass": true,
+      "detail": "tools/check_span_w8a12_rtl_export.py"
+    },
+    {
+      "name": "root_tool:tools/run_span_ptq_reference.py",
+      "pass": true,
+      "detail": "tools/run_span_ptq_reference.py"
+    },
+    {
+      "name": "model_source:external/SPAN/basicsr/archs/span_arch.py",
+      "pass": true,
+      "detail": "external/SPAN/basicsr/archs/span_arch.py"
+    },
+    {
+      "name": "mainline_doc:W8A12_3lane/docs/submission_scope_policy.md",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/submission_scope_policy.md"
+    },
+    {
+      "name": "mainline_doc:W8A12_3lane/docs/github_upload_plan.md",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/github_upload_plan.md"
+    },
+    {
+      "name": "mainline_doc:W8A12_3lane/docs/x2_w8a12_export_plan.md",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/x2_w8a12_export_plan.md"
+    },
+    {
+      "name": "ptq_imports_span",
+      "pass": true,
+      "detail": "run_span_ptq_reference.py imports SPAN"
+    },
+    {
+      "name": "calibrate_uses_ptq_reference",
+      "pass": true,
+      "detail": "calibration uses PTQ reference"
+    },
+    {
+      "name": "quant_export_uses_ptq_reference",
+      "pass": true,
+      "detail": "quant export uses PTQ reference"
+    },
+    {
+      "name": "upload_plan_mentions_scope",
+      "pass": true,
+      "detail": "GitHub upload plan points to scope policy"
+    },
+    {
+      "name": "scope_doc_mentions_basicsr_span",
+      "pass": true,
+      "detail": "scope doc names SPAN dependency"
+    },
+    {
+      "name": "scope_doc_lists_root_tools",
+      "pass": true,
+      "detail": "scope doc lists required root tools"
+    }
+  ]
+}

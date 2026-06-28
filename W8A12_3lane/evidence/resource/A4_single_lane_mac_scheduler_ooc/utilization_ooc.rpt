@@ -1,0 +1,94 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Sat Jun 27 23:43:03 2026
+| Host         : robot running 64-bit major release  (build 9200)
+| Command      : report_utilization -file G:/UESTC/feitengspan1/W8A12_3lane/evidence/resource/A4_single_lane_mac_scheduler_ooc/utilization_ooc.rpt -hierarchical
+| Design       : w8a12_single_lane_mac_scheduler_ooc_top
+| Device       : xczu19eg-ffvc1760-2-i
+| Speed File   : -2
+| Design State : Synthesized
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------------------------------+-------------------------------------------------+------------+------------+---------+------+-------+--------+--------+------+------------+
+|                   Instance                  |                      Module                     | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | URAM | DSP Blocks |
++---------------------------------------------+-------------------------------------------------+------------+------------+---------+------+-------+--------+--------+------+------------+
+| w8a12_single_lane_mac_scheduler_ooc_top     |                                           (top) |      41003 |      41003 |       0 |    0 | 85414 |      0 |      0 |    0 |        224 |
+|   (w8a12_single_lane_mac_scheduler_ooc_top) |                                           (top) |          0 |          0 |       0 |    0 |     0 |      0 |      0 |    0 |          0 |
+|   u_dut                                     |                 w8a12_single_lane_mac_scheduler |      41003 |      41003 |       0 |    0 | 85414 |      0 |      0 |    0 |        224 |
+|     g_out[0].u_out                          |                  w8a12_single_out_mac_scheduler |       2406 |       2406 |       0 |    0 |  5358 |      0 |      0 |    0 |         14 |
+|       (g_out[0].u_out)                      |                  w8a12_single_out_mac_scheduler |        267 |        267 |       0 |    0 |  5309 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_28 |       1756 |       1756 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_29 |        383 |        383 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[10].u_out                         |  w8a12_single_out_mac_scheduler__parameterized9 |       2502 |       2502 |       0 |    0 |  5334 |      0 |      0 |    0 |         14 |
+|       (g_out[10].u_out)                     |  w8a12_single_out_mac_scheduler__parameterized9 |        218 |        218 |       0 |    0 |  5285 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_26 |       1905 |       1905 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_27 |        379 |        379 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[11].u_out                         | w8a12_single_out_mac_scheduler__parameterized10 |       2544 |       2544 |       0 |    0 |  5331 |      0 |      0 |    0 |         14 |
+|       (g_out[11].u_out)                     | w8a12_single_out_mac_scheduler__parameterized10 |        194 |        194 |       0 |    0 |  5282 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_24 |       1967 |       1967 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_25 |        383 |        383 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[12].u_out                         | w8a12_single_out_mac_scheduler__parameterized11 |       2748 |       2748 |       0 |    0 |  5355 |      0 |      0 |    0 |         14 |
+|       (g_out[12].u_out)                     | w8a12_single_out_mac_scheduler__parameterized11 |        524 |        524 |       0 |    0 |  5306 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_22 |       1868 |       1868 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_23 |        356 |        356 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[13].u_out                         | w8a12_single_out_mac_scheduler__parameterized12 |       2482 |       2482 |       0 |    0 |  5330 |      0 |      0 |    0 |         14 |
+|       (g_out[13].u_out)                     | w8a12_single_out_mac_scheduler__parameterized12 |        216 |        216 |       0 |    0 |  5281 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_20 |       1909 |       1909 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_21 |        357 |        357 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[14].u_out                         | w8a12_single_out_mac_scheduler__parameterized13 |       2597 |       2597 |       0 |    0 |  5340 |      0 |      0 |    0 |         14 |
+|       (g_out[14].u_out)                     | w8a12_single_out_mac_scheduler__parameterized13 |        197 |        197 |       0 |    0 |  5291 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_18 |       2023 |       2023 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_19 |        377 |        377 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[15].u_out                         | w8a12_single_out_mac_scheduler__parameterized14 |       2366 |       2366 |       0 |    0 |  5330 |      0 |      0 |    0 |         14 |
+|       (g_out[15].u_out)                     | w8a12_single_out_mac_scheduler__parameterized14 |        152 |        152 |       0 |    0 |  5281 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_16 |       1858 |       1858 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_17 |        356 |        356 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[1].u_out                          |  w8a12_single_out_mac_scheduler__parameterized0 |       2467 |       2467 |       0 |    0 |  5329 |      0 |      0 |    0 |         14 |
+|       (g_out[1].u_out)                      |  w8a12_single_out_mac_scheduler__parameterized0 |        215 |        215 |       0 |    0 |  5280 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_14 |       1903 |       1903 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_15 |        349 |        349 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[2].u_out                          |  w8a12_single_out_mac_scheduler__parameterized1 |       2797 |       2797 |       0 |    0 |  5340 |      0 |      0 |    0 |         14 |
+|       (g_out[2].u_out)                      |  w8a12_single_out_mac_scheduler__parameterized1 |        454 |        454 |       0 |    0 |  5291 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_12 |       1967 |       1967 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_13 |        376 |        376 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[3].u_out                          |  w8a12_single_out_mac_scheduler__parameterized2 |       2451 |       2451 |       0 |    0 |  5331 |      0 |      0 |    0 |         14 |
+|       (g_out[3].u_out)                      |  w8a12_single_out_mac_scheduler__parameterized2 |        185 |        185 |       0 |    0 |  5282 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                          w8a12_lane_mac_core_10 |       1911 |       1911 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                           span_w8a12_requant_11 |        355 |        355 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[4].u_out                          |  w8a12_single_out_mac_scheduler__parameterized3 |       2554 |       2554 |       0 |    0 |  5350 |      0 |      0 |    0 |         14 |
+|       (g_out[4].u_out)                      |  w8a12_single_out_mac_scheduler__parameterized3 |        359 |        359 |       0 |    0 |  5301 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                           w8a12_lane_mac_core_8 |       1810 |       1810 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                            span_w8a12_requant_9 |        385 |        385 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[5].u_out                          |  w8a12_single_out_mac_scheduler__parameterized4 |       2506 |       2506 |       0 |    0 |  5329 |      0 |      0 |    0 |         14 |
+|       (g_out[5].u_out)                      |  w8a12_single_out_mac_scheduler__parameterized4 |        225 |        225 |       0 |    0 |  5280 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                           w8a12_lane_mac_core_6 |       1902 |       1902 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                            span_w8a12_requant_7 |        379 |        379 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[6].u_out                          |  w8a12_single_out_mac_scheduler__parameterized5 |       2807 |       2807 |       0 |    0 |  5346 |      0 |      0 |    0 |         14 |
+|       (g_out[6].u_out)                      |  w8a12_single_out_mac_scheduler__parameterized5 |        432 |        432 |       0 |    0 |  5297 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                           w8a12_lane_mac_core_4 |       1988 |       1988 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                            span_w8a12_requant_5 |        387 |        387 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[7].u_out                          |  w8a12_single_out_mac_scheduler__parameterized6 |       2517 |       2517 |       0 |    0 |  5331 |      0 |      0 |    0 |         14 |
+|       (g_out[7].u_out)                      |  w8a12_single_out_mac_scheduler__parameterized6 |        180 |        180 |       0 |    0 |  5282 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                           w8a12_lane_mac_core_2 |       1988 |       1988 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                            span_w8a12_requant_3 |        349 |        349 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[8].u_out                          |  w8a12_single_out_mac_scheduler__parameterized7 |       2703 |       2703 |       0 |    0 |  5350 |      0 |      0 |    0 |         14 |
+|       (g_out[8].u_out)                      |  w8a12_single_out_mac_scheduler__parameterized7 |        419 |        419 |       0 |    0 |  5301 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                           w8a12_lane_mac_core_0 |       1902 |       1902 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                            span_w8a12_requant_1 |        382 |        382 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
+|     g_out[9].u_out                          |  w8a12_single_out_mac_scheduler__parameterized8 |       2556 |       2556 |       0 |    0 |  5330 |      0 |      0 |    0 |         14 |
+|       (g_out[9].u_out)                      |  w8a12_single_out_mac_scheduler__parameterized8 |        178 |        178 |       0 |    0 |  5281 |      0 |      0 |    0 |          0 |
+|       u_mac                                 |                             w8a12_lane_mac_core |       2021 |       2021 |       0 |    0 |    49 |      0 |      0 |    0 |          8 |
+|       u_requant                             |                              span_w8a12_requant |        357 |        357 |       0 |    0 |     0 |      0 |      0 |    0 |          6 |
++---------------------------------------------+-------------------------------------------------+------------+------------+---------+------+-------+--------+--------+------+------------+
+
+

@@ -1,0 +1,155 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:create",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/create_board_report.py"
+    },
+    {
+      "name": "file:update",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/update_board_report.py"
+    },
+    {
+      "name": "file:validate",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/validate_board_report.py"
+    },
+    {
+      "name": "file:doc",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/board_report_flow.md"
+    },
+    {
+      "name": "file:audit",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/audit_contest_delivery.py"
+    },
+    {
+      "name": "file:missing_plan",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/generate_missing_evidence_plan.py"
+    },
+    {
+      "name": "create_defaults_pending",
+      "pass": true,
+      "detail": "skeleton cannot pass by default"
+    },
+    {
+      "name": "create_uses_board_part",
+      "pass": true,
+      "detail": "actual board part"
+    },
+    {
+      "name": "create_uses_xc7z045_limits",
+      "pass": true,
+      "detail": "ZC706/XC7Z045 equivalent limits"
+    },
+    {
+      "name": "create_records_output_pixels",
+      "pass": true,
+      "detail": "output size"
+    },
+    {
+      "name": "create_records_tile_pipeline",
+      "pass": true,
+      "detail": "SD/downsample/tile+halo metadata"
+    },
+    {
+      "name": "create_records_perf_quality",
+      "pass": true,
+      "detail": "perf/quality fields"
+    },
+    {
+      "name": "update_accepts_resource_used",
+      "pass": true,
+      "detail": "resource used CLI"
+    },
+    {
+      "name": "update_accepts_timing_perf_quality",
+      "pass": true,
+      "detail": "timing/perf/quality CLI"
+    },
+    {
+      "name": "update_accepts_required_files",
+      "pass": true,
+      "detail": "evidence file CLI"
+    },
+    {
+      "name": "validate_rejects_nonpass",
+      "pass": true,
+      "detail": "status PASS"
+    },
+    {
+      "name": "validate_requires_frame_done",
+      "pass": true,
+      "detail": "frame done/error"
+    },
+    {
+      "name": "validate_requires_bit_exact",
+      "pass": true,
+      "detail": "bit exact"
+    },
+    {
+      "name": "validate_requires_resource_limits",
+      "pass": true,
+      "detail": "resource values within limits"
+    },
+    {
+      "name": "validate_requires_timing",
+      "pass": true,
+      "detail": "timing slack"
+    },
+    {
+      "name": "validate_requires_perf_power",
+      "pass": true,
+      "detail": "perf/power"
+    },
+    {
+      "name": "validate_requires_psnr_targets",
+      "pass": true,
+      "detail": "x2/x4 PSNR targets"
+    },
+    {
+      "name": "validate_requires_files",
+      "pass": true,
+      "detail": "required evidence files"
+    },
+    {
+      "name": "doc_lists_four_required_reports",
+      "pass": true,
+      "detail": "required board report tags"
+    },
+    {
+      "name": "doc_states_x4_x2_targets",
+      "pass": true,
+      "detail": "quality targets"
+    },
+    {
+      "name": "doc_requires_board_summary",
+      "pass": true,
+      "detail": "report and validation outputs"
+    },
+    {
+      "name": "doc_requires_resource_perf_quality",
+      "pass": true,
+      "detail": "reporting cadence"
+    },
+    {
+      "name": "doc_separates_fps_and_psnr",
+      "pass": true,
+      "detail": "FPS and PSNR separated"
+    },
+    {
+      "name": "audit_requires_board_validations",
+      "pass": true,
+      "detail": "audit board gates"
+    },
+    {
+      "name": "missing_plan_maps_board_commands",
+      "pass": true,
+      "detail": "missing plan commands"
+    }
+  ]
+}

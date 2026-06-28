@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "probe_dir": "board_runs/vivado_hw_target_probe_after_replug_20260628",
+  "target_count": 1,
+  "device_count": 2,
+  "checks": [
+    {
+      "name": "probe_dir_exists",
+      "pass": true,
+      "detail": "board_runs/vivado_hw_target_probe_after_replug_20260628"
+    },
+    {
+      "name": "file:vivado_log",
+      "pass": true,
+      "detail": "board_runs/vivado_hw_target_probe_after_replug_20260628/probe_vivado_hw_targets.log"
+    },
+    {
+      "name": "file:stdout_log",
+      "pass": true,
+      "detail": "board_runs/vivado_hw_target_probe_after_replug_20260628/probe_vivado_hw_targets.stdout.log"
+    },
+    {
+      "name": "file:stderr_log",
+      "pass": true,
+      "detail": "board_runs/vivado_hw_target_probe_after_replug_20260628/probe_vivado_hw_targets.stderr.log"
+    },
+    {
+      "name": "file:usb_diag",
+      "pass": true,
+      "detail": "board_runs/vivado_hw_target_probe_after_replug_20260628/usb_jtag_devices.txt"
+    },
+    {
+      "name": "pass_marker",
+      "pass": true,
+      "detail": "VIVADO_HW_TARGET_PROBE_PASS=1"
+    },
+    {
+      "name": "target_count_positive",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "device_count_positive",
+      "pass": true,
+      "detail": 2
+    },
+    {
+      "name": "no_no_target_error",
+      "pass": true,
+      "detail": "No Vivado hardware target found"
+    },
+    {
+      "name": "no_no_device_error",
+      "pass": true,
+      "detail": "No Vivado hardware device found"
+    }
+  ]
+}

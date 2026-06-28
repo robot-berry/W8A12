@@ -1,0 +1,11 @@
+{
+  "status": "NOT_READY",
+  "scope": "Windows USB/PnP detection only; Vivado JTAG target probe is still required before board PASS can be claimed.",
+  "command_exit": null,
+  "signal": null,
+  "stderr": "",
+  "device_count": 0,
+  "ftdi_like_count": 0,
+  "devices": [],
+  "generated_at": "2026-06-25T13:01:03.615Z"
+}

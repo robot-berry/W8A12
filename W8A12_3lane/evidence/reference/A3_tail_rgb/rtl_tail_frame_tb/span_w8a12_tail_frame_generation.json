@@ -1,0 +1,16 @@
+{
+  "testbench": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A3_tail_rgb\\rtl_tail_frame_tb\\tb_span_w8a12_tail_frame.sv",
+  "reference_dump": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A3_tail_rgb\\rtl_tail_frame_tb\\span_w8a12_tail_frame_rgb_ref.txt",
+  "input_dump": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A3_tail_rgb\\rtl_tail_frame_tb\\span_w8a12_tail_frame_input.txt",
+  "source_input_dump": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A3_tail_rgb\\feat0_pix_ch_dump.txt",
+  "img_w": 4,
+  "out_w": 16,
+  "channels": 3,
+  "values": 768,
+  "cat_requant_q31": {
+    "feat0": 2147483648,
+    "b6conv": 69288640,
+    "b1": 1002444872,
+    "b6_act1": 80461022
+  }
+}

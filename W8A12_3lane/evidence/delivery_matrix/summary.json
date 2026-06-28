@@ -1,0 +1,128 @@
+{
+  "status": "PASS",
+  "contest_delivery_status": "INCOMPLETE",
+  "audit_pass_count": 69,
+  "audit_total_count": 73,
+  "submission_status": "INCOMPLETE",
+  "submission_file_count": 311,
+  "missing_final_evidence": [
+    "evidence/board_reports/a5_32x32/validation.md",
+    "evidence/board_reports/a6_64x64/validation.md",
+    "evidence/board_reports/a7_720p_x4/validation.md",
+    "evidence/board_reports/x2_720p/validation.md"
+  ],
+  "latest_delivery_run": "evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.md",
+  "pdf_status": "PASS",
+  "pdf_sha256": "8182406e17c8c52d275d94bebe635681d9b5114058290eea1d16fd36aacf229a",
+  "rows": [
+    {
+      "area": "交付物1 模型/训练/量化/转换",
+      "item": "x4/x2 SPAN F48 模型说明和全量 REDS 训练/验证口径",
+      "status": "PASS",
+      "evidence": [
+        "docs/python_reference_plan.md",
+        "docs/contest_submission_report.md"
+      ],
+      "note": "训练使用 REDS train 官方全量，验证使用 REDS val 官方全量；x4 28.3118 dB，x2 34.4297 dB。"
+    },
+    {
+      "area": "交付物1 模型/训练/量化/转换",
+      "item": "W8A12 fixed reference 与 x2 导出",
+      "status": "PASS",
+      "evidence": [
+        "tools/w8a12_3lane_reference.py",
+        "evidence/x2/w8a12_export/summary.md",
+        "evidence/x2/reference_validation/validation.md"
+      ],
+      "note": "x2 W8A12 manifest、quant plan、postprocess 和 fixed reference 已闭环；x4 A0-A3 分层 reference 已作为 RTL golden。"
+    },
+    {
+      "area": "交付物2 硬件设计文档",
+      "item": "3-lane 架构、bank 映射、scheduler、top shell、回退和上板流程",
+      "status": "PASS",
+      "evidence": [
+        "docs/w8a12_3lane_architecture.md",
+        "docs/bank_mapping_rules.md",
+        "docs/board_report_flow.md"
+      ],
+      "note": "文档覆盖 48ch 拆为 3x16ch、6 个 SPAB 串行、tile+halo 和 board report 验收口径。"
+    },
+    {
+      "area": "交付物3 RTL/仿真/综合",
+      "item": "A0-A4/top shell RTL 仿真",
+      "status": "PASS",
+      "evidence": [
+        "evidence/reference/",
+        "evidence/resource/A4_single_lane_mac_scheduler/",
+        "evidence/resource/A4_3lane_mac_scheduler/",
+        "evidence/top/accel_top_sim/summary.md"
+      ],
+      "note": "分层 bit-exact/hash 验证已通过，top shell 控制/status 仿真 PASS。"
+    },
+    {
+      "area": "交付物3 RTL/仿真/综合",
+      "item": "OOC 综合资源与 PPA 汇总",
+      "status": "PASS",
+      "evidence": [
+        "evidence/ppa_summary/summary.md",
+        "evidence/top/accel_top_ooc/",
+        "evidence/resource/A4_3lane_mac_scheduler_ooc/"
+      ],
+      "note": "A4 3-lane scheduler: LUT 56.35%、FF 58.61%、DSP 74.67%，低于 XC7Z045/ZC706 门限；完整 board FPS/power 待上板。"
+    },
+    {
+      "area": "评分点 功能正确性",
+      "item": "离线功能闭环与板端剩余验证",
+      "status": "PARTIAL",
+      "evidence": [
+        "evidence/reference/",
+        "evidence/board_reports/jtag_true2x2_stagehash_20260628.md",
+        "evidence/delivery_audit/missing_evidence_plan.md"
+      ],
+      "note": "RTL true2x2 raw compare PASS；真实 board validation 仍缺 A5/A6/A7/x2 四项。"
+    },
+    {
+      "area": "评分点 文档清晰度",
+      "item": "Markdown + PDF 赛题报告",
+      "status": "PASS",
+      "evidence": [
+        "docs/contest_submission_report.md",
+        "output/pdf/W8A12_3lane_contest_submission_report.pdf",
+        "evidence/report_pdf/summary.md"
+      ],
+      "note": "PDF 已生成并完成全页渲染/关键文本校验。"
+    },
+    {
+      "area": "评分点 量化指标和性能分析",
+      "item": "画质 baseline、PPA、板端指标口径",
+      "status": "PASS",
+      "evidence": [
+        "evidence/quality_comparison/summary.md",
+        "evidence/quality_metric_completion/summary.md",
+        "evidence/ppa_summary/summary.md"
+      ],
+      "note": "传统插值对比已纳入；W8A12 fixed/board 全量 PSNR/SSIM 和 FPS/power 待真实 board output 后补齐。"
+    },
+    {
+      "area": "评分点 验证方案与用例",
+      "item": "分层门禁、缺口计划、JTAG 恢复清单",
+      "status": "PASS",
+      "evidence": [
+        "evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.md",
+        "evidence/delivery_audit/missing_evidence_plan.md",
+        "evidence/board_probe/jtag_recovery_checklist/summary.md"
+      ],
+      "note": "当前 JTAG precondition BLOCKED，恢复条件为 USB known candidate>=1 且 Vivado target>=1。"
+    },
+    {
+      "area": "评分点 面积/功耗",
+      "item": "资源门限已过，真实功耗待板端报告",
+      "status": "PARTIAL",
+      "evidence": [
+        "evidence/ppa_summary/summary.md",
+        "evidence/board_reports/validation_readiness/summary.md"
+      ],
+      "note": "OOC 资源/时序可报告；真实 board power、FPS、latency 需 `validation.md Status: PASS` 后才能声明。"
+    }
+  ]
+}

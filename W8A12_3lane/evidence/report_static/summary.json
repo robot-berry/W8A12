@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:contest_submission_report",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/contest_submission_report.md"
+    },
+    {
+      "name": "has_title",
+      "pass": true,
+      "detail": "report title"
+    },
+    {
+      "name": "has_required_sections",
+      "pass": true,
+      "detail": [
+        "## 1. 摘要",
+        "## 2. 赛题目标对应关系",
+        "## 3. 数据集和训练验证口径",
+        "## 4. 模型结构",
+        "## 5. W8A12 量化与硬件转换",
+        "## 6. 三路并行硬件架构",
+        "## 7. RTL 仿真验证",
+        "## 8. 综合资源与 PPA",
+        "## 9. 画质指标与传统插值对比",
+        "## 10. 板端状态和 mismatch 风险",
+        "## 11. 当前交付审计状态",
+        "## 12. 可复现实验命令",
+        "## 13. 交付文件索引",
+        "## 14. 结论"
+      ]
+    },
+    {
+      "name": "states_full_reds_train_val",
+      "pass": true,
+      "detail": "full train/val dataset scope"
+    },
+    {
+      "name": "states_model_and_quantization",
+      "pass": true,
+      "detail": "model and W8A12 quantization"
+    },
+    {
+      "name": "states_3lane_architecture",
+      "pass": true,
+      "detail": "3-lane architecture"
+    },
+    {
+      "name": "states_quality_targets_and_results",
+      "pass": true,
+      "detail": "quality comparison values"
+    },
+    {
+      "name": "states_ppa_summary_and_limits",
+      "pass": true,
+      "detail": "PPA evidence and XC7Z045 limits"
+    },
+    {
+      "name": "states_rtl_evidence_hashes",
+      "pass": true,
+      "detail": "RTL/fixed reference hashes"
+    },
+    {
+      "name": "states_board_pending_not_measured",
+      "pass": true,
+      "detail": "board metrics remain pending"
+    },
+    {
+      "name": "states_mismatch_risk",
+      "pass": true,
+      "detail": "mismatch and debug hash plan"
+    },
+    {
+      "name": "states_audit_remaining_gates",
+      "pass": true,
+      "detail": "audit count and remaining board gates"
+    },
+    {
+      "name": "states_quality_metric_completion_plan",
+      "pass": true,
+      "detail": "quality metric completion plan"
+    },
+    {
+      "name": "states_pdf_export",
+      "pass": true,
+      "detail": "PDF report export evidence"
+    },
+    {
+      "name": "links_repro_commands",
+      "pass": true,
+      "detail": "reproducible commands"
+    },
+    {
+      "name": "lists_submission_archive_summary",
+      "pass": true,
+      "detail": "submission archive summary evidence"
+    }
+  ]
+}

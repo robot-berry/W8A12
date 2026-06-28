@@ -1,0 +1,19 @@
+﻿USB_JTAG_DIAG_TIME=2026-06-28 19:15:01
+USB_JTAG_DIAG_MATCH_COUNT=3
+USB_JTAG_DIAG_KNOWN_CANDIDATE_COUNT=0
+USB_JTAG_DIAG_PNP_HISTORY_KNOWN_CANDIDATE_COUNT=4
+USB_JTAG_DIAG_PNP_HISTORY_KNOWN_VIDPID_COUNT=3
+USB_JTAG_DIAG_KNOWN_VIDPID_PATTERN=VID_03FD|VID_0403|VID_1443|VID_04B4
+USB_JTAG_DEVICE name="USB Composite Device" class="USB" status="OK" known=False id="USB\VID_0B05&PID_6208\6&64C86AE&0&1"
+USB_JTAG_DEVICE name="USB Composite Device" class="USB" status="OK" known=False id="USB\VID_13D3&PID_3563\000000000"
+USB_JTAG_DEVICE name="USB Composite Device" class="USB" status="OK" known=False id="USB\VID_322E&PID_202C\6&7E781F5&0&4"
+USB_JTAG_HISTORY_DEVICE name="Silicon Labs CP210x USB to UART Bridge (COM3)" class="Ports" status="Unknown" known=True id="USB\VID_10C4&PID_EA60\0001"
+USB_JTAG_HISTORY_DEVICE name="USB Composite Device" class="USB" status="Unknown" known=True id="USB\VID_0403&PID_6010\210203367162"
+USB_JTAG_HISTORY_DEVICE name="USB Composite Device" class="USB" status="Unknown" known=False id="USB\VID_0461&PID_5A4A\6&15F17D69&0&1"
+USB_JTAG_HISTORY_DEVICE name="USB Composite Device" class="USB" status="OK" known=False id="USB\VID_0B05&PID_6208\6&64C86AE&0&1"
+USB_JTAG_HISTORY_DEVICE name="USB Composite Device" class="USB" status="OK" known=False id="USB\VID_13D3&PID_3563\000000000"
+USB_JTAG_HISTORY_DEVICE name="USB Composite Device" class="USB" status="OK" known=False id="USB\VID_322E&PID_202C\6&7E781F5&0&4"
+USB_JTAG_HISTORY_DEVICE name="USB Composite Device" class="USB" status="Unknown" known=False id="USB\VID_3837&PID_4245\D1K_251010B271_A72V1"
+USB_JTAG_HISTORY_DEVICE name="USB Composite Device" class="USB" status="Unknown" known=False id="USB\VID_41E4&PID_2120\2024-04-25"
+USB_JTAG_HISTORY_DEVICE name="USB Serial Converter A" class="USB" status="Unknown" known=True id="USB\VID_0403&PID_6010&MI_00\7&68AC5D3&0&0000"
+USB_JTAG_HISTORY_DEVICE name="USB Serial Converter B" class="USB" status="Unknown" known=True id="USB\VID_0403&PID_6010&MI_01\7&68AC5D3&0&0001"

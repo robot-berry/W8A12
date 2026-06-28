@@ -1,0 +1,44 @@
+{
+  "status": "READY",
+  "scale": 2,
+  "target_psnr_db": 30,
+  "known_fp32_psnr_db": 34.4297,
+  "items": [
+    {
+      "name": "checkpoint_300000",
+      "path": "runs/official_span/official_SPAN_REDS_x2_f48/models/net_g_300000.pth",
+      "exists": true
+    },
+    {
+      "name": "checkpoint_latest",
+      "path": "runs/official_span/official_SPAN_REDS_x2_f48/models/net_g_latest.pth",
+      "exists": true
+    },
+    {
+      "name": "train_log",
+      "path": "runs/official_span/official_SPAN_REDS_x2_f48/train_official_SPAN_REDS_x2_f48_20260524_161741.log",
+      "exists": true
+    },
+    {
+      "name": "fp32_manifest",
+      "path": "rtl/generated/official_span_x2/official_span_manifest.json",
+      "exists": true
+    },
+    {
+      "name": "w8a12_rtl_manifest",
+      "path": "rtl/generated/reds_span_x2_f48_w8a12/span_w8a12_rtl_manifest.json",
+      "exists": true
+    },
+    {
+      "name": "w8a12_postprocess_manifest",
+      "path": "rtl/generated/reds_span_x2_f48_w8a12/postprocess/span_w8a12_postprocess_manifest.json",
+      "exists": true
+    },
+    {
+      "name": "w8a12_quant_plan",
+      "path": "runs/reds_span_quant_plan/reds_span_x2_f48_w8a12/span_w8a12_quant_plan.json",
+      "exists": true
+    }
+  ],
+  "note": "READY only means inputs exist; it is not fixed-reference PASS."
+}

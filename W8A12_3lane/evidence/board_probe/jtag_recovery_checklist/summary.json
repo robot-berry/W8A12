@@ -1,0 +1,73 @@
+{
+  "status": "BLOCKED",
+  "generated_at": "2026-06-28 19:09:50",
+  "usb_match_count": 3,
+  "usb_known_jtag_candidate_count": 0,
+  "pnp_history_known_jtag_candidate_count": 4,
+  "pnp_history_known_vidpid_count": 3,
+  "vivado_target_count": "not_checked",
+  "known_vidpid_pattern": "VID_03FD|VID_0403|VID_1443|VID_04B4",
+  "current_devices": [
+    {
+      "name": "USB Composite Device",
+      "class": "USB",
+      "status": "OK",
+      "known": false,
+      "id": "USB\\VID_0B05&PID_6208\\6&64C86AE&0&1"
+    },
+    {
+      "name": "USB Composite Device",
+      "class": "USB",
+      "status": "OK",
+      "known": false,
+      "id": "USB\\VID_13D3&PID_3563\\000000000"
+    },
+    {
+      "name": "USB Composite Device",
+      "class": "USB",
+      "status": "OK",
+      "known": false,
+      "id": "USB\\VID_322E&PID_202C\\6&7E781F5&0&4"
+    }
+  ],
+  "historical_known_candidates": [
+    {
+      "name": "Silicon Labs CP210x USB to UART Bridge (COM3)",
+      "class": "Ports",
+      "status": "Unknown",
+      "id": "USB\\VID_10C4&PID_EA60\\0001"
+    },
+    {
+      "name": "USB Composite Device",
+      "class": "USB",
+      "status": "Unknown",
+      "id": "USB\\VID_0403&PID_6010\\210203367162"
+    },
+    {
+      "name": "USB Serial Converter A",
+      "class": "USB",
+      "status": "Unknown",
+      "id": "USB\\VID_0403&PID_6010&MI_00\\7&68AC5D3&0&0000"
+    },
+    {
+      "name": "USB Serial Converter B",
+      "class": "USB",
+      "status": "Unknown",
+      "id": "USB\\VID_0403&PID_6010&MI_01\\7&68AC5D3&0&0001"
+    }
+  ],
+  "required_pass_criteria": [
+    "USB known JTAG candidate count >= 1",
+    "VIVADO_HW_TARGET_COUNT >= 1"
+  ],
+  "next_command_after_recovery": "powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\\scripts\\run_w8a12_board_recovery_preflight.ps1 -RunStageHashAcceptance",
+  "recovery_actions": [
+    "确认板卡电源打开且电源指示稳定。",
+    "确认 USB 线接到板卡 JTAG/USB-UART 对应接口，而不是普通 USB 外设接口。",
+    "重新插拔 JTAG USB 线，优先主机直连 USB 口，暂时避免 USB hub。",
+    "在 Windows 设备管理器确认在线设备出现 Xilinx/Digilent/FTDI/USB Serial 相关项。",
+    "若历史中有 VID_0403&PID_6010 但当前在线列表没有，继续检查线缆、接口、板卡模式和 FTDI/JTAG 驱动。",
+    "恢复后重新运行 recovery preflight；只有 USB known candidate 非零且 Vivado target 非零时继续 stage-hash。"
+  ],
+  "note": "This checklist records physical/JTAG recovery state only; it is not a board validation PASS."
+}

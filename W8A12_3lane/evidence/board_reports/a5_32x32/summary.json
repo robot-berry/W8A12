@@ -1,0 +1,74 @@
+{
+  "status": "PENDING",
+  "tag": "a5_32x32",
+  "created_at": "2026-06-28T18:21:04",
+  "scale": 4,
+  "lr_size": [
+    32,
+    32
+  ],
+  "hr_size": [
+    128,
+    128
+  ],
+  "input_pipeline": {
+    "source": "SD",
+    "downsample_on_ps": true,
+    "tiling_mode": "tile+halo crop-stitch",
+    "tile_size": [
+      32,
+      32
+    ],
+    "halo": 21,
+    "tile_count_x": 1,
+    "tile_count_y": 1,
+    "stitch_output": true
+  },
+  "board_part": "xczu19eg-ffvc1760-2-i",
+  "resource_target": "XC7Z045/ZC706 equivalent",
+  "resource_gate": {
+    "lut_limit": 218600,
+    "ff_limit": 437200,
+    "bram_tile_limit": 545,
+    "dsp_limit": 900,
+    "lut_used": null,
+    "ff_used": null,
+    "bram_tile_used": null,
+    "dsp_used": null,
+    "status": "PENDING"
+  },
+  "timing": {
+    "wns_ns": null,
+    "whs_ns": null,
+    "status": "PENDING"
+  },
+  "correctness": {
+    "frame_done": null,
+    "error": null,
+    "output_pixels": 16384,
+    "expected_output_pixels": 16384,
+    "mismatch": null,
+    "bit_exact_to_fixed_reference": null
+  },
+  "quality": {
+    "psnr_db": null,
+    "ssim": null
+  },
+  "performance": {
+    "clock_mhz": null,
+    "latency_ms": null,
+    "fps": null,
+    "target_fps": 15.0,
+    "power_w": null
+  },
+  "files": {
+    "bitstream": null,
+    "utilization_report": null,
+    "timing_report": null,
+    "power_report": null,
+    "resource_gate": null,
+    "fixed_reference": null,
+    "board_output": null,
+    "preview": null
+  }
+}

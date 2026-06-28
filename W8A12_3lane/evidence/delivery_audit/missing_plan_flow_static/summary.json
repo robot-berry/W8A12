@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:generate_missing_evidence_plan",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/generate_missing_evidence_plan.py"
+    },
+    {
+      "name": "self_bootstrap_audit",
+      "pass": true,
+      "detail": "can compute audit items without existing audit JSON"
+    },
+    {
+      "name": "skips_self_missing_plan",
+      "pass": true,
+      "detail": "does not require its own output before creation"
+    },
+    {
+      "name": "accel_cmd_fallbacks",
+      "pass": true,
+      "detail": "accel top cmd fallbacks"
+    },
+    {
+      "name": "a4_cmd_fallbacks",
+      "pass": true,
+      "detail": "A4 cmd fallbacks"
+    },
+    {
+      "name": "board_resource_args",
+      "pass": true,
+      "detail": "board report resource used arguments"
+    },
+    {
+      "name": "vivado_probe_gate_mapped",
+      "pass": true,
+      "detail": "Vivado JTAG probe pre-board gate"
+    },
+    {
+      "name": "board_psnr_targets",
+      "pass": true,
+      "detail": "x4/x2 PSNR placeholders"
+    },
+    {
+      "name": "x2_export_is_separate",
+      "pass": true,
+      "detail": "x2 export commands"
+    },
+    {
+      "name": "x2_reference_validation_is_separate",
+      "pass": true,
+      "detail": "x2 validation command"
+    },
+    {
+      "name": "quality_baseline_commands",
+      "pass": true,
+      "detail": "traditional interpolation baseline commands"
+    },
+    {
+      "name": "board_tags_mapped",
+      "pass": true,
+      "detail": "board tags"
+    },
+    {
+      "name": "manifest_commands_mapped",
+      "pass": true,
+      "detail": "manifest commands"
+    }
+  ]
+}

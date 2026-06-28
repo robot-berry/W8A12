@@ -1,0 +1,316 @@
+{
+  "status": "PASS",
+  "generated_by": "node_repl_static_check",
+  "checks": [
+    {
+      "name": "exists:W8A12_3lane\\evidence\\reference\\A0_single_conv\\a0_3lane_files.vh",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A0_single_conv\\a0_3lane_files.vh"
+    },
+    {
+      "name": "exists:W8A12_3lane\\evidence\\reference\\A0_single_conv\\input_feature.txt",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A0_single_conv\\input_feature.txt"
+    },
+    {
+      "name": "exists:W8A12_3lane\\evidence\\reference\\A0_single_conv\\full48_output.txt",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\reference\\A0_single_conv\\full48_output.txt"
+    },
+    {
+      "name": "exists:W8A12_3lane\\rtl\\span\\w8a12_lane_mac_core.v",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\rtl\\span\\w8a12_lane_mac_core.v"
+    },
+    {
+      "name": "exists:W8A12_3lane\\rtl\\span\\w8a12_single_out_mac_scheduler.v",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\rtl\\span\\w8a12_single_out_mac_scheduler.v"
+    },
+    {
+      "name": "exists:W8A12_3lane\\rtl\\span\\w8a12_single_lane_mac_scheduler.v",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\rtl\\span\\w8a12_single_lane_mac_scheduler.v"
+    },
+    {
+      "name": "exists:W8A12_3lane\\rtl\\span\\w8a12_3lane_mac_scheduler.v",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\rtl\\span\\w8a12_3lane_mac_scheduler.v"
+    },
+    {
+      "name": "exists:W8A12_3lane\\rtl\\span\\w8a12_single_lane_mac_scheduler_ooc_top.v",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\rtl\\span\\w8a12_single_lane_mac_scheduler_ooc_top.v"
+    },
+    {
+      "name": "exists:W8A12_3lane\\rtl\\span\\w8a12_3lane_mac_scheduler_ooc_top.v",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\rtl\\span\\w8a12_3lane_mac_scheduler_ooc_top.v"
+    },
+    {
+      "name": "exists:W8A12_3lane\\sim\\tb_w8a12_single_lane_mac_scheduler.sv",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\sim\\tb_w8a12_single_lane_mac_scheduler.sv"
+    },
+    {
+      "name": "exists:W8A12_3lane\\sim\\tb_w8a12_3lane_mac_scheduler.sv",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\sim\\tb_w8a12_3lane_mac_scheduler.sv"
+    },
+    {
+      "name": "exists:W8A12_3lane\\scripts\\run_vivado_sim_w8a12_single_lane_mac_scheduler.tcl",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\scripts\\run_vivado_sim_w8a12_single_lane_mac_scheduler.tcl"
+    },
+    {
+      "name": "exists:W8A12_3lane\\scripts\\run_vivado_sim_w8a12_3lane_mac_scheduler.tcl",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\scripts\\run_vivado_sim_w8a12_3lane_mac_scheduler.tcl"
+    },
+    {
+      "name": "exists:W8A12_3lane\\scripts\\run_vivado_synth_w8a12_single_lane_mac_scheduler_ooc.tcl",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\scripts\\run_vivado_synth_w8a12_single_lane_mac_scheduler_ooc.tcl"
+    },
+    {
+      "name": "exists:W8A12_3lane\\scripts\\run_vivado_synth_w8a12_3lane_mac_scheduler_ooc.tcl",
+      "pass": true,
+      "details": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\scripts\\run_vivado_synth_w8a12_3lane_mac_scheduler_ooc.tcl"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE0_WEIGHT_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE0_WEIGHT_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE0_BIAS_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE0_BIAS_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE0_REQUANT_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE0_REQUANT_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE0_SHIFT_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE0_SHIFT_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE1_WEIGHT_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE1_WEIGHT_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE1_BIAS_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE1_BIAS_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE1_REQUANT_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE1_REQUANT_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE1_SHIFT_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE1_SHIFT_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE2_WEIGHT_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE2_WEIGHT_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE2_BIAS_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE2_BIAS_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE2_REQUANT_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE2_REQUANT_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "macro:W8A12_3LANE_A0_LANE2_SHIFT_MEM",
+      "pass": true,
+      "details": "A0 include binds lane memory"
+    },
+    {
+      "name": "tb3_uses:W8A12_3LANE_A0_LANE2_SHIFT_MEM",
+      "pass": true,
+      "details": "3-lane TB binds lane memory"
+    },
+    {
+      "name": "scheduler_instantiates_3_lanes",
+      "pass": true,
+      "details": "found 3"
+    },
+    {
+      "name": "scheduler_has_u_lane0",
+      "pass": true,
+      "details": "explicit lane instance"
+    },
+    {
+      "name": "lane0_packed_slice",
+      "pass": true,
+      "details": "lane output slice is contiguous"
+    },
+    {
+      "name": "scheduler_has_u_lane1",
+      "pass": true,
+      "details": "explicit lane instance"
+    },
+    {
+      "name": "lane1_packed_slice",
+      "pass": true,
+      "details": "lane output slice is contiguous"
+    },
+    {
+      "name": "scheduler_has_u_lane2",
+      "pass": true,
+      "details": "explicit lane instance"
+    },
+    {
+      "name": "lane2_packed_slice",
+      "pass": true,
+      "details": "lane output slice is contiguous"
+    },
+    {
+      "name": "tb3_checks_48ch",
+      "pass": true,
+      "details": "3-lane TB channel count"
+    },
+    {
+      "name": "tb3_compares_all_channels",
+      "pass": true,
+      "details": "3-lane TB loops all channels"
+    },
+    {
+      "name": "tb3_expected_full_index",
+      "pass": true,
+      "details": "3-lane TB compares against full48 output"
+    },
+    {
+      "name": "tb3_pass_banner",
+      "pass": true,
+      "details": "3-lane PASS banner exists"
+    },
+    {
+      "name": "single_lane_16ch",
+      "pass": true,
+      "details": "single-lane TB lane width"
+    },
+    {
+      "name": "single_lane_expected_full_index",
+      "pass": true,
+      "details": "single-lane TB compares lane0 against full48"
+    },
+    {
+      "name": "sim_tcl_adds:w8a12_lane_mac_core.v",
+      "pass": true,
+      "details": "3-lane sim Tcl source list"
+    },
+    {
+      "name": "ooc_tcl_adds:w8a12_lane_mac_core.v",
+      "pass": true,
+      "details": "3-lane OOC Tcl source list"
+    },
+    {
+      "name": "sim_tcl_adds:w8a12_single_out_mac_scheduler.v",
+      "pass": true,
+      "details": "3-lane sim Tcl source list"
+    },
+    {
+      "name": "ooc_tcl_adds:w8a12_single_out_mac_scheduler.v",
+      "pass": true,
+      "details": "3-lane OOC Tcl source list"
+    },
+    {
+      "name": "sim_tcl_adds:w8a12_single_lane_mac_scheduler.v",
+      "pass": true,
+      "details": "3-lane sim Tcl source list"
+    },
+    {
+      "name": "ooc_tcl_adds:w8a12_single_lane_mac_scheduler.v",
+      "pass": true,
+      "details": "3-lane OOC Tcl source list"
+    },
+    {
+      "name": "sim_tcl_adds:w8a12_3lane_mac_scheduler.v",
+      "pass": true,
+      "details": "3-lane sim Tcl source list"
+    },
+    {
+      "name": "ooc_tcl_adds:w8a12_3lane_mac_scheduler.v",
+      "pass": true,
+      "details": "3-lane OOC Tcl source list"
+    },
+    {
+      "name": "a0_input_count",
+      "pass": true,
+      "details": "768 values"
+    },
+    {
+      "name": "a0_expected_count",
+      "pass": true,
+      "details": "768 values"
+    }
+  ]
+}

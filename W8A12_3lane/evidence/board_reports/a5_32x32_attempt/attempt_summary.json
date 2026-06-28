@@ -1,0 +1,37 @@
+{
+  "status": "FAIL",
+  "tag": "a5_32x32_attempt_wrdebug32_baboon32_plddrindexed_20260625a",
+  "scale": 4,
+  "lr_width": 32,
+  "lr_height": 32,
+  "output_width": 128,
+  "output_height": 128,
+  "source_run": "G:/UESTC/feitengspan1/board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a",
+  "bitstream": "vivado/bitstreams/ps_w8a12_ddr_tile_writer_x4_imgw32x32_tile32x32_h21_f50m_ol1_tl4_sl1_ddr_runtime_wrdebug32_20260625a.bit",
+  "preflight_pass": true,
+  "program_pass": true,
+  "xsct_pass": false,
+  "failure_stage": "XSCT DDR/control/hardware status check",
+  "failure_reason": "W8A12 DDR tile writer did not finish before timeout\r\n    while executing\r\n\"error \"W8A12 DDR tile writer did not finish before timeout\"\"\r\n    invoked from within\r\n\"if {$done == 0} {\r\n    error \"W8A12 DDR tile writer did not finish before timeout\"\r\n}\"\r\n    (file \"scripts\\run_xsct_ps_w8a12_ddr_tile_writer_smoke.tcl\" line 538)",
+  "registers": {
+    "status": "0x00000006",
+    "error": "0x00000000",
+    "frame_done": "0",
+    "frame_cycles": "0",
+    "tiles_done": "0",
+    "rgb_output_count": "0",
+    "debug_state": "0x00017800",
+    "debug_spab_flags": "0x01E00F00",
+    "debug_axi_state": "0x00030504",
+    "wr_fire_count": "0x00000000"
+  },
+  "artifacts": {
+    "reference_preview": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/reference/span_w8a12_integer_reference_preview.png",
+    "integer_reference": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/reference/integer_w8a12_span.png",
+    "board_output_hex": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/board_output.hex",
+    "preflight_log": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/preflight/probe_vivado_hw_targets.log",
+    "program_log": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/program/program_ps_w8a12_tile_writer_bitstream.log",
+    "xsct_stdout": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/run_xsct_ps_w8a12_ddr_tile_writer_smoke.stdout.log",
+    "xsct_stderr": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/run_xsct_ps_w8a12_ddr_tile_writer_smoke.stderr.log"
+  }
+}

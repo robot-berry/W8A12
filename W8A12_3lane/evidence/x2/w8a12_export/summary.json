@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "rtl_manifest": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x2_f48_w8a12\\span_w8a12_rtl_manifest.json",
+  "postprocess_manifest": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x2_f48_w8a12\\postprocess\\span_w8a12_postprocess_manifest.json",
+  "quant_plan": "G:\\UESTC\\feitengspan1\\runs\\reds_span_quant_plan\\reds_span_x2_f48_w8a12\\span_w8a12_quant_plan.json",
+  "checks": [
+    {
+      "name": "rtl_manifest_exists",
+      "pass": true,
+      "detail": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x2_f48_w8a12\\span_w8a12_rtl_manifest.json"
+    },
+    {
+      "name": "postprocess_manifest_exists",
+      "pass": true,
+      "detail": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x2_f48_w8a12\\postprocess\\span_w8a12_postprocess_manifest.json"
+    },
+    {
+      "name": "quant_plan_exists",
+      "pass": true,
+      "detail": "G:\\UESTC\\feitengspan1\\runs\\reds_span_quant_plan\\reds_span_x2_f48_w8a12\\span_w8a12_quant_plan.json"
+    },
+    {
+      "name": "scale_is_x2",
+      "pass": true,
+      "detail": 2
+    },
+    {
+      "name": "channels_f48",
+      "pass": true,
+      "detail": 48
+    },
+    {
+      "name": "activation_bits_12",
+      "pass": true,
+      "detail": 12
+    },
+    {
+      "name": "quant_plan_link_exists",
+      "pass": true,
+      "detail": "G:\\UESTC\\feitengspan1\\runs\\reds_span_quant_plan\\reds_span_x2_f48_w8a12\\span_w8a12_quant_plan.json"
+    },
+    {
+      "name": "postprocess_has_entries",
+      "pass": true,
+      "detail": [
+        "source",
+        "quant_plan",
+        "activation_bits",
+        "activation_qmin",
+        "activation_qmax",
+        "entry_count",
+        "entries"
+      ]
+    },
+    {
+      "name": "quant_activation_bits_12",
+      "pass": true,
+      "detail": 12
+    },
+    {
+      "name": "quant_weight_bits_8",
+      "pass": true,
+      "detail": 8
+    },
+    {
+      "name": "quant_has_activation_scale_table",
+      "pass": true,
+      "detail": true
+    }
+  ]
+}

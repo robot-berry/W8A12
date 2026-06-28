@@ -1,0 +1,418 @@
+{
+  "status": "PASS",
+  "items": [
+    {
+      "tag": "a5_32x32",
+      "audit_name": "a5.board_32x32",
+      "report_status": "PENDING",
+      "validation_status": "PENDING_NO_VALIDATION",
+      "scale": 4,
+      "lr_size": [
+        32,
+        32
+      ],
+      "hr_size": [
+        128,
+        128
+      ],
+      "tile_count": [
+        1,
+        1
+      ],
+      "target_psnr_db": 28.0,
+      "target_fps": 15.0,
+      "current_psnr_db": null
+    },
+    {
+      "tag": "a6_64x64",
+      "audit_name": "a6.board_64x64",
+      "report_status": "PENDING",
+      "validation_status": "PENDING_NO_VALIDATION",
+      "scale": 4,
+      "lr_size": [
+        64,
+        64
+      ],
+      "hr_size": [
+        256,
+        256
+      ],
+      "tile_count": [
+        2,
+        2
+      ],
+      "target_psnr_db": 28.0,
+      "target_fps": 15.0,
+      "current_psnr_db": null
+    },
+    {
+      "tag": "a7_720p_x4",
+      "audit_name": "a7.board_720p_x4",
+      "report_status": "PENDING",
+      "validation_status": "PENDING_NO_VALIDATION",
+      "scale": 4,
+      "lr_size": [
+        320,
+        180
+      ],
+      "hr_size": [
+        1280,
+        720
+      ],
+      "tile_count": [
+        10,
+        6
+      ],
+      "target_psnr_db": 28.0,
+      "target_fps": 15.0,
+      "current_psnr_db": null
+    },
+    {
+      "tag": "x2_720p",
+      "audit_name": "x2.board",
+      "report_status": "PENDING",
+      "validation_status": "PENDING_NO_VALIDATION",
+      "scale": 2,
+      "lr_size": [
+        640,
+        360
+      ],
+      "hr_size": [
+        1280,
+        720
+      ],
+      "tile_count": [
+        20,
+        12
+      ],
+      "target_psnr_db": 30.0,
+      "target_fps": 15.0,
+      "current_psnr_db": null
+    }
+  ],
+  "checks": [
+    {
+      "name": "tool:tools/create_board_report.py",
+      "pass": true,
+      "detail": "tools/create_board_report.py"
+    },
+    {
+      "name": "tool:tools/update_board_report.py",
+      "pass": true,
+      "detail": "tools/update_board_report.py"
+    },
+    {
+      "name": "tool:tools/validate_board_report.py",
+      "pass": true,
+      "detail": "tools/validate_board_report.py"
+    },
+    {
+      "name": "tool:tools/summarize_jtag_precondition.py",
+      "pass": true,
+      "detail": "tools/summarize_jtag_precondition.py"
+    },
+    {
+      "name": "file:missing_evidence_plan",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/delivery_audit/missing_evidence_plan.md"
+    },
+    {
+      "name": "file:jtag_precondition_current",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_probe/jtag_precondition_current/summary.md"
+    },
+    {
+      "name": "precondition_declares_status",
+      "pass": true,
+      "detail": "current board/JTAG precondition is explicit"
+    },
+    {
+      "name": "a5_32x32:summary_json",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/a5_32x32/summary.json"
+    },
+    {
+      "name": "a5_32x32:summary_md",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/a5_32x32/summary.md"
+    },
+    {
+      "name": "a5_32x32:status_not_final_without_validation",
+      "pass": true,
+      "detail": "PENDING"
+    },
+    {
+      "name": "a5_32x32:scale",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "a5_32x32:lr_size",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "a5_32x32:hr_size",
+      "pass": true,
+      "detail": [
+        128,
+        128
+      ]
+    },
+    {
+      "name": "a5_32x32:tile_count",
+      "pass": true,
+      "detail": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "a5_32x32:tile_size_32",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "a5_32x32:halo_21",
+      "pass": true,
+      "detail": 21
+    },
+    {
+      "name": "a5_32x32:target_fps",
+      "pass": true,
+      "detail": 15.0
+    },
+    {
+      "name": "a5_32x32:target_psnr_command",
+      "pass": true,
+      "detail": 28.0
+    },
+    {
+      "name": "a5_32x32:command_chain",
+      "pass": true,
+      "detail": "a5.board_32x32"
+    },
+    {
+      "name": "a6_64x64:summary_json",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/a6_64x64/summary.json"
+    },
+    {
+      "name": "a6_64x64:summary_md",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/a6_64x64/summary.md"
+    },
+    {
+      "name": "a6_64x64:status_not_final_without_validation",
+      "pass": true,
+      "detail": "PENDING"
+    },
+    {
+      "name": "a6_64x64:scale",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "a6_64x64:lr_size",
+      "pass": true,
+      "detail": [
+        64,
+        64
+      ]
+    },
+    {
+      "name": "a6_64x64:hr_size",
+      "pass": true,
+      "detail": [
+        256,
+        256
+      ]
+    },
+    {
+      "name": "a6_64x64:tile_count",
+      "pass": true,
+      "detail": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "a6_64x64:tile_size_32",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "a6_64x64:halo_21",
+      "pass": true,
+      "detail": 21
+    },
+    {
+      "name": "a6_64x64:target_fps",
+      "pass": true,
+      "detail": 15.0
+    },
+    {
+      "name": "a6_64x64:target_psnr_command",
+      "pass": true,
+      "detail": 28.0
+    },
+    {
+      "name": "a6_64x64:command_chain",
+      "pass": true,
+      "detail": "a6.board_64x64"
+    },
+    {
+      "name": "a7_720p_x4:summary_json",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/a7_720p_x4/summary.json"
+    },
+    {
+      "name": "a7_720p_x4:summary_md",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/a7_720p_x4/summary.md"
+    },
+    {
+      "name": "a7_720p_x4:status_not_final_without_validation",
+      "pass": true,
+      "detail": "PENDING"
+    },
+    {
+      "name": "a7_720p_x4:scale",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "a7_720p_x4:lr_size",
+      "pass": true,
+      "detail": [
+        320,
+        180
+      ]
+    },
+    {
+      "name": "a7_720p_x4:hr_size",
+      "pass": true,
+      "detail": [
+        1280,
+        720
+      ]
+    },
+    {
+      "name": "a7_720p_x4:tile_count",
+      "pass": true,
+      "detail": [
+        10,
+        6
+      ]
+    },
+    {
+      "name": "a7_720p_x4:tile_size_32",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "a7_720p_x4:halo_21",
+      "pass": true,
+      "detail": 21
+    },
+    {
+      "name": "a7_720p_x4:target_fps",
+      "pass": true,
+      "detail": 15.0
+    },
+    {
+      "name": "a7_720p_x4:target_psnr_command",
+      "pass": true,
+      "detail": 28.0
+    },
+    {
+      "name": "a7_720p_x4:command_chain",
+      "pass": true,
+      "detail": "a7.board_720p_x4"
+    },
+    {
+      "name": "x2_720p:summary_json",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/x2_720p/summary.json"
+    },
+    {
+      "name": "x2_720p:summary_md",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/x2_720p/summary.md"
+    },
+    {
+      "name": "x2_720p:status_not_final_without_validation",
+      "pass": true,
+      "detail": "PENDING"
+    },
+    {
+      "name": "x2_720p:scale",
+      "pass": true,
+      "detail": 2
+    },
+    {
+      "name": "x2_720p:lr_size",
+      "pass": true,
+      "detail": [
+        640,
+        360
+      ]
+    },
+    {
+      "name": "x2_720p:hr_size",
+      "pass": true,
+      "detail": [
+        1280,
+        720
+      ]
+    },
+    {
+      "name": "x2_720p:tile_count",
+      "pass": true,
+      "detail": [
+        20,
+        12
+      ]
+    },
+    {
+      "name": "x2_720p:tile_size_32",
+      "pass": true,
+      "detail": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "x2_720p:halo_21",
+      "pass": true,
+      "detail": 21
+    },
+    {
+      "name": "x2_720p:target_fps",
+      "pass": true,
+      "detail": 15.0
+    },
+    {
+      "name": "x2_720p:target_psnr_command",
+      "pass": true,
+      "detail": 30.0
+    },
+    {
+      "name": "x2_720p:command_chain",
+      "pass": true,
+      "detail": "x2.board"
+    }
+  ]
+}

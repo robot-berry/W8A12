@@ -1,0 +1,73 @@
+{
+  "target": "XC7Z045 FFG900-2 resource limits",
+  "report": "W8A12_3lane\\evidence\\resource\\A4_lane_mac_core_ooc\\utilization_ooc.rpt",
+  "pass": true,
+  "metrics": {
+    "dsp": 8.0,
+    "bram_tile": 0.0,
+    "uram": 0.0,
+    "iob": 0.0,
+    "lut": 51.0,
+    "register": 49.0
+  },
+  "limits": {
+    "dsp": 900.0,
+    "bram_tile": 545.0,
+    "uram": 0.0,
+    "iob": 362.0,
+    "lut": 218600.0,
+    "register": 437200.0
+  },
+  "comparison": "value <= limit",
+  "fail_if": "value > limit",
+  "checks": [
+    {
+      "metric": "dsp",
+      "value": 8.0,
+      "limit": 900.0,
+      "comparison": "value <= limit",
+      "fail_if": "value > limit",
+      "pass": true
+    },
+    {
+      "metric": "bram_tile",
+      "value": 0.0,
+      "limit": 545.0,
+      "comparison": "value <= limit",
+      "fail_if": "value > limit",
+      "pass": true
+    },
+    {
+      "metric": "uram",
+      "value": 0.0,
+      "limit": 0.0,
+      "comparison": "value <= limit",
+      "fail_if": "value > limit",
+      "pass": true
+    },
+    {
+      "metric": "iob",
+      "value": 0.0,
+      "limit": 362.0,
+      "comparison": "value <= limit",
+      "fail_if": "value > limit",
+      "pass": true
+    },
+    {
+      "metric": "lut",
+      "value": 51.0,
+      "limit": 218600.0,
+      "comparison": "value <= limit",
+      "fail_if": "value > limit",
+      "pass": true
+    },
+    {
+      "metric": "register",
+      "value": 49.0,
+      "limit": 437200.0,
+      "comparison": "value <= limit",
+      "fail_if": "value > limit",
+      "pass": true
+    }
+  ]
+}

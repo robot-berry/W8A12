@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "summary": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\x2\\reference\\summary.json",
+  "checks": [
+    {
+      "name": "summary_exists",
+      "pass": true,
+      "detail": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\x2\\reference\\summary.json"
+    },
+    {
+      "name": "status_pass",
+      "pass": true,
+      "detail": "PASS"
+    },
+    {
+      "name": "stage_a3_tail_rgb",
+      "pass": true,
+      "detail": "A3_tail_rgb"
+    },
+    {
+      "name": "scale_is_x2",
+      "pass": true,
+      "detail": 2
+    },
+    {
+      "name": "channels_f48",
+      "pass": true,
+      "detail": 48
+    },
+    {
+      "name": "activation_bits_12",
+      "pass": true,
+      "detail": 12
+    },
+    {
+      "name": "out_channels_rgb",
+      "pass": true,
+      "detail": 3
+    },
+    {
+      "name": "out_height_matches_x2",
+      "pass": true,
+      "detail": 8
+    },
+    {
+      "name": "out_width_matches_x2",
+      "pass": true,
+      "detail": 8
+    },
+    {
+      "name": "rgb_hash_present",
+      "pass": true,
+      "detail": "0xBC30F107"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+﻿{
+    "GeneratedAt":  "2026-06-28 19:15:01",
+    "MatchCount":  3,
+    "KnownJtagCandidateCount":  0,
+    "PnpHistoryKnownJtagCandidateCount":  4,
+    "PnpHistoryKnownVidPidCount":  3,
+    "KnownVidPidPattern":  "VID_03FD|VID_0403|VID_1443|VID_04B4",
+    "NamePattern":  "Digilent|Xilinx|JTAG|FTDI|USB Serial|USB Composite|UART",
+    "Devices":  [
+                    {
+                        "Name":  "USB Composite Device",
+                        "PNPClass":  "USB",
+                        "Status":  "OK",
+                        "DeviceID":  "USB\\VID_0B05\u0026PID_6208\\6\u002664C86AE\u00260\u00261",
+                        "IsKnownJtagCandidate":  false
+                    },
+                    {
+                        "Name":  "USB Composite Device",
+                        "PNPClass":  "USB",
+                        "Status":  "OK",
+                        "DeviceID":  "USB\\VID_13D3\u0026PID_3563\\000000000",
+                        "IsKnownJtagCandidate":  false
+                    },
+                    {
+                        "Name":  "USB Composite Device",
+                        "PNPClass":  "USB",
+                        "Status":  "OK",
+                        "DeviceID":  "USB\\VID_322E\u0026PID_202C\\6\u00267E781F5\u00260\u00264",
+                        "IsKnownJtagCandidate":  false
+                    }
+                ],
+    "PnpHistoryDevices":  [
+                              {
+                                  "FriendlyName":  "Silicon Labs CP210x USB to UART Bridge (COM3)",
+                                  "Class":  "Ports",
+                                  "Status":  "Unknown",
+                                  "InstanceId":  "USB\\VID_10C4\u0026PID_EA60\\0001",
+                                  "IsKnownJtagCandidate":  true
+                              },
+                              {
+                                  "FriendlyName":  "USB Composite Device",
+                                  "Class":  "USB",
+                                  "Status":  "Unknown",
+                                  "InstanceId":  "USB\\VID_0403\u0026PID_6010\\210203367162",
+                                  "IsKnownJtagCandidate":  true
+                              },
+                              {
+                                  "FriendlyName":  "USB Composite Device",
+                                  "Class":  "USB",
+                                  "Status":  "Unknown",
+                                  "InstanceId":  "USB\\VID_0461\u0026PID_5A4A\\6\u002615F17D69\u00260\u00261",
+                                  "IsKnownJtagCandidate":  false
+                              },
+                              {
+                                  "FriendlyName":  "USB Composite Device",
+                                  "Class":  "USB",
+                                  "Status":  "OK",
+                                  "InstanceId":  "USB\\VID_0B05\u0026PID_6208\\6\u002664C86AE\u00260\u00261",
+                                  "IsKnownJtagCandidate":  false
+                              },
+                              {
+                                  "FriendlyName":  "USB Composite Device",
+                                  "Class":  "USB",
+                                  "Status":  "OK",
+                                  "InstanceId":  "USB\\VID_13D3\u0026PID_3563\\000000000",
+                                  "IsKnownJtagCandidate":  false
+                              },
+                              {
+                                  "FriendlyName":  "USB Composite Device",
+                                  "Class":  "USB",
+                                  "Status":  "OK",
+                                  "InstanceId":  "USB\\VID_322E\u0026PID_202C\\6\u00267E781F5\u00260\u00264",
+                                  "IsKnownJtagCandidate":  false
+                              },
+                              {
+                                  "FriendlyName":  "USB Composite Device",
+                                  "Class":  "USB",
+                                  "Status":  "Unknown",
+                                  "InstanceId":  "USB\\VID_3837\u0026PID_4245\\D1K_251010B271_A72V1",
+                                  "IsKnownJtagCandidate":  false
+                              },
+                              {
+                                  "FriendlyName":  "USB Composite Device",
+                                  "Class":  "USB",
+                                  "Status":  "Unknown",
+                                  "InstanceId":  "USB\\VID_41E4\u0026PID_2120\\2024-04-25",
+                                  "IsKnownJtagCandidate":  false
+                              },
+                              {
+                                  "FriendlyName":  "USB Serial Converter A",
+                                  "Class":  "USB",
+                                  "Status":  "Unknown",
+                                  "InstanceId":  "USB\\VID_0403\u0026PID_6010\u0026MI_00\\7\u002668AC5D3\u00260\u00260000",
+                                  "IsKnownJtagCandidate":  true
+                              },
+                              {
+                                  "FriendlyName":  "USB Serial Converter B",
+                                  "Class":  "USB",
+                                  "Status":  "Unknown",
+                                  "InstanceId":  "USB\\VID_0403\u0026PID_6010\u0026MI_01\\7\u002668AC5D3\u00260\u00260001",
+                                  "IsKnownJtagCandidate":  true
+                              }
+                          ]
+}

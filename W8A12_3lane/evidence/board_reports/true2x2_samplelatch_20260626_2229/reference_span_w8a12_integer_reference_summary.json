@@ -1,0 +1,110 @@
+{
+  "input": "G:\\UESTC\\feitengspan1\\external\\SPAN\\test_scripts\\data\\baboon.png",
+  "quant_plan": "runs\\reds_span_quant_plan\\reds_span_x4_f48_w8a12_reds_val4\\span_w8a12_quant_plan.json",
+  "rtl_manifest": "rtl\\generated\\reds_span_x4_f48_w8a12\\span_w8a12_rtl_manifest.json",
+  "rgb_norm": "rtl\\generated\\reds_span_x4_f48_w8a12\\span_w8a12_rgb_norm.json",
+  "postprocess_manifest": "rtl\\generated\\reds_span_x4_f48_w8a12\\postprocess\\span_w8a12_postprocess_manifest.json",
+  "checkpoint": "G:\\UESTC\\feitengspan1\\runs\\official_span\\official_SPAN_REDS_x4_f48\\models\\net_g_295000.pth",
+  "device": "cpu",
+  "width": 2,
+  "height": 2,
+  "scale": 4,
+  "precision_label": "W8A12",
+  "pytorch_png": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_ps_ddr_tile_writer_smoke\\true2x2_samplelatch_20260626_2229\\reference\\pytorch_span.png",
+  "fake_w8a12_png": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_ps_ddr_tile_writer_smoke\\true2x2_samplelatch_20260626_2229\\reference\\fake_w8a12_span.png",
+  "fake_quant_png": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_ps_ddr_tile_writer_smoke\\true2x2_samplelatch_20260626_2229\\reference\\fake_w8a12_span.png",
+  "integer_w8a12_png": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_ps_ddr_tile_writer_smoke\\true2x2_samplelatch_20260626_2229\\reference\\integer_w8a12_span.png",
+  "integer_quant_png": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_ps_ddr_tile_writer_smoke\\true2x2_samplelatch_20260626_2229\\reference\\integer_w8a12_span.png",
+  "integer_w8a12_qdump": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_ps_ddr_tile_writer_smoke\\true2x2_samplelatch_20260626_2229\\reference\\integer_w8a12_qdump.txt",
+  "integer_quant_qdump": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_ps_ddr_tile_writer_smoke\\true2x2_samplelatch_20260626_2229\\reference\\integer_w8a12_qdump.txt",
+  "rtl_png": null,
+  "preview": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_ps_ddr_tile_writer_smoke\\true2x2_samplelatch_20260626_2229\\reference\\span_w8a12_integer_reference_preview.png",
+  "metrics": {
+    "pytorch_vs_fake": {
+      "mismatch_bytes": 108,
+      "total_bytes": 192,
+      "max_channel_diff": 3,
+      "mae": 0.6510416666666666,
+      "mse": 0.8489583134651184,
+      "psnr_db": 48.84193995331317
+    },
+    "pytorch_vs_integer": {
+      "mismatch_bytes": 108,
+      "total_bytes": 192,
+      "max_channel_diff": 3,
+      "mae": 0.6510416666666666,
+      "mse": 0.8489583134651184,
+      "psnr_db": 48.84193995331317
+    },
+    "fake_vs_integer": {
+      "mismatch_bytes": 0,
+      "total_bytes": 192,
+      "max_channel_diff": 0,
+      "mae": 0.0,
+      "mse": 0.0,
+      "psnr_db": Infinity
+    }
+  },
+  "stage_metrics": {
+    "conv_1.output": {
+      "q_min": -247,
+      "q_max": 373,
+      "zero_frac": 0.005208333333333333
+    },
+    "block_1.out": {
+      "q_min": -99,
+      "q_max": 480,
+      "zero_frac": 0.015625
+    },
+    "block_2.out": {
+      "q_min": -25,
+      "q_max": 496,
+      "zero_frac": 0.020833333333333332
+    },
+    "block_3.out": {
+      "q_min": -330,
+      "q_max": 659,
+      "zero_frac": 0.015625
+    },
+    "block_4.out": {
+      "q_min": -112,
+      "q_max": 927,
+      "zero_frac": 0.0
+    },
+    "block_5.out": {
+      "q_min": -40,
+      "q_max": 672,
+      "zero_frac": 0.0625
+    },
+    "block_6.out": {
+      "q_min": -44,
+      "q_max": 2005,
+      "zero_frac": 0.06770833333333333
+    },
+    "conv_2.output": {
+      "q_min": -1976,
+      "q_max": 1651,
+      "zero_frac": 0.0
+    },
+    "conv_cat.input": {
+      "q_min": -247,
+      "q_max": 373,
+      "zero_frac": 0.02734375
+    },
+    "conv_cat.output": {
+      "q_min": -834,
+      "q_max": 323,
+      "zero_frac": 0.005208333333333333
+    },
+    "upsampler.0.output": {
+      "q_min": 597,
+      "q_max": 1215,
+      "zero_frac": 0.0
+    },
+    "pixelshuffle.output": {
+      "q_min": 597,
+      "q_max": 1215,
+      "zero_frac": 0.0
+    }
+  }
+}

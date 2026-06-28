@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:quality_metric_completion_plan",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/quality_metric_completion_plan.md"
+    },
+    {
+      "name": "file:quality_comparison",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/quality_comparison/summary.md"
+    },
+    {
+      "name": "file:contest_submission_report",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/contest_submission_report.md"
+    },
+    {
+      "name": "states_metric_layers",
+      "pass": true,
+      "detail": "metric layers separated"
+    },
+    {
+      "name": "states_existing_quality_values",
+      "pass": true,
+      "detail": "current interpolation and FP32 values"
+    },
+    {
+      "name": "states_no_board_output_impact",
+      "pass": true,
+      "detail": "board-output limitation"
+    },
+    {
+      "name": "states_fixed_metric_contract",
+      "pass": true,
+      "detail": "W8A12 fixed full-metric contract"
+    },
+    {
+      "name": "states_board_metric_contract",
+      "pass": true,
+      "detail": "board metric contract"
+    },
+    {
+      "name": "quality_comparison_keeps_pending_fixed_board",
+      "pass": true,
+      "detail": "fixed and board rows remain pending"
+    },
+    {
+      "name": "report_does_not_claim_board_measured_quality",
+      "pass": true,
+      "detail": "report separates model/board metrics"
+    },
+    {
+      "name": "report_links_quality_evidence",
+      "pass": true,
+      "detail": "report links quality evidence"
+    }
+  ]
+}

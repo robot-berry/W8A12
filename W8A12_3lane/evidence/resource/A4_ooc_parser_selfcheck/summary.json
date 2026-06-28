@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "source": "W8A12_3lane/evidence/resource/A4_lane_mac_core_ooc/utilization_ooc.rpt",
+  "checks": {
+    "lut": {
+      "expected": 51,
+      "actual": 51,
+      "pass": true
+    },
+    "ff": {
+      "expected": 49,
+      "actual": 49,
+      "pass": true
+    },
+    "bram": {
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    "dsp": {
+      "expected": 8,
+      "actual": 8,
+      "pass": true
+    },
+    "uram": {
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    }
+  }
+}

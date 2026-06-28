@@ -1,0 +1,101 @@
+﻿{
+    "run_id":  "current_static_boardtarget0_20260628_e",
+    "status":  "FAIL",
+    "results":  [
+                    {
+                        "name":  "a4_scheduler_vector_check",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "a4_scheduler_flow_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "accel_top_flow_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "board_report_flow_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "board_stagehash_flow_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "quality_metric_completion_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "submission_scope_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "repository_scope_manifest",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "missing_plan_flow_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "audit_flow_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "missing_evidence_plan",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "hard_gate_execution_queue",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "hard_gate_runner_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "delivery_manifest",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "submission_manifest",
+                        "status":  "FAIL",
+                        "message":  "command exited with code 1"
+                    },
+                    {
+                        "name":  "submission_manifest_flow_static",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "delivery_audit",
+                        "status":  "FAIL",
+                        "message":  "command exited with code 1"
+                    },
+                    {
+                        "name":  "delivery_manifest_final",
+                        "status":  "PASS",
+                        "message":  ""
+                    },
+                    {
+                        "name":  "submission_manifest_final",
+                        "status":  "FAIL",
+                        "message":  "command exited with code 1"
+                    }
+                ]
+}

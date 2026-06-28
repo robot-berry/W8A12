@@ -1,0 +1,12 @@
+{
+  "status": "NOT_READY",
+  "note": "Current Codex process cannot reliably launch/read PowerShell/Vivado hardware probe; use root scripts/probe_vivado_hw_targets.ps1 from an external PowerShell if needed.",
+  "spawn_status": null,
+  "spawn_signal": null,
+  "spawn_error": {
+    "name": "Error",
+    "message": "spawnSync C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe EPERM",
+    "code": "EPERM"
+  },
+  "generated_at": "2026-06-25T13:01:15.722Z"
+}

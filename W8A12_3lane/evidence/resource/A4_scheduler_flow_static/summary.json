@@ -1,0 +1,220 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:mac_core",
+      "pass": true,
+      "detail": "W8A12_3lane/rtl/span/w8a12_lane_mac_core.v"
+    },
+    {
+      "name": "file:single_out",
+      "pass": true,
+      "detail": "W8A12_3lane/rtl/span/w8a12_single_out_mac_scheduler.v"
+    },
+    {
+      "name": "file:single_lane",
+      "pass": true,
+      "detail": "W8A12_3lane/rtl/span/w8a12_single_lane_mac_scheduler.v"
+    },
+    {
+      "name": "file:three_lane",
+      "pass": true,
+      "detail": "W8A12_3lane/rtl/span/w8a12_3lane_mac_scheduler.v"
+    },
+    {
+      "name": "file:single_lane_ooc_top",
+      "pass": true,
+      "detail": "W8A12_3lane/rtl/span/w8a12_single_lane_mac_scheduler_ooc_top.v"
+    },
+    {
+      "name": "file:three_lane_ooc_top",
+      "pass": true,
+      "detail": "W8A12_3lane/rtl/span/w8a12_3lane_mac_scheduler_ooc_top.v"
+    },
+    {
+      "name": "file:single_lane_tb",
+      "pass": true,
+      "detail": "W8A12_3lane/sim/tb_w8a12_single_lane_mac_scheduler.sv"
+    },
+    {
+      "name": "file:three_lane_tb",
+      "pass": true,
+      "detail": "W8A12_3lane/sim/tb_w8a12_3lane_mac_scheduler.sv"
+    },
+    {
+      "name": "file:single_lane_sim_tcl",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_sim_w8a12_single_lane_mac_scheduler.tcl"
+    },
+    {
+      "name": "file:single_lane_sim_ps1",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_sim_w8a12_single_lane_mac_scheduler.ps1"
+    },
+    {
+      "name": "file:single_lane_ooc_tcl",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_synth_w8a12_single_lane_mac_scheduler_ooc.tcl"
+    },
+    {
+      "name": "file:single_lane_ooc_ps1",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_synth_w8a12_single_lane_mac_scheduler_ooc.ps1"
+    },
+    {
+      "name": "file:single_lane_ooc_cmd",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_synth_w8a12_single_lane_mac_scheduler_ooc.cmd"
+    },
+    {
+      "name": "file:three_lane_sim_tcl",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_sim_w8a12_3lane_mac_scheduler.tcl"
+    },
+    {
+      "name": "file:three_lane_sim_ps1",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_sim_w8a12_3lane_mac_scheduler.ps1"
+    },
+    {
+      "name": "file:three_lane_ooc_tcl",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_synth_w8a12_3lane_mac_scheduler_ooc.tcl"
+    },
+    {
+      "name": "file:three_lane_ooc_ps1",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_synth_w8a12_3lane_mac_scheduler_ooc.ps1"
+    },
+    {
+      "name": "file:three_lane_ooc_cmd",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_synth_w8a12_3lane_mac_scheduler_ooc.cmd"
+    },
+    {
+      "name": "file:a0_include",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/reference/A0_single_conv/a0_3lane_files.vh"
+    },
+    {
+      "name": "single_lane_tb_reads_a0_vectors",
+      "pass": true,
+      "detail": "A0 input/expected"
+    },
+    {
+      "name": "single_lane_tb_checks_lane0",
+      "pass": true,
+      "detail": "lane0 ch0..15"
+    },
+    {
+      "name": "single_lane_tb_has_timeout",
+      "pass": true,
+      "detail": "output watchdog"
+    },
+    {
+      "name": "single_lane_tb_has_pass_line",
+      "pass": true,
+      "detail": "PASS line"
+    },
+    {
+      "name": "three_lane_tb_reads_a0_vectors",
+      "pass": true,
+      "detail": "A0 input/expected"
+    },
+    {
+      "name": "three_lane_tb_checks_full48",
+      "pass": true,
+      "detail": "full48 channel loop"
+    },
+    {
+      "name": "three_lane_tb_has_timeout",
+      "pass": true,
+      "detail": "output watchdog"
+    },
+    {
+      "name": "three_lane_tb_has_pass_line",
+      "pass": true,
+      "detail": "PASS line"
+    },
+    {
+      "name": "single_lane_sim_tcl_sources",
+      "pass": true,
+      "detail": "single-lane sim source list"
+    },
+    {
+      "name": "three_lane_sim_tcl_sources",
+      "pass": true,
+      "detail": "3-lane sim source list"
+    },
+    {
+      "name": "single_lane_sim_ps1_summary",
+      "pass": true,
+      "detail": "summary/PASS extraction"
+    },
+    {
+      "name": "three_lane_sim_ps1_summary",
+      "pass": true,
+      "detail": "summary/PASS extraction"
+    },
+    {
+      "name": "single_lane_ooc_tcl_reports",
+      "pass": true,
+      "detail": "util/timing reports"
+    },
+    {
+      "name": "three_lane_ooc_tcl_reports",
+      "pass": true,
+      "detail": "util/timing reports"
+    },
+    {
+      "name": "single_lane_ooc_tcl_top",
+      "pass": true,
+      "detail": "OOC top"
+    },
+    {
+      "name": "three_lane_ooc_tcl_top",
+      "pass": true,
+      "detail": "OOC top"
+    },
+    {
+      "name": "single_lane_ooc_ps1_checks_reports",
+      "pass": true,
+      "detail": "report existence checks"
+    },
+    {
+      "name": "three_lane_ooc_ps1_checks_reports",
+      "pass": true,
+      "detail": "report existence checks"
+    },
+    {
+      "name": "single_lane_ooc_cmd_summarizes",
+      "pass": true,
+      "detail": "cmd fallback summary"
+    },
+    {
+      "name": "three_lane_ooc_cmd_summarizes",
+      "pass": true,
+      "detail": "cmd fallback summary"
+    },
+    {
+      "name": "single_lane_ooc_wrapper_instantiates_scheduler",
+      "pass": true,
+      "detail": "scheduler instance"
+    },
+    {
+      "name": "three_lane_ooc_wrapper_instantiates_scheduler",
+      "pass": true,
+      "detail": "scheduler instance"
+    },
+    {
+      "name": "single_lane_ooc_wrapper_uses_a0_lane0",
+      "pass": true,
+      "detail": "lane0 constants"
+    },
+    {
+      "name": "three_lane_ooc_wrapper_uses_all_lanes",
+      "pass": true,
+      "detail": "lane0/1/2 constants"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "tag": "3lane",
+  "utilization_report": "W8A12_3lane\\evidence\\resource\\A4_3lane_mac_scheduler_ooc\\utilization_ooc.rpt",
+  "timing_report": "W8A12_3lane\\evidence\\resource\\A4_3lane_mac_scheduler_ooc\\timing_ooc.rpt",
+  "resource_gate": {
+    "pass": true,
+    "metrics": {
+      "lut": 123182.0,
+      "ff": 256222.0,
+      "bram": 0.0,
+      "dsp": 672.0,
+      "uram": 0.0
+    },
+    "limits": {
+      "lut": 218600,
+      "ff": 437200,
+      "bram": 545,
+      "dsp": 900,
+      "uram": 0
+    },
+    "checks": [
+      {
+        "metric": "lut",
+        "value": 123182.0,
+        "limit": 218600,
+        "pass": true
+      },
+      {
+        "metric": "ff",
+        "value": 256222.0,
+        "limit": 437200,
+        "pass": true
+      },
+      {
+        "metric": "bram",
+        "value": 0.0,
+        "limit": 545,
+        "pass": true
+      },
+      {
+        "metric": "dsp",
+        "value": 672.0,
+        "limit": 900,
+        "pass": true
+      },
+      {
+        "metric": "uram",
+        "value": 0.0,
+        "limit": 0,
+        "pass": true
+      }
+    ]
+  },
+  "timing": {
+    "exists": true,
+    "pass": true,
+    "wns_ns": 1.188,
+    "whs_ns": 0.072
+  }
+}

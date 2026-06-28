@@ -1,0 +1,861 @@
+﻿{
+    "status":  "BLOCKED",
+    "output_dir":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current",
+    "precondition_summary":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\jtag_precondition_current",
+    "usb_known_jtag_candidate_count":  0,
+    "vivado_target_count":  0,
+    "run_stagehash_acceptance_requested":  false,
+    "steps":  {
+                  "usb":  {
+                              "exit":  [
+                                           "USB_JTAG_DIAG_TXT=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\usb\\usb_jtag_devices.txt",
+                                           "USB_JTAG_DIAG_JSON=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\usb\\usb_jtag_devices.json",
+                                           "USB_JTAG_DIAG_MATCH_COUNT=3",
+                                           "USB_JTAG_DIAG_KNOWN_CANDIDATE_COUNT=0",
+                                           "USB_JTAG_DIAG_PNP_HISTORY_KNOWN_CANDIDATE_COUNT=4",
+                                           "USB_JTAG_DIAG_PNP_HISTORY_KNOWN_VIDPID_COUNT=3",
+                                           0
+                                       ],
+                              "log":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\usb_step.log",
+                              "output_dir":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\usb",
+                              "known_jtag_candidate_count":  0
+                          },
+                  "vivado_probe":  {
+                                       "exit":  [
+                                                    "VIVADO_CLEANUP_BEFORE_COUNT=0",
+                                                    "VIVADO_CLEANUP_AFTER_COUNT=0",
+                                                    "VIVADO_CLEANUP_CLEAN=1",
+                                                    "USB_JTAG_DIAG_TXT=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\vivado_probe\\usb_jtag_devices.txt",
+                                                    "USB_JTAG_DIAG_JSON=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\vivado_probe\\usb_jtag_devices.json",
+                                                    "USB_JTAG_DIAG_MATCH_COUNT=3",
+                                                    "USB_JTAG_DIAG_KNOWN_CANDIDATE_COUNT=0",
+                                                    "USB_JTAG_DIAG_PNP_HISTORY_KNOWN_CANDIDATE_COUNT=4",
+                                                    "USB_JTAG_DIAG_PNP_HISTORY_KNOWN_VIDPID_COUNT=3",
+                                                    "VIVADO_ISOLATED_APPDATA=D:\\AppData\\Local\\Temp\\feitengspan1_vivado_hw_probe\\vivado_user_data\\appdata_roaming",
+                                                    "VIVADO_ISOLATED_LOCALAPPDATA=D:\\AppData\\Local\\Temp\\feitengspan1_vivado_hw_probe\\vivado_user_data\\appdata_local",
+                                                    "VIVADO_HW_TARGET_PROBE_LOG=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\vivado_probe\\probe_vivado_hw_targets.log",
+                                                    "VIVADO_HW_TARGET_PROBE_STDOUT_LOG=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\vivado_probe\\probe_vivado_hw_targets.stdout.log",
+                                                    "VIVADO_HW_TARGET_PROBE_STDERR_LOG=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\vivado_probe\\probe_vivado_hw_targets.stderr.log",
+                                                    "VIVADO_HW_TARGET_PROBE_EXIT=1",
+                                                    "VIVADO_CLEANUP_BEFORE_COUNT=1",
+                                                    "VIVADO_CLEANUP_PROCESS PID=7688 NAME=hw_server",
+                                                    "VIVADO_CLEANUP_AFTER_COUNT=0",
+                                                    "VIVADO_CLEANUP_CLEAN=1",
+                                                    {
+                                                        "Exception":  {
+                                                                          "SerializedRemoteException":  null,
+                                                                          "SerializedRemoteInvocationInfo":  null,
+                                                                          "ErrorRecord":  {
+                                                                                              "Exception":  {
+                                                                                                                "Message":  "Vivado hardware target probe failed with exit code 1",
+                                                                                                                "Data":  {
+
+                                                                                                                         },
+                                                                                                                "InnerException":  null,
+                                                                                                                "TargetSite":  null,
+                                                                                                                "StackTrace":  null,
+                                                                                                                "HelpLink":  null,
+                                                                                                                "Source":  null,
+                                                                                                                "HResult":  -2146233087
+                                                                                                            },
+                                                                                              "TargetObject":  null,
+                                                                                              "CategoryInfo":  {
+                                                                                                                   "Category":  0,
+                                                                                                                   "Activity":  "",
+                                                                                                                   "Reason":  "ParentContainsErrorRecordException",
+                                                                                                                   "TargetName":  "",
+                                                                                                                   "TargetType":  ""
+                                                                                                               },
+                                                                                              "FullyQualifiedErrorId":  "RuntimeException",
+                                                                                              "ErrorDetails":  null,
+                                                                                              "InvocationInfo":  null,
+                                                                                              "ScriptStackTrace":  null,
+                                                                                              "PipelineIterationInfo":  [
+
+                                                                                                                        ]
+                                                                                          },
+                                                                          "WasThrownFromThrowStatement":  false,
+                                                                          "Message":  "Vivado hardware target probe failed with exit code 1",
+                                                                          "Data":  {
+
+                                                                                   },
+                                                                          "InnerException":  null,
+                                                                          "TargetSite":  null,
+                                                                          "StackTrace":  null,
+                                                                          "HelpLink":  null,
+                                                                          "Source":  null,
+                                                                          "HResult":  -2146233087
+                                                                      },
+                                                        "TargetObject":  "Vivado hardware target probe failed with exit code 1",
+                                                        "CategoryInfo":  {
+                                                                             "Category":  0,
+                                                                             "Activity":  "",
+                                                                             "Reason":  "RemoteException",
+                                                                             "TargetName":  "Vivado hardware target probe failed with exit code 1",
+                                                                             "TargetType":  "String"
+                                                                         },
+                                                        "FullyQualifiedErrorId":  "NativeCommandError",
+                                                        "ErrorDetails":  null,
+                                                        "InvocationInfo":  {
+                                                                               "MyCommand":  {
+                                                                                                 "Path":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Extension":  ".exe",
+                                                                                                 "Definition":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Source":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Version":  {
+                                                                                                                 "Major":  10,
+                                                                                                                 "Minor":  0,
+                                                                                                                 "Build":  26100,
+                                                                                                                 "Revision":  5074,
+                                                                                                                 "MajorRevision":  0,
+                                                                                                                 "MinorRevision":  5074
+                                                                                                             },
+                                                                                                 "Visibility":  0,
+                                                                                                 "OutputType":  [
+                                                                                                                    {
+                                                                                                                        "Name":  "System.String",
+                                                                                                                        "Type":  "string",
+                                                                                                                        "TypeDefinitionAst":  null
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                 "Name":  "powershell.exe",
+                                                                                                 "CommandType":  32,
+                                                                                                 "ModuleName":  "",
+                                                                                                 "Module":  null,
+                                                                                                 "RemotingCapability":  1,
+                                                                                                 "Parameters":  null,
+                                                                                                 "ParameterSets":  null
+                                                                                             },
+                                                                               "BoundParameters":  {
+
+                                                                                                   },
+                                                                               "UnboundArguments":  [
+
+                                                                                                    ],
+                                                                               "ScriptLineNumber":  36,
+                                                                               "OffsetInLine":  5,
+                                                                               "HistoryId":  -1,
+                                                                               "ScriptName":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "Line":  "    \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\n",
+                                                                               "PositionMessage":  "At G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1:36 char:5\r\n+     \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\r\n+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                               "PSScriptRoot":  "G:\\UESTC\\feitengspan1\\scripts",
+                                                                               "PSCommandPath":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "InvocationName":  "\u0026",
+                                                                               "PipelineLength":  0,
+                                                                               "PipelinePosition":  0,
+                                                                               "ExpectingInput":  false,
+                                                                               "CommandOrigin":  1,
+                                                                               "DisplayScriptPosition":  null
+                                                                           },
+                                                        "ScriptStackTrace":  "at Invoke-LoggedStep, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 36\r\nat \u003cScriptBlock\u003e, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 91",
+                                                        "PipelineIterationInfo":  [
+                                                                                      0,
+                                                                                      0,
+                                                                                      19
+                                                                                  ],
+                                                        "writeErrorStream":  true,
+                                                        "PSMessageDetails":  null
+                                                    },
+                                                    {
+                                                        "Exception":  {
+                                                                          "SerializedRemoteException":  null,
+                                                                          "SerializedRemoteInvocationInfo":  null,
+                                                                          "ErrorRecord":  {
+                                                                                              "Exception":  {
+                                                                                                                "Message":  "At G:\\UESTC\\feitengspan1\\scripts\\probe_vivado_hw_targets.ps1:151 char:5",
+                                                                                                                "Data":  {
+
+                                                                                                                         },
+                                                                                                                "InnerException":  null,
+                                                                                                                "TargetSite":  null,
+                                                                                                                "StackTrace":  null,
+                                                                                                                "HelpLink":  null,
+                                                                                                                "Source":  null,
+                                                                                                                "HResult":  -2146233087
+                                                                                                            },
+                                                                                              "TargetObject":  null,
+                                                                                              "CategoryInfo":  {
+                                                                                                                   "Category":  0,
+                                                                                                                   "Activity":  "",
+                                                                                                                   "Reason":  "ParentContainsErrorRecordException",
+                                                                                                                   "TargetName":  "",
+                                                                                                                   "TargetType":  ""
+                                                                                                               },
+                                                                                              "FullyQualifiedErrorId":  "RuntimeException",
+                                                                                              "ErrorDetails":  null,
+                                                                                              "InvocationInfo":  null,
+                                                                                              "ScriptStackTrace":  null,
+                                                                                              "PipelineIterationInfo":  [
+
+                                                                                                                        ]
+                                                                                          },
+                                                                          "WasThrownFromThrowStatement":  false,
+                                                                          "Message":  "At G:\\UESTC\\feitengspan1\\scripts\\probe_vivado_hw_targets.ps1:151 char:5",
+                                                                          "Data":  {
+
+                                                                                   },
+                                                                          "InnerException":  null,
+                                                                          "TargetSite":  null,
+                                                                          "StackTrace":  null,
+                                                                          "HelpLink":  null,
+                                                                          "Source":  null,
+                                                                          "HResult":  -2146233087
+                                                                      },
+                                                        "TargetObject":  "At G:\\UESTC\\feitengspan1\\scripts\\probe_vivado_hw_targets.ps1:151 char:5",
+                                                        "CategoryInfo":  {
+                                                                             "Category":  0,
+                                                                             "Activity":  "",
+                                                                             "Reason":  "RemoteException",
+                                                                             "TargetName":  "At G:\\UESTC\\feitengspan1\\scripts\\probe_vivado_hw_targets.ps1:151 char:5",
+                                                                             "TargetType":  "String"
+                                                                         },
+                                                        "FullyQualifiedErrorId":  "NativeCommandErrorMessage",
+                                                        "ErrorDetails":  null,
+                                                        "InvocationInfo":  {
+                                                                               "MyCommand":  {
+                                                                                                 "Path":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Extension":  ".exe",
+                                                                                                 "Definition":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Source":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Version":  {
+                                                                                                                 "Major":  10,
+                                                                                                                 "Minor":  0,
+                                                                                                                 "Build":  26100,
+                                                                                                                 "Revision":  5074,
+                                                                                                                 "MajorRevision":  0,
+                                                                                                                 "MinorRevision":  5074
+                                                                                                             },
+                                                                                                 "Visibility":  0,
+                                                                                                 "OutputType":  [
+                                                                                                                    {
+                                                                                                                        "Name":  "System.String",
+                                                                                                                        "Type":  "string",
+                                                                                                                        "TypeDefinitionAst":  null
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                 "Name":  "powershell.exe",
+                                                                                                 "CommandType":  32,
+                                                                                                 "ModuleName":  "",
+                                                                                                 "Module":  null,
+                                                                                                 "RemotingCapability":  1,
+                                                                                                 "Parameters":  null,
+                                                                                                 "ParameterSets":  null
+                                                                                             },
+                                                                               "BoundParameters":  {
+
+                                                                                                   },
+                                                                               "UnboundArguments":  [
+
+                                                                                                    ],
+                                                                               "ScriptLineNumber":  36,
+                                                                               "OffsetInLine":  5,
+                                                                               "HistoryId":  -1,
+                                                                               "ScriptName":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "Line":  "    \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\n",
+                                                                               "PositionMessage":  "At G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1:36 char:5\r\n+     \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\r\n+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                               "PSScriptRoot":  "G:\\UESTC\\feitengspan1\\scripts",
+                                                                               "PSCommandPath":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "InvocationName":  "\u0026",
+                                                                               "PipelineLength":  0,
+                                                                               "PipelinePosition":  0,
+                                                                               "ExpectingInput":  false,
+                                                                               "CommandOrigin":  1,
+                                                                               "DisplayScriptPosition":  null
+                                                                           },
+                                                        "ScriptStackTrace":  "at Invoke-LoggedStep, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 36\r\nat \u003cScriptBlock\u003e, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 91",
+                                                        "PipelineIterationInfo":  [
+                                                                                      0,
+                                                                                      0,
+                                                                                      20
+                                                                                  ],
+                                                        "writeErrorStream":  true,
+                                                        "PSMessageDetails":  null
+                                                    },
+                                                    {
+                                                        "Exception":  {
+                                                                          "SerializedRemoteException":  null,
+                                                                          "SerializedRemoteInvocationInfo":  null,
+                                                                          "ErrorRecord":  {
+                                                                                              "Exception":  {
+                                                                                                                "Message":  "+     throw \"Vivado hardware target probe failed with exit code $exitCo ...",
+                                                                                                                "Data":  {
+
+                                                                                                                         },
+                                                                                                                "InnerException":  null,
+                                                                                                                "TargetSite":  null,
+                                                                                                                "StackTrace":  null,
+                                                                                                                "HelpLink":  null,
+                                                                                                                "Source":  null,
+                                                                                                                "HResult":  -2146233087
+                                                                                                            },
+                                                                                              "TargetObject":  null,
+                                                                                              "CategoryInfo":  {
+                                                                                                                   "Category":  0,
+                                                                                                                   "Activity":  "",
+                                                                                                                   "Reason":  "ParentContainsErrorRecordException",
+                                                                                                                   "TargetName":  "",
+                                                                                                                   "TargetType":  ""
+                                                                                                               },
+                                                                                              "FullyQualifiedErrorId":  "RuntimeException",
+                                                                                              "ErrorDetails":  null,
+                                                                                              "InvocationInfo":  null,
+                                                                                              "ScriptStackTrace":  null,
+                                                                                              "PipelineIterationInfo":  [
+
+                                                                                                                        ]
+                                                                                          },
+                                                                          "WasThrownFromThrowStatement":  false,
+                                                                          "Message":  "+     throw \"Vivado hardware target probe failed with exit code $exitCo ...",
+                                                                          "Data":  {
+
+                                                                                   },
+                                                                          "InnerException":  null,
+                                                                          "TargetSite":  null,
+                                                                          "StackTrace":  null,
+                                                                          "HelpLink":  null,
+                                                                          "Source":  null,
+                                                                          "HResult":  -2146233087
+                                                                      },
+                                                        "TargetObject":  "+     throw \"Vivado hardware target probe failed with exit code $exitCo ...",
+                                                        "CategoryInfo":  {
+                                                                             "Category":  0,
+                                                                             "Activity":  "",
+                                                                             "Reason":  "RemoteException",
+                                                                             "TargetName":  "+     throw \"Vivado hardware target probe failed with exit code $exitCo ...",
+                                                                             "TargetType":  "String"
+                                                                         },
+                                                        "FullyQualifiedErrorId":  "NativeCommandErrorMessage",
+                                                        "ErrorDetails":  null,
+                                                        "InvocationInfo":  {
+                                                                               "MyCommand":  {
+                                                                                                 "Path":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Extension":  ".exe",
+                                                                                                 "Definition":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Source":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Version":  {
+                                                                                                                 "Major":  10,
+                                                                                                                 "Minor":  0,
+                                                                                                                 "Build":  26100,
+                                                                                                                 "Revision":  5074,
+                                                                                                                 "MajorRevision":  0,
+                                                                                                                 "MinorRevision":  5074
+                                                                                                             },
+                                                                                                 "Visibility":  0,
+                                                                                                 "OutputType":  [
+                                                                                                                    {
+                                                                                                                        "Name":  "System.String",
+                                                                                                                        "Type":  "string",
+                                                                                                                        "TypeDefinitionAst":  null
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                 "Name":  "powershell.exe",
+                                                                                                 "CommandType":  32,
+                                                                                                 "ModuleName":  "",
+                                                                                                 "Module":  null,
+                                                                                                 "RemotingCapability":  1,
+                                                                                                 "Parameters":  null,
+                                                                                                 "ParameterSets":  null
+                                                                                             },
+                                                                               "BoundParameters":  {
+
+                                                                                                   },
+                                                                               "UnboundArguments":  [
+
+                                                                                                    ],
+                                                                               "ScriptLineNumber":  36,
+                                                                               "OffsetInLine":  5,
+                                                                               "HistoryId":  -1,
+                                                                               "ScriptName":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "Line":  "    \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\n",
+                                                                               "PositionMessage":  "At G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1:36 char:5\r\n+     \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\r\n+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                               "PSScriptRoot":  "G:\\UESTC\\feitengspan1\\scripts",
+                                                                               "PSCommandPath":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "InvocationName":  "\u0026",
+                                                                               "PipelineLength":  0,
+                                                                               "PipelinePosition":  0,
+                                                                               "ExpectingInput":  false,
+                                                                               "CommandOrigin":  1,
+                                                                               "DisplayScriptPosition":  null
+                                                                           },
+                                                        "ScriptStackTrace":  "at Invoke-LoggedStep, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 36\r\nat \u003cScriptBlock\u003e, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 91",
+                                                        "PipelineIterationInfo":  [
+                                                                                      0,
+                                                                                      0,
+                                                                                      21
+                                                                                  ],
+                                                        "writeErrorStream":  true,
+                                                        "PSMessageDetails":  null
+                                                    },
+                                                    {
+                                                        "Exception":  {
+                                                                          "SerializedRemoteException":  null,
+                                                                          "SerializedRemoteInvocationInfo":  null,
+                                                                          "ErrorRecord":  {
+                                                                                              "Exception":  {
+                                                                                                                "Message":  "+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                                                                "Data":  {
+
+                                                                                                                         },
+                                                                                                                "InnerException":  null,
+                                                                                                                "TargetSite":  null,
+                                                                                                                "StackTrace":  null,
+                                                                                                                "HelpLink":  null,
+                                                                                                                "Source":  null,
+                                                                                                                "HResult":  -2146233087
+                                                                                                            },
+                                                                                              "TargetObject":  null,
+                                                                                              "CategoryInfo":  {
+                                                                                                                   "Category":  0,
+                                                                                                                   "Activity":  "",
+                                                                                                                   "Reason":  "ParentContainsErrorRecordException",
+                                                                                                                   "TargetName":  "",
+                                                                                                                   "TargetType":  ""
+                                                                                                               },
+                                                                                              "FullyQualifiedErrorId":  "RuntimeException",
+                                                                                              "ErrorDetails":  null,
+                                                                                              "InvocationInfo":  null,
+                                                                                              "ScriptStackTrace":  null,
+                                                                                              "PipelineIterationInfo":  [
+
+                                                                                                                        ]
+                                                                                          },
+                                                                          "WasThrownFromThrowStatement":  false,
+                                                                          "Message":  "+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                          "Data":  {
+
+                                                                                   },
+                                                                          "InnerException":  null,
+                                                                          "TargetSite":  null,
+                                                                          "StackTrace":  null,
+                                                                          "HelpLink":  null,
+                                                                          "Source":  null,
+                                                                          "HResult":  -2146233087
+                                                                      },
+                                                        "TargetObject":  "+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                        "CategoryInfo":  {
+                                                                             "Category":  0,
+                                                                             "Activity":  "",
+                                                                             "Reason":  "RemoteException",
+                                                                             "TargetName":  "+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                             "TargetType":  "String"
+                                                                         },
+                                                        "FullyQualifiedErrorId":  "NativeCommandErrorMessage",
+                                                        "ErrorDetails":  null,
+                                                        "InvocationInfo":  {
+                                                                               "MyCommand":  {
+                                                                                                 "Path":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Extension":  ".exe",
+                                                                                                 "Definition":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Source":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Version":  {
+                                                                                                                 "Major":  10,
+                                                                                                                 "Minor":  0,
+                                                                                                                 "Build":  26100,
+                                                                                                                 "Revision":  5074,
+                                                                                                                 "MajorRevision":  0,
+                                                                                                                 "MinorRevision":  5074
+                                                                                                             },
+                                                                                                 "Visibility":  0,
+                                                                                                 "OutputType":  [
+                                                                                                                    {
+                                                                                                                        "Name":  "System.String",
+                                                                                                                        "Type":  "string",
+                                                                                                                        "TypeDefinitionAst":  null
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                 "Name":  "powershell.exe",
+                                                                                                 "CommandType":  32,
+                                                                                                 "ModuleName":  "",
+                                                                                                 "Module":  null,
+                                                                                                 "RemotingCapability":  1,
+                                                                                                 "Parameters":  null,
+                                                                                                 "ParameterSets":  null
+                                                                                             },
+                                                                               "BoundParameters":  {
+
+                                                                                                   },
+                                                                               "UnboundArguments":  [
+
+                                                                                                    ],
+                                                                               "ScriptLineNumber":  36,
+                                                                               "OffsetInLine":  5,
+                                                                               "HistoryId":  -1,
+                                                                               "ScriptName":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "Line":  "    \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\n",
+                                                                               "PositionMessage":  "At G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1:36 char:5\r\n+     \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\r\n+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                               "PSScriptRoot":  "G:\\UESTC\\feitengspan1\\scripts",
+                                                                               "PSCommandPath":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "InvocationName":  "\u0026",
+                                                                               "PipelineLength":  0,
+                                                                               "PipelinePosition":  0,
+                                                                               "ExpectingInput":  false,
+                                                                               "CommandOrigin":  1,
+                                                                               "DisplayScriptPosition":  null
+                                                                           },
+                                                        "ScriptStackTrace":  "at Invoke-LoggedStep, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 36\r\nat \u003cScriptBlock\u003e, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 91",
+                                                        "PipelineIterationInfo":  [
+                                                                                      0,
+                                                                                      0,
+                                                                                      22
+                                                                                  ],
+                                                        "writeErrorStream":  true,
+                                                        "PSMessageDetails":  null
+                                                    },
+                                                    {
+                                                        "Exception":  {
+                                                                          "SerializedRemoteException":  null,
+                                                                          "SerializedRemoteInvocationInfo":  null,
+                                                                          "ErrorRecord":  {
+                                                                                              "Exception":  {
+                                                                                                                "Message":  "    + CategoryInfo          : OperationStopped: (Vivado hardware...ith exit code 1:String) [], RuntimeException",
+                                                                                                                "Data":  {
+
+                                                                                                                         },
+                                                                                                                "InnerException":  null,
+                                                                                                                "TargetSite":  null,
+                                                                                                                "StackTrace":  null,
+                                                                                                                "HelpLink":  null,
+                                                                                                                "Source":  null,
+                                                                                                                "HResult":  -2146233087
+                                                                                                            },
+                                                                                              "TargetObject":  null,
+                                                                                              "CategoryInfo":  {
+                                                                                                                   "Category":  0,
+                                                                                                                   "Activity":  "",
+                                                                                                                   "Reason":  "ParentContainsErrorRecordException",
+                                                                                                                   "TargetName":  "",
+                                                                                                                   "TargetType":  ""
+                                                                                                               },
+                                                                                              "FullyQualifiedErrorId":  "RuntimeException",
+                                                                                              "ErrorDetails":  null,
+                                                                                              "InvocationInfo":  null,
+                                                                                              "ScriptStackTrace":  null,
+                                                                                              "PipelineIterationInfo":  [
+
+                                                                                                                        ]
+                                                                                          },
+                                                                          "WasThrownFromThrowStatement":  false,
+                                                                          "Message":  "    + CategoryInfo          : OperationStopped: (Vivado hardware...ith exit code 1:String) [], RuntimeException",
+                                                                          "Data":  {
+
+                                                                                   },
+                                                                          "InnerException":  null,
+                                                                          "TargetSite":  null,
+                                                                          "StackTrace":  null,
+                                                                          "HelpLink":  null,
+                                                                          "Source":  null,
+                                                                          "HResult":  -2146233087
+                                                                      },
+                                                        "TargetObject":  "    + CategoryInfo          : OperationStopped: (Vivado hardware...ith exit code 1:String) [], RuntimeException",
+                                                        "CategoryInfo":  {
+                                                                             "Category":  0,
+                                                                             "Activity":  "",
+                                                                             "Reason":  "RemoteException",
+                                                                             "TargetName":  "    + CategoryInfo          : OperationStopped: (Vivado hardware...ith exit code 1:String) [], RuntimeException",
+                                                                             "TargetType":  "String"
+                                                                         },
+                                                        "FullyQualifiedErrorId":  "NativeCommandErrorMessage",
+                                                        "ErrorDetails":  null,
+                                                        "InvocationInfo":  {
+                                                                               "MyCommand":  {
+                                                                                                 "Path":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Extension":  ".exe",
+                                                                                                 "Definition":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Source":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Version":  {
+                                                                                                                 "Major":  10,
+                                                                                                                 "Minor":  0,
+                                                                                                                 "Build":  26100,
+                                                                                                                 "Revision":  5074,
+                                                                                                                 "MajorRevision":  0,
+                                                                                                                 "MinorRevision":  5074
+                                                                                                             },
+                                                                                                 "Visibility":  0,
+                                                                                                 "OutputType":  [
+                                                                                                                    {
+                                                                                                                        "Name":  "System.String",
+                                                                                                                        "Type":  "string",
+                                                                                                                        "TypeDefinitionAst":  null
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                 "Name":  "powershell.exe",
+                                                                                                 "CommandType":  32,
+                                                                                                 "ModuleName":  "",
+                                                                                                 "Module":  null,
+                                                                                                 "RemotingCapability":  1,
+                                                                                                 "Parameters":  null,
+                                                                                                 "ParameterSets":  null
+                                                                                             },
+                                                                               "BoundParameters":  {
+
+                                                                                                   },
+                                                                               "UnboundArguments":  [
+
+                                                                                                    ],
+                                                                               "ScriptLineNumber":  36,
+                                                                               "OffsetInLine":  5,
+                                                                               "HistoryId":  -1,
+                                                                               "ScriptName":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "Line":  "    \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\n",
+                                                                               "PositionMessage":  "At G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1:36 char:5\r\n+     \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\r\n+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                               "PSScriptRoot":  "G:\\UESTC\\feitengspan1\\scripts",
+                                                                               "PSCommandPath":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "InvocationName":  "\u0026",
+                                                                               "PipelineLength":  0,
+                                                                               "PipelinePosition":  0,
+                                                                               "ExpectingInput":  false,
+                                                                               "CommandOrigin":  1,
+                                                                               "DisplayScriptPosition":  null
+                                                                           },
+                                                        "ScriptStackTrace":  "at Invoke-LoggedStep, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 36\r\nat \u003cScriptBlock\u003e, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 91",
+                                                        "PipelineIterationInfo":  [
+                                                                                      0,
+                                                                                      0,
+                                                                                      23
+                                                                                  ],
+                                                        "writeErrorStream":  true,
+                                                        "PSMessageDetails":  null
+                                                    },
+                                                    {
+                                                        "Exception":  {
+                                                                          "SerializedRemoteException":  null,
+                                                                          "SerializedRemoteInvocationInfo":  null,
+                                                                          "ErrorRecord":  {
+                                                                                              "Exception":  {
+                                                                                                                "Message":  "    + FullyQualifiedErrorId : Vivado hardware target probe failed with exit code 1",
+                                                                                                                "Data":  {
+
+                                                                                                                         },
+                                                                                                                "InnerException":  null,
+                                                                                                                "TargetSite":  null,
+                                                                                                                "StackTrace":  null,
+                                                                                                                "HelpLink":  null,
+                                                                                                                "Source":  null,
+                                                                                                                "HResult":  -2146233087
+                                                                                                            },
+                                                                                              "TargetObject":  null,
+                                                                                              "CategoryInfo":  {
+                                                                                                                   "Category":  0,
+                                                                                                                   "Activity":  "",
+                                                                                                                   "Reason":  "ParentContainsErrorRecordException",
+                                                                                                                   "TargetName":  "",
+                                                                                                                   "TargetType":  ""
+                                                                                                               },
+                                                                                              "FullyQualifiedErrorId":  "RuntimeException",
+                                                                                              "ErrorDetails":  null,
+                                                                                              "InvocationInfo":  null,
+                                                                                              "ScriptStackTrace":  null,
+                                                                                              "PipelineIterationInfo":  [
+
+                                                                                                                        ]
+                                                                                          },
+                                                                          "WasThrownFromThrowStatement":  false,
+                                                                          "Message":  "    + FullyQualifiedErrorId : Vivado hardware target probe failed with exit code 1",
+                                                                          "Data":  {
+
+                                                                                   },
+                                                                          "InnerException":  null,
+                                                                          "TargetSite":  null,
+                                                                          "StackTrace":  null,
+                                                                          "HelpLink":  null,
+                                                                          "Source":  null,
+                                                                          "HResult":  -2146233087
+                                                                      },
+                                                        "TargetObject":  "    + FullyQualifiedErrorId : Vivado hardware target probe failed with exit code 1",
+                                                        "CategoryInfo":  {
+                                                                             "Category":  0,
+                                                                             "Activity":  "",
+                                                                             "Reason":  "RemoteException",
+                                                                             "TargetName":  "    + FullyQualifiedErrorId : Vivado hardware target probe failed with exit code 1",
+                                                                             "TargetType":  "String"
+                                                                         },
+                                                        "FullyQualifiedErrorId":  "NativeCommandErrorMessage",
+                                                        "ErrorDetails":  null,
+                                                        "InvocationInfo":  {
+                                                                               "MyCommand":  {
+                                                                                                 "Path":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Extension":  ".exe",
+                                                                                                 "Definition":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Source":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Version":  {
+                                                                                                                 "Major":  10,
+                                                                                                                 "Minor":  0,
+                                                                                                                 "Build":  26100,
+                                                                                                                 "Revision":  5074,
+                                                                                                                 "MajorRevision":  0,
+                                                                                                                 "MinorRevision":  5074
+                                                                                                             },
+                                                                                                 "Visibility":  0,
+                                                                                                 "OutputType":  [
+                                                                                                                    {
+                                                                                                                        "Name":  "System.String",
+                                                                                                                        "Type":  "string",
+                                                                                                                        "TypeDefinitionAst":  null
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                 "Name":  "powershell.exe",
+                                                                                                 "CommandType":  32,
+                                                                                                 "ModuleName":  "",
+                                                                                                 "Module":  null,
+                                                                                                 "RemotingCapability":  1,
+                                                                                                 "Parameters":  null,
+                                                                                                 "ParameterSets":  null
+                                                                                             },
+                                                                               "BoundParameters":  {
+
+                                                                                                   },
+                                                                               "UnboundArguments":  [
+
+                                                                                                    ],
+                                                                               "ScriptLineNumber":  36,
+                                                                               "OffsetInLine":  5,
+                                                                               "HistoryId":  -1,
+                                                                               "ScriptName":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "Line":  "    \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\n",
+                                                                               "PositionMessage":  "At G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1:36 char:5\r\n+     \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\r\n+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                               "PSScriptRoot":  "G:\\UESTC\\feitengspan1\\scripts",
+                                                                               "PSCommandPath":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "InvocationName":  "\u0026",
+                                                                               "PipelineLength":  0,
+                                                                               "PipelinePosition":  0,
+                                                                               "ExpectingInput":  false,
+                                                                               "CommandOrigin":  1,
+                                                                               "DisplayScriptPosition":  null
+                                                                           },
+                                                        "ScriptStackTrace":  "at Invoke-LoggedStep, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 36\r\nat \u003cScriptBlock\u003e, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 91",
+                                                        "PipelineIterationInfo":  [
+                                                                                      0,
+                                                                                      0,
+                                                                                      24
+                                                                                  ],
+                                                        "writeErrorStream":  true,
+                                                        "PSMessageDetails":  null
+                                                    },
+                                                    {
+                                                        "Exception":  {
+                                                                          "SerializedRemoteException":  null,
+                                                                          "SerializedRemoteInvocationInfo":  null,
+                                                                          "ErrorRecord":  {
+                                                                                              "Exception":  {
+                                                                                                                "Message":  " ",
+                                                                                                                "Data":  {
+
+                                                                                                                         },
+                                                                                                                "InnerException":  null,
+                                                                                                                "TargetSite":  null,
+                                                                                                                "StackTrace":  null,
+                                                                                                                "HelpLink":  null,
+                                                                                                                "Source":  null,
+                                                                                                                "HResult":  -2146233087
+                                                                                                            },
+                                                                                              "TargetObject":  null,
+                                                                                              "CategoryInfo":  {
+                                                                                                                   "Category":  0,
+                                                                                                                   "Activity":  "",
+                                                                                                                   "Reason":  "ParentContainsErrorRecordException",
+                                                                                                                   "TargetName":  "",
+                                                                                                                   "TargetType":  ""
+                                                                                                               },
+                                                                                              "FullyQualifiedErrorId":  "RuntimeException",
+                                                                                              "ErrorDetails":  null,
+                                                                                              "InvocationInfo":  null,
+                                                                                              "ScriptStackTrace":  null,
+                                                                                              "PipelineIterationInfo":  [
+
+                                                                                                                        ]
+                                                                                          },
+                                                                          "WasThrownFromThrowStatement":  false,
+                                                                          "Message":  " ",
+                                                                          "Data":  {
+
+                                                                                   },
+                                                                          "InnerException":  null,
+                                                                          "TargetSite":  null,
+                                                                          "StackTrace":  null,
+                                                                          "HelpLink":  null,
+                                                                          "Source":  null,
+                                                                          "HResult":  -2146233087
+                                                                      },
+                                                        "TargetObject":  " ",
+                                                        "CategoryInfo":  {
+                                                                             "Category":  0,
+                                                                             "Activity":  "",
+                                                                             "Reason":  "RemoteException",
+                                                                             "TargetName":  " ",
+                                                                             "TargetType":  "String"
+                                                                         },
+                                                        "FullyQualifiedErrorId":  "NativeCommandErrorMessage",
+                                                        "ErrorDetails":  null,
+                                                        "InvocationInfo":  {
+                                                                               "MyCommand":  {
+                                                                                                 "Path":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Extension":  ".exe",
+                                                                                                 "Definition":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Source":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                                                                                                 "Version":  {
+                                                                                                                 "Major":  10,
+                                                                                                                 "Minor":  0,
+                                                                                                                 "Build":  26100,
+                                                                                                                 "Revision":  5074,
+                                                                                                                 "MajorRevision":  0,
+                                                                                                                 "MinorRevision":  5074
+                                                                                                             },
+                                                                                                 "Visibility":  0,
+                                                                                                 "OutputType":  [
+                                                                                                                    {
+                                                                                                                        "Name":  "System.String",
+                                                                                                                        "Type":  "string",
+                                                                                                                        "TypeDefinitionAst":  null
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                 "Name":  "powershell.exe",
+                                                                                                 "CommandType":  32,
+                                                                                                 "ModuleName":  "",
+                                                                                                 "Module":  null,
+                                                                                                 "RemotingCapability":  1,
+                                                                                                 "Parameters":  null,
+                                                                                                 "ParameterSets":  null
+                                                                                             },
+                                                                               "BoundParameters":  {
+
+                                                                                                   },
+                                                                               "UnboundArguments":  [
+
+                                                                                                    ],
+                                                                               "ScriptLineNumber":  36,
+                                                                               "OffsetInLine":  5,
+                                                                               "HistoryId":  -1,
+                                                                               "ScriptName":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "Line":  "    \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\n",
+                                                                               "PositionMessage":  "At G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1:36 char:5\r\n+     \u0026 $PowerShellExe @Arguments *\u003e\u00261 | Tee-Object -FilePath $LogPath\r\n+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+                                                                               "PSScriptRoot":  "G:\\UESTC\\feitengspan1\\scripts",
+                                                                               "PSCommandPath":  "G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1",
+                                                                               "InvocationName":  "\u0026",
+                                                                               "PipelineLength":  0,
+                                                                               "PipelinePosition":  0,
+                                                                               "ExpectingInput":  false,
+                                                                               "CommandOrigin":  1,
+                                                                               "DisplayScriptPosition":  null
+                                                                           },
+                                                        "ScriptStackTrace":  "at Invoke-LoggedStep, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 36\r\nat \u003cScriptBlock\u003e, G:\\UESTC\\feitengspan1\\scripts\\run_w8a12_board_recovery_preflight.ps1: line 91",
+                                                        "PipelineIterationInfo":  [
+                                                                                      0,
+                                                                                      0,
+                                                                                      25
+                                                                                  ],
+                                                        "writeErrorStream":  true,
+                                                        "PSMessageDetails":  null
+                                                    },
+                                                    1
+                                                ],
+                                       "log":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\vivado_probe_step.log",
+                                       "output_dir":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\vivado_probe"
+                                   },
+                  "precondition":  {
+                                       "exit":  0,
+                                       "log":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\precondition_summary_step.log",
+                                       "output_dir":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\jtag_precondition_current",
+                                       "status":  "BLOCKED"
+                                   }
+              }
+}

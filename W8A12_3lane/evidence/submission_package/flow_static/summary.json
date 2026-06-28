@@ -1,0 +1,130 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:submission_collector",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/collect_submission_package.py"
+    },
+    {
+      "name": "file:delivery_collector",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/collect_delivery_manifest.py"
+    },
+    {
+      "name": "file:submission_archive",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/create_submission_archive.py"
+    },
+    {
+      "name": "file:delivery_matrix",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/generate_delivery_evidence_matrix.py"
+    },
+    {
+      "name": "submission_requires_ooc_raw_reports",
+      "pass": true,
+      "detail": "OOC raw reports in final requirement list"
+    },
+    {
+      "name": "submission_includes_ooc_raw_globs",
+      "pass": true,
+      "detail": "OOC raw report globs"
+    },
+    {
+      "name": "delivery_includes_ooc_raw_globs",
+      "pass": true,
+      "detail": "delivery raw report globs"
+    },
+    {
+      "name": "submission_requires_quality_baseline",
+      "pass": true,
+      "detail": "traditional interpolation baseline final evidence"
+    },
+    {
+      "name": "manifests_include_quality_baseline_globs",
+      "pass": true,
+      "detail": "quality baseline globs"
+    },
+    {
+      "name": "manifests_include_quality_comparison_globs",
+      "pass": true,
+      "detail": "quality comparison globs"
+    },
+    {
+      "name": "manifests_include_quality_metric_completion_globs",
+      "pass": true,
+      "detail": "quality metric completion globs"
+    },
+    {
+      "name": "manifests_include_delivery_matrix",
+      "pass": true,
+      "detail": "delivery evidence matrix"
+    },
+    {
+      "name": "manifests_include_report_pdf",
+      "pass": true,
+      "detail": "PDF report evidence and artifact globs"
+    },
+    {
+      "name": "manifests_include_delivery_run_summaries",
+      "pass": true,
+      "detail": "delivery gate run summaries"
+    },
+    {
+      "name": "manifests_include_board_probe_evidence",
+      "pass": true,
+      "detail": "board probe/precondition evidence"
+    },
+    {
+      "name": "manifests_include_nested_board_probe_evidence",
+      "pass": true,
+      "detail": "nested USB/preflight evidence"
+    },
+    {
+      "name": "manifests_include_board_report_md_globs",
+      "pass": true,
+      "detail": "board report markdown globs"
+    },
+    {
+      "name": "manifests_include_board_report_summaries",
+      "pass": true,
+      "detail": "board report summary globs"
+    },
+    {
+      "name": "submission_keeps_core_final_evidence",
+      "pass": true,
+      "detail": "core final evidence"
+    },
+    {
+      "name": "submission_excludes_large_binaries",
+      "pass": true,
+      "detail": "large binary exclusions"
+    },
+    {
+      "name": "manifests_exclude_zip_archive",
+      "pass": true,
+      "detail": "zip archive is not part of recursive manifests"
+    },
+    {
+      "name": "delivery_manifest_includes_archive_summary",
+      "pass": true,
+      "detail": "archive summary is tracked"
+    },
+    {
+      "name": "submission_archive_is_deterministic",
+      "pass": true,
+      "detail": "fixed timestamp, sorted entries, compressed zip, sha256"
+    },
+    {
+      "name": "submission_archive_allows_draft_only_explicitly",
+      "pass": true,
+      "detail": "incomplete archives are explicit drafts"
+    },
+    {
+      "name": "delivery_matrix_reads_current_evidence",
+      "pass": true,
+      "detail": "matrix is generated from current audit/submission/PDF evidence"
+    }
+  ]
+}

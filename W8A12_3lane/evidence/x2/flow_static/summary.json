@@ -1,0 +1,190 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:export_ps1",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/export_x2_w8a12_to_rtl.ps1"
+    },
+    {
+      "name": "file:export_cmd",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/export_x2_w8a12_to_rtl.cmd"
+    },
+    {
+      "name": "file:export_check",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/check_x2_w8a12_export.py"
+    },
+    {
+      "name": "file:fixed_check",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/check_x2_fixed_reference.py"
+    },
+    {
+      "name": "file:readiness_check",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/check_x2_reference_readiness.py"
+    },
+    {
+      "name": "file:asset_search",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/find_x2_assets.py"
+    },
+    {
+      "name": "file:reference",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/w8a12_3lane_reference.py"
+    },
+    {
+      "name": "file:export_doc",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/x2_w8a12_export_plan.md"
+    },
+    {
+      "name": "file:fixed_doc",
+      "pass": true,
+      "detail": "W8A12_3lane/docs/x2_fixed_reference_contract.md"
+    },
+    {
+      "name": "file:root_calibrate_tool",
+      "pass": true,
+      "detail": "tools/calibrate_span_activation_scales.py"
+    },
+    {
+      "name": "file:root_quant_tool",
+      "pass": true,
+      "detail": "tools/export_span_w8a12_quant_plan.py"
+    },
+    {
+      "name": "file:root_rtl_export_tool",
+      "pass": true,
+      "detail": "tools/export_span_quant_plan_to_rtl.py"
+    },
+    {
+      "name": "file:root_postprocess_export_tool",
+      "pass": true,
+      "detail": "tools/export_span_w8a12_postprocess_to_rtl.py"
+    },
+    {
+      "name": "file:root_rtl_check_tool",
+      "pass": true,
+      "detail": "tools/check_span_w8a12_rtl_export.py"
+    },
+    {
+      "name": "file:checkpoint",
+      "pass": true,
+      "detail": "runs/official_span/official_SPAN_REDS_x2_f48/models/net_g_300000.pth"
+    },
+    {
+      "name": "file:official_manifest",
+      "pass": true,
+      "detail": "rtl/generated/official_span_x2/official_span_manifest.json"
+    },
+    {
+      "name": "export_ps1_calibrates_a12",
+      "pass": true,
+      "detail": "activation calibration"
+    },
+    {
+      "name": "export_ps1_exports_quant_w8a12",
+      "pass": true,
+      "detail": "W8A12 quant plan"
+    },
+    {
+      "name": "export_ps1_exports_rtl",
+      "pass": true,
+      "detail": "RTL manifest"
+    },
+    {
+      "name": "export_ps1_exports_postprocess",
+      "pass": true,
+      "detail": "postprocess manifest"
+    },
+    {
+      "name": "export_ps1_runs_root_check",
+      "pass": true,
+      "detail": "root RTL export check"
+    },
+    {
+      "name": "export_ps1_runs_x2_check",
+      "pass": true,
+      "detail": "x2 export evidence check"
+    },
+    {
+      "name": "export_ps1_uses_x2_assets",
+      "pass": true,
+      "detail": "x2 checkpoint/manifest"
+    },
+    {
+      "name": "root_export_tools_present",
+      "pass": true,
+      "detail": "root-level export/check tools"
+    },
+    {
+      "name": "export_cmd_redirects_stdout",
+      "pass": true,
+      "detail": "stdout evidence"
+    },
+    {
+      "name": "export_cmd_runs_ps1",
+      "pass": true,
+      "detail": "ps1 fallback"
+    },
+    {
+      "name": "export_cmd_runs_check",
+      "pass": true,
+      "detail": "post-export check"
+    },
+    {
+      "name": "export_check_requires_scale2",
+      "pass": true,
+      "detail": "scale x2"
+    },
+    {
+      "name": "export_check_requires_f48",
+      "pass": true,
+      "detail": "48 channels"
+    },
+    {
+      "name": "export_check_requires_w8a12",
+      "pass": true,
+      "detail": "W8A12"
+    },
+    {
+      "name": "export_check_requires_postprocess",
+      "pass": true,
+      "detail": "postprocess"
+    },
+    {
+      "name": "fixed_check_requires_a3",
+      "pass": true,
+      "detail": "A3 tail RGB"
+    },
+    {
+      "name": "fixed_check_requires_x2_dims",
+      "pass": true,
+      "detail": "x2 output size"
+    },
+    {
+      "name": "fixed_check_requires_rgb_hash",
+      "pass": true,
+      "detail": "RGB hash"
+    },
+    {
+      "name": "reference_supports_a3_tail_rgb",
+      "pass": true,
+      "detail": "fixed reference subcommand"
+    },
+    {
+      "name": "doc_mentions_28_30_targets",
+      "pass": true,
+      "detail": "quality targets documented"
+    },
+    {
+      "name": "doc_mentions_export_cmd",
+      "pass": true,
+      "detail": "export command documented"
+    }
+  ]
+}

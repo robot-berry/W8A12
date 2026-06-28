@@ -1,0 +1,31 @@
+# Local/generated archives
+evidence/submission_package/archive/*.zip
+output/github_upload/
+evidence/delivery_runs/*/*/stdout.txt
+evidence/delivery_runs/*/*/stderr.txt
+*_stdout.txt
+*_stderr.txt
+
+# Vivado/generated heavy artifacts kept out of Git
+*.dcp
+*.bit
+*.xsa
+*.ltx
+*.jou
+*.log
+*.wdb
+*.rpt
+*.npy
+*.npz
+*.pth
+*.pt
+*.pid
+
+# Keep small PPA evidence reports that are referenced by the manifests.
+!evidence/top/accel_top_ooc/*_ooc.rpt
+!evidence/resource/A4_single_lane_mac_scheduler_ooc/*_ooc.rpt
+!evidence/resource/A4_3lane_mac_scheduler_ooc/*_ooc.rpt
+
+# Python/editor caches
+__pycache__/
+*.pyc

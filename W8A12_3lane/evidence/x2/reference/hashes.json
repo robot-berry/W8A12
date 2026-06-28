@@ -1,0 +1,14 @@
+{
+  "feat0_hash": "0x47766845",
+  "block_1_output_hash": "0xECD1EB47",
+  "block_2_output_hash": "0xD6AB151A",
+  "block_3_output_hash": "0xBFC9491E",
+  "block_4_output_hash": "0xABAFDDBD",
+  "block_5_output_hash": "0xC3CD6915",
+  "block_6_output_hash": "0x3ED6294C",
+  "conv2_hash": "0x614DE95E",
+  "cat_input_hash": "0x4FEA4056",
+  "conv_cat_hash": "0x070AB9D1",
+  "upsampler_0_hash": "0x3366C77D",
+  "rgb_q_hash": "0xBC30F107"
+}

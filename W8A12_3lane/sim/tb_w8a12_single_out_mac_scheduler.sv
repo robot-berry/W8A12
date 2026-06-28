@@ -1,0 +1,154 @@
+`timescale 1ns/1ps
+
+`include "a0_3lane_files.vh"
+
+module tb_w8a12_single_out_mac_scheduler;
+    localparam int ACT_W = 12;
+    localparam int CH = 48;
+    localparam int IMG_W = 4;
+    localparam int IMG_H = 4;
+    localparam int PIXELS = IMG_W * IMG_H;
+    localparam int KERNEL_TAPS = 9;
+    localparam int WINDOW_WORDS = CH * KERNEL_TAPS;
+    localparam int TOTAL = PIXELS * CH;
+
+    logic clk = 1'b0;
+    logic rst = 1'b1;
+    logic s_valid;
+    wire s_ready;
+    logic [WINDOW_WORDS*ACT_W-1:0] window_i;
+    wire m_valid;
+    logic m_ready;
+    wire signed [ACT_W-1:0] q_o;
+
+    logic signed [ACT_W-1:0] input_feature [0:TOTAL-1];
+    logic signed [ACT_W-1:0] expected_full [0:TOTAL-1];
+
+    integer fd;
+    integer code;
+    integer idx;
+    integer pix;
+    integer out_pix;
+    integer ch;
+    integer ky;
+    integer kx;
+    integer sx;
+    integer sy;
+    integer wait_cyc;
+    integer value;
+    integer mismatches;
+    logic signed [ACT_W-1:0] exp;
+
+    always #5 clk = ~clk;
+
+    task automatic read_vector;
+        input string path;
+        output logic signed [ACT_W-1:0] vec [0:TOTAL-1];
+        begin
+            fd = $fopen(path, "r");
+            if (fd == 0)
+                $fatal(1, "failed to open %s", path);
+            for (idx = 0; idx < TOTAL; idx = idx + 1) begin
+                code = $fscanf(fd, "%d\n", value);
+                if (code != 1)
+                    $fatal(1, "failed to read %s index %0d", path, idx);
+                vec[idx] = value[ACT_W-1:0];
+            end
+            $fclose(fd);
+        end
+    endtask
+
+    task automatic build_window;
+        input integer p;
+        begin
+            for (ch = 0; ch < CH; ch = ch + 1) begin
+                for (ky = 0; ky < 3; ky = ky + 1) begin
+                    for (kx = 0; kx < 3; kx = kx + 1) begin
+                        sx = (p % IMG_W) + kx - 1;
+                        sy = (p / IMG_W) + ky - 1;
+                        if (sx >= 0 && sx < IMG_W && sy >= 0 && sy < IMG_H)
+                            window_i[(ch*9 + ky*3 + kx)*ACT_W +: ACT_W] = input_feature[(sy*IMG_W + sx)*CH + ch];
+                        else
+                            window_i[(ch*9 + ky*3 + kx)*ACT_W +: ACT_W] = '0;
+                    end
+                end
+            end
+        end
+    endtask
+
+    w8a12_single_out_mac_scheduler #(
+        .IN_CH(CH),
+        .KERNEL_TAPS(KERNEL_TAPS),
+        .TAP_PAR(8),
+        .ACT_W(ACT_W),
+        .OUT_INDEX(0),
+        .LANE_OUT_CH(16),
+        .WEIGHT_FILE(`W8A12_3LANE_A0_LANE0_WEIGHT_MEM),
+        .BIAS_I64_FILE(`W8A12_3LANE_A0_LANE0_BIAS_MEM),
+        .REQUANT_Q31_FILE(`W8A12_3LANE_A0_LANE0_REQUANT_MEM),
+        .REQUANT_SHIFT_FILE(`W8A12_3LANE_A0_LANE0_SHIFT_MEM)
+    ) dut (
+        .clk(clk),
+        .rst(rst),
+        .s_valid(s_valid),
+        .s_ready(s_ready),
+        .window_i(window_i),
+        .m_valid(m_valid),
+        .m_ready(m_ready),
+        .q_o(q_o)
+    );
+
+    initial begin
+        s_valid = 1'b0;
+        window_i = '0;
+        m_ready = 1'b1;
+        out_pix = 0;
+        mismatches = 0;
+
+        read_vector(`W8A12_3LANE_A0_INPUT_TXT, input_feature);
+        read_vector(`W8A12_3LANE_A0_EXPECTED_TXT, expected_full);
+
+        repeat (5) @(posedge clk);
+        rst = 1'b0;
+
+        for (pix = 0; pix < PIXELS; pix = pix + 1) begin
+            @(negedge clk);
+            wait_cyc = 0;
+            while (!s_ready) begin
+                @(negedge clk);
+                wait_cyc = wait_cyc + 1;
+                if (wait_cyc > 10000)
+                    $fatal(1, "timeout waiting for s_ready at pixel %0d", pix);
+            end
+            build_window(pix);
+            s_valid = 1'b1;
+            @(posedge clk);
+            @(negedge clk);
+            s_valid = 1'b0;
+        end
+
+        wait_cyc = 0;
+        while (out_pix < PIXELS) begin
+            @(posedge clk);
+            wait_cyc = wait_cyc + 1;
+            if (wait_cyc > 200000)
+                $fatal(1, "timeout waiting outputs got=%0d", out_pix);
+        end
+
+        if (mismatches != 0)
+            $fatal(1, "FAIL w8a12_single_out_mac_scheduler mismatches=%0d", mismatches);
+        $display("PASS w8a12_single_out_mac_scheduler pixels=%0d out_ch=0", PIXELS);
+        $finish;
+    end
+
+    always @(posedge clk) begin
+        if (!rst && m_valid && m_ready) begin
+            exp = expected_full[out_pix*CH + 0];
+            if (q_o !== exp) begin
+                $display("MISMATCH pix=%0d got=%0d exp=%0d", out_pix, q_o, exp);
+                mismatches <= mismatches + 1;
+            end
+            out_pix <= out_pix + 1;
+        end
+    end
+endmodule

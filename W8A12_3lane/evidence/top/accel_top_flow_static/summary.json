@@ -1,0 +1,160 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "file:top",
+      "pass": true,
+      "detail": "W8A12_3lane/rtl/top/w8a12_3lane_accel_top.v"
+    },
+    {
+      "name": "file:ooc_top",
+      "pass": true,
+      "detail": "W8A12_3lane/rtl/top/w8a12_3lane_accel_top_ooc_top.v"
+    },
+    {
+      "name": "file:tile_shell",
+      "pass": true,
+      "detail": "W8A12_3lane/rtl/span/w8a12_3lane_tile_pipeline_shell.v"
+    },
+    {
+      "name": "file:tb",
+      "pass": true,
+      "detail": "W8A12_3lane/sim/tb_w8a12_3lane_accel_top.sv"
+    },
+    {
+      "name": "file:sim_tcl",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_sim_w8a12_3lane_accel_top.tcl"
+    },
+    {
+      "name": "file:sim_ps1",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_sim_w8a12_3lane_accel_top.ps1"
+    },
+    {
+      "name": "file:sim_cmd",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_sim_w8a12_3lane_accel_top.cmd"
+    },
+    {
+      "name": "file:ooc_tcl",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_synth_w8a12_3lane_accel_top_ooc.tcl"
+    },
+    {
+      "name": "file:ooc_ps1",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_synth_w8a12_3lane_accel_top_ooc.ps1"
+    },
+    {
+      "name": "file:ooc_cmd",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/run_vivado_synth_w8a12_3lane_accel_top_ooc.cmd"
+    },
+    {
+      "name": "file:xsim_summary",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/summarize_xsim_result.py"
+    },
+    {
+      "name": "sim_tcl_adds_tile_shell",
+      "pass": true,
+      "detail": "tile shell source"
+    },
+    {
+      "name": "sim_tcl_adds_accel_top",
+      "pass": true,
+      "detail": "accel top source"
+    },
+    {
+      "name": "sim_tcl_adds_tb",
+      "pass": true,
+      "detail": "testbench"
+    },
+    {
+      "name": "sim_ps1_checks_pass",
+      "pass": true,
+      "detail": "PASS line"
+    },
+    {
+      "name": "sim_ps1_writes_summary",
+      "pass": true,
+      "detail": "summary outputs"
+    },
+    {
+      "name": "sim_cmd_summarizes",
+      "pass": true,
+      "detail": "cmd fallback summary"
+    },
+    {
+      "name": "xsim_summary_has_accel_preset",
+      "pass": true,
+      "detail": "accel xsim preset"
+    },
+    {
+      "name": "tb_checks_spab_count",
+      "pass": true,
+      "detail": "six SPAB starts"
+    },
+    {
+      "name": "tb_checks_status_bits",
+      "pass": true,
+      "detail": "done/irq status bits"
+    },
+    {
+      "name": "tb_checks_clear",
+      "pass": true,
+      "detail": "clear path"
+    },
+    {
+      "name": "tb_has_pass_line",
+      "pass": true,
+      "detail": "PASS line"
+    },
+    {
+      "name": "ooc_tcl_adds_tile_shell",
+      "pass": true,
+      "detail": "tile shell source"
+    },
+    {
+      "name": "ooc_tcl_adds_accel_top",
+      "pass": true,
+      "detail": "accel top source"
+    },
+    {
+      "name": "ooc_tcl_adds_ooc_top",
+      "pass": true,
+      "detail": "OOC wrapper source"
+    },
+    {
+      "name": "ooc_tcl_reports_util",
+      "pass": true,
+      "detail": "utilization report"
+    },
+    {
+      "name": "ooc_tcl_reports_timing",
+      "pass": true,
+      "detail": "timing report"
+    },
+    {
+      "name": "ooc_ps1_checks_reports",
+      "pass": true,
+      "detail": "report existence checks"
+    },
+    {
+      "name": "ooc_cmd_summarizes",
+      "pass": true,
+      "detail": "cmd fallback summary"
+    },
+    {
+      "name": "ooc_wrapper_instantiates_top",
+      "pass": true,
+      "detail": "top instance"
+    },
+    {
+      "name": "ooc_wrapper_no_errors",
+      "pass": true,
+      "detail": "error ties"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "single_lane0_hash": "0x32746552",
+  "lane1_hash": "0xF9404568",
+  "lane2_hash": "0x17220394",
+  "stitched_hash": "0x8020E858",
+  "expected_full48_hash": "0x8020E858",
+  "mismatches": 0,
+  "expected_hashes_from_a0": {},
+  "note": "Offline vector check only; Vivado xsim/OOC remain mandatory gates."
+}
