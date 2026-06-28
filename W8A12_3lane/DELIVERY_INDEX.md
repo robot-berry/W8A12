@@ -100,7 +100,8 @@
 | 提交包 manifest 静态检查 | `evidence/submission_package/flow_static/summary.md` | PASS |
 | GitHub 上传前置检查 | `tools/check_github_upload_preflight.py`、`evidence/github_upload_preflight/summary.md` | PASS；已配置 `w8a12=https://github.com/robot-berry/W8A12.git`，上传前仍只允许 stage `W8A12_3lane/` |
 | GitHub 干净上传树 | `tools/export_github_upload_tree.py`、`evidence/github_upload_export/summary.md` | PASS；导出到 `output/github_upload/robot-berry_W8A12_upload_tree/`，用于不携带当前大仓库历史地单独上传 |
-| GitHub 草案分支上传 | `evidence/github_upload_push/summary.md` | PASS；已推送到 `robot-berry/W8A12` 的 `codex/w8a12-3lane-delivery-draft`，commit `1ddc9657bc586db2d87be06f1545f113b18c9b2d` |
+| GitHub 草案分支上传 | `evidence/github_upload_push/summary.md` | PASS；已推送到 `robot-berry/W8A12` 的 `codex/w8a12-3lane-delivery-draft`，以远端分支级证据为准 |
+| GitHub Draft PR 尝试 | `evidence/github_pr_attempt/summary.md` | BLOCKED；分支已上传，但 GitHub App 创建 PR 返回 403，需用手动 URL 创建 PR：`https://github.com/robot-berry/W8A12/pull/new/codex/w8a12-3lane-delivery-draft` |
 | 交付 manifest | `evidence/delivery_manifest/manifest.md` | 上传前生成 |
 | 一键门禁运行记录 | `evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.md` | `-SkipVivado -SkipX2 -ContinueOnError` 轻量门禁已运行；静态项、JTAG recovery checklist、contest_report_pdf、delivery_evidence_matrix、board recovery preflight/JTAG precondition flow、board validation readiness、`submission_archive`、`submission_archive_final` 和 `hard_gate_runner_static` PASS，最终 `submission_manifest` / `delivery_audit` 因真实板端 validation 缺失保持 FAIL |
 

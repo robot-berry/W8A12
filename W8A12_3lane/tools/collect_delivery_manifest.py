@@ -36,6 +36,8 @@ INCLUDE_FILES = [
     "evidence/github_upload_export/summary.json",
     "evidence/github_upload_push/summary.md",
     "evidence/github_upload_push/summary.json",
+    "evidence/github_pr_attempt/summary.md",
+    "evidence/github_pr_attempt/summary.json",
     "evidence/submission_package/submission_manifest.md",
     "evidence/submission_package/submission_manifest.json",
     "evidence/submission_package/archive/summary.md",

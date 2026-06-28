@@ -62,6 +62,11 @@
       "detail": "delivery evidence matrix"
     },
     {
+      "name": "manifests_include_github_pr_attempt",
+      "pass": true,
+      "detail": "GitHub PR attempt evidence"
+    },
+    {
       "name": "manifests_include_report_pdf",
       "pass": true,
       "detail": "PDF report evidence and artifact globs"

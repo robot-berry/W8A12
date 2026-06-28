@@ -2,12 +2,12 @@
 
 Status: INCOMPLETE
 
-File count: 339
+File count: 341
 
 | Path | Bytes | SHA256 |
 | --- | ---: | --- |
 | `.gitignore` | 594 | `0b2f6fd09655485e6f3f034f9ef0a60c65b09980b1817cc6f69e37e832a30fdf` |
-| `DELIVERY_INDEX.md` | 15792 | `97dcdc0e3871c568dd8d0c6679757302ef76974e8cc68cb5345a7ed9d6721540` |
+| `DELIVERY_INDEX.md` | 16020 | `e660be3e824fb487ff806f10ed9c38391255dfcf91a85c037ae2970f244156b3` |
 | `README.md` | 3812 | `a2aa0c76c40aa14b08fd5ac6f21fc0bd4c4c00048215756bdd223a7c347b0d81` |
 | `STATUS.md` | 14226 | `ae38b1e2e0b6153c5696787005bff1cd65b5ed37eaa9b20f36ab2f4c5ed7b514` |
 | `WORKFLOW.md` | 33068 | `6e1d7f55442b19b54dd6c312c3b41e6f2bfa1e4b1b6601f59fe88a197829abc5` |
@@ -91,8 +91,8 @@ File count: 339
 | `evidence/delivery_audit/contest_delivery_audit.md` | 6931 | `e9a7465eb20fa9f61f0a90a5d61990d93364f1be1b6655ba181ebcf0a3236999` |
 | `evidence/delivery_audit/missing_evidence_plan.json` | 5481 | `94b250ab73a3a558a7dd51cb2458e3e8f7a0b1fe74c23a22e26542c66c615796` |
 | `evidence/delivery_audit/missing_evidence_plan.md` | 5194 | `6c39bb81d69d58337f4f0ce58f9ff9f398e5b6ca193b004bfab45cf081393bc6` |
-| `evidence/delivery_matrix/summary.json` | 5165 | `f37311231dfd1d0c87e23dcac7d068e252df071e1888b4cccd766b666c242277` |
-| `evidence/delivery_matrix/summary.md` | 3979 | `502894785e9776a52f2c0cd4c57e8f23cdd9621e916ee478cf4c4da662966f87` |
+| `evidence/delivery_matrix/summary.json` | 5165 | `74712f467b5cea9e256cd1bc58b759f1f7527fca2f1bbdc238d8c8ff54ee78f1` |
+| `evidence/delivery_matrix/summary.md` | 3979 | `1312a07997cda40878301745cc1c0f3a84a6738ca26420c42c8307ccb33e667f` |
 | `evidence/delivery_runs/current_static_boardtarget0_20260628/summary.json` | 3881 | `9e02c9dbde1e3e6ac87eccfc835007fd4ac4f8c625ccc02ad5755f4f09ddba8d` |
 | `evidence/delivery_runs/current_static_boardtarget0_20260628/summary.md` | 1805 | `248fda6c2408499b0cd98e7606f99996b503795becb1d3cb7c80d93d04973daf` |
 | `evidence/delivery_runs/current_static_boardtarget0_20260628_b/summary.json` | 3883 | `123eb119f6a5887acc3eaa0be401ff2b1ea50fced9db2614d1b9e7e81d6576d8` |
@@ -125,10 +125,12 @@ File count: 339
 | `evidence/delivery_runs/current_static_boardtarget0_20260628_o/summary.md` | 1412 | `6267126a0110d6d6656efacea7ad994c4e64d110fde411e91d6ef67f9a9795e0` |
 | `evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.json` | 5421 | `96c1ab00efa76b95777f2da73ff83b9a0160c4b21202b7d752ad7b07373f5eaf` |
 | `evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.md` | 1412 | `43c4a85daf2a85d8a7a54c2552e2856ffae7b5ed09f3e137a134672a9c60e5c4` |
-| `evidence/github_upload_export/summary.json` | 170316 | `d1bb42c51ab4a03a166339389d55bd0114ae6ef1b7a8fb87c37c5dced3e66522` |
-| `evidence/github_upload_export/summary.md` | 845 | `9f311f633b03e162b32fc0a038aade59a007ac876a2c8e32f973abc217d36fe5` |
-| `evidence/github_upload_preflight/summary.json` | 2598 | `fa6fb4764c6a4f04c931e03e6a30628358b6ea652d81f7f570a46c7df036d6d5` |
-| `evidence/github_upload_preflight/summary.md` | 1720 | `c954642599be07947e88c70b8cbfb479fc92e4ec8335f6db51451437084acdc0` |
+| `evidence/github_pr_attempt/summary.json` | 461 | `081a5c466d57e91553351bb492344d62672059578338f208a80c9da6354ef1c5` |
+| `evidence/github_pr_attempt/summary.md` | 573 | `a99c7ce3edf9e5caa8475013a20e1de8a584ec03c1f9758fb165d980b42f3865` |
+| `evidence/github_upload_export/summary.json` | 171339 | `68c98d2084043920eb6298fd3134da90d759f2b161fac0120bc6dcad201dde0c` |
+| `evidence/github_upload_export/summary.md` | 845 | `fc1762fb56b8b321eebf43d84e854e70e69955da94a33361186ddab72d894e4e` |
+| `evidence/github_upload_preflight/summary.json` | 2598 | `fa2fd92e34e495a442c9ccd75c20cc245fbb80481b8b5c940e705405edd273ea` |
+| `evidence/github_upload_preflight/summary.md` | 1720 | `718a8ec9595883e512b3c861d23d8b024e1640856f274dcaf0d0e43b883f95cc` |
 | `evidence/github_upload_push/summary.json` | 605 | `5a081ae73bbd79ef052802bb5f2d2a95c174d7fd6eb3f693f0f2d2fc886ca9c6` |
 | `evidence/github_upload_push/summary.md` | 817 | `36f737612ffb795fd3c1bc7c5426a662b129a227b43fc827de3d4ba3c6c81fee` |
 | `evidence/ppa_summary/summary.json` | 3352 | `d85b703be115ed4c26b770e2c3a7a0a6ef4ea2af07a1b319bfa5898feef376d9` |
@@ -194,10 +196,10 @@ File count: 339
 | `evidence/resource/A4_single_lane_mac_scheduler_ooc/timing_ooc.rpt` | 27020 | `21b643958e857a7bee6bbf93e57dd5d62432a9653b6a24ff07112e4657252744` |
 | `evidence/resource/A4_single_lane_mac_scheduler_ooc/utilization_ooc.rpt` | 14380 | `b583847d3bf9ce0b8768d500f0e5affe3fd6aa46e63c8a7028b728871d5a23c5` |
 | `evidence/resource/A4_single_out_mac_scheduler/single_out_scheduler_sim_summary.md` | 1251 | `76ccce605c79ea5af583f67057e569ef8650eb31536608fa1a2319a475c22a05` |
-| `evidence/submission_package/archive/summary.json` | 692 | `5fadda3f75de65991b0eddca011f4261a4a3f14a9b166dba511876b4c465af43` |
-| `evidence/submission_package/archive/summary.md` | 922 | `c0dc2ae1f8e7e88ded3cf63771dfc324a1f46edc2d5c519cb5c2a5a51163df50` |
-| `evidence/submission_package/submission_manifest.json` | 63064 | `8e08f5af6cbd5dfd586156f62eb1a70b190cc12bff34cc8710a109a55176ce7d` |
-| `evidence/submission_package/submission_manifest.md` | 44424 | `a4f9af247d57cf15b313de49321687f11d984facbb2505cd615a0ccf6faed07b` |
+| `evidence/submission_package/archive/summary.json` | 692 | `3d27d9e5cc7aec3037669b8cd88c9920d882fe6d9699dc49b6ebaaf28e37a94c` |
+| `evidence/submission_package/archive/summary.md` | 922 | `3c9b650c15f99d24f2c8407ab6d3a6ce709e81adc4ea92a12d162cd88dd1c3c7` |
+| `evidence/submission_package/submission_manifest.json` | 63418 | `0827b65019d441964fc877ee2468f20c37214ec3b8a8da1ffa4616fb4778ccdb` |
+| `evidence/submission_package/submission_manifest.md` | 44666 | `c4ce1e95fba8dd58b377ef2faadf30c0cabc5563a423815928072ed3f16f0ef7` |
 | `evidence/top/accel_top_flow_static/summary.json` | 3831 | `297a9806af1fba8e62783de11458c92b7cebf14474ffe44028e1beced229b5d1` |
 | `evidence/top/accel_top_flow_static/summary.md` | 2187 | `c3bd319881b826ebabc9f025729f16f14b041d668070a0b25c3fe67078f72424` |
 | `evidence/top/accel_top_ooc/ooc_summary.json` | 1207 | `8eae99f89acc22e30c5dcddfbf32c8cdbb41607543ce4cbd210bd7d60c426389` |
@@ -313,16 +315,16 @@ File count: 339
 | `tools/check_hard_gate_runner_static.py` | 8029 | `f31070b554aacbdaeecbfc2e2a2b9118d95c7a88e0a2c5b9e4ee60ec504a64c7` |
 | `tools/check_missing_plan_flow_static.py` | 3860 | `02697755517d633ae925e27ab2f52a2c33672d455a21900b099b6fafc485e602` |
 | `tools/check_quality_metric_completion_static.py` | 4379 | `381042bbbdc3dfd835199c918b2231025049a713afc9854ad276758f2c1030d2` |
-| `tools/check_submission_manifest_flow_static.py` | 7517 | `113690c9559be36cbf37cf1d0ee9edaa7aaa8242ea5fdc5b15a140ebf2b92eca` |
+| `tools/check_submission_manifest_flow_static.py` | 7694 | `7d7ca08141ee8cdfbe4d25dfcaee666c05a28d4475b0015615e03a0c7da7560c` |
 | `tools/check_submission_scope.py` | 3446 | `6cdfaf3f5e4c58d3bc448b198677f903404353095152cf2435178d24b07f025a` |
 | `tools/check_vivado_hw_probe_log.py` | 4037 | `2477a5e42b06393a3cf35852af088f72e3525dced4b516fc0c7ea4c88def66d8` |
 | `tools/check_x2_fixed_reference.py` | 2992 | `48cbd29f4b863a8981a733f93255b80347494b557fae4165e7b3ca6ae9520bf9` |
 | `tools/check_x2_flow_static.py` | 5733 | `50b2d27c8aa90924488e310063d59d2b335709662d2764f9fde9bb93d4faf409` |
 | `tools/check_x2_reference_readiness.py` | 2360 | `9074c22807e557dfd8cd6114d43249983c58b5ec49ae5681895516034673a474` |
 | `tools/check_x2_w8a12_export.py` | 3772 | `9c786690541d75714524740a8425efaff78a8636528c54b27ce246408955b169` |
-| `tools/collect_delivery_manifest.py` | 6625 | `2d880336373f5c1cfc3db4517c5e2e67ec9f630e4e3695d1f6b7701d957668ad` |
+| `tools/collect_delivery_manifest.py` | 6717 | `87c5869470727026c199d9e54a023cfdabc528b2b6acb60c2940f42ebf024fdf` |
 | `tools/collect_repository_scope_manifest.py` | 2646 | `14053f4c0bca0df9cdddca0f1d986e32f3f018f671977886e706cba6e8acd458` |
-| `tools/collect_submission_package.py` | 6628 | `2d97c09f604b0c7dcaa99fbaae3fd8ecff82bbad89b78c19010e8c87fa71cf30` |
+| `tools/collect_submission_package.py` | 6664 | `4c461a471f3aaca4782d617bc09434c8944bc9dfddcb8b9459c8d4a42d0476cf` |
 | `tools/create_board_report.py` | 6781 | `42c5c35ec9456af21b5ce7d076797a7b7062d53e4ea689ae47fc10b099b74d57` |
 | `tools/create_submission_archive.py` | 4416 | `41687c788d00367a3a57d9e5b891352e8687d809a56eab15074e83a81f8b19c8` |
 | `tools/evaluate_interpolation_baseline.py` | 5630 | `2b2a23164d5b925b7f57849d7f892e97e650978c129228bdbb3f3bb98900141b` |

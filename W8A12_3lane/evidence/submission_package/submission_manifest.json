@@ -1,7 +1,7 @@
 {
   "status": "INCOMPLETE",
   "root": "W8A12_3lane",
-  "file_count": 333,
+  "file_count": 335,
   "entries": [
     {
       "path": ".gitignore",
@@ -10,8 +10,8 @@
     },
     {
       "path": "DELIVERY_INDEX.md",
-      "bytes": 15792,
-      "sha256": "97dcdc0e3871c568dd8d0c6679757302ef76974e8cc68cb5345a7ed9d6721540"
+      "bytes": 16020,
+      "sha256": "e660be3e824fb487ff806f10ed9c38391255dfcf91a85c037ae2970f244156b3"
     },
     {
       "path": "README.md",
@@ -440,18 +440,18 @@
     },
     {
       "path": "evidence/delivery_manifest/manifest.md",
-      "bytes": 44204,
-      "sha256": "cc06386449edc5affae01002a1f48afdd06957c3520b8bea36e670b1bec92367"
+      "bytes": 44887,
+      "sha256": "08355aa85cda477c9e3192c46cd1c8b11ef0ad39f7710b3b0e0b0bbf95b2271e"
     },
     {
       "path": "evidence/delivery_matrix/summary.json",
       "bytes": 5165,
-      "sha256": "508d3d0cab7317a285e0651bab2a7da5d08a5cab9c941f404490f93f30a3dd7a"
+      "sha256": "f37311231dfd1d0c87e23dcac7d068e252df071e1888b4cccd766b666c242277"
     },
     {
       "path": "evidence/delivery_matrix/summary.md",
       "bytes": 3979,
-      "sha256": "a5de93b0cd6179859c7f829ce4ef103e91b0a80ede3eacef416b6e3585b9a33c"
+      "sha256": "502894785e9776a52f2c0cd4c57e8f23cdd9621e916ee478cf4c4da662966f87"
     },
     {
       "path": "evidence/delivery_runs/current_static_boardtarget0_20260628/summary.json",
@@ -614,24 +614,34 @@
       "sha256": "43c4a85daf2a85d8a7a54c2552e2856ffae7b5ed09f3e137a134672a9c60e5c4"
     },
     {
+      "path": "evidence/github_pr_attempt/summary.json",
+      "bytes": 461,
+      "sha256": "081a5c466d57e91553351bb492344d62672059578338f208a80c9da6354ef1c5"
+    },
+    {
+      "path": "evidence/github_pr_attempt/summary.md",
+      "bytes": 573,
+      "sha256": "a99c7ce3edf9e5caa8475013a20e1de8a584ec03c1f9758fb165d980b42f3865"
+    },
+    {
       "path": "evidence/github_upload_export/summary.json",
-      "bytes": 170316,
-      "sha256": "d1bb42c51ab4a03a166339389d55bd0114ae6ef1b7a8fb87c37c5dced3e66522"
+      "bytes": 171339,
+      "sha256": "68c98d2084043920eb6298fd3134da90d759f2b161fac0120bc6dcad201dde0c"
     },
     {
       "path": "evidence/github_upload_export/summary.md",
       "bytes": 845,
-      "sha256": "9f311f633b03e162b32fc0a038aade59a007ac876a2c8e32f973abc217d36fe5"
+      "sha256": "fc1762fb56b8b321eebf43d84e854e70e69955da94a33361186ddab72d894e4e"
     },
     {
       "path": "evidence/github_upload_preflight/summary.json",
       "bytes": 2598,
-      "sha256": "fa6fb4764c6a4f04c931e03e6a30628358b6ea652d81f7f570a46c7df036d6d5"
+      "sha256": "fa2fd92e34e495a442c9ccd75c20cc245fbb80481b8b5c940e705405edd273ea"
     },
     {
       "path": "evidence/github_upload_preflight/summary.md",
       "bytes": 1720,
-      "sha256": "c954642599be07947e88c70b8cbfb479fc92e4ec8335f6db51451437084acdc0"
+      "sha256": "718a8ec9595883e512b3c861d23d8b024e1640856f274dcaf0d0e43b883f95cc"
     },
     {
       "path": "evidence/github_upload_push/summary.json",
@@ -960,8 +970,8 @@
     },
     {
       "path": "evidence/submission_package/submission_manifest.md",
-      "bytes": 43741,
-      "sha256": "bf23a75bdcae4bea239b736ffccc51dd611c34f111ae37edbbf62762cbc43ee0"
+      "bytes": 44424,
+      "sha256": "a4f9af247d57cf15b313de49321687f11d984facbb2505cd615a0ccf6faed07b"
     },
     {
       "path": "evidence/top/accel_top_flow_static/summary.json",
@@ -1510,8 +1520,8 @@
     },
     {
       "path": "tools/check_submission_manifest_flow_static.py",
-      "bytes": 7517,
-      "sha256": "113690c9559be36cbf37cf1d0ee9edaa7aaa8242ea5fdc5b15a140ebf2b92eca"
+      "bytes": 7694,
+      "sha256": "7d7ca08141ee8cdfbe4d25dfcaee666c05a28d4475b0015615e03a0c7da7560c"
     },
     {
       "path": "tools/check_submission_scope.py",
@@ -1545,8 +1555,8 @@
     },
     {
       "path": "tools/collect_delivery_manifest.py",
-      "bytes": 6625,
-      "sha256": "2d880336373f5c1cfc3db4517c5e2e67ec9f630e4e3695d1f6b7701d957668ad"
+      "bytes": 6717,
+      "sha256": "87c5869470727026c199d9e54a023cfdabc528b2b6acb60c2940f42ebf024fdf"
     },
     {
       "path": "tools/collect_repository_scope_manifest.py",
@@ -1555,8 +1565,8 @@
     },
     {
       "path": "tools/collect_submission_package.py",
-      "bytes": 6628,
-      "sha256": "2d97c09f604b0c7dcaa99fbaae3fd8ecff82bbad89b78c19010e8c87fa71cf30"
+      "bytes": 6664,
+      "sha256": "4c461a471f3aaca4782d617bc09434c8944bc9dfddcb8b9459c8d4a42d0476cf"
     },
     {
       "path": "tools/create_board_report.py",
