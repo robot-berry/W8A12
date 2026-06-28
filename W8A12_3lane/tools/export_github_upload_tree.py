@@ -56,6 +56,21 @@ def safe_clean_dir(path: Path) -> None:
     resolved.mkdir(parents=True, exist_ok=True)
 
 
+def safe_clean_payload_dir(export_root: Path) -> None:
+    """Refresh only the upload payload and preserve an existing local .git repo."""
+    resolved = export_root.resolve()
+    allowed = (BASE / "output" / "github_upload").resolve()
+    if not str(resolved).startswith(str(allowed)):
+        raise RuntimeError(f"refusing to clean outside {allowed}: {resolved}")
+    resolved.mkdir(parents=True, exist_ok=True)
+    payload = (resolved / "W8A12_3lane").resolve()
+    if not str(payload).startswith(str(resolved)):
+        raise RuntimeError(f"refusing to clean payload outside {resolved}: {payload}")
+    if payload.exists():
+        shutil.rmtree(payload)
+    payload.mkdir(parents=True, exist_ok=True)
+
+
 def collect_candidates() -> list[str]:
     code, output = run_git(["ls-files", "--others", "--cached", "--exclude-standard", "W8A12_3lane"])
     if code != 0:
@@ -77,7 +92,7 @@ def collect_candidates() -> list[str]:
 
 def main() -> int:
     export_root = DEFAULT_EXPORT_ROOT
-    safe_clean_dir(export_root)
+    safe_clean_payload_dir(export_root)
 
     candidates = collect_candidates()
     entries = []
@@ -101,7 +116,7 @@ def main() -> int:
         "total_bytes": total_bytes,
         "forbidden_after_copy": forbidden_after_copy,
         "entries": entries,
-        "note": "This clean tree is for creating a separate upload commit without pushing the current repository history.",
+        "note": "This clean tree is for creating or updating a separate upload commit without pushing the current repository history. Existing .git metadata under the export root is preserved.",
     }
 
     OUT.mkdir(parents=True, exist_ok=True)
@@ -141,7 +156,7 @@ def render_md(data: dict) -> str:
         "git push origin HEAD:training-software",
         "```",
         "",
-        "This export intentionally keeps the `W8A12_3lane/` directory as the upload root and does not include forbidden generated artifacts.",
+        "This export intentionally keeps the `W8A12_3lane/` directory as the upload root, preserves any existing local `.git/` metadata under the export root, and does not include forbidden generated artifacts.",
         "",
     ]
     return "\n".join(lines)

@@ -74,6 +74,7 @@ W8A12_3lane/output/pdf/W8A12_3lane_contest_submission_report.pdf
 W8A12_3lane/evidence/delivery_matrix/summary.md
 W8A12_3lane/evidence/github_upload_preflight/summary.md
 W8A12_3lane/evidence/github_upload_export/summary.md
+W8A12_3lane/evidence/github_upload_push/summary.md
 W8A12_3lane/evidence/submission_package/submission_manifest.md
 W8A12_3lane/evidence/submission_package/archive/summary.md
 W8A12_3lane/evidence/delivery_manifest/manifest.md

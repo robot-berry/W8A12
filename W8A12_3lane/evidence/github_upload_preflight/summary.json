@@ -27,7 +27,7 @@
     {
       "name": "git.outside_changes_detected",
       "pass": true,
-      "detail": "653 outside status lines; do not stage them for W8A12 upload"
+      "detail": "654 outside status lines; do not stage them for W8A12 upload"
     },
     {
       "name": "git.no_staged_outside_w8a12",
@@ -37,7 +37,7 @@
     {
       "name": "git.upload_candidate_count",
       "pass": true,
-      "detail": 781
+      "detail": 787
     },
     {
       "name": "git.no_forbidden_upload_candidates",
@@ -77,7 +77,7 @@
     {
       "name": "submission_manifest.has_files",
       "pass": true,
-      "detail": 321
+      "detail": 327
     },
     {
       "name": "contest_report_pdf.exists",

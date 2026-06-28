@@ -65,6 +65,7 @@
 | Vivado JTAG probe 历史证据 | `evidence/board_probe/vivado_hw_probe.md` | 历史 PASS，target count=1、device count=2；当前连接态以后续 precondition/probe 为准 |
 | JTAG 当前前置条件 | `evidence/board_probe/jtag_precondition_current/summary.md` | BLOCKED：USB known candidate=0，Vivado target count=not_checked；因 USB 侧没有在线已知 JTAG 设备，按流程未进入 Vivado probe，需恢复 JTAG 后才能继续上板 validation |
 | W8A12 board recovery preflight | `scripts/run_w8a12_board_recovery_preflight.ps1`、`W8A12_3lane/scripts/run_w8a12_board_recovery_preflight.ps1`、`evidence/board_probe/recovery_preflight_current/board_recovery_preflight_summary.md`、`evidence/board_probe/recovery_preflight_force_vivado_current/board_recovery_preflight_summary.md` | 已提供；常规 preflight 在 USB known candidate=0 时跳过 Vivado probe；强制 Vivado probe 也已跑，结果为 USB known candidate=0、Vivado target count=0；恢复后可选 `-RunStageHashAcceptance` 直接进入 stage-hash 验收 |
+| 最新上板续跑进展 | `evidence/board_probe/latest_board_progress_20260628.md` | 2026-06-28 续跑强制 Vivado probe：USB known candidate=0、Vivado target count=0；未进入 bitstream/program/readback；true2x2 RTL/stage-hash bitstream 仍是当前待上板基线 |
 | JTAG 物理恢复清单 | `docs/jtag_recovery_checklist.md`、`tools/generate_jtag_recovery_checklist.py`、`evidence/board_probe/jtag_recovery_checklist/summary.md` | BLOCKED；当前在线 USB 设备无已知 JTAG，历史 FTDI `VID_0403&PID_6010` 为 Unknown，恢复通过条件为 USB known candidate>=1 且 Vivado target>=1 |
 | board validation readiness | `evidence/board_reports/validation_readiness/summary.md` | PASS；4 个剩余上板报告 skeleton 已预建，尺寸/PSNR/FPS/命令链已检查，但仍需真实 `validation.md Status: PASS` |
 | board report flow static | `evidence/board_reports/flow_static/summary.md` | PASS |
@@ -97,6 +98,7 @@
 | 提交包 manifest 静态检查 | `evidence/submission_package/flow_static/summary.md` | PASS |
 | GitHub 上传前置检查 | `tools/check_github_upload_preflight.py`、`evidence/github_upload_preflight/summary.md` | PASS；已配置 `w8a12=https://github.com/robot-berry/W8A12.git`，上传前仍只允许 stage `W8A12_3lane/` |
 | GitHub 干净上传树 | `tools/export_github_upload_tree.py`、`evidence/github_upload_export/summary.md` | PASS；导出到 `output/github_upload/robot-berry_W8A12_upload_tree/`，用于不携带当前大仓库历史地单独上传 |
+| GitHub 草案分支上传 | `evidence/github_upload_push/summary.md` | PASS；已推送到 `robot-berry/W8A12` 的 `codex/w8a12-3lane-delivery-draft`，commit `1ddc9657bc586db2d87be06f1545f113b18c9b2d` |
 | 交付 manifest | `evidence/delivery_manifest/manifest.md` | 上传前生成 |
 | 一键门禁运行记录 | `evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.md` | `-SkipVivado -SkipX2 -ContinueOnError` 轻量门禁已运行；静态项、JTAG recovery checklist、contest_report_pdf、delivery_evidence_matrix、board recovery preflight/JTAG precondition flow、board validation readiness、`submission_archive`、`submission_archive_final` 和 `hard_gate_runner_static` PASS，最终 `submission_manifest` / `delivery_audit` 因真实板端 validation 缺失保持 FAIL |
 

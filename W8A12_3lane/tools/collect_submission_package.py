@@ -36,6 +36,7 @@ EVIDENCE_INCLUDE_GLOBS = [
     "evidence/submission_package/*.md",
     "evidence/github_upload_preflight/*",
     "evidence/github_upload_export/*",
+    "evidence/github_upload_push/*",
     "evidence/reference/*/*summary*",
     "evidence/reference/*/*hash*",
     "evidence/reference/A2_tile_pipeline_shell/*check*",

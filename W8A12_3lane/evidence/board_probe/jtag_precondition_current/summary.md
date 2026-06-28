@@ -4,7 +4,7 @@ Status: BLOCKED
 
 | Field | Value |
 | --- | --- |
-| Generated at | `2026-06-28 19:15:01` |
+| Generated at | `2026-06-28 19:38:58` |
 | USB match count | `3` |
 | USB known JTAG candidate count | `0` |
 | PnP history known candidate count | `4` |
