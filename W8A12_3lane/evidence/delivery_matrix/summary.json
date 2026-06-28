@@ -13,7 +13,7 @@
   ],
   "latest_delivery_run": "evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.md",
   "pdf_status": "PASS",
-  "pdf_sha256": "8182406e17c8c52d275d94bebe635681d9b5114058290eea1d16fd36aacf229a",
+  "pdf_sha256": "936e512e3b68f8593709ca9967bf2abd59c4a136c4ae6359f5a0100ce60058aa",
   "rows": [
     {
       "area": "交付物1 模型/训练/量化/转换",

@@ -118,9 +118,14 @@ def main() -> int:
         "audit_contest_delivery.py",
         "generate_missing_evidence_plan.py",
         "create_submission_archive.py",
-        "run_w8a12_stagehash_true2x2_acceptance.ps1",
+        "run_w8a12_board_recovery_preflight.ps1",
+        "-RunStageHashAcceptance",
     ]), "reproducible commands")
     add("lists_submission_archive_summary", "evidence/submission_package/archive/summary.md" in text, "submission archive summary evidence")
+    add("lists_latest_board_and_upload_evidence", all(token in text for token in [
+        "evidence/board_probe/latest_board_progress_20260628.md",
+        "evidence/github_upload_push/summary.md",
+    ]), "latest board progress and GitHub draft upload evidence")
 
     ok = all(check["pass"] for check in checks)
     OUT.mkdir(parents=True, exist_ok=True)

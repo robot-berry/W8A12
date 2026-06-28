@@ -229,7 +229,7 @@ python W8A12_3lane\tools\collect_delivery_manifest.py
 恢复 JTAG 后的首个板端命令：
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_stagehash_true2x2_acceptance.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_board_recovery_preflight.ps1 -RunStageHashAcceptance
 ```
 
 ## 13. 交付文件索引
@@ -245,6 +245,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | A4 scheduler 验收 | `docs/a4_scheduler_acceptance_flow.md` |
 | 上板汇报规范 | `docs/board_report_flow.md` |
 | JTAG 恢复清单 | `docs/jtag_recovery_checklist.md`、`evidence/board_probe/jtag_recovery_checklist/summary.md` |
+| 最新上板进展 | `evidence/board_probe/latest_board_progress_20260628.md` |
 | 质量对比 | `evidence/quality_comparison/summary.md` |
 | 画质指标闭环计划 | `docs/quality_metric_completion_plan.md`、`evidence/quality_metric_completion/summary.md` |
 | A0-A3 reference | `evidence/reference/` |
@@ -253,6 +254,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | x2 fixed reference | `evidence/x2/reference/summary.md` |
 | delivery audit | `evidence/delivery_audit/contest_delivery_audit.md` |
 | submission archive summary | `evidence/submission_package/archive/summary.md` |
+| GitHub 草案上传证明 | `evidence/github_upload_push/summary.md` |
 
 ## 14. 结论
 

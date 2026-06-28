@@ -20,3 +20,4 @@ Status: PASS
 | `states_pdf_export` | PASS | `PDF report export evidence` |
 | `links_repro_commands` | PASS | `reproducible commands` |
 | `lists_submission_archive_summary` | PASS | `submission archive summary evidence` |
+| `lists_latest_board_and_upload_evidence` | PASS | `latest board progress and GitHub draft upload evidence` |

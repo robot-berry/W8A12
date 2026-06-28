@@ -95,6 +95,11 @@
       "name": "lists_submission_archive_summary",
       "pass": true,
       "detail": "submission archive summary evidence"
+    },
+    {
+      "name": "lists_latest_board_and_upload_evidence",
+      "pass": true,
+      "detail": "latest board progress and GitHub draft upload evidence"
     }
   ]
 }
