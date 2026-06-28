@@ -65,6 +65,7 @@ EVIDENCE_INCLUDE_GLOBS = [
     "evidence/board_probe/*/*/*",
     "evidence/board_reports/*.md",
     "evidence/board_reports/flow_static/*",
+    "evidence/board_reports/validation_closure/*",
     "evidence/board_reports/*/summary.*",
 ]
 

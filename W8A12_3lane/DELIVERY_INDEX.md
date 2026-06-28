@@ -61,6 +61,7 @@
 | board report 模板 | `tools/create_board_report.py` | 已提供 |
 | board report 填报 | `tools/update_board_report.py` | 已提供 |
 | board report 自动定稿 | `tools/finalize_board_report_from_outputs.py` | 已提供；从真实 board output 和 fixed reference 自动计算 mismatch/bit-exact/PSNR，并调用 validation；缺少真实资源/时序/性能/文件证据时不会 PASS |
+| board report 批量定稿 | `tools/finalize_board_reports_from_manifest.py`、`scripts/finalize_board_reports_from_manifest.ps1`、`evidence/board_reports/validation_closure/manifest_template.json` | 已提供；恢复上板后可用一个 manifest 批量生成 4 个 `validation.md`，未替换 placeholder 时保持 BLOCKED/FAIL |
 | board report 校验 | `tools/validate_board_report.py` | 已提供 |
 | Vivado JTAG probe 验收 | `tools/check_vivado_hw_probe_log.py` | 已提供，重插后 PASS |
 | Vivado JTAG probe 历史证据 | `evidence/board_probe/vivado_hw_probe.md` | 历史 PASS，target count=1、device count=2；当前连接态以后续 precondition/probe 为准 |

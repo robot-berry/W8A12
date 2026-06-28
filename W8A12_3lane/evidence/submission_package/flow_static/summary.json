@@ -92,6 +92,11 @@
       "detail": "board report summary globs"
     },
     {
+      "name": "manifests_include_board_validation_closure",
+      "pass": true,
+      "detail": "board validation closure manifest/template"
+    },
+    {
       "name": "submission_keeps_core_final_evidence",
       "pass": true,
       "detail": "core final evidence"

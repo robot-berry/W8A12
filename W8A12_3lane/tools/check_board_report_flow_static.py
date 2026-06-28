@@ -16,7 +16,10 @@ FILES = {
     "create": BASE / "tools" / "create_board_report.py",
     "update": BASE / "tools" / "update_board_report.py",
     "finalize": BASE / "tools" / "finalize_board_report_from_outputs.py",
+    "finalize_manifest": BASE / "tools" / "finalize_board_reports_from_manifest.py",
     "validate": BASE / "tools" / "validate_board_report.py",
+    "manifest_template": BASE / "evidence" / "board_reports" / "validation_closure" / "manifest_template.json",
+    "manifest_wrapper": BASE / "scripts" / "finalize_board_reports_from_manifest.ps1",
     "doc": BASE / "docs" / "board_report_flow.md",
     "audit": BASE / "tools" / "audit_contest_delivery.py",
     "missing_plan": BASE / "tools" / "generate_missing_evidence_plan.py",
@@ -38,8 +41,11 @@ def main() -> int:
     create = texts["create"]
     update = texts["update"]
     finalize = texts["finalize"]
+    finalize_manifest = texts["finalize_manifest"]
     validate = texts["validate"]
     doc = texts["doc"]
+    manifest_template = texts["manifest_template"]
+    manifest_wrapper = texts["manifest_wrapper"]
     audit = texts["audit"]
     missing = texts["missing_plan"]
 
@@ -58,6 +64,9 @@ def main() -> int:
     add("finalize_computes_psnr", "math.log10" in finalize and "psnr_db" in finalize, "computed PSNR")
     add("finalize_requires_real_metrics", all(token in finalize for token in ["required=True", "--lut-used", "--wns-ns", "--fps", "--power-w"]), "required resource/timing/perf metrics")
     add("finalize_runs_validator", "validate_board_report.py" in finalize and "validation.md" in finalize, "final validation emission")
+    add("finalize_manifest_lists_four_reports", all(token in finalize_manifest for token in ["reports", "continue-on-error", "dry-run", "BLOCKED"]), "batch manifest runner")
+    add("manifest_template_lists_four_reports", all(token in manifest_template for token in ["a5_32x32", "a6_64x64", "a7_720p_x4", "x2_720p", "<board_output"]), "batch manifest template")
+    add("manifest_wrapper_calls_python_tool", "finalize_board_reports_from_manifest.py" in manifest_wrapper and "DryRun" in manifest_wrapper, "PowerShell batch wrapper")
 
     add("validate_rejects_nonpass", "status_pass" in validate, "status PASS")
     add("validate_requires_frame_done", "frame_done" in validate and "error_false" in validate, "frame done/error")
@@ -72,6 +81,7 @@ def main() -> int:
     add("doc_states_x4_x2_targets", ">= 28 dB" in doc and ">= 30 dB" in doc, "quality targets")
     add("doc_requires_board_summary", "summary.md" in doc and "validation.md" in doc, "report and validation outputs")
     add("doc_lists_finalize_tool", "finalize_board_report_from_outputs.py" in doc and "自动计算 byte mismatch" in doc, "auto finalize flow")
+    add("doc_lists_batch_finalize", "finalize_board_reports_from_manifest.ps1" in doc and "manifest_template.json" in doc, "batch finalize flow")
     add("doc_requires_resource_perf_quality", all(token in doc for token in ["资源消耗", "FPS", "target_fps", "延迟", "PSNR", "SSIM"]), "reporting cadence")
     add("doc_separates_fps_and_psnr", "x4 >= 28 dB" in doc and "不是 FPS" in doc and "15" in doc and "20" in doc and "30" in doc, "FPS and PSNR separated")
 

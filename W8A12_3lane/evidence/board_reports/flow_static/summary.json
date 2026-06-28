@@ -17,9 +17,24 @@
       "detail": "W8A12_3lane/tools/finalize_board_report_from_outputs.py"
     },
     {
+      "name": "file:finalize_manifest",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/finalize_board_reports_from_manifest.py"
+    },
+    {
       "name": "file:validate",
       "pass": true,
       "detail": "W8A12_3lane/tools/validate_board_report.py"
+    },
+    {
+      "name": "file:manifest_template",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/validation_closure/manifest_template.json"
+    },
+    {
+      "name": "file:manifest_wrapper",
+      "pass": true,
+      "detail": "W8A12_3lane/scripts/finalize_board_reports_from_manifest.ps1"
     },
     {
       "name": "file:doc",
@@ -102,6 +117,21 @@
       "detail": "final validation emission"
     },
     {
+      "name": "finalize_manifest_lists_four_reports",
+      "pass": true,
+      "detail": "batch manifest runner"
+    },
+    {
+      "name": "manifest_template_lists_four_reports",
+      "pass": true,
+      "detail": "batch manifest template"
+    },
+    {
+      "name": "manifest_wrapper_calls_python_tool",
+      "pass": true,
+      "detail": "PowerShell batch wrapper"
+    },
+    {
       "name": "validate_rejects_nonpass",
       "pass": true,
       "detail": "status PASS"
@@ -160,6 +190,11 @@
       "name": "doc_lists_finalize_tool",
       "pass": true,
       "detail": "auto finalize flow"
+    },
+    {
+      "name": "doc_lists_batch_finalize",
+      "pass": true,
+      "detail": "batch finalize flow"
     },
     {
       "name": "doc_requires_resource_perf_quality",

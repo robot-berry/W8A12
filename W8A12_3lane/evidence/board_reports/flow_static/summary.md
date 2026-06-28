@@ -7,7 +7,10 @@ Status: PASS
 | `file:create` | PASS | `W8A12_3lane/tools/create_board_report.py` |
 | `file:update` | PASS | `W8A12_3lane/tools/update_board_report.py` |
 | `file:finalize` | PASS | `W8A12_3lane/tools/finalize_board_report_from_outputs.py` |
+| `file:finalize_manifest` | PASS | `W8A12_3lane/tools/finalize_board_reports_from_manifest.py` |
 | `file:validate` | PASS | `W8A12_3lane/tools/validate_board_report.py` |
+| `file:manifest_template` | PASS | `W8A12_3lane/evidence/board_reports/validation_closure/manifest_template.json` |
+| `file:manifest_wrapper` | PASS | `W8A12_3lane/scripts/finalize_board_reports_from_manifest.ps1` |
 | `file:doc` | PASS | `W8A12_3lane/docs/board_report_flow.md` |
 | `file:audit` | PASS | `W8A12_3lane/tools/audit_contest_delivery.py` |
 | `file:missing_plan` | PASS | `W8A12_3lane/tools/generate_missing_evidence_plan.py` |
@@ -24,6 +27,9 @@ Status: PASS
 | `finalize_computes_psnr` | PASS | `computed PSNR` |
 | `finalize_requires_real_metrics` | PASS | `required resource/timing/perf metrics` |
 | `finalize_runs_validator` | PASS | `final validation emission` |
+| `finalize_manifest_lists_four_reports` | PASS | `batch manifest runner` |
+| `manifest_template_lists_four_reports` | PASS | `batch manifest template` |
+| `manifest_wrapper_calls_python_tool` | PASS | `PowerShell batch wrapper` |
 | `validate_rejects_nonpass` | PASS | `status PASS` |
 | `validate_requires_frame_done` | PASS | `frame done/error` |
 | `validate_requires_bit_exact` | PASS | `bit exact` |
@@ -36,6 +42,7 @@ Status: PASS
 | `doc_states_x4_x2_targets` | PASS | `quality targets` |
 | `doc_requires_board_summary` | PASS | `report and validation outputs` |
 | `doc_lists_finalize_tool` | PASS | `auto finalize flow` |
+| `doc_lists_batch_finalize` | PASS | `batch finalize flow` |
 | `doc_requires_resource_perf_quality` | PASS | `reporting cadence` |
 | `doc_separates_fps_and_psnr` | PASS | `FPS and PSNR separated` |
 | `audit_requires_board_validations` | PASS | `audit board gates` |

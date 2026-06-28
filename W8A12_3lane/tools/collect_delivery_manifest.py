@@ -91,6 +91,7 @@ EVIDENCE_PATTERNS = [
     "evidence/board_probe/*/*/*",
     "evidence/board_reports/*.md",
     "evidence/board_reports/flow_static/*summary*",
+    "evidence/board_reports/validation_closure/*",
     "evidence/board_reports/*/summary.*",
     "evidence/board_reports/*/validation.*",
 ]

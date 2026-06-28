@@ -22,6 +22,7 @@ Status: PASS
 | `manifests_include_nested_board_probe_evidence` | PASS | `nested USB/preflight evidence` |
 | `manifests_include_board_report_md_globs` | PASS | `board report markdown globs` |
 | `manifests_include_board_report_summaries` | PASS | `board report summary globs` |
+| `manifests_include_board_validation_closure` | PASS | `board validation closure manifest/template` |
 | `submission_keeps_core_final_evidence` | PASS | `core final evidence` |
 | `submission_excludes_large_binaries` | PASS | `large binary exclusions` |
 | `manifests_exclude_zip_archive` | PASS | `zip archive is not part of recursive manifests` |

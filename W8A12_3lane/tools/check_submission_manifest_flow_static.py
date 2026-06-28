@@ -60,6 +60,7 @@ def main() -> int:
     add("manifests_include_nested_board_probe_evidence", "evidence/board_probe/*/*/*" in sub_text and "evidence/board_probe/*/*/*" in del_text, "nested USB/preflight evidence")
     add("manifests_include_board_report_md_globs", "evidence/board_reports/*.md" in sub_text and "evidence/board_reports/*.md" in del_text, "board report markdown globs")
     add("manifests_include_board_report_summaries", "evidence/board_reports/*/summary.*" in sub_text and "evidence/board_reports/*/summary.*" in del_text, "board report summary globs")
+    add("manifests_include_board_validation_closure", "evidence/board_reports/validation_closure/*" in sub_text and "evidence/board_reports/validation_closure/*" in del_text, "board validation closure manifest/template")
     add("submission_keeps_core_final_evidence", all(token in sub_text for token in [
         "evidence/top/accel_top_sim/summary.md",
         "evidence/resource/A4_single_lane_mac_scheduler/single_lane_scheduler_sim_summary.md",

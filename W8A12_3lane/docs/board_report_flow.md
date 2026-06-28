@@ -40,6 +40,15 @@ python W8A12_3lane\tools\finalize_board_report_from_outputs.py W8A12_3lane\evide
 
 该工具不会伪造最终 PASS：只要输出长度、mismatch、资源门限、时序、FPS、PSNR 或必要文件路径任一项不满足，`summary.json` 和 `validation.md` 都会保持 `FAIL`，不能通过交付审计。
 
+如果四个交付 gate 的上板输出已经全部准备好，可复制并填写批量 manifest 模板，再一次性 finalize：
+
+```powershell
+copy W8A12_3lane\evidence\board_reports\validation_closure\manifest_template.json W8A12_3lane\evidence\board_reports\validation_closure\manifest_current.json
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\finalize_board_reports_from_manifest.ps1 -Manifest W8A12_3lane\evidence\board_reports\validation_closure\manifest_current.json
+```
+
+模板中任何 `<placeholder>` 未替换时，批量工具会输出 `BLOCKED/FAIL`，不会生成最终 PASS。
+
 如果需要手动覆盖或补充字段，可继续使用低层 update 工具，然后再使用校验器检查：
 
 ```powershell

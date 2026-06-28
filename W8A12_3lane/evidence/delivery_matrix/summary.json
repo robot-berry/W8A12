@@ -4,7 +4,7 @@
   "audit_pass_count": 69,
   "audit_total_count": 73,
   "submission_status": "INCOMPLETE",
-  "submission_file_count": 327,
+  "submission_file_count": 333,
   "missing_final_evidence": [
     "evidence/board_reports/a5_32x32/validation.md",
     "evidence/board_reports/a6_64x64/validation.md",

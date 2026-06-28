@@ -1,0 +1,92 @@
+{
+  "status": "FAIL",
+  "manifest": "W8A12_3lane\\evidence\\board_reports\\validation_closure\\manifest_template.json",
+  "dry_run": true,
+  "continue_on_error": true,
+  "results": [
+    {
+      "tag": "a5_32x32",
+      "status": "BLOCKED",
+      "missing": [
+        "board_output",
+        "fixed_reference",
+        "resource.lut_used",
+        "resource.ff_used",
+        "resource.bram_tile_used",
+        "resource.dsp_used",
+        "timing.wns_ns",
+        "timing.whs_ns",
+        "performance.clock_mhz",
+        "performance.latency_ms",
+        "performance.fps",
+        "performance.power_w",
+        "files.bitstream",
+        "files.utilization_report",
+        "files.timing_report"
+      ]
+    },
+    {
+      "tag": "a6_64x64",
+      "status": "BLOCKED",
+      "missing": [
+        "board_output",
+        "fixed_reference",
+        "resource.lut_used",
+        "resource.ff_used",
+        "resource.bram_tile_used",
+        "resource.dsp_used",
+        "timing.wns_ns",
+        "timing.whs_ns",
+        "performance.clock_mhz",
+        "performance.latency_ms",
+        "performance.fps",
+        "performance.power_w",
+        "files.bitstream",
+        "files.utilization_report",
+        "files.timing_report"
+      ]
+    },
+    {
+      "tag": "a7_720p_x4",
+      "status": "BLOCKED",
+      "missing": [
+        "board_output",
+        "fixed_reference",
+        "resource.lut_used",
+        "resource.ff_used",
+        "resource.bram_tile_used",
+        "resource.dsp_used",
+        "timing.wns_ns",
+        "timing.whs_ns",
+        "performance.clock_mhz",
+        "performance.latency_ms",
+        "performance.fps",
+        "performance.power_w",
+        "files.bitstream",
+        "files.utilization_report",
+        "files.timing_report"
+      ]
+    },
+    {
+      "tag": "x2_720p",
+      "status": "BLOCKED",
+      "missing": [
+        "board_output",
+        "fixed_reference",
+        "resource.lut_used",
+        "resource.ff_used",
+        "resource.bram_tile_used",
+        "resource.dsp_used",
+        "timing.wns_ns",
+        "timing.whs_ns",
+        "performance.clock_mhz",
+        "performance.latency_ms",
+        "performance.fps",
+        "performance.power_w",
+        "files.bitstream",
+        "files.utilization_report",
+        "files.timing_report"
+      ]
+    }
+  ]
+}
