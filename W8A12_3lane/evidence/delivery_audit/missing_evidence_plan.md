@@ -8,11 +8,11 @@ Missing count: 4
 
 - required path: `W8A12_3lane/evidence/board_reports/a5_32x32/validation.md`
 - required text: `Status: PASS`
-- note: Skeleton report is not enough; replace placeholders in update_board_report.py command with real board data/files before validation can PASS.
+- note: Skeleton report is not enough; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence before validation can PASS.
 
 ```powershell
 python W8A12_3lane\tools\create_board_report.py --tag a5_32x32 --scale 4 --lr-width 32 --lr-height 32 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode "tile+halo crop-stitch"
-python W8A12_3lane\tools\update_board_report.py W8A12_3lane\evidence\board_reports\a5_32x32\summary.json --status PASS --frame-done true --error false --mismatch 0 --bit-exact true --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --resource-status PASS --timing-status PASS --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --target-fps 15 --power-w <power> --psnr-db <psnr_ge_28> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing> --fixed-reference <fixed_reference> --board-output <board_output>
+python W8A12_3lane\tools\finalize_board_report_from_outputs.py W8A12_3lane\evidence\board_reports\a5_32x32\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>
 python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_reports\a5_32x32\summary.json --json-out W8A12_3lane\evidence\board_reports\a5_32x32\validation.json --md-out W8A12_3lane\evidence\board_reports\a5_32x32\validation.md
 ```
 
@@ -24,7 +24,7 @@ python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_rep
 
 ```powershell
 python W8A12_3lane\tools\create_board_report.py --tag a6_64x64 --scale 4 --lr-width 64 --lr-height 64 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode "tile+halo crop-stitch"
-python W8A12_3lane\tools\update_board_report.py W8A12_3lane\evidence\board_reports\a6_64x64\summary.json --status PASS --frame-done true --error false --mismatch 0 --bit-exact true --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --resource-status PASS --timing-status PASS --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --target-fps 15 --power-w <power> --psnr-db <psnr_ge_28> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing> --fixed-reference <fixed_reference> --board-output <board_output>
+python W8A12_3lane\tools\finalize_board_report_from_outputs.py W8A12_3lane\evidence\board_reports\a6_64x64\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>
 python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_reports\a6_64x64\summary.json --json-out W8A12_3lane\evidence\board_reports\a6_64x64\validation.json --md-out W8A12_3lane\evidence\board_reports\a6_64x64\validation.md
 ```
 
@@ -36,7 +36,7 @@ python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_rep
 
 ```powershell
 python W8A12_3lane\tools\create_board_report.py --tag a7_720p_x4 --scale 4 --lr-width 320 --lr-height 180 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode "tile+halo crop-stitch"
-python W8A12_3lane\tools\update_board_report.py W8A12_3lane\evidence\board_reports\a7_720p_x4\summary.json --status PASS --frame-done true --error false --mismatch 0 --bit-exact true --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --resource-status PASS --timing-status PASS --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --target-fps 15 --power-w <power> --psnr-db <psnr_ge_28> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing> --fixed-reference <fixed_reference> --board-output <board_output>
+python W8A12_3lane\tools\finalize_board_report_from_outputs.py W8A12_3lane\evidence\board_reports\a7_720p_x4\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>
 python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_reports\a7_720p_x4\summary.json --json-out W8A12_3lane\evidence\board_reports\a7_720p_x4\validation.json --md-out W8A12_3lane\evidence\board_reports\a7_720p_x4\validation.md
 ```
 
@@ -44,10 +44,10 @@ python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_rep
 
 - required path: `W8A12_3lane/evidence/board_reports/x2_720p/validation.md`
 - required text: `Status: PASS`
-- note: Depends on x2 fixed reference and board integration; replace placeholders with real board data/files.
+- note: Depends on x2 fixed reference and board integration; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence.
 
 ```powershell
 python W8A12_3lane\tools\create_board_report.py --tag x2_720p --scale 2 --lr-width 640 --lr-height 360 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode "tile+halo crop-stitch"
-python W8A12_3lane\tools\update_board_report.py W8A12_3lane\evidence\board_reports\x2_720p\summary.json --status PASS --frame-done true --error false --mismatch 0 --bit-exact true --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --resource-status PASS --timing-status PASS --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --target-fps 15 --power-w <power> --psnr-db <psnr_ge_30> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing> --fixed-reference <fixed_reference> --board-output <board_output>
+python W8A12_3lane\tools\finalize_board_report_from_outputs.py W8A12_3lane\evidence\board_reports\x2_720p\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>
 python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_reports\x2_720p\summary.json --json-out W8A12_3lane\evidence\board_reports\x2_720p\validation.json --md-out W8A12_3lane\evidence\board_reports\x2_720p\validation.md
 ```

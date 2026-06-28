@@ -15,6 +15,7 @@ OUT = BASE / "evidence" / "board_reports" / "flow_static"
 FILES = {
     "create": BASE / "tools" / "create_board_report.py",
     "update": BASE / "tools" / "update_board_report.py",
+    "finalize": BASE / "tools" / "finalize_board_report_from_outputs.py",
     "validate": BASE / "tools" / "validate_board_report.py",
     "doc": BASE / "docs" / "board_report_flow.md",
     "audit": BASE / "tools" / "audit_contest_delivery.py",
@@ -36,6 +37,7 @@ def main() -> int:
 
     create = texts["create"]
     update = texts["update"]
+    finalize = texts["finalize"]
     validate = texts["validate"]
     doc = texts["doc"]
     audit = texts["audit"]
@@ -52,6 +54,11 @@ def main() -> int:
     add("update_accepts_timing_perf_quality", all(token in update for token in ["--wns-ns", "--whs-ns", "--clock-mhz", "--latency-ms", "--fps", "--target-fps", "--power-w", "--psnr-db", "--ssim"]), "timing/perf/quality CLI")
     add("update_accepts_required_files", all(token in update for token in ["--bitstream", "--utilization-report", "--timing-report", "--fixed-reference", "--board-output"]), "evidence file CLI")
 
+    add("finalize_computes_mismatch_from_files", all(token in finalize for token in ["compare_bytes", "mismatch_bytes", "--board-output", "--fixed-reference"]), "computed board/reference compare")
+    add("finalize_computes_psnr", "math.log10" in finalize and "psnr_db" in finalize, "computed PSNR")
+    add("finalize_requires_real_metrics", all(token in finalize for token in ["required=True", "--lut-used", "--wns-ns", "--fps", "--power-w"]), "required resource/timing/perf metrics")
+    add("finalize_runs_validator", "validate_board_report.py" in finalize and "validation.md" in finalize, "final validation emission")
+
     add("validate_rejects_nonpass", "status_pass" in validate, "status PASS")
     add("validate_requires_frame_done", "frame_done" in validate and "error_false" in validate, "frame done/error")
     add("validate_requires_bit_exact", "bit_exact_to_fixed_reference" in validate, "bit exact")
@@ -64,11 +71,12 @@ def main() -> int:
     add("doc_lists_four_required_reports", all(token in doc for token in ["a5_32x32", "a6_64x64", "a7_720p_x4", "x2_720p"]), "required board report tags")
     add("doc_states_x4_x2_targets", ">= 28 dB" in doc and ">= 30 dB" in doc, "quality targets")
     add("doc_requires_board_summary", "summary.md" in doc and "validation.md" in doc, "report and validation outputs")
+    add("doc_lists_finalize_tool", "finalize_board_report_from_outputs.py" in doc and "自动计算 byte mismatch" in doc, "auto finalize flow")
     add("doc_requires_resource_perf_quality", all(token in doc for token in ["资源消耗", "FPS", "target_fps", "延迟", "PSNR", "SSIM"]), "reporting cadence")
     add("doc_separates_fps_and_psnr", "x4 >= 28 dB" in doc and "不是 FPS" in doc and "15" in doc and "20" in doc and "30" in doc, "FPS and PSNR separated")
 
     add("audit_requires_board_validations", all(token in audit for token in ["a5.board_32x32", "a6.board_64x64", "a7.board_720p_x4", "x2.board"]), "audit board gates")
-    add("missing_plan_maps_board_commands", all(token in missing for token in ["create_board_report.py", "update_board_report.py", "validate_board_report.py"]), "missing plan commands")
+    add("missing_plan_maps_board_commands", all(token in missing for token in ["create_board_report.py", "finalize_board_report_from_outputs.py", "validate_board_report.py"]), "missing plan commands")
 
     ok = all(check["pass"] for check in checks)
     OUT.mkdir(parents=True, exist_ok=True)

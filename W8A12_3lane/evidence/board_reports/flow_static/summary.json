@@ -12,6 +12,11 @@
       "detail": "W8A12_3lane/tools/update_board_report.py"
     },
     {
+      "name": "file:finalize",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/finalize_board_report_from_outputs.py"
+    },
+    {
       "name": "file:validate",
       "pass": true,
       "detail": "W8A12_3lane/tools/validate_board_report.py"
@@ -77,6 +82,26 @@
       "detail": "evidence file CLI"
     },
     {
+      "name": "finalize_computes_mismatch_from_files",
+      "pass": true,
+      "detail": "computed board/reference compare"
+    },
+    {
+      "name": "finalize_computes_psnr",
+      "pass": true,
+      "detail": "computed PSNR"
+    },
+    {
+      "name": "finalize_requires_real_metrics",
+      "pass": true,
+      "detail": "required resource/timing/perf metrics"
+    },
+    {
+      "name": "finalize_runs_validator",
+      "pass": true,
+      "detail": "final validation emission"
+    },
+    {
       "name": "validate_rejects_nonpass",
       "pass": true,
       "detail": "status PASS"
@@ -130,6 +155,11 @@
       "name": "doc_requires_board_summary",
       "pass": true,
       "detail": "report and validation outputs"
+    },
+    {
+      "name": "doc_lists_finalize_tool",
+      "pass": true,
+      "detail": "auto finalize flow"
     },
     {
       "name": "doc_requires_resource_perf_quality",

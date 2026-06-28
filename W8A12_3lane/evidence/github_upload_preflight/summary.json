@@ -37,7 +37,7 @@
     {
       "name": "git.upload_candidate_count",
       "pass": true,
-      "detail": 787
+      "detail": 788
     },
     {
       "name": "git.no_forbidden_upload_candidates",
@@ -77,7 +77,7 @@
     {
       "name": "submission_manifest.has_files",
       "pass": true,
-      "detail": 327
+      "detail": 328
     },
     {
       "name": "contest_report_pdf.exists",

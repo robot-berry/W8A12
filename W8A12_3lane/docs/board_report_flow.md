@@ -32,7 +32,15 @@ python W8A12_3lane\tools\create_board_report.py --tag x2_720p --scale 2 --lr-wid
 
 注意：模板状态为 `PENDING`，不能通过交付审计。只有真实上板后填入资源、时序、功耗、性能、PSNR/SSIM 和 bit-exact 结果，并把状态改为 `PASS`，才算有效证据。
 
-报告填写后使用校验器检查：
+真实上板产生 `board_output` 和 `fixed_reference` 后，优先使用自动 finalize 工具。它会从两个 raw RGB 文件自动计算 byte mismatch、bit-exact 和 PSNR，再写入 `summary.json` 并调用 `validate_board_report.py` 生成 `validation.md`：
+
+```powershell
+python W8A12_3lane\tools\finalize_board_report_from_outputs.py W8A12_3lane\evidence\board_reports\<tag>\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>
+```
+
+该工具不会伪造最终 PASS：只要输出长度、mismatch、资源门限、时序、FPS、PSNR 或必要文件路径任一项不满足，`summary.json` 和 `validation.md` 都会保持 `FAIL`，不能通过交付审计。
+
+如果需要手动覆盖或补充字段，可继续使用低层 update 工具，然后再使用校验器检查：
 
 ```powershell
 python W8A12_3lane\tools\update_board_report.py W8A12_3lane\evidence\board_reports\<tag>\summary.json --status PASS --frame-done true --error false --mismatch 0 --bit-exact true --resource-status PASS --timing-status PASS --wns-ns 0.001 --whs-ns 0.001 --clock-mhz 100 --latency-ms 1.0 --fps 15 --target-fps 15 --power-w 3.0 --psnr-db 28.0 --bitstream <path> --utilization-report <path> --timing-report <path> --fixed-reference <path> --board-output <path>

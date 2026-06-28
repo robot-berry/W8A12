@@ -52,17 +52,17 @@ COMMANDS = {
     ],
     "a5.board_32x32": [
         "python W8A12_3lane\\tools\\create_board_report.py --tag a5_32x32 --scale 4 --lr-width 32 --lr-height 32 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode \"tile+halo crop-stitch\"",
-        "python W8A12_3lane\\tools\\update_board_report.py W8A12_3lane\\evidence\\board_reports\\a5_32x32\\summary.json --status PASS --frame-done true --error false --mismatch 0 --bit-exact true --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --resource-status PASS --timing-status PASS --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --target-fps 15 --power-w <power> --psnr-db <psnr_ge_28> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing> --fixed-reference <fixed_reference> --board-output <board_output>",
+        "python W8A12_3lane\\tools\\finalize_board_report_from_outputs.py W8A12_3lane\\evidence\\board_reports\\a5_32x32\\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>",
         "python W8A12_3lane\\tools\\validate_board_report.py W8A12_3lane\\evidence\\board_reports\\a5_32x32\\summary.json --json-out W8A12_3lane\\evidence\\board_reports\\a5_32x32\\validation.json --md-out W8A12_3lane\\evidence\\board_reports\\a5_32x32\\validation.md",
     ],
     "a6.board_64x64": [
         "python W8A12_3lane\\tools\\create_board_report.py --tag a6_64x64 --scale 4 --lr-width 64 --lr-height 64 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode \"tile+halo crop-stitch\"",
-        "python W8A12_3lane\\tools\\update_board_report.py W8A12_3lane\\evidence\\board_reports\\a6_64x64\\summary.json --status PASS --frame-done true --error false --mismatch 0 --bit-exact true --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --resource-status PASS --timing-status PASS --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --target-fps 15 --power-w <power> --psnr-db <psnr_ge_28> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing> --fixed-reference <fixed_reference> --board-output <board_output>",
+        "python W8A12_3lane\\tools\\finalize_board_report_from_outputs.py W8A12_3lane\\evidence\\board_reports\\a6_64x64\\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>",
         "python W8A12_3lane\\tools\\validate_board_report.py W8A12_3lane\\evidence\\board_reports\\a6_64x64\\summary.json --json-out W8A12_3lane\\evidence\\board_reports\\a6_64x64\\validation.json --md-out W8A12_3lane\\evidence\\board_reports\\a6_64x64\\validation.md",
     ],
     "a7.board_720p_x4": [
         "python W8A12_3lane\\tools\\create_board_report.py --tag a7_720p_x4 --scale 4 --lr-width 320 --lr-height 180 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode \"tile+halo crop-stitch\"",
-        "python W8A12_3lane\\tools\\update_board_report.py W8A12_3lane\\evidence\\board_reports\\a7_720p_x4\\summary.json --status PASS --frame-done true --error false --mismatch 0 --bit-exact true --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --resource-status PASS --timing-status PASS --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --target-fps 15 --power-w <power> --psnr-db <psnr_ge_28> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing> --fixed-reference <fixed_reference> --board-output <board_output>",
+        "python W8A12_3lane\\tools\\finalize_board_report_from_outputs.py W8A12_3lane\\evidence\\board_reports\\a7_720p_x4\\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>",
         "python W8A12_3lane\\tools\\validate_board_report.py W8A12_3lane\\evidence\\board_reports\\a7_720p_x4\\summary.json --json-out W8A12_3lane\\evidence\\board_reports\\a7_720p_x4\\validation.json --md-out W8A12_3lane\\evidence\\board_reports\\a7_720p_x4\\validation.md",
     ],
     "x2.w8a12_export": [
@@ -92,7 +92,7 @@ COMMANDS = {
     ],
     "x2.board": [
         "python W8A12_3lane\\tools\\create_board_report.py --tag x2_720p --scale 2 --lr-width 640 --lr-height 360 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode \"tile+halo crop-stitch\"",
-        "python W8A12_3lane\\tools\\update_board_report.py W8A12_3lane\\evidence\\board_reports\\x2_720p\\summary.json --status PASS --frame-done true --error false --mismatch 0 --bit-exact true --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --resource-status PASS --timing-status PASS --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --target-fps 15 --power-w <power> --psnr-db <psnr_ge_30> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing> --fixed-reference <fixed_reference> --board-output <board_output>",
+        "python W8A12_3lane\\tools\\finalize_board_report_from_outputs.py W8A12_3lane\\evidence\\board_reports\\x2_720p\\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>",
         "python W8A12_3lane\\tools\\validate_board_report.py W8A12_3lane\\evidence\\board_reports\\x2_720p\\summary.json --json-out W8A12_3lane\\evidence\\board_reports\\x2_720p\\validation.json --md-out W8A12_3lane\\evidence\\board_reports\\x2_720p\\validation.md",
     ],
     "delivery_manifest": [
@@ -112,7 +112,7 @@ NOTES = {
     "a4.single_lane_ooc": "Requires Vivado synthesis; then summarize OOC.",
     "a4.3lane_ooc": "Requires Vivado synthesis; then summarize OOC.",
     "board.vivado_hw_probe": "Board reports require Vivado to see at least one hardware target and device first.",
-    "a5.board_32x32": "Skeleton report is not enough; replace placeholders in update_board_report.py command with real board data/files before validation can PASS.",
+    "a5.board_32x32": "Skeleton report is not enough; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence before validation can PASS.",
     "a6.board_64x64": "Depends on A5 passing.",
     "a7.board_720p_x4": "Depends on A6 and full-frame/tile integration.",
     "x2.fixed_reference": "Requires successful x2 W8A12 export first; a3-tail-rgb reads scale from the x2 RTL manifest.",
@@ -120,7 +120,7 @@ NOTES = {
     "quality.x2_interpolation_baseline": "Run REDS_val x2 interpolation baseline to report SPAN/W8A12 improvement over bicubic.",
     "quality.comparison_report": "Depends on x4/x2 interpolation baseline summaries; produces final PSNR improvement table.",
     "quality.metric_completion_static": "Checks that the report separates FP32, W8A12 fixed, RTL, and board quality metrics and keeps pending board metrics explicit.",
-    "x2.board": "Depends on x2 fixed reference and board integration; replace placeholders with real board data/files.",
+    "x2.board": "Depends on x2 fixed reference and board integration; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence.",
 }
 
 

@@ -6,6 +6,7 @@ Status: PASS
 | --- | --- | --- |
 | `file:create` | PASS | `W8A12_3lane/tools/create_board_report.py` |
 | `file:update` | PASS | `W8A12_3lane/tools/update_board_report.py` |
+| `file:finalize` | PASS | `W8A12_3lane/tools/finalize_board_report_from_outputs.py` |
 | `file:validate` | PASS | `W8A12_3lane/tools/validate_board_report.py` |
 | `file:doc` | PASS | `W8A12_3lane/docs/board_report_flow.md` |
 | `file:audit` | PASS | `W8A12_3lane/tools/audit_contest_delivery.py` |
@@ -19,6 +20,10 @@ Status: PASS
 | `update_accepts_resource_used` | PASS | `resource used CLI` |
 | `update_accepts_timing_perf_quality` | PASS | `timing/perf/quality CLI` |
 | `update_accepts_required_files` | PASS | `evidence file CLI` |
+| `finalize_computes_mismatch_from_files` | PASS | `computed board/reference compare` |
+| `finalize_computes_psnr` | PASS | `computed PSNR` |
+| `finalize_requires_real_metrics` | PASS | `required resource/timing/perf metrics` |
+| `finalize_runs_validator` | PASS | `final validation emission` |
 | `validate_rejects_nonpass` | PASS | `status PASS` |
 | `validate_requires_frame_done` | PASS | `frame done/error` |
 | `validate_requires_bit_exact` | PASS | `bit exact` |
@@ -30,6 +35,7 @@ Status: PASS
 | `doc_lists_four_required_reports` | PASS | `required board report tags` |
 | `doc_states_x4_x2_targets` | PASS | `quality targets` |
 | `doc_requires_board_summary` | PASS | `report and validation outputs` |
+| `doc_lists_finalize_tool` | PASS | `auto finalize flow` |
 | `doc_requires_resource_perf_quality` | PASS | `reporting cadence` |
 | `doc_separates_fps_and_psnr` | PASS | `FPS and PSNR separated` |
 | `audit_requires_board_validations` | PASS | `audit board gates` |

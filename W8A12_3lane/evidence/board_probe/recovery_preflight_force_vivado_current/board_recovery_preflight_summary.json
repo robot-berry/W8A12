@@ -38,7 +38,7 @@
                                                     "VIVADO_HW_TARGET_PROBE_STDERR_LOG=G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\vivado_probe\\probe_vivado_hw_targets.stderr.log",
                                                     "VIVADO_HW_TARGET_PROBE_EXIT=1",
                                                     "VIVADO_CLEANUP_BEFORE_COUNT=1",
-                                                    "VIVADO_CLEANUP_PROCESS PID=23696 NAME=hw_server",
+                                                    "VIVADO_CLEANUP_PROCESS PID=39968 NAME=hw_server",
                                                     "VIVADO_CLEANUP_AFTER_COUNT=0",
                                                     "VIVADO_CLEANUP_CLEAN=1",
                                                     {
