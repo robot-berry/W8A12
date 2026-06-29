@@ -57,6 +57,11 @@
       "detail": "quality metric completion globs"
     },
     {
+      "name": "manifests_include_sim_fps_estimate",
+      "pass": true,
+      "detail": "simulated FPS estimate evidence"
+    },
+    {
       "name": "manifests_include_delivery_matrix",
       "pass": true,
       "detail": "delivery evidence matrix"
@@ -70,6 +75,11 @@
       "name": "manifests_include_report_pdf",
       "pass": true,
       "detail": "PDF report evidence and artifact globs"
+    },
+    {
+      "name": "manifests_include_report_docx",
+      "pass": true,
+      "detail": "DOCX report evidence and artifact globs"
     },
     {
       "name": "manifests_include_delivery_run_summaries",

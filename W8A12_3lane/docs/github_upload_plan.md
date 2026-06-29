@@ -31,6 +31,7 @@ python W8A12_3lane\tools\audit_contest_delivery.py
 ```powershell
 python W8A12_3lane\tools\generate_missing_evidence_plan.py
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_pdf.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_docx.ps1
 python W8A12_3lane\tools\collect_submission_package.py
 python W8A12_3lane\tools\create_submission_archive.py --allow-incomplete
 python W8A12_3lane\tools\collect_delivery_manifest.py
@@ -46,7 +47,7 @@ python W8A12_3lane\tools\check_github_upload_preflight.py
 
 - 当前 Git remote 不是 `https://github.com/robot-berry/W8A12.git`；
 - 已暂存文件包含 `W8A12_3lane/` 以外的路径；
-- 缺少审计、提交 manifest、PDF 报告或草案归档摘要。
+- 缺少审计、提交 manifest、PDF/Word 报告或草案归档摘要。
 
 当前本地仓库保留原 `origin=https://github.com/robot-berry/feitengspan1.git`，并已新增 `w8a12=https://github.com/robot-berry/W8A12.git`。上传前必须只 stage `W8A12_3lane/` 目录，推送时使用 `w8a12` remote，避免把根目录历史脏文件推入目标仓库。
 
@@ -70,7 +71,9 @@ W8A12_3lane/output/github_upload/robot-berry_W8A12_upload_tree/
 W8A12_3lane/evidence/delivery_audit/contest_delivery_audit.md
 W8A12_3lane/evidence/delivery_audit/missing_evidence_plan.md
 W8A12_3lane/evidence/report_pdf/summary.md
+W8A12_3lane/evidence/report_docx/summary.md
 W8A12_3lane/output/pdf/W8A12_3lane_contest_submission_report.pdf
+W8A12_3lane/output/docx/W8A12_3lane_contest_submission_report.docx
 W8A12_3lane/evidence/delivery_matrix/summary.md
 W8A12_3lane/evidence/github_upload_preflight/summary.md
 W8A12_3lane/evidence/github_upload_export/summary.md
@@ -90,6 +93,7 @@ W8A12_3lane/evidence/delivery_manifest/manifest.md
 - `DELIVERY_INDEX.md`
 - `docs/contest_submission_readme.md`
 - `output/pdf/W8A12_3lane_contest_submission_report.pdf`
+- `output/docx/W8A12_3lane_contest_submission_report.docx`
 - `docs/`
 - `rtl/`
 - `sim/`
@@ -97,6 +101,7 @@ W8A12_3lane/evidence/delivery_manifest/manifest.md
 - `tools/`
 - `evidence/` 下的 summary、hash、static check、audit、manifest、submission package manifest
 - `evidence/report_pdf/summary.md` 和 rendered PNG 校验证据
+- `evidence/report_docx/summary.md` 和可见文本黑色字体审计证据
 - `evidence/delivery_matrix/summary.md` 评审证据矩阵
 - `evidence/submission_package/archive/summary.md` 和 `summary.json`，用于记录提交草案 zip 的 SHA256；`.zip` 本体不纳入递归 manifest
 - 根目录 `tools/` 中的 W8A12 导出工具，至少包括 `submission_scope_policy.md` 列出的 6 个脚本

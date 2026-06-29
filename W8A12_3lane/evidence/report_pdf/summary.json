@@ -2,8 +2,8 @@
   "status": "PASS",
   "source": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\docs\\contest_submission_report.md",
   "pdf": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\pdf\\W8A12_3lane_contest_submission_report.pdf",
-  "bytes": 90885,
-  "sha256": "936e512e3b68f8593709ca9967bf2abd59c4a136c4ae6359f5a0100ce60058aa",
+  "bytes": 93170,
+  "sha256": "2508872242d76cb1e9c91e868b3ecd0272ed5d67f0c7f232acc1c18ac93e9317",
   "font_path": "C:\\Windows\\Fonts\\simhei.ttf",
   "page_count": 7,
   "required_tokens": {
@@ -72,7 +72,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-5.png",
       "width": 1241,
       "height": 1754,
-      "mean": 246.3060907404464,
+      "mean": 245.8395797518645,
       "extrema": [
         0,
         255
@@ -83,7 +83,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-6.png",
       "width": 1241,
       "height": 1754,
-      "mean": 248.13944735045578,
+      "mean": 248.98120102135604,
       "extrema": [
         0,
         255
@@ -94,7 +94,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-7.png",
       "width": 1241,
       "height": 1754,
-      "mean": 252.2054068655781,
+      "mean": 248.40787949174765,
       "extrema": [
         0,
         255

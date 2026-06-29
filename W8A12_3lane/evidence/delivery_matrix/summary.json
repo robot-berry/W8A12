@@ -1,10 +1,10 @@
 {
   "status": "PASS",
   "contest_delivery_status": "INCOMPLETE",
-  "audit_pass_count": 69,
-  "audit_total_count": 73,
+  "audit_pass_count": 72,
+  "audit_total_count": 76,
   "submission_status": "INCOMPLETE",
-  "submission_file_count": 335,
+  "submission_file_count": 347,
   "missing_final_evidence": [
     "evidence/board_reports/a5_32x32/validation.md",
     "evidence/board_reports/a6_64x64/validation.md",
@@ -13,7 +13,9 @@
   ],
   "latest_delivery_run": "evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.md",
   "pdf_status": "PASS",
-  "pdf_sha256": "936e512e3b68f8593709ca9967bf2abd59c4a136c4ae6359f5a0100ce60058aa",
+  "pdf_sha256": "2508872242d76cb1e9c91e868b3ecd0272ed5d67f0c7f232acc1c18ac93e9317",
+  "docx_status": "PASS",
+  "docx_sha256": "39d827cbdfbf70b73bed0aa874de5d192920770a4901744a28f12e6091a8a458",
   "rows": [
     {
       "area": "交付物1 模型/训练/量化/转换",
@@ -88,7 +90,9 @@
       "evidence": [
         "docs/contest_submission_report.md",
         "output/pdf/W8A12_3lane_contest_submission_report.pdf",
-        "evidence/report_pdf/summary.md"
+        "evidence/report_pdf/summary.md",
+        "output/docx/W8A12_3lane_contest_submission_report.docx",
+        "evidence/report_docx/summary.md"
       ],
       "note": "PDF 已生成并完成全页渲染/关键文本校验。"
     },

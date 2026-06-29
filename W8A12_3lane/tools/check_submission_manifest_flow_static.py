@@ -49,6 +49,7 @@ def main() -> int:
     add("manifests_include_quality_baseline_globs", "evidence/quality_baseline/*/*summary*" in sub_text and "evidence/quality_baseline/*/*summary*" in del_text, "quality baseline globs")
     add("manifests_include_quality_comparison_globs", "evidence/quality_comparison/*summary*" in sub_text and "evidence/quality_comparison/*summary*" in del_text, "quality comparison globs")
     add("manifests_include_quality_metric_completion_globs", "evidence/quality_metric_completion/*" in sub_text and "evidence/quality_metric_completion/*" in del_text, "quality metric completion globs")
+    add("manifests_include_sim_fps_estimate", "evidence/sim_fps_estimate/*" in sub_text and "evidence/sim_fps_estimate/*" in del_text, "simulated FPS estimate evidence")
     add("manifests_include_delivery_matrix", "evidence/delivery_matrix/*" in sub_text and "evidence/delivery_matrix/summary.md" in del_text, "delivery evidence matrix")
     add("manifests_include_github_pr_attempt", "evidence/github_pr_attempt/*" in sub_text and "evidence/github_pr_attempt/summary.md" in del_text, "GitHub PR attempt evidence")
     add("manifests_include_report_pdf", all(token in sub_text and token in del_text for token in [
@@ -56,6 +57,10 @@ def main() -> int:
         "evidence/report_pdf/rendered/*.png",
         "output/pdf/*.pdf",
     ]), "PDF report evidence and artifact globs")
+    add("manifests_include_report_docx", all(token in sub_text and token in del_text for token in [
+        "evidence/report_docx/*",
+        "output/docx/*.docx",
+    ]), "DOCX report evidence and artifact globs")
     add("manifests_include_delivery_run_summaries", "evidence/delivery_runs/*/summary.*" in sub_text and "evidence/delivery_runs/*/summary.*" in del_text, "delivery gate run summaries")
     add("manifests_include_board_probe_evidence", "evidence/board_probe/*/*" in sub_text and "evidence/board_probe/*/*" in del_text, "board probe/precondition evidence")
     add("manifests_include_nested_board_probe_evidence", "evidence/board_probe/*/*/*" in sub_text and "evidence/board_probe/*/*/*" in del_text, "nested USB/preflight evidence")
@@ -69,7 +74,10 @@ def main() -> int:
         "evidence/x2/w8a12_export/summary.md",
         "evidence/x2/reference/summary.md",
         "evidence/x2/reference_validation/validation.md",
+        "evidence/sim_fps_estimate/summary.md",
         "evidence/report_pdf/summary.md",
+        "evidence/report_docx/summary.md",
+        "output/docx/W8A12_3lane_contest_submission_report.docx",
         "evidence/board_reports/x2_720p/validation.md",
     ]), "core final evidence")
     add("submission_excludes_large_binaries", all(token in sub_text for token in [".dcp", ".bit", ".xsa", ".pth", ".pt"]), "large binary exclusions")

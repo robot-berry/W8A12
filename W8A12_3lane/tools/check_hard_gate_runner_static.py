@@ -69,6 +69,7 @@ def main() -> int:
     add(checks, "delivery_runner_stagehash_static", "board_stagehash_flow_static" in delivery_text and "check_board_stagehash_flow_static.py" in delivery_text, "stage-hash static gate")
     add(checks, "delivery_runner_jtag_recovery_checklist", "jtag_recovery_checklist" in delivery_text and "generate_jtag_recovery_checklist.py" in delivery_text, "JTAG recovery checklist gate")
     add(checks, "delivery_runner_contest_report_pdf", "contest_report_pdf" in delivery_text and "export_contest_report_pdf.ps1" in delivery_text, "contest report PDF gate")
+    add(checks, "delivery_runner_contest_report_docx", "contest_report_docx" in delivery_text and "export_contest_report_docx.ps1" in delivery_text, "contest report DOCX gate")
     add(checks, "delivery_runner_evidence_matrix", "delivery_evidence_matrix" in delivery_text and "generate_delivery_evidence_matrix.py" in delivery_text, "delivery evidence matrix gate")
     add(checks, "delivery_runner_final_gates", all(token in delivery_text for token in [
         "submission_manifest_final",

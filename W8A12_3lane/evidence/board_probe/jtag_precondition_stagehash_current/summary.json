@@ -1,0 +1,11 @@
+{
+  "status": "READY",
+  "generated_at": "2026-06-29 14:43:17",
+  "usb_match_count": 6,
+  "usb_known_jtag_candidate_count": 3,
+  "pnp_history_known_jtag_candidate_count": 4,
+  "pnp_history_known_vidpid_count": 3,
+  "vivado_target_count": 1,
+  "usb_json": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\stagehash_current_20260629_144313\\usb\\usb_jtag_devices.json",
+  "vivado_probe_dir": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\stagehash_current_20260629_144313\\vivado_probe"
+}

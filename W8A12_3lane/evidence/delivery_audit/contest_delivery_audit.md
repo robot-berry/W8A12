@@ -25,6 +25,8 @@
 | `doc.contest_submission_report` | OK | `W8A12_3lane/docs/contest_submission_report.md` |
 | `report.static` | OK | `W8A12_3lane/evidence/report_static/summary.md` |
 | `report.pdf` | OK | `W8A12_3lane/evidence/report_pdf/summary.md` |
+| `report.docx` | OK | `W8A12_3lane/evidence/report_docx/summary.md` |
+| `report.docx_artifact` | OK | `W8A12_3lane/output/docx/W8A12_3lane_contest_submission_report.docx` |
 | `doc.contest_submission` | OK | `W8A12_3lane/docs/contest_submission_readme.md` |
 | `delivery_manifest` | OK | `W8A12_3lane/evidence/delivery_manifest/manifest.md` |
 | `submission_manifest` | OK | `W8A12_3lane/evidence/submission_package/submission_manifest.md` |
@@ -59,6 +61,7 @@
 | `a4.single_lane_ooc_summary` | OK | `W8A12_3lane/evidence/resource/A4_single_lane_mac_scheduler_ooc/ooc_summary.md` |
 | `a4.3lane_ooc_summary` | OK | `W8A12_3lane/evidence/resource/A4_3lane_mac_scheduler_ooc/ooc_summary.md` |
 | `ppa.summary` | OK | `W8A12_3lane/evidence/ppa_summary/summary.md` |
+| `sim.fps_estimate` | OK | `W8A12_3lane/evidence/sim_fps_estimate/summary.md` |
 | `board.vivado_hw_probe` | OK | `W8A12_3lane/evidence/board_probe/vivado_hw_probe.md` |
 | `a5.board_32x32` | MISSING | `W8A12_3lane/evidence/board_reports/a5_32x32/validation.md` |
 | `a6.board_64x64` | MISSING | `W8A12_3lane/evidence/board_reports/a6_64x64/validation.md` |

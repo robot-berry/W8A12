@@ -149,6 +149,20 @@
       "pass": true
     },
     {
+      "name": "report.docx",
+      "path": "W8A12_3lane/evidence/report_docx/summary.md",
+      "exists": true,
+      "required_text": "Status: PASS",
+      "pass": true
+    },
+    {
+      "name": "report.docx_artifact",
+      "path": "W8A12_3lane/output/docx/W8A12_3lane_contest_submission_report.docx",
+      "exists": true,
+      "required_text": null,
+      "pass": true
+    },
+    {
       "name": "doc.contest_submission",
       "path": "W8A12_3lane/docs/contest_submission_readme.md",
       "exists": true,
@@ -384,6 +398,13 @@
       "path": "W8A12_3lane/evidence/ppa_summary/summary.md",
       "exists": true,
       "required_text": "Status: PASS",
+      "pass": true
+    },
+    {
+      "name": "sim.fps_estimate",
+      "path": "W8A12_3lane/evidence/sim_fps_estimate/summary.md",
+      "exists": true,
+      "required_text": "Status:",
       "pass": true
     },
     {

@@ -17,9 +17,38 @@ OUT = BASE / "evidence" / "github_upload_export"
 DEFAULT_EXPORT_ROOT = BASE / "output" / "github_upload" / "robot-berry_W8A12_upload_tree"
 TARGET_REPO = "https://github.com/robot-berry/W8A12.git"
 SKIP_PREFIXES = ("W8A12_3lane/evidence/github_upload_export/",)
+ROOT_TOOL_FILES = (
+    "tools/calibrate_span_activation_scales.py",
+    "tools/export_span_w8a12_quant_plan.py",
+    "tools/export_span_quant_plan_to_rtl.py",
+    "tools/export_span_w8a12_postprocess_to_rtl.py",
+    "tools/check_span_w8a12_rtl_export.py",
+    "tools/run_span_ptq_reference.py",
+)
+ROOT_STAGEHASH_SCRIPT_FILES = (
+    "scripts/run_w8a12_board_recovery_preflight.ps1",
+    "scripts/run_w8a12_stagehash_true2x2_acceptance.ps1",
+    "scripts/probe_vivado_hw_targets.ps1",
+    "scripts/probe_vivado_hw_targets.tcl",
+    "scripts/check_usb_jtag_devices.ps1",
+    "scripts/cleanup_vivado_processes.ps1",
+    "scripts/run_xsct_psu_init_only.ps1",
+    "scripts/run_xsct_psu_init_only.tcl",
+    "scripts/run_jtag_w8a12_tile_writer_smoke.ps1",
+    "scripts/jtag_rgb_transfer.tcl",
+    "scripts/compare_jtag_w8a12_span_output.ps1",
+    "scripts/run_read_jtag_w8a12_tile_writer_regs.ps1",
+    "scripts/read_jtag_w8a12_tile_writer_regs.tcl",
+    "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.ps1",
+    "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.tcl",
+    "scripts/create_vivado_jtag_w8a12_tile_writer_bd_project.tcl",
+)
+FILESYSTEM_DIRS = ("external/SPAN/basicsr",)
+ADDITIONAL_PATHS = (*ROOT_TOOL_FILES, *ROOT_STAGEHASH_SCRIPT_FILES, *FILESYSTEM_DIRS)
 
 FORBIDDEN_RE = re.compile(
-    r"(\.(npy|npz|pth|pt|pid|zip|dcp|bit|xsa|jou|log|wdb)$|"
+    r"((^|/)~\$|"
+    r"\.(npy|npz|pth|pt|pid|zip|dcp|bit|xsa|jou|log|wdb)$|"
     r"(^|/)(stdout|stderr)\.txt$|"
     r"_(stdout|stderr)\.txt$)",
     re.IGNORECASE,
@@ -71,14 +100,19 @@ def safe_clean_payload_dir(export_root: Path) -> None:
     payload.mkdir(parents=True, exist_ok=True)
 
 
-def collect_candidates() -> list[str]:
-    code, output = run_git(["ls-files", "--others", "--cached", "--exclude-standard", "W8A12_3lane"])
+def collect_git_paths(pathspecs: list[str]) -> list[str]:
+    code, output = run_git(["ls-files", "--others", "--cached", "--exclude-standard", "--", *pathspecs])
     if code != 0:
         raise RuntimeError(output)
+    return output.splitlines()
+
+
+def collect_candidates() -> list[str]:
+    output_lines = collect_git_paths(["W8A12_3lane", *ADDITIONAL_PATHS])
     paths = []
-    for line in output.splitlines():
+    for line in output_lines:
         rel = line.strip().replace("\\", "/")
-        if not rel or not rel.startswith("W8A12_3lane/"):
+        if not rel:
             continue
         if rel.startswith(SKIP_PREFIXES):
             continue
@@ -86,6 +120,19 @@ def collect_candidates() -> list[str]:
             continue
         src = ROOT / rel
         if src.is_file():
+            paths.append(rel)
+    for directory in FILESYSTEM_DIRS:
+        src_dir = ROOT / directory
+        if not src_dir.is_dir():
+            continue
+        for src in src_dir.rglob("*"):
+            if not src.is_file():
+                continue
+            rel = src.relative_to(ROOT).as_posix()
+            if FORBIDDEN_RE.search(rel):
+                continue
+            if "__pycache__" in src.parts:
+                continue
             paths.append(rel)
     return sorted(set(paths))
 
@@ -116,6 +163,7 @@ def main() -> int:
         "total_bytes": total_bytes,
         "forbidden_after_copy": forbidden_after_copy,
         "entries": entries,
+        "included_roots": ["W8A12_3lane/", "tools/*.py required exporters", "scripts/* required JTAG/stage-hash helpers", "external/SPAN/basicsr/"],
         "note": "This clean tree is for creating or updating a separate upload commit without pushing the current repository history. Existing .git metadata under the export root is preserved.",
     }
 
@@ -151,12 +199,12 @@ def render_md(data: dict) -> str:
         f"Set-Location \"{data['export_root']}\"",
         "git init",
         "git remote add origin https://github.com/robot-berry/W8A12.git",
-        "git add W8A12_3lane",
+        "git add W8A12_3lane tools scripts external/SPAN/basicsr",
         'git commit -m "Add W8A12 3-lane contest delivery draft"',
         "git push origin HEAD:training-software",
         "```",
         "",
-        "This export intentionally keeps the `W8A12_3lane/` directory as the upload root, preserves any existing local `.git/` metadata under the export root, and does not include forbidden generated artifacts.",
+        "This export includes `W8A12_3lane/` plus the root model/export tools, JTAG/stage-hash helper scripts, and `external/SPAN/basicsr/` source required by the submission scope policy. It preserves any existing local `.git/` metadata under the export root and does not include forbidden generated artifacts.",
         "",
     ]
     return "\n".join(lines)

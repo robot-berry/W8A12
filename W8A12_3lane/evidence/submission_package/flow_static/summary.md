@@ -15,9 +15,11 @@ Status: PASS
 | `manifests_include_quality_baseline_globs` | PASS | `quality baseline globs` |
 | `manifests_include_quality_comparison_globs` | PASS | `quality comparison globs` |
 | `manifests_include_quality_metric_completion_globs` | PASS | `quality metric completion globs` |
+| `manifests_include_sim_fps_estimate` | PASS | `simulated FPS estimate evidence` |
 | `manifests_include_delivery_matrix` | PASS | `delivery evidence matrix` |
 | `manifests_include_github_pr_attempt` | PASS | `GitHub PR attempt evidence` |
 | `manifests_include_report_pdf` | PASS | `PDF report evidence and artifact globs` |
+| `manifests_include_report_docx` | PASS | `DOCX report evidence and artifact globs` |
 | `manifests_include_delivery_run_summaries` | PASS | `delivery gate run summaries` |
 | `manifests_include_board_probe_evidence` | PASS | `board probe/precondition evidence` |
 | `manifests_include_nested_board_probe_evidence` | PASS | `nested USB/preflight evidence` |

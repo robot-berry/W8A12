@@ -67,6 +67,11 @@
       "detail": "contest report PDF gate"
     },
     {
+      "name": "delivery_runner_contest_report_docx",
+      "pass": true,
+      "detail": "contest report DOCX gate"
+    },
+    {
       "name": "delivery_runner_evidence_matrix",
       "pass": true,
       "detail": "delivery evidence matrix gate"

@@ -1,0 +1,134 @@
+{
+  "status": "FAIL",
+  "scope": "simulation/model estimate only; not board-measured FPS",
+  "assumptions": {
+    "clock_mhz": 100.0,
+    "target_period_ns": 10.0,
+    "timing_wns_ns": 1.188,
+    "timing_inferred_clock_mhz": 113.48161597821154,
+    "feature_channels": 48,
+    "kernel_taps": 9,
+    "tap_par": 8,
+    "cycles_per_conv_pixel": 54,
+    "equivalent_48x48_conv_stages": 22,
+    "tile_overhead_cycles": 1024
+  },
+  "rows": [
+    {
+      "tag": "a5_32x32",
+      "lr_size": [
+        32,
+        32
+      ],
+      "hr_size": [
+        128,
+        128
+      ],
+      "tile_count": [
+        1,
+        1
+      ],
+      "target_fps": 15.0,
+      "pixels": 1024,
+      "tiles": 1,
+      "cycles_per_conv_pixel": 54,
+      "equivalent_48x48_conv_stages": 22,
+      "compute_cycles": 1216512,
+      "tile_overhead_cycles": 1024,
+      "total_cycles": 1217536,
+      "fps_at_100mhz": 82.13309503784693,
+      "fps_at_timing_inferred_clock": 93.20596350186896,
+      "required_clock_mhz_for_target": 18.26304,
+      "required_spatial_parallel_factor_at_100mhz": 1,
+      "pass_at_100mhz": true,
+      "pass_at_timing_inferred_clock": true
+    },
+    {
+      "tag": "a6_64x64",
+      "lr_size": [
+        64,
+        64
+      ],
+      "hr_size": [
+        256,
+        256
+      ],
+      "tile_count": [
+        2,
+        2
+      ],
+      "target_fps": 15.0,
+      "pixels": 4096,
+      "tiles": 4,
+      "cycles_per_conv_pixel": 54,
+      "equivalent_48x48_conv_stages": 22,
+      "compute_cycles": 4866048,
+      "tile_overhead_cycles": 4096,
+      "total_cycles": 4870144,
+      "fps_at_100mhz": 20.533273759461732,
+      "fps_at_timing_inferred_clock": 23.30149087546724,
+      "required_clock_mhz_for_target": 73.05216,
+      "required_spatial_parallel_factor_at_100mhz": 1,
+      "pass_at_100mhz": true,
+      "pass_at_timing_inferred_clock": true
+    },
+    {
+      "tag": "a7_720p_x4",
+      "lr_size": [
+        320,
+        180
+      ],
+      "hr_size": [
+        1280,
+        720
+      ],
+      "tile_count": [
+        10,
+        6
+      ],
+      "target_fps": 15.0,
+      "pixels": 57600,
+      "tiles": 60,
+      "cycles_per_conv_pixel": 54,
+      "equivalent_48x48_conv_stages": 22,
+      "compute_cycles": 68428800,
+      "tile_overhead_cycles": 61440,
+      "total_cycles": 68490240,
+      "fps_at_100mhz": 1.4600620467967407,
+      "fps_at_timing_inferred_clock": 1.6569020049894925,
+      "required_clock_mhz_for_target": 1027.3536,
+      "required_spatial_parallel_factor_at_100mhz": 11,
+      "pass_at_100mhz": false,
+      "pass_at_timing_inferred_clock": false
+    },
+    {
+      "tag": "x2_720p",
+      "lr_size": [
+        640,
+        360
+      ],
+      "hr_size": [
+        1280,
+        720
+      ],
+      "tile_count": [
+        20,
+        12
+      ],
+      "target_fps": 15.0,
+      "pixels": 230400,
+      "tiles": 240,
+      "cycles_per_conv_pixel": 54,
+      "equivalent_48x48_conv_stages": 22,
+      "compute_cycles": 273715200,
+      "tile_overhead_cycles": 245760,
+      "total_cycles": 273960960,
+      "fps_at_100mhz": 0.36501551169918517,
+      "fps_at_timing_inferred_clock": 0.4142255012473731,
+      "required_clock_mhz_for_target": 4109.4144,
+      "required_spatial_parallel_factor_at_100mhz": 42,
+      "pass_at_100mhz": false,
+      "pass_at_timing_inferred_clock": false
+    }
+  ]
+}

@@ -65,9 +65,9 @@
 | board report 校验 | `tools/validate_board_report.py` | 已提供 |
 | Vivado JTAG probe 验收 | `tools/check_vivado_hw_probe_log.py` | 已提供，重插后 PASS |
 | Vivado JTAG probe 历史证据 | `evidence/board_probe/vivado_hw_probe.md` | 历史 PASS，target count=1、device count=2；当前连接态以后续 precondition/probe 为准 |
-| JTAG 当前前置条件 | `evidence/board_probe/jtag_precondition_current/summary.md` | BLOCKED：USB known candidate=0，Vivado target count=not_checked；因 USB 侧没有在线已知 JTAG 设备，按流程未进入 Vivado probe，需恢复 JTAG 后才能继续上板 validation |
-| W8A12 board recovery preflight | `scripts/run_w8a12_board_recovery_preflight.ps1`、`W8A12_3lane/scripts/run_w8a12_board_recovery_preflight.ps1`、`evidence/board_probe/recovery_preflight_current/board_recovery_preflight_summary.md`、`evidence/board_probe/recovery_preflight_force_vivado_current/board_recovery_preflight_summary.md` | 已提供；常规 preflight 在 USB known candidate=0 时跳过 Vivado probe；强制 Vivado probe 也已跑，结果为 USB known candidate=0、Vivado target count=0；恢复后可选 `-RunStageHashAcceptance` 直接进入 stage-hash 验收 |
-| 最新上板续跑进展 | `evidence/board_probe/latest_board_progress_20260628.md` | 2026-06-28 续跑强制 Vivado probe：USB known candidate=0、Vivado target count=0；未进入 bitstream/program/readback；true2x2 RTL/stage-hash bitstream 仍是当前待上板基线 |
+| JTAG 当前前置条件 | `evidence/board_probe/jtag_precondition_stagehash_current/summary.md` | 2026-06-29 续跑已恢复：USB known candidate=3，Vivado probe exit=0，precondition READY |
+| W8A12 board recovery preflight | `scripts/run_w8a12_board_recovery_preflight.ps1`、`W8A12_3lane/scripts/run_w8a12_board_recovery_preflight.ps1`、`board_runs/w8a12_board_recovery_preflight/stagehash_current_20260629_144313/board_recovery_preflight_summary.md` | 已提供；本轮已通过 USB/Vivado/precondition，并进入 stage-hash smoke；失败点为真实输出 mismatch，不再是 target=0 |
+| 最新上板续跑进展 | `evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md` | 2026-06-29 stage-hash 实板续跑：JTAG/PSU/register read PASS，2x2 输出完整 `192/192`，compare FAIL `191/192`，最早失败边界为 `tail_b1_hash` |
 | JTAG 物理恢复清单 | `docs/jtag_recovery_checklist.md`、`tools/generate_jtag_recovery_checklist.py`、`evidence/board_probe/jtag_recovery_checklist/summary.md` | BLOCKED；当前在线 USB 设备无已知 JTAG，历史 FTDI `VID_0403&PID_6010` 为 Unknown，恢复通过条件为 USB known candidate>=1 且 Vivado target>=1 |
 | board validation readiness | `evidence/board_reports/validation_readiness/summary.md` | PASS；4 个剩余上板报告 skeleton 已预建，尺寸/PSNR/FPS/命令链已检查，但仍需真实 `validation.md Status: PASS` |
 | board report flow static | `evidence/board_reports/flow_static/summary.md` | PASS |
@@ -77,6 +77,7 @@
 | PPA 汇总报告 | `tools/generate_ppa_summary.py`、`evidence/ppa_summary/summary.md` | PASS，汇总 MAC core、single-lane、3-lane scheduler 和 top shell |
 | 赛题报告完整性检查 | `tools/check_contest_submission_report_static.py`、`evidence/report_static/summary.md` | PASS，检查章节、证据、PPA、画质和待上板口径 |
 | PDF 赛题报告 | `output/pdf/W8A12_3lane_contest_submission_report.pdf`、`evidence/report_pdf/summary.md` | PASS，7 页，已渲染 PNG 并完成非空/关键文本校验 |
+| Word 赛题报告 | `output/docx/W8A12_3lane_contest_submission_report.docx`、`evidence/report_docx/summary.md` | PASS，已生成 DOCX，并完成可见文本黑色字体审计 |
 | 评审证据矩阵 | `tools/generate_delivery_evidence_matrix.py`、`evidence/delivery_matrix/summary.md` | PASS，按赛题交付物和评分点索引模型、文档、RTL、PPA、画质、上板缺口 |
 | 最新上板报告 | `evidence/board_reports/` | 尚无 PASS |
 | true 2x2 上板结果 | `evidence/board_reports/2x2_samplelatch_result_20260626.md` | 仿真/bitstream PASS，板端控制访问 FAIL |
@@ -88,7 +89,7 @@
 | 重插后 JTAG 排查 | `evidence/board_reports/jtag_after_replug_20260628.md` | target 已恢复；未做 PS init 时 `get_hw_axis` 为空 |
 | PS init 后 JTAG/W8A12 排查 | `evidence/board_reports/jtag_after_psuinit_20260628.md` | 最小 JTAG-to-AXI probe PASS；W8A12 debugregs 可见 `hw_axi_1`，但 true2x2 输入后无输出；已新增 `0x04/0x08/0x10` progress 读数，RTL raw compare 仍 PASS |
 | JTAG-W8A12 true2x2 debug-progress | `evidence/board_reports/jtag_true2x2_dbgprogress_20260628.md` | bitstream/timing PASS；上板完整输出 `192/192`、`frame_done=1`，但 compare FAIL：`189/192` mismatch，writeback hash 不等于 RTL |
-| JTAG-W8A12 true2x2 stage-hash | `evidence/board_reports/jtag_true2x2_stagehash_20260628.md` | RTL raw compare PASS，新增 `tail_b1/tail_b6_act1/tail_rgb_q/writeback` 期望 hash；Default bitstream 已生成且 timing PASS；最新续跑 probe `board_runs/vivado_hw_target_probe_goal_continue_20260628_b` 仍为 JTAG target=0，待恢复连接后上板读取 |
+| JTAG-W8A12 true2x2 stage-hash | `evidence/board_reports/jtag_true2x2_stagehash_20260628.md`、`evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md` | RTL raw compare PASS；Default stage-hash bitstream 已生成且 timing PASS；2026-06-29 已上板读取，`tail_b1/tail_b6_act1/tail_rgb_q/writeback` 均与 RTL 期望不一致，最早失败边界为 `tail_b1_hash` |
 | 交付审计 | `evidence/delivery_audit/contest_delivery_audit.md` | INCOMPLETE |
 | 缺口执行计划 | `evidence/delivery_audit/missing_evidence_plan.md` | 已生成 |
 | 硬门禁执行队列 | `evidence/delivery_audit/hard_gate_execution_queue.md` | 17 项，PASS 队列 |

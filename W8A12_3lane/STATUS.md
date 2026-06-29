@@ -36,6 +36,7 @@
 | `jtag_after_psuinit_20260628` | JTAG AXI PASS / W8A12 NO OUTPUT | 先跑对应 `psu_init.tcl` 后，`jtag_axi_register_probe_f26m.bit` PASS：`hw_axi_1`、magic `0x57384158`、scratch `0xA5A55A5A`；W8A12 debugregs bitstream 也可见 `hw_axi_1`，输入 `4/4`、`REG_COUNTER_IN=4`，状态 `0x00002000=core_busy`，但 `REG_COUNTER_OUT=0`、`FRAME_DONE=0`、输出 `0/192` | JTAG/PS 初始化问题已排除；下一步查 endpoint/datapath 在输入接受后为何 core busy 不结束、没有推进到 output/writeback |
 | `jtag_true2x2_dbgprogress_20260628` | BUILD PASS / BOARD FAIL | 新 progress bitstream timing PASS，WNS `12.317 ns`；LUT 39337、REG 116119、BRAM 311、DSP 126。上板 `frame_done=1`、`counter_in=4`、`counter_out=64`、输出 `192/192`，但 compare FAIL：`189/192` mismatch、PSNR 16.3034 dB；寄存器读数 `block_start=6`、`replay_feature=24`、writeback hash `0xAD24396D` | 证明 no-output 被越过，但该宽 debug 版本不能作为 correctness baseline；下一步回到 Default/inpixfix baseline，加更窄的 stage hash 查 front/SPAB、tail/RGB、writer input |
 | `jtag_true2x2_stagehash_20260628` | RTL/BUILD PASS / JTAG TARGET FAIL | stage-hash 寄存器映射已改为 `tail_b1_hash`、`tail_b6_act1_hash`、`tail_rgb_q_hash` 和 `writeback_*`；行为级 RTL raw compare 仍为 `0/192` mismatch，期望 hash 为 `0x16ede1c2`、`0xc7a092b8`、`0xb712a61b`、`0x61d3ea1d`；Default bitstream 已生成，WNS `11.772 ns`、WHS `0.009 ns`、LUT 39951、REG 116172、BRAM 311、DSP 126；post-synth 长跑未形成 PASS/FAIL；最新 JTAG probe `vivado_hw_target_probe_goal_continue_20260628_b` 仍为 `VIVADO_HW_TARGET_COUNT=0`，当前 USB 在线列表无 Xilinx/FTDI known candidate | stage-hash 上板物料已就绪；下一步先恢复 JTAG target，再烧录 bitstream 读取 stage hash，把 mismatch 定位到 front/SPAB、tail/RGB、writer 或 endpoint/readback |
+| `jtag_true2x2_stagehash_live_20260629` | BOARD FAIL / LOCALIZED | 重插后续跑已恢复 USB/JTAG 与 Vivado target：USB known candidate=3，Vivado probe exit=0，`psu_init.tcl` PASS。stage-hash Default bitstream 上板后完整输出 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL：`191/192` mismatch、PSNR 11.8292 dB。寄存器读回 PASS，实板 hash 为 `tail_b1=0x031DA1C9`、`tail_b6_act1=0x75D95D8A`、`tail_rgb_q=0x6B02FBCF`、`writeback=0x14D11085`，均不等于 RTL 期望 | 已确认当前不是 JTAG/PSU/读回阻塞，而是真实板端数值 mismatch；最早失败边界为 `tail_b1_hash`，下一步加 `feat0/input/halo/block1 c1/c2/c3/att` 更窄 hash |
 | `p2_project_impl_1` | BUILD DEBUG | 项目 run 模式能启动 `synth_1/impl_1`，但生成的 run Tcl 子进程只写 Vivado 头部，未执行 source 内容 | 暂不作为交付路径；用于 Vivado 环境诊断 |
 
 ## 当前板卡探测
@@ -54,6 +55,7 @@
 | JTAG force Vivado probe current | BLOCKED | `W8A12_3lane/evidence/board_probe/recovery_preflight_force_vivado_current/board_recovery_preflight_summary.md` | 强制进入 Vivado probe 后仍为 USB known candidate=0、Vivado target count=0；脚本已清理 `hw_server`，未留下 Vivado/hw_server/xsct 残留 |
 | W8A12 board recovery preflight | BLOCKED | `W8A12_3lane/evidence/board_probe/recovery_preflight_current/board_recovery_preflight_summary.md` | 一键 preflight 已运行：USB known candidate=0，按设计跳过 Vivado probe，输出可打包 current precondition evidence |
 | JTAG recovery checklist | BLOCKED | `W8A12_3lane/evidence/board_probe/jtag_recovery_checklist/summary.md` | 当前在线 USB 设备无已知 JTAG；历史 FTDI `VID_0403&PID_6010` 仍在 PnP history 但状态 Unknown，恢复条件是 USB known candidate>=1 且 Vivado target>=1 |
+| 2026-06-29 stage-hash live retry | PASS TO MISMATCH | `W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md` | JTAG/PSU/register read 均已通过，true2x2 输出完整但 `tail_b1_hash` 首个边界失败，继续查 front/SPAB block1 或更前输入/halo 路径 |
 
 ## 当前交付审计
 
@@ -62,7 +64,7 @@
 通过：69 / 73
 剩余缺口：4
 剩余项：a5.board_32x32、a6.board_64x64、a7.board_720p_x4、x2.board
-最新轻量门禁：evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.md，静态项、JTAG recovery checklist、contest_report_pdf、delivery_evidence_matrix、board recovery preflight/JTAG precondition flow、board validation readiness、submission_archive / submission_archive_final 和 hard_gate_runner_static 均 PASS，最终 submission_manifest / delivery_audit 因真实板端 validation 缺失保持 FAIL
+最新轻量门禁：evidence/delivery_runs/current_static_boardtarget0_20260628_p/summary.md，静态项、JTAG recovery checklist、contest_report_pdf、contest_report_docx、delivery_evidence_matrix、board recovery preflight/JTAG precondition flow、board validation readiness、submission_archive / submission_archive_final 和 hard_gate_runner_static 均 PASS，最终 submission_manifest / delivery_audit 因真实板端 validation 缺失保持 FAIL
 提交草案归档：evidence/submission_package/archive/summary.md，Status=INCOMPLETE，SHA256 见该文件；该 zip 是草案，不代表最终赛题交付完成
 ```
 

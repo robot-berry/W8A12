@@ -254,6 +254,12 @@ Invoke-GateStep `
     -ExpectedText "Status: PASS"
 
 Invoke-GateStep `
+    -Name "sim_fps_estimate" `
+    -Action { python W8A12_3lane\tools\estimate_sim_fps.py } `
+    -ExpectedFiles @("W8A12_3lane\evidence\sim_fps_estimate\summary.md") `
+    -ExpectedText "Status:"
+
+Invoke-GateStep `
     -Name "contest_report_static" `
     -Action { python W8A12_3lane\tools\check_contest_submission_report_static.py } `
     -ExpectedFiles @("W8A12_3lane\evidence\report_static\summary.md") `
@@ -263,6 +269,12 @@ Invoke-GateStep `
     -Name "contest_report_pdf" `
     -Action { powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_pdf.ps1 } `
     -ExpectedFiles @("W8A12_3lane\evidence\report_pdf\summary.md") `
+    -ExpectedText "Status: PASS"
+
+Invoke-GateStep `
+    -Name "contest_report_docx" `
+    -Action { powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_docx.ps1 } `
+    -ExpectedFiles @("W8A12_3lane\evidence\report_docx\summary.md", "W8A12_3lane\output\docx\W8A12_3lane_contest_submission_report.docx") `
     -ExpectedText "Status: PASS"
 
 Invoke-GateStep `

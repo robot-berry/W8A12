@@ -84,7 +84,7 @@ x2 path: source/frame -> 640x360 LR -> tiled x2 -> 1280x720 SR, PSNR >= 30 dB
 | 综合证据 | OOC utilization/timing/resource summary | `evidence/top/*_ooc/`、`evidence/resource/*_ooc/` |
 | bitstream/上板 | bitstream、SD/DDR 输入、tile 输出拼接后的 720p board output、board-vs-fixed 比对 | `evidence/board_reports/<tag>/` |
 | PPA 汇报 | LUT/FF/BRAM/DSP、timing、latency、FPS、target_fps、power | `evidence/board_reports/<tag>/summary.md` |
-| 赛题报告 | 可提交中文技术报告，含摘要、方案、模型训练量化、硬件架构、验证、PPA、画质对比、风险说明 | `docs/contest_submission_report.md`、`output/pdf/W8A12_3lane_contest_submission_report.pdf`、`evidence/report_pdf/summary.md` |
+| 赛题报告 | 可提交中文技术报告，含摘要、方案、模型训练量化、硬件架构、验证、PPA、画质对比、风险说明 | `docs/contest_submission_report.md`、`output/pdf/W8A12_3lane_contest_submission_report.pdf`、`output/docx/W8A12_3lane_contest_submission_report.docx`、`evidence/report_pdf/summary.md`、`evidence/report_docx/summary.md` |
 | 交付清单 | 审计、缺口、submission manifest、确定性提交草案归档、repository scope manifest | `evidence/delivery_audit/`、`evidence/submission_package/`、`evidence/submission_scope/` |
 
 ### 2.3 分阶段输入输出
@@ -158,6 +158,7 @@ x2 训练 PSNR 已超过 30 dB；当前已经生成 x2 W8A12 导出和固定点 
 - `tools/check_contest_submission_report_static.py` 必须 PASS，并生成 `evidence/report_static/summary.md`。
 - `DELIVERY_INDEX.md` 和 submission manifest 必须收录该报告及其依赖证据。
 - PDF 赛题报告由 `scripts/export_contest_report_pdf.ps1` 从 Markdown 报告导出，并在 `evidence/report_pdf/summary.md` 记录页数、SHA256、关键文本和渲染检查。
+- Word 赛题报告由 `scripts/export_contest_report_docx.ps1` 从 Markdown 报告导出，并在 `evidence/report_docx/summary.md` 记录 SHA256 和可见文本黑色字体审计；`output/docx/W8A12_3lane_contest_submission_report.docx` 作为可提交 Word 版本。
 
 赛题报告至少包含以下章节：
 
@@ -235,6 +236,29 @@ TinySPAN:
 W8A12 SPAN F48:
   6 个 SPAB + 48ch + W8A12 定点 + DDR writer + tile/halo + XC7Z045 资源门限一起 bring-up。
   true 2x2 bitstream 已生成；当前主要难点是板端 PS/AXI-Lite 控制口或 PL AXI-Lite slave 响应恢复。
+```
+
+### 5.2 2026-06-29 stage-hash 实板续跑补充
+
+本轮 mismatch 排查已经从“JTAG target 不可见”推进到真实板端数值 mismatch：
+
+| 项目 | 结果 |
+| --- | --- |
+| USB/JTAG/Vivado target | PASS，USB known candidate=3，Vivado probe exit=0 |
+| PS 初始化 | PASS，`PSU_INIT_ONLY_PASS=1` |
+| true2x2 输出 | 完整输出 `192 / 192` bytes |
+| frame_done / error | `1 / 0x00000000` |
+| compare | FAIL，`191 / 192` mismatch |
+| PSNR | `11.8292 dB` |
+| 最早失败边界 | `tail_b1_hash=0x031DA1C9 != 0x16ede1c2` |
+
+当前判断：问题不是板子未插、JTAG 不通、PSU init 失败或寄存器读回失败，而是 PL 计算路径实板数值偏差。由于 `tail_b1_hash` 已经偏离 RTL 期望，下一轮优先增加 `feat0/input/halo/block1 c1/c2/c3/att` 更窄 hash，把问题继续拆到 front/SPAB block1 或更前路径。
+
+证据：
+
+```text
+W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md
+board_runs/jtag_w8a12_tile_writer/true2x2_stagehash_continue_20260629_144641/
 ```
 
 ## 6. 资源口径

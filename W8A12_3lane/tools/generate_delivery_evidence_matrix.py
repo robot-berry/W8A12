@@ -15,6 +15,7 @@ OUT = BASE / "evidence" / "delivery_matrix"
 AUDIT_JSON = BASE / "evidence" / "delivery_audit" / "contest_delivery_audit.json"
 SUBMISSION_JSON = BASE / "evidence" / "submission_package" / "submission_manifest.json"
 PDF_JSON = BASE / "evidence" / "report_pdf" / "summary.json"
+DOCX_JSON = BASE / "evidence" / "report_docx" / "summary.json"
 
 
 def load_json(path: Path, default: dict[str, Any]) -> dict[str, Any]:
@@ -152,11 +153,13 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
         row(
             "评分点 文档清晰度",
             "Markdown + PDF 赛题报告",
-            status_for(["evidence/report_static/summary.md", "evidence/report_pdf/summary.md"], "Status: PASS"),
+            status_for(["evidence/report_static/summary.md", "evidence/report_pdf/summary.md", "evidence/report_docx/summary.md"], "Status: PASS"),
             [
                 "docs/contest_submission_report.md",
                 "output/pdf/W8A12_3lane_contest_submission_report.pdf",
                 "evidence/report_pdf/summary.md",
+                "output/docx/W8A12_3lane_contest_submission_report.docx",
+                "evidence/report_docx/summary.md",
             ],
             "PDF 已生成并完成全页渲染/关键文本校验。",
         ),
@@ -223,6 +226,8 @@ def render_md(data: dict[str, Any]) -> str:
         "",
         f"PDF report SHA256: `{data['pdf_sha256']}`",
         "",
+        f"DOCX report SHA256: `{data['docx_sha256']}`",
+        "",
         "## Evidence Matrix",
         "",
         "| Area | Item | Status | Evidence | Note |",
@@ -251,6 +256,7 @@ def main() -> int:
     audit = load_json(AUDIT_JSON, {"status": "INCOMPLETE", "items": []})
     submission = load_json(SUBMISSION_JSON, {"status": "INCOMPLETE", "file_count": 0, "missing_final_evidence": []})
     pdf = load_json(PDF_JSON, {"status": "MISSING", "sha256": ""})
+    docx = load_json(DOCX_JSON, {"status": "MISSING", "sha256": ""})
     items = audit.get("items", [])
     latest_run = latest_delivery_run_summary()
     rows = make_rows(latest_run)
@@ -265,6 +271,8 @@ def main() -> int:
         "latest_delivery_run": latest_run,
         "pdf_status": pdf.get("status", "MISSING"),
         "pdf_sha256": pdf.get("sha256", ""),
+        "docx_status": docx.get("status", "MISSING"),
+        "docx_sha256": docx.get("sha256", ""),
         "rows": rows,
     }
     OUT.mkdir(parents=True, exist_ok=True)

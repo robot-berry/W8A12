@@ -1,11 +1,11 @@
 {
-  "status": "BLOCKED",
-  "generated_at": "2026-06-28 22:28:43",
-  "usb_match_count": 3,
-  "usb_known_jtag_candidate_count": 0,
+  "status": "READY",
+  "generated_at": "2026-06-29 14:34:29",
+  "usb_match_count": 6,
+  "usb_known_jtag_candidate_count": 3,
   "pnp_history_known_jtag_candidate_count": 4,
   "pnp_history_known_vidpid_count": 3,
-  "vivado_target_count": 0,
-  "usb_json": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\usb\\usb_jtag_devices.json",
-  "vivado_probe_dir": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\recovery_preflight_force_vivado_current\\vivado_probe"
+  "vivado_target_count": 1,
+  "usb_json": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\usb\\usb_jtag_devices.json",
+  "vivado_probe_dir": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\vivado_probe"
 }

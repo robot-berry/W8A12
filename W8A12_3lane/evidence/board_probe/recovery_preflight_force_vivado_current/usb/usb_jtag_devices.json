@@ -1,12 +1,19 @@
 ﻿{
-    "GeneratedAt":  "2026-06-28 22:28:43",
-    "MatchCount":  3,
-    "KnownJtagCandidateCount":  0,
+    "GeneratedAt":  "2026-06-29 14:32:16",
+    "MatchCount":  6,
+    "KnownJtagCandidateCount":  3,
     "PnpHistoryKnownJtagCandidateCount":  4,
     "PnpHistoryKnownVidPidCount":  3,
     "KnownVidPidPattern":  "VID_03FD|VID_0403|VID_1443|VID_04B4",
     "NamePattern":  "Digilent|Xilinx|JTAG|FTDI|USB Serial|USB Composite|UART",
     "Devices":  [
+                    {
+                        "Name":  "USB Composite Device",
+                        "PNPClass":  "USB",
+                        "Status":  "OK",
+                        "DeviceID":  "USB\\VID_0403\u0026PID_6010\\210203367162",
+                        "IsKnownJtagCandidate":  true
+                    },
                     {
                         "Name":  "USB Composite Device",
                         "PNPClass":  "USB",
@@ -27,6 +34,20 @@
                         "Status":  "OK",
                         "DeviceID":  "USB\\VID_322E\u0026PID_202C\\6\u00267E781F5\u00260\u00264",
                         "IsKnownJtagCandidate":  false
+                    },
+                    {
+                        "Name":  "USB Serial Converter A",
+                        "PNPClass":  "USB",
+                        "Status":  "OK",
+                        "DeviceID":  "USB\\VID_0403\u0026PID_6010\u0026MI_00\\7\u002668AC5D3\u00260\u00260000",
+                        "IsKnownJtagCandidate":  true
+                    },
+                    {
+                        "Name":  "USB Serial Converter B",
+                        "PNPClass":  "USB",
+                        "Status":  "OK",
+                        "DeviceID":  "USB\\VID_0403\u0026PID_6010\u0026MI_01\\7\u002668AC5D3\u00260\u00260001",
+                        "IsKnownJtagCandidate":  true
                     }
                 ],
     "PnpHistoryDevices":  [
@@ -40,7 +61,7 @@
                               {
                                   "FriendlyName":  "USB Composite Device",
                                   "Class":  "USB",
-                                  "Status":  "Unknown",
+                                  "Status":  "OK",
                                   "InstanceId":  "USB\\VID_0403\u0026PID_6010\\210203367162",
                                   "IsKnownJtagCandidate":  true
                               },
@@ -89,14 +110,14 @@
                               {
                                   "FriendlyName":  "USB Serial Converter A",
                                   "Class":  "USB",
-                                  "Status":  "Unknown",
+                                  "Status":  "OK",
                                   "InstanceId":  "USB\\VID_0403\u0026PID_6010\u0026MI_00\\7\u002668AC5D3\u00260\u00260000",
                                   "IsKnownJtagCandidate":  true
                               },
                               {
                                   "FriendlyName":  "USB Serial Converter B",
                                   "Class":  "USB",
-                                  "Status":  "Unknown",
+                                  "Status":  "OK",
                                   "InstanceId":  "USB\\VID_0403\u0026PID_6010\u0026MI_01\\7\u002668AC5D3\u00260\u00260001",
                                   "IsKnownJtagCandidate":  true
                               }

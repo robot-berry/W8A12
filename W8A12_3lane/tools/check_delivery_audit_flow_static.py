@@ -48,7 +48,9 @@ def main() -> int:
     add("includes_contest_report_gate", "doc.contest_submission_report" in text and "contest_submission_report.md" in text, "contest report doc gate")
     add("includes_report_static_gate", "report.static" in text and "evidence/report_static/summary.md" in text, "contest report static evidence gate")
     add("includes_report_pdf_gate", "report.pdf" in text and "evidence/report_pdf/summary.md" in text, "contest report PDF evidence gate")
+    add("includes_report_docx_gate", "report.docx" in text and "evidence/report_docx/summary.md" in text and "report.docx_artifact" in text, "contest report DOCX evidence gate")
     add("includes_ppa_summary_gate", "ppa.summary" in text and "evidence/ppa_summary/summary.md" in text, "PPA summary evidence gate")
+    add("includes_sim_fps_estimate_gate", "sim.fps_estimate" in text and "evidence/sim_fps_estimate/summary.md" in text, "simulated FPS estimate evidence gate")
     add("includes_quality_metric_completion_gate", "quality.metric_completion_static" in text and "evidence/quality_metric_completion/summary.md" in text, "quality metric completion evidence gate")
     add("includes_vivado_ooc_gates", all(token in text for token in [
         "top.accel_shell_sim",
@@ -85,6 +87,7 @@ def main() -> int:
         "delivery_manifest",
         "submission_manifest",
         "submission_archive",
+        "contest_report_docx",
     ]), "support files are generated before strict audit")
     add("gate_order_final_manifests_after_audit", all(before("delivery_audit", right) for right in [
         "submission_manifest_final",

@@ -1,21 +1,21 @@
 # JTAG Precondition Summary
 
-Status: BLOCKED
+Status: READY
 
 | Field | Value |
 | --- | --- |
-| Generated at | `2026-06-28 22:28:43` |
-| USB match count | `3` |
-| USB known JTAG candidate count | `0` |
+| Generated at | `2026-06-29 14:34:29` |
+| USB match count | `6` |
+| USB known JTAG candidate count | `3` |
 | PnP history known candidate count | `4` |
 | PnP history known VID/PID count | `3` |
-| Vivado target count | `0` |
-| USB evidence | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\board_probe\recovery_preflight_force_vivado_current\usb\usb_jtag_devices.json` |
-| Vivado probe dir | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\board_probe\recovery_preflight_force_vivado_current\vivado_probe` |
+| Vivado target count | `1` |
+| USB evidence | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\usb\usb_jtag_devices.json` |
+| Vivado probe dir | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\vivado_probe` |
 
 ## Interpretation
 
-Board programming is currently blocked before Vivado/JTAG use: no online known Xilinx/FTDI JTAG candidate is visible, or Vivado target count is zero.
+Vivado sees at least one hardware target. Stage-hash programming and register readback can proceed.
 
 ## Required Next Step
 

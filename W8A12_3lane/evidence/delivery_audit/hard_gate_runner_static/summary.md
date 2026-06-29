@@ -17,6 +17,7 @@ Status: PASS
 | `delivery_runner_stagehash_static` | PASS | `stage-hash static gate` |
 | `delivery_runner_jtag_recovery_checklist` | PASS | `JTAG recovery checklist gate` |
 | `delivery_runner_contest_report_pdf` | PASS | `contest report PDF gate` |
+| `delivery_runner_contest_report_docx` | PASS | `contest report DOCX gate` |
 | `delivery_runner_evidence_matrix` | PASS | `delivery evidence matrix gate` |
 | `delivery_runner_final_gates` | PASS | `final manifest/audit gates` |
 | `delivery_runner_jtag_recovery_before_stagehash_static` | PASS | `recovery evidence generated before stage-hash static check` |

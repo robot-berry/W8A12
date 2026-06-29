@@ -52,9 +52,19 @@
       "detail": "contest report PDF evidence gate"
     },
     {
+      "name": "includes_report_docx_gate",
+      "pass": true,
+      "detail": "contest report DOCX evidence gate"
+    },
+    {
       "name": "includes_ppa_summary_gate",
       "pass": true,
       "detail": "PPA summary evidence gate"
+    },
+    {
+      "name": "includes_sim_fps_estimate_gate",
+      "pass": true,
+      "detail": "simulated FPS estimate evidence gate"
     },
     {
       "name": "includes_quality_metric_completion_gate",

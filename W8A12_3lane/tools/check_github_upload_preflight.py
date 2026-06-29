@@ -15,9 +15,34 @@ OUT = BASE / "evidence" / "github_upload_preflight"
 
 TARGET_REPO = "https://github.com/robot-berry/W8A12.git"
 TARGET_FULL_NAME = "robot-berry/W8A12"
-ALLOWED_PREFIX = "W8A12_3lane/"
+ALLOWED_PREFIXES = ("W8A12_3lane/", "external/SPAN/basicsr/")
+ALLOWED_EXACT_FILES = {
+    "tools/calibrate_span_activation_scales.py",
+    "tools/export_span_w8a12_quant_plan.py",
+    "tools/export_span_quant_plan_to_rtl.py",
+    "tools/export_span_w8a12_postprocess_to_rtl.py",
+    "tools/check_span_w8a12_rtl_export.py",
+    "tools/run_span_ptq_reference.py",
+    "scripts/run_w8a12_board_recovery_preflight.ps1",
+    "scripts/run_w8a12_stagehash_true2x2_acceptance.ps1",
+    "scripts/probe_vivado_hw_targets.ps1",
+    "scripts/probe_vivado_hw_targets.tcl",
+    "scripts/check_usb_jtag_devices.ps1",
+    "scripts/cleanup_vivado_processes.ps1",
+    "scripts/run_xsct_psu_init_only.ps1",
+    "scripts/run_xsct_psu_init_only.tcl",
+    "scripts/run_jtag_w8a12_tile_writer_smoke.ps1",
+    "scripts/jtag_rgb_transfer.tcl",
+    "scripts/compare_jtag_w8a12_span_output.ps1",
+    "scripts/run_read_jtag_w8a12_tile_writer_regs.ps1",
+    "scripts/read_jtag_w8a12_tile_writer_regs.tcl",
+    "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.ps1",
+    "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.tcl",
+    "scripts/create_vivado_jtag_w8a12_tile_writer_bd_project.tcl",
+}
 FORBIDDEN_UPLOAD_RE = re.compile(
-    r"(\.(npy|npz|pth|pt|pid|zip|dcp|bit|xsa|jou|log|wdb)$|"
+    r"((^|/)~\$|"
+    r"\.(npy|npz|pth|pt|pid|zip|dcp|bit|xsa|jou|log|wdb)$|"
     r"(^|/)(stdout|stderr)\.txt$|"
     r"_(stdout|stderr)\.txt$)",
     re.IGNORECASE,
@@ -45,6 +70,11 @@ def read_json(rel: str) -> dict:
     if not path.exists():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def is_allowed_upload_path(path: str) -> bool:
+    rel = path.replace("\\", "/")
+    return rel in ALLOWED_EXACT_FILES or any(rel.startswith(prefix) for prefix in ALLOWED_PREFIXES)
 
 
 def normalized_remote_urls(remote_output: str) -> list[str]:
@@ -76,14 +106,18 @@ def main() -> int:
 
     code, staged_output = run_git(["diff", "--cached", "--name-only"])
     staged = staged_output.splitlines() if code == 0 and staged_output else []
-    staged_outside = [path for path in staged if not path.startswith(ALLOWED_PREFIX)]
-    add(checks, "git.no_staged_outside_w8a12", not staged_outside, staged_outside)
+    staged_outside = [path for path in staged if not is_allowed_upload_path(path)]
+    add(checks, "git.no_staged_outside_upload_scope", not staged_outside, staged_outside)
 
-    code, upload_candidates_output = run_git(["ls-files", "--others", "--cached", "--exclude-standard", "W8A12_3lane"])
+    upload_pathspecs = ["W8A12_3lane", *sorted(ALLOWED_EXACT_FILES), "external/SPAN/basicsr"]
+    code, upload_candidates_output = run_git(["ls-files", "--others", "--cached", "--exclude-standard", "--", *upload_pathspecs])
     upload_candidates = upload_candidates_output.splitlines() if code == 0 and upload_candidates_output else []
     forbidden_candidates = [path for path in upload_candidates if FORBIDDEN_UPLOAD_RE.search(path.replace("\\", "/"))]
     add(checks, "git.upload_candidate_count", bool(upload_candidates), len(upload_candidates))
     add(checks, "git.no_forbidden_upload_candidates", not forbidden_candidates, forbidden_candidates[:50])
+    missing_required = [path for path in sorted(ALLOWED_EXACT_FILES) if not (ROOT / path).is_file()]
+    add(checks, "submission_scope.required_root_files_present", not missing_required, missing_required)
+    add(checks, "submission_scope.span_basicsr_present", (ROOT / "external" / "SPAN" / "basicsr" / "archs" / "span_arch.py").is_file(), "external/SPAN/basicsr/archs/span_arch.py")
 
     audit = read_json("evidence/delivery_audit/contest_delivery_audit.json")
     add(checks, "delivery_audit.exists", bool(audit), "evidence/delivery_audit/contest_delivery_audit.json")
@@ -99,18 +133,23 @@ def main() -> int:
 
     pdf = BASE / "output" / "pdf" / "W8A12_3lane_contest_submission_report.pdf"
     add(checks, "contest_report_pdf.exists", pdf.is_file(), pdf.as_posix())
+    docx = BASE / "output" / "docx" / "W8A12_3lane_contest_submission_report.docx"
+    add(checks, "contest_report_docx.exists", docx.is_file(), docx.as_posix())
 
     archive_summary = BASE / "evidence" / "submission_package" / "archive" / "summary.md"
     add(checks, "draft_archive_summary.exists", archive_summary.is_file(), archive_summary.as_posix())
 
     hard_fail_names = {
         "git.target_remote_configured",
-        "git.no_staged_outside_w8a12",
+        "git.no_staged_outside_upload_scope",
         "git.upload_candidate_count",
         "git.no_forbidden_upload_candidates",
+        "submission_scope.required_root_files_present",
+        "submission_scope.span_basicsr_present",
         "delivery_audit.exists",
         "submission_manifest.exists",
         "contest_report_pdf.exists",
+        "contest_report_docx.exists",
         "draft_archive_summary.exists",
     }
     hard_ok = all(check["pass"] for check in checks if check["name"] in hard_fail_names)
@@ -122,7 +161,7 @@ def main() -> int:
         "checks": checks,
         "note": (
             "This preflight permits an INCOMPLETE draft package, but blocks upload if the target remote "
-            "is not configured or if staged files include paths outside W8A12_3lane/."
+            "is not configured or if staged files include paths outside the documented upload scope."
         ),
     }
 

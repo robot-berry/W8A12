@@ -36,10 +36,11 @@ def main() -> int:
         "## 8. 综合资源与 PPA",
         "## 9. 画质指标与传统插值对比",
         "## 10. 板端状态和 mismatch 风险",
-        "## 11. 当前交付审计状态",
-        "## 12. 可复现实验命令",
-        "## 13. 交付文件索引",
-        "## 14. 结论",
+        "## 11. 最新实板定位",
+        "## 12. 当前交付审计状态",
+        "## 13. 可复现实验命令",
+        "## 14. 交付文件索引",
+        "## 15. 结论",
     ]
     add("has_required_sections", all(section in text for section in required_sections), required_sections)
 
@@ -122,8 +123,11 @@ def main() -> int:
         "-RunStageHashAcceptance",
     ]), "reproducible commands")
     add("lists_submission_archive_summary", "evidence/submission_package/archive/summary.md" in text, "submission archive summary evidence")
-    add("lists_latest_board_and_upload_evidence", all(token in text for token in [
-        "evidence/board_probe/latest_board_progress_20260628.md",
+    latest_board_evidence = (
+        "evidence/board_probe/latest_board_progress_20260628.md" in text
+        or "evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md" in text
+    )
+    add("lists_latest_board_and_upload_evidence", latest_board_evidence and all(token in text for token in [
         "evidence/github_upload_push/summary.md",
     ]), "latest board progress and GitHub draft upload evidence")
 

@@ -18,7 +18,7 @@ W8A12_3lane/evidence/delivery_audit/contest_delivery_audit.md
 | x2 超分 | SPAN x2/F48，REDS_val 目标 `>=30 dB` | FP32 训练证据 `34.4297 dB`；W8A12 导出、fixed reference 和 validation PASS；x2 board 缺 |
 | 端侧 FPGA 加速 | `xczu19eg-ffvc1760-2-i` 本地板卡，按 XC7Z045/ZC706 门限评估 | A4 MAC core、single-lane、3-lane scheduler 和 accelerator top shell OOC PASS |
 | 三路并行架构 | 48 channel 拆成 `3 lanes x 16 output channels` | 架构、映射、A4 vector check 已建立 |
-| 可提交报告 | Markdown + PDF 赛题报告 | `docs/contest_submission_report.md`、`output/pdf/W8A12_3lane_contest_submission_report.pdf`、`evidence/report_pdf/summary.md` |
+| 可提交报告 | Markdown + PDF + Word 赛题报告 | `docs/contest_submission_report.md`、`output/pdf/W8A12_3lane_contest_submission_report.pdf`、`output/docx/W8A12_3lane_contest_submission_report.docx`、`evidence/report_pdf/summary.md`、`evidence/report_docx/summary.md` |
 | 评审证据矩阵 | 交付物/评分点/证据/缺口总览 | `evidence/delivery_matrix/summary.md` |
 | 上板验证 | A5 32x32、A6 64x64、A7 720p、x2 720p | 上板 report 工具已建立；真实报告缺 |
 
@@ -98,6 +98,7 @@ python W8A12_3lane\tools\audit_contest_delivery.py
 python W8A12_3lane\tools\generate_missing_evidence_plan.py
 python W8A12_3lane\tools\collect_submission_package.py
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_pdf.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_docx.ps1
 python W8A12_3lane\tools\create_submission_archive.py --allow-incomplete
 python W8A12_3lane\tools\collect_delivery_manifest.py
 ```

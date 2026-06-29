@@ -14,7 +14,9 @@ Status: PASS
 | `includes_contest_report_gate` | PASS | `contest report doc gate` |
 | `includes_report_static_gate` | PASS | `contest report static evidence gate` |
 | `includes_report_pdf_gate` | PASS | `contest report PDF evidence gate` |
+| `includes_report_docx_gate` | PASS | `contest report DOCX evidence gate` |
 | `includes_ppa_summary_gate` | PASS | `PPA summary evidence gate` |
+| `includes_sim_fps_estimate_gate` | PASS | `simulated FPS estimate evidence gate` |
 | `includes_quality_metric_completion_gate` | PASS | `quality metric completion evidence gate` |
 | `includes_vivado_ooc_gates` | PASS | `Vivado/xsim/OOC gates` |
 | `includes_board_gates` | PASS | `board gates` |
