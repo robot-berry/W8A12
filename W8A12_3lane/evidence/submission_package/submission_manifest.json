@@ -160,13 +160,13 @@
     },
     {
       "path": "evidence/board_probe/jtag_precondition_current/summary.json",
-      "bytes": 1799,
-      "sha256": "2ce539e3f050b49cca59f4e9751818b9025b9897bc7f044059804435f197fbc2"
+      "bytes": 1745,
+      "sha256": "8fd6e1ebd7040ffd0507b3a2983ab44178b04b70614715e9760aa6b683706cbe"
     },
     {
       "path": "evidence/board_probe/jtag_precondition_current/summary.md",
-      "bytes": 2087,
-      "sha256": "e93bad8bdf9bc246904551cff1dae713756f80aa553327308a7e3d477e4b96ba"
+      "bytes": 2035,
+      "sha256": "af03e367b531a5148a2867dd44f82bd8e603ef4384487a9e41d37eae5bbe4042"
     },
     {
       "path": "evidence/board_probe/jtag_precondition_stagehash_current/summary.json",
@@ -181,12 +181,12 @@
     {
       "path": "evidence/board_probe/jtag_recovery_checklist/summary.json",
       "bytes": 2630,
-      "sha256": "5e64091f943f53fc3d0da5762f4a39146687210800877d14e53f831f271f4b44"
+      "sha256": "4c38f3d054d08250b8f40d2fcb2bfe4ae3f41bdb66abf6be61e718d9e8f3fb00"
     },
     {
       "path": "evidence/board_probe/jtag_recovery_checklist/summary.md",
       "bytes": 2292,
-      "sha256": "30c91c0e76c1b493d69d2217d92b6a055a56910d5a5544e9b58605c3a30f6324"
+      "sha256": "fd73f9793b03b06bc25f5427afc5738ae1a1de1d67f14ca386a0ba3479e5d1e8"
     },
     {
       "path": "evidence/board_probe/latest_board_progress_20260628.md",
@@ -496,7 +496,7 @@
     {
       "path": "evidence/delivery_manifest/manifest.md",
       "bytes": 50683,
-      "sha256": "839af4d05747800c8a3be2233085e691151c5a47729b02ad5d5fb27e82ddf026"
+      "sha256": "063f6873f101e3cf574a2c32f645362e874a220abeb17e1eb04f743e82fbe141"
     },
     {
       "path": "evidence/delivery_matrix/summary.json",
@@ -751,7 +751,7 @@
     {
       "path": "evidence/github_upload_export/summary.json",
       "bytes": 278527,
-      "sha256": "0d5cf1328c076fc014cc5cceccf8d1023fca038b6e0da73cada30b7136025ed8"
+      "sha256": "0cd4040090f313579bf5f27fe2a1036c545411d12cb5b8be98f0febd8511a43d"
     },
     {
       "path": "evidence/github_upload_export/summary.md",
@@ -1121,7 +1121,7 @@
     {
       "path": "evidence/submission_package/submission_manifest.md",
       "bytes": 50220,
-      "sha256": "02d9ba2fbe9e96286da17b397bd20ad9d1b3e37f7ae2f5ba5128d57459db3887"
+      "sha256": "e7d08c5c5c507500631421ba6105d27e5d2497db423ba4c6b5608e2231457ea8"
     },
     {
       "path": "evidence/top/accel_top_flow_static/summary.json",

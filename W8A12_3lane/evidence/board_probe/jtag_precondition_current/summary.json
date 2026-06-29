@@ -1,13 +1,13 @@
 {
   "status": "BLOCKED",
-  "generated_at": "2026-06-30 00:31:49",
+  "generated_at": "2026-06-30 00:37:28",
   "usb_match_count": 3,
   "usb_known_jtag_candidate_count": 0,
   "pnp_history_known_jtag_candidate_count": 4,
   "pnp_history_known_vidpid_count": 3,
   "vivado_target_count": 0,
-  "usb_json": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\dbg2_src_boundary_current\\usb\\usb_jtag_devices.json",
-  "vivado_probe_dir": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\dbg2_src_boundary_current\\vivado_probe",
+  "usb_json": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\usb\\usb_jtag_devices.json",
+  "vivado_probe_dir": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\vivado_probe",
   "online_matched_devices": [
     {
       "name": "USB Composite Device",

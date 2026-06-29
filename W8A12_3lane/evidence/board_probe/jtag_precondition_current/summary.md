@@ -4,14 +4,14 @@ Status: BLOCKED
 
 | Field | Value |
 | --- | --- |
-| Generated at | `2026-06-30 00:31:49` |
+| Generated at | `2026-06-30 00:37:28` |
 | USB match count | `3` |
 | USB known JTAG candidate count | `0` |
 | PnP history known candidate count | `4` |
 | PnP history known VID/PID count | `3` |
 | Vivado target count | `0` |
-| USB evidence | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\dbg2_src_boundary_current\usb\usb_jtag_devices.json` |
-| Vivado probe dir | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\dbg2_src_boundary_current\vivado_probe` |
+| USB evidence | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\usb\usb_jtag_devices.json` |
+| Vivado probe dir | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\vivado_probe` |
 
 ## Interpretation
 
