@@ -115,7 +115,7 @@
 3. A7 720p x4 board `validation.md Status: PASS`。
 4. x2 720p board `validation.md Status: PASS`。
 
-当前严格审计为 `69 / 73`，新增赛题报告、PDF 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查、JTAG recovery checklist 和 board validation readiness 已通过，剩余 4 项均为真实板端 validation。重插后 USB/JTAG 与 Vivado target 曾恢复：`board_runs/vivado_hw_target_probe_after_replug_20260628` 显示 target count=1、device count=2。补跑对应 `psu_init.tcl` 后，最小 JTAG-to-AXI register probe 已恢复 PASS，W8A12 debugregs bitstream 也能暴露 `hw_axi_1`。最新 `dbgprogress` bitstream 已越过 `counter_out=0`，上板完整输出 `192/192` 且 `frame_done=1`，但 compare FAIL：`189/192` mismatch，writeback hash `0xAD24396D != 0x61D3EA1D`。stage-hash Default bitstream 已生成并 timing PASS；最新 recovery preflight 仍为 `USB known JTAG candidate count=0`、`Vivado target count=not_checked`，当前在线 USB 列表无 Xilinx/FTDI known candidate，历史 FTDI `VID_0403&PID_6010` 为 Unknown，需要先恢复 JTAG target，再用已通过 RTL 的 stage-hash 映射定位差异位于 front/SPAB、tail/RGB、writer 还是 endpoint/readback。
+当前严格审计为 `69 / 73`，新增赛题报告、PDF 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查、JTAG recovery checklist 和 board validation readiness 已通过，剩余 4 项均为真实板端 validation。重插后 USB/JTAG 与 Vivado target 已恢复：最新 recovery preflight 显示 USB known JTAG candidate count=3、Vivado probe exit=0，`psu_init.tcl` PASS，寄存器 readback PASS。最新 true2x2 stage-hash 上板完整输出 `192/192` 且 `frame_done=1`、`error=0`，但 compare FAIL：`191/192` mismatch，PSNR `11.8292 dB`。当前问题已经不是板子未识别、PS 初始化失败或读回链路中断，而是真实板端数值 mismatch；最早失败边界为 `tail_b1_hash`，下一步需要在 `feat0/input/halo/block1 c1/c2/c3/att` 增加更细粒度 hash，继续把差异向前定位。
 
 已补充并已通过审计的离线证据：
 

@@ -10,8 +10,8 @@ Current branch: `codex/w8a12-3lane-delivery-draft`
 | --- | --- | --- |
 | `git.branch_detected` | PASS | `codex/w8a12-3lane-delivery-draft` |
 | `git.target_remote_configured` | PASS | `{"target": "https://github.com/robot-berry/W8A12.git", "configured": ["https://github.com/robot-berry/W8A12.git"]}` |
-| `git.w8a12_changes_present` | PASS | `12 W8A12_3lane status lines` |
-| `git.outside_changes_detected` | FAIL | `0 outside status lines; do not stage them for W8A12 upload` |
+| `git.w8a12_changes_present` | PASS | `2 W8A12_3lane status lines` |
+| `git.outside_changes_detected` | PASS | `1 outside status lines; do not stage them for W8A12 upload` |
 | `git.no_staged_outside_upload_scope` | PASS | `[]` |
 | `git.upload_candidate_count` | PASS | `916` |
 | `git.no_forbidden_upload_candidates` | PASS | `[]` |

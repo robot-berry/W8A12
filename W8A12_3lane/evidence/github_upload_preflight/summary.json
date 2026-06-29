@@ -21,12 +21,12 @@
     {
       "name": "git.w8a12_changes_present",
       "pass": true,
-      "detail": "12 W8A12_3lane status lines"
+      "detail": "2 W8A12_3lane status lines"
     },
     {
       "name": "git.outside_changes_detected",
-      "pass": false,
-      "detail": "0 outside status lines; do not stage them for W8A12 upload"
+      "pass": true,
+      "detail": "1 outside status lines; do not stage them for W8A12 upload"
     },
     {
       "name": "git.no_staged_outside_upload_scope",
