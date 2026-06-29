@@ -4,18 +4,18 @@
   "audit_pass_count": 72,
   "audit_total_count": 76,
   "submission_status": "INCOMPLETE",
-  "submission_file_count": 372,
+  "submission_file_count": 374,
   "missing_final_evidence": [
     "evidence/board_reports/a5_32x32/validation.md",
     "evidence/board_reports/a6_64x64/validation.md",
     "evidence/board_reports/a7_720p_x4/validation.md",
     "evidence/board_reports/x2_720p/validation.md"
   ],
-  "latest_delivery_run": "evidence/delivery_runs/current_usb_diag_enhanced_20260630/summary.md",
+  "latest_delivery_run": "evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md",
   "pdf_status": "PASS",
-  "pdf_sha256": "20bc3f23cfda4f786d5abbede7227be7722c08e6bb76f0cbdd08287679fedcd2",
+  "pdf_sha256": "c16536045ea0beb3a96f8063478cbec1f4129624e7d2dc44979f9058d2710f41",
   "docx_status": "PASS",
-  "docx_sha256": "abbb9f0ec3d3c928fffc80cf0f18936838119f73b896d14cb7b62ec0739a720a",
+  "docx_sha256": "6244b8af76f7083552be0e138fa2d15d663c3b49319c136b874260aafc4bfb02",
   "rows": [
     {
       "area": "交付物1 模型/训练/量化/转换",
@@ -112,7 +112,7 @@
       "item": "分层门禁、缺口计划、JTAG 恢复清单",
       "status": "PASS",
       "evidence": [
-        "evidence/delivery_runs/current_usb_diag_enhanced_20260630/summary.md",
+        "evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md",
         "evidence/delivery_audit/missing_evidence_plan.md",
         "evidence/board_probe/jtag_recovery_checklist/summary.md"
       ],

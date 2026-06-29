@@ -1,11 +1,11 @@
 {
   "status": "INCOMPLETE",
   "archive": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\submission_package\\archive\\W8A12_3lane_submission_current.zip",
-  "bytes": 2722197,
-  "sha256": "9c3a76ed81ec7a5d8223ea301eced4a0ddc66064640d15bad1d9fa65ddebfa5c",
+  "bytes": 2744132,
+  "sha256": "aa3d99dba3b99940e00eeb4d6ff10011ec1b9531dd3c508fc827f7ec0ddd8354",
   "manifest": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\submission_package\\submission_manifest.json",
   "manifest_status": "INCOMPLETE",
-  "archived_file_count": 372,
+  "archived_file_count": 374,
   "missing_final_evidence": [
     "evidence/board_reports/a5_32x32/validation.md",
     "evidence/board_reports/a6_64x64/validation.md",

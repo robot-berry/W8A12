@@ -7,7 +7,7 @@ Status: PASS
 | source | `G:\UESTC\feitengspan1\W8A12_3lane\docs\contest_submission_report.md` |
 | pdf | `G:\UESTC\feitengspan1\W8A12_3lane\output\pdf\W8A12_3lane_contest_submission_report.pdf` |
 | bytes | `97809` |
-| sha256 | `20bc3f23cfda4f786d5abbede7227be7722c08e6bb76f0cbdd08287679fedcd2` |
+| sha256 | `c16536045ea0beb3a96f8063478cbec1f4129624e7d2dc44979f9058d2710f41` |
 | page_count | `8` |
 | font | `C:\Windows\Fonts\simhei.ttf` |
 

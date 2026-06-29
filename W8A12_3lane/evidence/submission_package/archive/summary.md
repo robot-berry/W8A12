@@ -5,11 +5,11 @@ Status: INCOMPLETE
 | Field | Value |
 | --- | --- |
 | archive | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\submission_package\archive\W8A12_3lane_submission_current.zip` |
-| bytes | `2722197` |
-| sha256 | `9c3a76ed81ec7a5d8223ea301eced4a0ddc66064640d15bad1d9fa65ddebfa5c` |
+| bytes | `2744132` |
+| sha256 | `aa3d99dba3b99940e00eeb4d6ff10011ec1b9531dd3c508fc827f7ec0ddd8354` |
 | manifest | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\submission_package\submission_manifest.json` |
 | manifest status | `INCOMPLETE` |
-| archived file count | `372` |
+| archived file count | `374` |
 | missing final evidence count | `4` |
 
 ## Missing Final Evidence
