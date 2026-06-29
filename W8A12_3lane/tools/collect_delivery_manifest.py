@@ -130,6 +130,8 @@ def should_include(path: Path) -> bool:
         return False
     if any(part in SKIP_DIR_PARTS for part in path.relative_to(BASE).parts):
         return False
+    if path.name.startswith("~$"):
+        return False
     if path.suffix.lower() in SKIP_SUFFIXES:
         return False
     return True

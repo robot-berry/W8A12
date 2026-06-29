@@ -7,7 +7,7 @@ Status: PASS
 | repository | `https://github.com/robot-berry/W8A12.git` |
 | branch | `codex/w8a12-3lane-delivery-draft` |
 | verification mode | `branch-level push evidence` |
-| uploaded tree | `W8A12_3lane/` |
+| uploaded tree | `W8A12_3lane/` + required root `scripts/` + required root `tools/` + `external/SPAN/basicsr/` |
 | source export | `W8A12_3lane/output/github_upload/robot-berry_W8A12_upload_tree` |
 | pull request URL | `https://github.com/robot-berry/W8A12/pull/new/codex/w8a12-3lane-delivery-draft` |
 
