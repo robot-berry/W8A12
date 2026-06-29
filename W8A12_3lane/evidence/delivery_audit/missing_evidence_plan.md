@@ -8,7 +8,7 @@ Missing count: 4
 
 - required path: `W8A12_3lane/evidence/board_reports/a5_32x32/validation.md`
 - required text: `Status: PASS`
-- note: Skeleton report is not enough; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence before validation can PASS.
+- note: Skeleton report is not enough; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence before validation can PASS. PSNR target: x4 >= 28 dB.
 
 ```powershell
 python W8A12_3lane\tools\create_board_report.py --tag a5_32x32 --scale 4 --lr-width 32 --lr-height 32 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode "tile+halo crop-stitch"
@@ -20,7 +20,7 @@ python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_rep
 
 - required path: `W8A12_3lane/evidence/board_reports/a6_64x64/validation.md`
 - required text: `Status: PASS`
-- note: Depends on A5 passing.
+- note: Depends on A5 passing. PSNR target: x4 >= 28 dB.
 
 ```powershell
 python W8A12_3lane\tools\create_board_report.py --tag a6_64x64 --scale 4 --lr-width 64 --lr-height 64 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode "tile+halo crop-stitch"
@@ -32,7 +32,7 @@ python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_rep
 
 - required path: `W8A12_3lane/evidence/board_reports/a7_720p_x4/validation.md`
 - required text: `Status: PASS`
-- note: Depends on A6 and full-frame/tile integration.
+- note: Depends on A6 and full-frame/tile integration. PSNR target: x4 >= 28 dB.
 
 ```powershell
 python W8A12_3lane\tools\create_board_report.py --tag a7_720p_x4 --scale 4 --lr-width 320 --lr-height 180 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode "tile+halo crop-stitch"
@@ -44,7 +44,7 @@ python W8A12_3lane\tools\validate_board_report.py W8A12_3lane\evidence\board_rep
 
 - required path: `W8A12_3lane/evidence/board_reports/x2_720p/validation.md`
 - required text: `Status: PASS`
-- note: Depends on x2 fixed reference and board integration; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence.
+- note: Depends on x2 fixed reference and board integration; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence. PSNR target: x2 >= 30 dB.
 
 ```powershell
 python W8A12_3lane\tools\create_board_report.py --tag x2_720p --scale 2 --lr-width 640 --lr-height 360 --tile-width 32 --tile-height 32 --halo 21 --target-fps 15 --input-source SD --tiling-mode "tile+halo crop-stitch"

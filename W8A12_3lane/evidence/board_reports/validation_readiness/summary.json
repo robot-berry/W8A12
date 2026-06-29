@@ -122,6 +122,11 @@
       "detail": "W8A12_3lane/evidence/board_probe/jtag_precondition_current/summary.md"
     },
     {
+      "name": "file:validate_board_report",
+      "pass": true,
+      "detail": "W8A12_3lane/tools/validate_board_report.py"
+    },
+    {
       "name": "precondition_declares_status",
       "pass": true,
       "detail": "current board/JTAG precondition is explicit"
@@ -189,7 +194,7 @@
       "detail": 15.0
     },
     {
-      "name": "a5_32x32:target_psnr_command",
+      "name": "a5_32x32:target_psnr_declared",
       "pass": true,
       "detail": 28.0
     },
@@ -261,7 +266,7 @@
       "detail": 15.0
     },
     {
-      "name": "a6_64x64:target_psnr_command",
+      "name": "a6_64x64:target_psnr_declared",
       "pass": true,
       "detail": 28.0
     },
@@ -333,7 +338,7 @@
       "detail": 15.0
     },
     {
-      "name": "a7_720p_x4:target_psnr_command",
+      "name": "a7_720p_x4:target_psnr_declared",
       "pass": true,
       "detail": 28.0
     },
@@ -405,7 +410,7 @@
       "detail": 15.0
     },
     {
-      "name": "x2_720p:target_psnr_command",
+      "name": "x2_720p:target_psnr_declared",
       "pass": true,
       "detail": 30.0
     },

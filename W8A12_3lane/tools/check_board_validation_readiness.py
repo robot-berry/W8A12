@@ -79,13 +79,16 @@ def main() -> int:
     checks: list[dict] = []
     plan = BASE / "evidence" / "delivery_audit" / "missing_evidence_plan.md"
     precondition = BASE / "evidence" / "board_probe" / "jtag_precondition_current" / "summary.md"
+    validator = BASE / "tools" / "validate_board_report.py"
     plan_text = plan.read_text(encoding="utf-8", errors="ignore") if plan.exists() else ""
     precondition_text = precondition.read_text(encoding="utf-8", errors="ignore") if precondition.exists() else ""
+    validator_text = validator.read_text(encoding="utf-8", errors="ignore") if validator.exists() else ""
 
     for rel in TOOLS:
         add(checks, f"tool:{rel}", (BASE / rel).exists(), rel)
     add(checks, "file:missing_evidence_plan", plan.exists(), plan.relative_to(ROOT).as_posix())
     add(checks, "file:jtag_precondition_current", precondition.exists(), precondition.relative_to(ROOT).as_posix())
+    add(checks, "file:validate_board_report", validator.exists(), validator.relative_to(ROOT).as_posix())
     add(
         checks,
         "precondition_declares_status",
@@ -121,8 +124,12 @@ def main() -> int:
         add(checks, f"{tag}:target_fps", float(performance.get("target_fps", -1)) == expected["target_fps"], performance.get("target_fps"))
         add(
             checks,
-            f"{tag}:target_psnr_command",
-            f"--psnr-db <psnr_ge_{int(expected['target_psnr_db'])}>" in plan_text,
+            f"{tag}:target_psnr_declared",
+            (
+                ("PSNR target: x4 >= 28 dB" in plan_text and expected["scale"] == 4)
+                or ("PSNR target: x2 >= 30 dB" in plan_text and expected["scale"] == 2)
+            )
+            and "30.0 if scale == 2 else 28.0 if scale == 4" in validator_text,
             expected["target_psnr_db"],
         )
         add(

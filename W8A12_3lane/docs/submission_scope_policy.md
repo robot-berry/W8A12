@@ -76,7 +76,32 @@ scripts/create_vivado_jtag_w8a12_tile_writer_bd_project.tcl
 
 这些脚本不替代最终 board validation，但它们是恢复 JTAG target 后继续定位 mismatch 的最小自动化入口。
 
-## 4. 上传前检查
+## 4. 板端综合所需根目录 RTL
+
+JTAG true2x2/stage-hash bitstream 的 Vivado Tcl 明确引用根目录 RTL。赛题交付要求包含硬件加速器源代码，因此上传仓库不能只包含脚本，还必须包含最小可综合 RTL 依赖：
+
+```text
+rtl/board/
+rtl/span/
+rtl/generated/reds_span_x4_f48_w8a12/
+```
+
+其中 `rtl/generated/reds_span_x4_f48_w8a12/` 包含 x4、48 channels、W8A12 对应的量化参数、postprocess LUT 和 block-group 常量。该目录是源码/参数交付物，不等同于 Vivado 生成物；`.bit/.xsa/.dcp/.jou/.log/.wdb` 等构建输出仍不允许进入上传范围。
+
+最低必须能找到以下文件：
+
+```text
+rtl/board/sr_jtag_w8a12_tile_writer_endpoint.v
+rtl/board/sr_tile_halo_fetch_w8a12_front_tail_writer_shell.v
+rtl/board/sr_w8a12_block_group_spab_c1c2c3_attention_buffered_tile_engine.v
+rtl/span/span_w8a12_tail_streamed_rgb.v
+rtl/span/span_w8a12_parallel_conv_vector_streamed_weights.v
+rtl/generated/reds_span_x4_f48_w8a12/span_w8a12_layers.vh
+rtl/generated/reds_span_x4_f48_w8a12/postprocess/span_w8a12_postprocess.vh
+rtl/generated/reds_span_x4_f48_w8a12/block_group/span_w8a12_block_group_mem.vh
+```
+
+## 5. 上传前检查
 
 上传前至少确认：
 
@@ -89,7 +114,7 @@ python W8A12_3lane\tools\audit_contest_delivery.py
 
 `check_x2_flow_static.py` 会检查根目录导出工具是否存在；`collect_submission_package.py` 会列出 `W8A12_3lane` 新主线文件；`audit_contest_delivery.py` 决定当前交付是否满足赛题门槛。
 
-## 5. 不可替代项
+## 6. 不可替代项
 
 以下证据必须由实际流程生成，不能用提交范围说明替代：
 

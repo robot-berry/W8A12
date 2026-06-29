@@ -11,7 +11,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "W8A12_3lane"
-DEFAULT_USB_JSON = BASE / "evidence" / "board_probe" / "recovery_preflight_current" / "usb" / "usb_jtag_devices.json"
+DEFAULT_USB_JSON = None
 DEFAULT_PRECONDITION_JSON = BASE / "evidence" / "board_probe" / "jtag_precondition_current" / "summary.json"
 DEFAULT_OUT = BASE / "evidence" / "board_probe" / "jtag_recovery_checklist"
 
@@ -28,6 +28,17 @@ def load_json(path: Path) -> dict[str, Any]:
     if not path.is_absolute():
         path = ROOT / path
     return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def resolve_usb_json(cli_usb: Path | None, precondition: dict[str, Any]) -> Path:
+    if cli_usb is not None:
+        return cli_usb if cli_usb.is_absolute() else ROOT / cli_usb
+    from_precondition = precondition.get("usb_json", "")
+    if from_precondition:
+        path = Path(from_precondition)
+        return path if path.is_absolute() else ROOT / path
+    fallback = BASE / "evidence" / "board_probe" / "recovery_preflight_current" / "usb" / "usb_jtag_devices.json"
+    return fallback
 
 
 def as_int(value: Any, default: int = 0) -> int:
@@ -168,11 +179,11 @@ def render_md(data: dict[str, Any]) -> str:
 
 def main() -> int:
     args = parse_args()
-    usb_json = args.usb_json if args.usb_json.is_absolute() else ROOT / args.usb_json
     precondition_json = args.precondition_json if args.precondition_json.is_absolute() else ROOT / args.precondition_json
     out_dir = args.out_dir if args.out_dir.is_absolute() else ROOT / args.out_dir
-    usb = load_json(usb_json)
     precondition = load_json(precondition_json)
+    usb_json = resolve_usb_json(args.usb_json, precondition)
+    usb = load_json(usb_json)
     data = make_payload(precondition, usb)
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "summary.json").write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")

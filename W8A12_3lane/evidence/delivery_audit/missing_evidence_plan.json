@@ -11,7 +11,7 @@
         "python W8A12_3lane\\tools\\finalize_board_report_from_outputs.py W8A12_3lane\\evidence\\board_reports\\a5_32x32\\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>",
         "python W8A12_3lane\\tools\\validate_board_report.py W8A12_3lane\\evidence\\board_reports\\a5_32x32\\summary.json --json-out W8A12_3lane\\evidence\\board_reports\\a5_32x32\\validation.json --md-out W8A12_3lane\\evidence\\board_reports\\a5_32x32\\validation.md"
       ],
-      "note": "Skeleton report is not enough; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence before validation can PASS."
+      "note": "Skeleton report is not enough; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence before validation can PASS. PSNR target: x4 >= 28 dB."
     },
     {
       "name": "a6.board_64x64",
@@ -22,7 +22,7 @@
         "python W8A12_3lane\\tools\\finalize_board_report_from_outputs.py W8A12_3lane\\evidence\\board_reports\\a6_64x64\\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>",
         "python W8A12_3lane\\tools\\validate_board_report.py W8A12_3lane\\evidence\\board_reports\\a6_64x64\\summary.json --json-out W8A12_3lane\\evidence\\board_reports\\a6_64x64\\validation.json --md-out W8A12_3lane\\evidence\\board_reports\\a6_64x64\\validation.md"
       ],
-      "note": "Depends on A5 passing."
+      "note": "Depends on A5 passing. PSNR target: x4 >= 28 dB."
     },
     {
       "name": "a7.board_720p_x4",
@@ -33,7 +33,7 @@
         "python W8A12_3lane\\tools\\finalize_board_report_from_outputs.py W8A12_3lane\\evidence\\board_reports\\a7_720p_x4\\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>",
         "python W8A12_3lane\\tools\\validate_board_report.py W8A12_3lane\\evidence\\board_reports\\a7_720p_x4\\summary.json --json-out W8A12_3lane\\evidence\\board_reports\\a7_720p_x4\\validation.json --md-out W8A12_3lane\\evidence\\board_reports\\a7_720p_x4\\validation.md"
       ],
-      "note": "Depends on A6 and full-frame/tile integration."
+      "note": "Depends on A6 and full-frame/tile integration. PSNR target: x4 >= 28 dB."
     },
     {
       "name": "x2.board",
@@ -44,7 +44,7 @@
         "python W8A12_3lane\\tools\\finalize_board_report_from_outputs.py W8A12_3lane\\evidence\\board_reports\\x2_720p\\summary.json --board-output <board_output.rgb> --fixed-reference <fixed_reference.rgb> --frame-done true --error false --lut-used <lut> --ff-used <ff> --bram-tile-used <bram_tile> --dsp-used <dsp> --wns-ns <wns> --whs-ns <whs> --clock-mhz <clock> --latency-ms <latency> --fps <fps_ge_15> --power-w <power> --bitstream <bitstream> --utilization-report <utilization> --timing-report <timing>",
         "python W8A12_3lane\\tools\\validate_board_report.py W8A12_3lane\\evidence\\board_reports\\x2_720p\\summary.json --json-out W8A12_3lane\\evidence\\board_reports\\x2_720p\\validation.json --md-out W8A12_3lane\\evidence\\board_reports\\x2_720p\\validation.md"
       ],
-      "note": "Depends on x2 fixed reference and board integration; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence."
+      "note": "Depends on x2 fixed reference and board integration; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence. PSNR target: x2 >= 30 dB."
     }
   ]
 }

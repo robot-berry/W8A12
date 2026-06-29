@@ -16,6 +16,8 @@ param(
   [int]$TapLanes = 16,
   [ValidateRange(1, 16)]
   [int]$ScaleLanes = 2,
+  [ValidateRange(0, 3)]
+  [int]$DebugExportLevel = 2,
   [int]$MinAvailablePageFileMb = 0,
   [switch]$RequireVivadoIdle,
   [int]$WaitForVivadoIdleSeconds = 0,
@@ -70,6 +72,7 @@ try {
   if ($LASTEXITCODE -ne 0) { throw "pack_w8a12_group_weights.ps1 failed with exit code $LASTEXITCODE" }
 
   $tag = "x4_imgw{0}_tile{1}x{2}_h{3}_f{4}m_ol{5}_tl{6}_sl{7}" -f $ImgW, $TileW, $TileH, $Halo, $PlFreqMhz, $OutLanes, $TapLanes, $ScaleLanes
+  $tag = "{0}_dbg{1}" -f $tag, $DebugExportLevel
   $projectLabel = $tag
   if (-not [string]::IsNullOrWhiteSpace($AttemptLabel)) {
     $safeLabel = $AttemptLabel -replace '[^A-Za-z0-9_=-]', '_'
@@ -93,6 +96,7 @@ try {
   $env:JTAG_W8A12_TILE_WRITER_OUT_LANES = [string]$OutLanes
   $env:JTAG_W8A12_TILE_WRITER_TAP_LANES = [string]$TapLanes
   $env:JTAG_W8A12_TILE_WRITER_SCALE_LANES = [string]$ScaleLanes
+  $env:JTAG_W8A12_TILE_WRITER_DEBUG_EXPORT_LEVEL = [string]$DebugExportLevel
   $env:JTAG_W8A12_TILE_WRITER_MAX_THREADS = [string]$VivadoMaxThreads
   $env:JTAG_W8A12_TILE_WRITER_SYNTH_DIRECTIVE = $SynthDirective
   $env:JTAG_W8A12_TILE_WRITER_PROJECT_DIR = $projectDir
@@ -172,6 +176,7 @@ try {
   Remove-Item Env:\JTAG_W8A12_TILE_WRITER_OUT_LANES -ErrorAction SilentlyContinue
   Remove-Item Env:\JTAG_W8A12_TILE_WRITER_TAP_LANES -ErrorAction SilentlyContinue
   Remove-Item Env:\JTAG_W8A12_TILE_WRITER_SCALE_LANES -ErrorAction SilentlyContinue
+  Remove-Item Env:\JTAG_W8A12_TILE_WRITER_DEBUG_EXPORT_LEVEL -ErrorAction SilentlyContinue
   Remove-Item Env:\JTAG_W8A12_TILE_WRITER_MAX_THREADS -ErrorAction SilentlyContinue
   Remove-Item Env:\JTAG_W8A12_TILE_WRITER_SYNTH_DIRECTIVE -ErrorAction SilentlyContinue
   Remove-Item Env:\JTAG_W8A12_TILE_WRITER_PROJECT_DIR -ErrorAction SilentlyContinue

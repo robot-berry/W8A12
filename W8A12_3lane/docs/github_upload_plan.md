@@ -49,7 +49,7 @@ python W8A12_3lane\tools\check_github_upload_preflight.py
 - 已暂存文件包含 `W8A12_3lane/` 以外的路径；
 - 缺少审计、提交 manifest、PDF/Word 报告或草案归档摘要。
 
-当前本地仓库保留原 `origin=https://github.com/robot-berry/feitengspan1.git`，并已新增 `w8a12=https://github.com/robot-berry/W8A12.git`。上传前必须只 stage `W8A12_3lane/` 目录，推送时使用 `w8a12` remote，避免把根目录历史脏文件推入目标仓库。
+当前本地仓库保留原 `origin=https://github.com/robot-berry/feitengspan1.git`，并已新增 `w8a12=https://github.com/robot-berry/W8A12.git`。上传前必须只 stage `submission_scope_policy.md` 定义的范围：`W8A12_3lane/`、必要根目录 `tools/`、必要根目录 `scripts/`、最小根目录 RTL、以及 `external/SPAN/basicsr/`，避免把根目录历史脏文件推入目标仓库。
 
 4. 生成干净上传树：
 
@@ -106,6 +106,7 @@ W8A12_3lane/evidence/delivery_manifest/manifest.md
 - `evidence/submission_package/archive/summary.md` 和 `summary.json`，用于记录提交草案 zip 的 SHA256；`.zip` 本体不纳入递归 manifest
 - 根目录 `tools/` 中的 W8A12 导出工具，至少包括 `submission_scope_policy.md` 列出的 6 个脚本
 - 根目录 `scripts/` 中的板端 JTAG/stage-hash 脚本，至少包括 `submission_scope_policy.md` 列出的 `run_w8a12_board_recovery_preflight.ps1`、`run_w8a12_stagehash_true2x2_acceptance.ps1`、JTAG probe、PS init、smoke、寄存器读取和 bitstream 生成脚本
+- 根目录 RTL 最小综合依赖：`rtl/board/`、`rtl/span/`、`rtl/generated/reds_span_x4_f48_w8a12/`
 - `external/SPAN/basicsr/` 中 SPAN 模型定义依赖，至少保证 `basicsr.archs.span_arch.SPAN` 可导入
 
 暂不建议上传大文件：

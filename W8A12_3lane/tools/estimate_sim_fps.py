@@ -20,6 +20,8 @@ OUT = BASE / "evidence" / "sim_fps_estimate"
 
 VALIDATION_JSON = BASE / "evidence" / "board_reports" / "validation_readiness" / "summary.json"
 OOC_JSON = BASE / "evidence" / "resource" / "A4_3lane_mac_scheduler_ooc" / "ooc_summary.json"
+A4_SIM_JSON = BASE / "evidence" / "resource" / "A4_3lane_mac_scheduler" / "a4_3lane_sim_summary.json"
+MANIFEST_JSON = ROOT / "rtl" / "generated" / "reds_span_x4_f48_w8a12" / "span_w8a12_rtl_manifest.json"
 
 CLOCK_MHZ = 100.0
 TARGET_PERIOD_NS = 10.0
@@ -28,6 +30,7 @@ KERNEL_TAPS = 9
 TAP_PAR = 8
 EQUIVALENT_48X48_CONV_STAGES = 22
 TILE_OVERHEAD_CYCLES = 1024
+REFERENCE_TAPS_PER_48X48_STAGE = FEATURE_CHANNELS * KERNEL_TAPS
 
 
 def load_json(path: Path, default: dict[str, Any]) -> dict[str, Any]:
@@ -42,15 +45,48 @@ def fps_for(clock_mhz: float, cycles: int) -> float:
     return clock_mhz * 1_000_000.0 / cycles
 
 
-def estimate_row(item: dict[str, Any], timing_clock_mhz: float | None) -> dict[str, Any]:
+def layer_taps(manifest: dict[str, Any]) -> list[int]:
+    taps: list[int] = []
+    for layer in manifest.get("layers", []):
+        shape = layer.get("weight_shape", [])
+        if len(shape) != 4:
+            continue
+        _, in_ch, kh, kw = [int(v) for v in shape]
+        taps.append(in_ch * kh * kw)
+    return taps
+
+
+def current_cycles_per_lr_pixel(manifest: dict[str, Any], sim: dict[str, Any]) -> tuple[int, dict[str, Any]]:
+    taps = layer_taps(manifest)
+    ideal_groups = sum(math.ceil(tap_count / TAP_PAR) for tap_count in taps)
+    measured_cpp = sim.get("performance", {}).get("single_stage_cycles_per_pixel_ceil")
+    if isinstance(measured_cpp, (int, float)):
+        reference_groups = math.ceil(REFERENCE_TAPS_PER_48X48_STAGE / TAP_PAR)
+        per_layer_overhead = max(0, int(measured_cpp) - 2 * reference_groups)
+        cycles = sum(2 * math.ceil(tap_count / TAP_PAR) + per_layer_overhead for tap_count in taps)
+        source = "A4 RTL sim measured-compatible model"
+    else:
+        per_layer_overhead = 0
+        cycles = ideal_groups
+        source = "manifest ideal one-cycle-per-tap-group fallback"
+    return cycles, {
+        "cycle_source": source,
+        "manifest": str(MANIFEST_JSON),
+        "layer_count": len(taps),
+        "ideal_one_cycle_tap_groups_per_lr_pixel": ideal_groups,
+        "measured_reference_stage_cycles_per_pixel": measured_cpp,
+        "derived_per_layer_overhead_cycles": per_layer_overhead,
+    }
+
+
+def estimate_row(item: dict[str, Any], timing_clock_mhz: float | None, cycles_per_lr_pixel: int) -> dict[str, Any]:
     tag = item["tag"]
     lr_w, lr_h = item["lr_size"]
     tile_x, tile_y = item["tile_count"]
     target_fps = float(item["target_fps"])
     pixels = int(lr_w) * int(lr_h)
     tiles = int(tile_x) * int(tile_y)
-    cycles_per_conv_pixel = math.ceil(FEATURE_CHANNELS * KERNEL_TAPS / TAP_PAR)
-    compute_cycles = pixels * EQUIVALENT_48X48_CONV_STAGES * cycles_per_conv_pixel
+    compute_cycles = pixels * cycles_per_lr_pixel
     overhead_cycles = tiles * TILE_OVERHEAD_CYCLES
     total_cycles = compute_cycles + overhead_cycles
     fps_100 = fps_for(CLOCK_MHZ, total_cycles)
@@ -67,8 +103,7 @@ def estimate_row(item: dict[str, Any], timing_clock_mhz: float | None) -> dict[s
         "target_fps": target_fps,
         "pixels": pixels,
         "tiles": tiles,
-        "cycles_per_conv_pixel": cycles_per_conv_pixel,
-        "equivalent_48x48_conv_stages": EQUIVALENT_48X48_CONV_STAGES,
+        "cycles_per_lr_pixel": cycles_per_lr_pixel,
         "compute_cycles": compute_cycles,
         "tile_overhead_cycles": overhead_cycles,
         "total_cycles": total_cycles,
@@ -98,8 +133,12 @@ def render_md(data: dict[str, Any]) -> str:
         f"| feature_channels | {data['assumptions']['feature_channels']} |",
         f"| kernel_taps | {data['assumptions']['kernel_taps']} |",
         f"| tap_par | {data['assumptions']['tap_par']} |",
-        f"| cycles_per_conv_pixel | {data['assumptions']['cycles_per_conv_pixel']} |",
-        f"| equivalent_48x48_conv_stages | {data['assumptions']['equivalent_48x48_conv_stages']} |",
+        f"| cycle_source | {data['assumptions']['cycle_source']} |",
+        f"| layer_count | {data['assumptions']['layer_count']} |",
+        f"| ideal_one_cycle_tap_groups_per_lr_pixel | {data['assumptions']['ideal_one_cycle_tap_groups_per_lr_pixel']} |",
+        f"| measured_reference_stage_cycles_per_pixel | {data['assumptions']['measured_reference_stage_cycles_per_pixel']} |",
+        f"| derived_per_layer_overhead_cycles | {data['assumptions']['derived_per_layer_overhead_cycles']} |",
+        f"| cycles_per_lr_pixel | {data['assumptions']['cycles_per_lr_pixel']} |",
         f"| tile_overhead_cycles | {data['assumptions']['tile_overhead_cycles']} |",
         "",
         "## Results",
@@ -140,7 +179,10 @@ def main() -> int:
     if timing_clock_mhz is None:
         timing_clock_mhz = CLOCK_MHZ
 
-    rows = [estimate_row(item, timing_clock_mhz) for item in readiness.get("items", [])]
+    manifest = load_json(MANIFEST_JSON, {"layers": []})
+    sim = load_json(A4_SIM_JSON, {"performance": {}})
+    cycles_per_lr_pixel, cycle_meta = current_cycles_per_lr_pixel(manifest, sim)
+    rows = [estimate_row(item, timing_clock_mhz, cycles_per_lr_pixel) for item in readiness.get("items", [])]
     all_pass_100 = bool(rows) and all(row["pass_at_100mhz"] for row in rows)
     data = {
         "status": "PASS" if all_pass_100 else "FAIL",
@@ -153,9 +195,9 @@ def main() -> int:
             "feature_channels": FEATURE_CHANNELS,
             "kernel_taps": KERNEL_TAPS,
             "tap_par": TAP_PAR,
-            "cycles_per_conv_pixel": math.ceil(FEATURE_CHANNELS * KERNEL_TAPS / TAP_PAR),
-            "equivalent_48x48_conv_stages": EQUIVALENT_48X48_CONV_STAGES,
+            "cycles_per_lr_pixel": cycles_per_lr_pixel,
             "tile_overhead_cycles": TILE_OVERHEAD_CYCLES,
+            **cycle_meta,
         },
         "rows": rows,
     }

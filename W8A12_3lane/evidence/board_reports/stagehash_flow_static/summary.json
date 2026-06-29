@@ -44,12 +44,27 @@
     {
       "name": "file:recovery_preflight_current",
       "pass": true,
-      "detail": "W8A12_3lane/evidence/board_probe/recovery_preflight_current/board_recovery_preflight_summary.md"
+      "detail": "W8A12_3lane/evidence/board_probe/recovery_preflight_force_vivado_current/board_recovery_preflight_summary.md"
+    },
+    {
+      "name": "file:dbg2_source_boundary_current",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_current/summary.md"
     },
     {
       "name": "file:jtag_recovery_checklist",
       "pass": true,
       "detail": "W8A12_3lane/evidence/board_probe/jtag_recovery_checklist/summary.md"
+    },
+    {
+      "name": "file:stagehash_live_report",
+      "pass": true,
+      "detail": "W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md"
+    },
+    {
+      "name": "file:jtag_endpoint_rtl",
+      "pass": true,
+      "detail": "rtl/board/sr_jtag_w8a12_tile_writer_endpoint.v"
     },
     {
       "name": "file:scripts/run_w8a12_board_recovery_preflight.ps1",
@@ -162,6 +177,21 @@
       "detail": "stage-hash report has build and target-fail evidence"
     },
     {
+      "name": "live_report_records_localized_board_mismatch",
+      "pass": true,
+      "detail": "2026-06-29 live stage-hash board evidence"
+    },
+    {
+      "name": "jtag_endpoint_has_debug_bank_mux",
+      "pass": true,
+      "detail": "6-bit JTAG endpoint exposes fine-grain hashes through debug banks"
+    },
+    {
+      "name": "reg_read_script_reads_debug_banks",
+      "pass": true,
+      "detail": "register read flow captures banked fine-grain hashes into summary"
+    },
+    {
       "name": "docs_list_board_root_dependencies",
       "pass": true,
       "detail": "submission scope lists board root scripts"
@@ -192,9 +222,14 @@
       "detail": "current board/JTAG precondition evidence"
     },
     {
-      "name": "recovery_preflight_has_current_blocked_evidence",
+      "name": "recovery_preflight_has_current_status_evidence",
       "pass": true,
       "detail": "current board recovery preflight evidence"
+    },
+    {
+      "name": "dbg2_source_boundary_has_blocked_or_ready_evidence",
+      "pass": true,
+      "detail": "current dbg2/source-boundary evidence preserves next low-intrusion step"
     },
     {
       "name": "jtag_recovery_doc_has_physical_steps",
@@ -202,9 +237,9 @@
       "detail": "physical JTAG recovery runbook"
     },
     {
-      "name": "jtag_recovery_evidence_has_current_blocked_state",
+      "name": "jtag_recovery_evidence_retains_historical_runbook_and_current_status",
       "pass": true,
-      "detail": "current physical/JTAG recovery evidence"
+      "detail": "historical physical/JTAG recovery evidence plus current explicit precondition and dbg2 continuation"
     }
   ]
 }

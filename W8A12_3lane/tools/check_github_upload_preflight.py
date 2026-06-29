@@ -15,7 +15,13 @@ OUT = BASE / "evidence" / "github_upload_preflight"
 
 TARGET_REPO = "https://github.com/robot-berry/W8A12.git"
 TARGET_FULL_NAME = "robot-berry/W8A12"
-ALLOWED_PREFIXES = ("W8A12_3lane/", "external/SPAN/basicsr/")
+ALLOWED_PREFIXES = (
+    "W8A12_3lane/",
+    "external/SPAN/basicsr/",
+    "rtl/board/",
+    "rtl/span/",
+    "rtl/generated/reds_span_x4_f48_w8a12/",
+)
 ALLOWED_EXACT_FILES = {
     "tools/calibrate_span_activation_scales.py",
     "tools/export_span_w8a12_quant_plan.py",
@@ -39,6 +45,16 @@ ALLOWED_EXACT_FILES = {
     "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.ps1",
     "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.tcl",
     "scripts/create_vivado_jtag_w8a12_tile_writer_bd_project.tcl",
+}
+REQUIRED_ROOT_RTL_FILES = {
+    "rtl/board/sr_jtag_w8a12_tile_writer_endpoint.v",
+    "rtl/board/sr_tile_halo_fetch_w8a12_front_tail_writer_shell.v",
+    "rtl/board/sr_w8a12_block_group_spab_c1c2c3_attention_buffered_tile_engine.v",
+    "rtl/span/span_w8a12_tail_streamed_rgb.v",
+    "rtl/span/span_w8a12_parallel_conv_vector_streamed_weights.v",
+    "rtl/generated/reds_span_x4_f48_w8a12/span_w8a12_layers.vh",
+    "rtl/generated/reds_span_x4_f48_w8a12/postprocess/span_w8a12_postprocess.vh",
+    "rtl/generated/reds_span_x4_f48_w8a12/block_group/span_w8a12_block_group_mem.vh",
 }
 FORBIDDEN_UPLOAD_RE = re.compile(
     r"((^|/)~\$|"
@@ -109,7 +125,14 @@ def main() -> int:
     staged_outside = [path for path in staged if not is_allowed_upload_path(path)]
     add(checks, "git.no_staged_outside_upload_scope", not staged_outside, staged_outside)
 
-    upload_pathspecs = ["W8A12_3lane", *sorted(ALLOWED_EXACT_FILES), "external/SPAN/basicsr"]
+    upload_pathspecs = [
+        "W8A12_3lane",
+        *sorted(ALLOWED_EXACT_FILES),
+        "rtl/board",
+        "rtl/span",
+        "rtl/generated/reds_span_x4_f48_w8a12",
+        "external/SPAN/basicsr",
+    ]
     code, upload_candidates_output = run_git(["ls-files", "--others", "--cached", "--exclude-standard", "--", *upload_pathspecs])
     upload_candidates = upload_candidates_output.splitlines() if code == 0 and upload_candidates_output else []
     forbidden_candidates = [path for path in upload_candidates if FORBIDDEN_UPLOAD_RE.search(path.replace("\\", "/"))]
@@ -117,6 +140,8 @@ def main() -> int:
     add(checks, "git.no_forbidden_upload_candidates", not forbidden_candidates, forbidden_candidates[:50])
     missing_required = [path for path in sorted(ALLOWED_EXACT_FILES) if not (ROOT / path).is_file()]
     add(checks, "submission_scope.required_root_files_present", not missing_required, missing_required)
+    missing_rtl = [path for path in sorted(REQUIRED_ROOT_RTL_FILES) if not (ROOT / path).is_file()]
+    add(checks, "submission_scope.required_root_rtl_present", not missing_rtl, missing_rtl)
     add(checks, "submission_scope.span_basicsr_present", (ROOT / "external" / "SPAN" / "basicsr" / "archs" / "span_arch.py").is_file(), "external/SPAN/basicsr/archs/span_arch.py")
 
     audit = read_json("evidence/delivery_audit/contest_delivery_audit.json")
@@ -145,6 +170,7 @@ def main() -> int:
         "git.upload_candidate_count",
         "git.no_forbidden_upload_candidates",
         "submission_scope.required_root_files_present",
+        "submission_scope.required_root_rtl_present",
         "submission_scope.span_basicsr_present",
         "delivery_audit.exists",
         "submission_manifest.exists",

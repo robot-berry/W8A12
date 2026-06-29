@@ -2,17 +2,17 @@
   "status": "PASS",
   "source": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\docs\\contest_submission_report.md",
   "pdf": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\pdf\\W8A12_3lane_contest_submission_report.pdf",
-  "bytes": 93170,
-  "sha256": "2508872242d76cb1e9c91e868b3ecd0272ed5d67f0c7f232acc1c18ac93e9317",
+  "bytes": 97809,
+  "sha256": "20bc3f23cfda4f786d5abbede7227be7722c08e6bb76f0cbdd08287679fedcd2",
   "font_path": "C:\\Windows\\Fonts\\simhei.ttf",
-  "page_count": 7,
+  "page_count": 8,
   "required_tokens": {
     "W8A12": true,
     "三路并行": true,
     "REDS": true,
     "28.3118": true,
     "34.4297": true,
-    "69 / 73": true
+    "72 / 76": true
   },
   "rendered_pages": [
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-1.png",
@@ -21,7 +21,8 @@
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-4.png",
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-5.png",
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-6.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-7.png"
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-7.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-8.png"
   ],
   "render_checks": [
     {
@@ -72,7 +73,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-5.png",
       "width": 1241,
       "height": 1754,
-      "mean": 245.8395797518645,
+      "mean": 245.84918046192564,
       "extrema": [
         0,
         255
@@ -83,7 +84,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-6.png",
       "width": 1241,
       "height": 1754,
-      "mean": 248.98120102135604,
+      "mean": 247.10005356698215,
       "extrema": [
         0,
         255
@@ -94,7 +95,18 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-7.png",
       "width": 1241,
       "height": 1754,
-      "mean": 248.40787949174765,
+      "mean": 246.83885250887346,
+      "extrema": [
+        0,
+        255
+      ],
+      "nonblank": true
+    },
+    {
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-8.png",
+      "width": 1241,
+      "height": 1754,
+      "mean": 254.29163041171233,
       "extrema": [
         0,
         255

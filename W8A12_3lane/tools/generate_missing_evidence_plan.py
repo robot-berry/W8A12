@@ -112,15 +112,15 @@ NOTES = {
     "a4.single_lane_ooc": "Requires Vivado synthesis; then summarize OOC.",
     "a4.3lane_ooc": "Requires Vivado synthesis; then summarize OOC.",
     "board.vivado_hw_probe": "Board reports require Vivado to see at least one hardware target and device first.",
-    "a5.board_32x32": "Skeleton report is not enough; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence before validation can PASS.",
-    "a6.board_64x64": "Depends on A5 passing.",
-    "a7.board_720p_x4": "Depends on A6 and full-frame/tile integration.",
+    "a5.board_32x32": "Skeleton report is not enough; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence before validation can PASS. PSNR target: x4 >= 28 dB.",
+    "a6.board_64x64": "Depends on A5 passing. PSNR target: x4 >= 28 dB.",
+    "a7.board_720p_x4": "Depends on A6 and full-frame/tile integration. PSNR target: x4 >= 28 dB.",
     "x2.fixed_reference": "Requires successful x2 W8A12 export first; a3-tail-rgb reads scale from the x2 RTL manifest.",
     "quality.x4_interpolation_baseline": "Run REDS_val x4 interpolation baseline to report SPAN/W8A12 improvement over bicubic.",
     "quality.x2_interpolation_baseline": "Run REDS_val x2 interpolation baseline to report SPAN/W8A12 improvement over bicubic.",
     "quality.comparison_report": "Depends on x4/x2 interpolation baseline summaries; produces final PSNR improvement table.",
     "quality.metric_completion_static": "Checks that the report separates FP32, W8A12 fixed, RTL, and board quality metrics and keeps pending board metrics explicit.",
-    "x2.board": "Depends on x2 fixed reference and board integration; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence.",
+    "x2.board": "Depends on x2 fixed reference and board integration; replace finalize_board_report_from_outputs.py placeholders with real board output, fixed reference, resource, timing, power, and performance evidence. PSNR target: x2 >= 30 dB.",
 }
 
 

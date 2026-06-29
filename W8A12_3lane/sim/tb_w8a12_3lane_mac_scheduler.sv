@@ -38,6 +38,12 @@ module tb_w8a12_3lane_mac_scheduler;
     integer wait_cyc;
     integer value;
     integer mismatches;
+    integer cycle_count;
+    integer first_input_cycle;
+    integer last_output_cycle;
+    integer accepted_pixels;
+    integer total_cycles;
+    integer cycles_per_pixel_ceil;
     logic signed [ACT_W-1:0] got;
     logic signed [ACT_W-1:0] exp;
 
@@ -113,6 +119,12 @@ module tb_w8a12_3lane_mac_scheduler;
         m_ready = 1'b1;
         out_pix = 0;
         mismatches = 0;
+        cycle_count = 0;
+        first_input_cycle = -1;
+        last_output_cycle = -1;
+        accepted_pixels = 0;
+        total_cycles = 0;
+        cycles_per_pixel_ceil = 0;
 
         read_vector(`W8A12_3LANE_A0_INPUT_TXT, input_feature);
         read_vector(`W8A12_3LANE_A0_EXPECTED_TXT, expected_full);
@@ -146,8 +158,29 @@ module tb_w8a12_3lane_mac_scheduler;
 
         if (mismatches != 0)
             $fatal(1, "FAIL w8a12_3lane_mac_scheduler mismatches=%0d", mismatches);
-        $display("PASS w8a12_3lane_mac_scheduler pixels=%0d channels=%0d", PIXELS, CH);
+        total_cycles = last_output_cycle - first_input_cycle + 1;
+        cycles_per_pixel_ceil = (total_cycles + PIXELS - 1) / PIXELS;
+        $display("PASS w8a12_3lane_mac_scheduler pixels=%0d channels=%0d accepted=%0d cycles=%0d cycles_per_pixel_ceil=%0d",
+                 PIXELS, CH, accepted_pixels, total_cycles, cycles_per_pixel_ceil);
         $finish;
+    end
+
+    always @(posedge clk) begin
+        if (rst) begin
+            cycle_count <= 0;
+            first_input_cycle <= -1;
+            last_output_cycle <= -1;
+            accepted_pixels <= 0;
+        end else begin
+            cycle_count <= cycle_count + 1;
+            if (s_valid && s_ready) begin
+                if (accepted_pixels == 0)
+                    first_input_cycle <= cycle_count;
+                accepted_pixels <= accepted_pixels + 1;
+            end
+            if (m_valid && m_ready)
+                last_output_cycle <= cycle_count;
+        end
     end
 
     always @(posedge clk) begin

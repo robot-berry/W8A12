@@ -1,0 +1,766 @@
+{
+  "source": "REDS-trained SPAN W8A12 postprocess LUT export",
+  "quant_plan": "runs\\reds_span_quant_plan\\reds_span_x4_f48_w8a12_reds_val4\\span_w8a12_quant_plan.json",
+  "activation_bits": 12,
+  "activation_qmin": -2048,
+  "activation_qmax": 2047,
+  "entry_count": 18,
+  "entries": [
+    {
+      "id": 0,
+      "name": "block_1.act1",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_1_act1_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -17,
+      "q_max": 2047,
+      "zero_count": 1666,
+      "input_scale_ref": "block_1.c1_r.output",
+      "input_scale": 0.017505036666989326,
+      "output_scale_ref": "block_1.act1",
+      "output_scale": 0.016238292679190636
+    },
+    {
+      "id": 1,
+      "name": "block_1.act2",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_1_act2_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -86,
+      "q_max": 2047,
+      "zero_count": 1419,
+      "input_scale_ref": "block_1.c2_r.output",
+      "input_scale": 0.013598887249827385,
+      "output_scale_ref": "block_1.act2",
+      "output_scale": 0.003231002716347575
+    },
+    {
+      "id": 2,
+      "name": "block_1.attention",
+      "kind": "span_attention",
+      "macro_kind": "SIM_ATT",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_1_attention_sim_att_s12.mem",
+      "value_count": 4096,
+      "q_min": -2047,
+      "q_max": 2047,
+      "zero_count": 1,
+      "input_scale_ref": "block_1.c3_r.output",
+      "input_scale": 0.003960213623940945,
+      "output_scale_ref": "block_1.sim_att",
+      "output_scale": 0.0002441126125631854,
+      "residual_scale_ref": "conv_1.output",
+      "residual_scale": 0.05545925721526146,
+      "attention_output_scale_ref": "block_1.out",
+      "attention_output_scale": 0.025888368487358093,
+      "out3_requant": {
+        "real_multiplier": 3.7342565427428365e-05,
+        "multiplier_q31": 80193,
+        "shift": 31
+      },
+      "residual_requant": {
+        "real_multiplier": 0.0005229492996533265,
+        "multiplier_q31": 1123025,
+        "shift": 31
+      },
+      "attention_vectors": [
+        {
+          "out3_q": -2048,
+          "residual_q": -1024,
+          "sim_att_q": -2047,
+          "q31_output_q": 1253,
+          "float_reference_q": 1253,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -1024,
+          "residual_q": 512,
+          "sim_att_q": -512,
+          "q31_output_q": -118,
+          "float_reference_q": -118,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -17,
+          "residual_q": 23,
+          "sim_att_q": -3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 0,
+          "residual_q": 0,
+          "sim_att_q": 0,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 17,
+          "residual_q": -23,
+          "sim_att_q": 3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 512,
+          "residual_q": -1024,
+          "sim_att_q": 512,
+          "q31_output_q": -264,
+          "float_reference_q": -264,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 1536,
+          "residual_q": 1024,
+          "sim_att_q": 2047,
+          "q31_output_q": 1214,
+          "float_reference_q": 1214,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 2047,
+          "residual_q": 2047,
+          "sim_att_q": 2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        }
+      ],
+      "attention_q31_max_abs_error_vs_float": 0
+    },
+    {
+      "id": 3,
+      "name": "block_2.act1",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_2_act1_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -12,
+      "q_max": 2047,
+      "zero_count": 1787,
+      "input_scale_ref": "block_2.c1_r.output",
+      "input_scale": 0.02379152551293373,
+      "output_scale_ref": "block_2.act1",
+      "output_scale": 0.02379152551293373
+    },
+    {
+      "id": 4,
+      "name": "block_2.act2",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_2_act2_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -41,
+      "q_max": 2047,
+      "zero_count": 1850,
+      "input_scale_ref": "block_2.c2_r.output",
+      "input_scale": 0.03870066627860069,
+      "output_scale_ref": "block_2.act2",
+      "output_scale": 0.006836753338575363
+    },
+    {
+      "id": 5,
+      "name": "block_2.attention",
+      "kind": "span_attention",
+      "macro_kind": "SIM_ATT",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_2_attention_sim_att_s12.mem",
+      "value_count": 4096,
+      "q_min": -2047,
+      "q_max": 2047,
+      "zero_count": 1,
+      "input_scale_ref": "block_2.c3_r.output",
+      "input_scale": 0.009543207474052906,
+      "output_scale_ref": "block_2.sim_att",
+      "output_scale": 0.0002442598924972117,
+      "residual_scale_ref": "block_1.out",
+      "residual_scale": 0.025888368487358093,
+      "attention_output_scale_ref": "block_2.out",
+      "attention_output_scale": 0.015398606657981873,
+      "out3_requant": {
+        "real_multiplier": 0.00015137881520484606,
+        "multiplier_q31": 325084,
+        "shift": 31
+      },
+      "residual_requant": {
+        "real_multiplier": 0.0004106533950831524,
+        "multiplier_q31": 881871,
+        "shift": 31
+      },
+      "attention_vectors": [
+        {
+          "out3_q": -2048,
+          "residual_q": -1024,
+          "sim_att_q": -2047,
+          "q31_output_q": 1495,
+          "float_reference_q": 1495,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -1024,
+          "residual_q": 512,
+          "sim_att_q": -512,
+          "q31_output_q": -28,
+          "float_reference_q": -28,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -17,
+          "residual_q": 23,
+          "sim_att_q": -3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 0,
+          "residual_q": 0,
+          "sim_att_q": 0,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 17,
+          "residual_q": -23,
+          "sim_att_q": 3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 512,
+          "residual_q": -1024,
+          "sim_att_q": 512,
+          "q31_output_q": -176,
+          "float_reference_q": -176,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 1536,
+          "residual_q": 1024,
+          "sim_att_q": 2047,
+          "q31_output_q": 1337,
+          "float_reference_q": 1337,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 2047,
+          "residual_q": 2047,
+          "sim_att_q": 2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        }
+      ],
+      "attention_q31_max_abs_error_vs_float": 0
+    },
+    {
+      "id": 6,
+      "name": "block_3.act1",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_3_act1_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -97,
+      "q_max": 2047,
+      "zero_count": 877,
+      "input_scale_ref": "block_3.c1_r.output",
+      "input_scale": 0.007432220503687859,
+      "output_scale_ref": "block_3.act1",
+      "output_scale": 0.002864695619791746
+    },
+    {
+      "id": 7,
+      "name": "block_3.act2",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_3_act2_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -117,
+      "q_max": 2047,
+      "zero_count": 1,
+      "input_scale_ref": "block_3.c2_r.output",
+      "input_scale": 0.0038241157308220863,
+      "output_scale_ref": "block_3.act2",
+      "output_scale": 0.0023869231808930635
+    },
+    {
+      "id": 8,
+      "name": "block_3.attention",
+      "kind": "span_attention",
+      "macro_kind": "SIM_ATT",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_3_attention_sim_att_s12.mem",
+      "value_count": 4096,
+      "q_min": -2047,
+      "q_max": 2047,
+      "zero_count": 1,
+      "input_scale_ref": "block_3.c3_r.output",
+      "input_scale": 0.005325730890035629,
+      "output_scale_ref": "block_3.sim_att",
+      "output_scale": 0.0002442508703097701,
+      "residual_scale_ref": "block_2.out",
+      "residual_scale": 0.015398606657981873,
+      "attention_output_scale_ref": "block_3.out",
+      "attention_output_scale": 0.006531504448503256,
+      "out3_requant": {
+        "real_multiplier": 0.00019915999677913725,
+        "multiplier_q31": 427693,
+        "shift": 31
+      },
+      "residual_requant": {
+        "real_multiplier": 0.0005758433003336288,
+        "multiplier_q31": 1236614,
+        "shift": 31
+      },
+      "attention_vectors": [
+        {
+          "out3_q": -2048,
+          "residual_q": -1024,
+          "sim_att_q": -2047,
+          "q31_output_q": 2042,
+          "float_reference_q": 2042,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -1024,
+          "residual_q": 512,
+          "sim_att_q": -512,
+          "q31_output_q": -47,
+          "float_reference_q": -47,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -17,
+          "residual_q": 23,
+          "sim_att_q": -3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 0,
+          "residual_q": 0,
+          "sim_att_q": 0,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 17,
+          "residual_q": -23,
+          "sim_att_q": 3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 512,
+          "residual_q": -1024,
+          "sim_att_q": 512,
+          "q31_output_q": -250,
+          "float_reference_q": -250,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 1536,
+          "residual_q": 1024,
+          "sim_att_q": 2047,
+          "q31_output_q": 1833,
+          "float_reference_q": 1833,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 2047,
+          "residual_q": 2047,
+          "sim_att_q": 2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        }
+      ],
+      "attention_q31_max_abs_error_vs_float": 0
+    },
+    {
+      "id": 9,
+      "name": "block_4.act1",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_4_act1_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -96,
+      "q_max": 2047,
+      "zero_count": 593,
+      "input_scale_ref": "block_4.c1_r.output",
+      "input_scale": 0.005976215470582247,
+      "output_scale_ref": "block_4.act1",
+      "output_scale": 0.002886435715481639
+    },
+    {
+      "id": 10,
+      "name": "block_4.act2",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_4_act2_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -120,
+      "q_max": 2047,
+      "zero_count": 776,
+      "input_scale_ref": "block_4.c2_r.output",
+      "input_scale": 0.007028477266430855,
+      "output_scale_ref": "block_4.act2",
+      "output_scale": 0.0023224418982863426
+    },
+    {
+      "id": 11,
+      "name": "block_4.attention",
+      "kind": "span_attention",
+      "macro_kind": "SIM_ATT",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_4_attention_sim_att_s12.mem",
+      "value_count": 4096,
+      "q_min": -2047,
+      "q_max": 2047,
+      "zero_count": 1,
+      "input_scale_ref": "block_4.c3_r.output",
+      "input_scale": 0.0039268843829631805,
+      "output_scale_ref": "block_4.sim_att",
+      "output_scale": 0.0002441022515995428,
+      "residual_scale_ref": "block_3.out",
+      "residual_scale": 0.006531504448503256,
+      "attention_output_scale_ref": "block_4.out",
+      "attention_output_scale": 0.00355413812212646,
+      "out3_requant": {
+        "real_multiplier": 0.00026970288905904457,
+        "multiplier_q31": 579183,
+        "shift": 31
+      },
+      "residual_requant": {
+        "real_multiplier": 0.0004485911597769204,
+        "multiplier_q31": 963342,
+        "shift": 31
+      },
+      "attention_vectors": [
+        {
+          "out3_q": -2048,
+          "residual_q": -1024,
+          "sim_att_q": -2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -1024,
+          "residual_q": 512,
+          "sim_att_q": -512,
+          "q31_output_q": 24,
+          "float_reference_q": 24,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -17,
+          "residual_q": 23,
+          "sim_att_q": -3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 0,
+          "residual_q": 0,
+          "sim_att_q": 0,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 17,
+          "residual_q": -23,
+          "sim_att_q": 3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 512,
+          "residual_q": -1024,
+          "sim_att_q": 512,
+          "q31_output_q": -164,
+          "float_reference_q": -164,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 1536,
+          "residual_q": 1024,
+          "sim_att_q": 2047,
+          "q31_output_q": 1788,
+          "float_reference_q": 1788,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 2047,
+          "residual_q": 2047,
+          "sim_att_q": 2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        }
+      ],
+      "attention_q31_max_abs_error_vs_float": 0
+    },
+    {
+      "id": 12,
+      "name": "block_5.act1",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_5_act1_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -89,
+      "q_max": 2047,
+      "zero_count": 494,
+      "input_scale_ref": "block_5.c1_r.output",
+      "input_scale": 0.005533229093998671,
+      "output_scale_ref": "block_5.act1",
+      "output_scale": 0.0031446777284145355
+    },
+    {
+      "id": 13,
+      "name": "block_5.act2",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_5_act2_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -88,
+      "q_max": 2047,
+      "zero_count": 143,
+      "input_scale_ref": "block_5.c2_r.output",
+      "input_scale": 0.004511222243309021,
+      "output_scale_ref": "block_5.act2",
+      "output_scale": 0.003162053879350424
+    },
+    {
+      "id": 14,
+      "name": "block_5.attention",
+      "kind": "span_attention",
+      "macro_kind": "SIM_ATT",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_5_attention_sim_att_s12.mem",
+      "value_count": 4096,
+      "q_min": -2047,
+      "q_max": 2047,
+      "zero_count": 1,
+      "input_scale_ref": "block_5.c3_r.output",
+      "input_scale": 0.004482349380850792,
+      "output_scale_ref": "block_5.sim_att",
+      "output_scale": 0.0002442093100398779,
+      "residual_scale_ref": "block_4.out",
+      "residual_scale": 0.00355413812212646,
+      "attention_output_scale_ref": "block_5.out",
+      "attention_output_scale": 0.002156845759600401,
+      "out3_requant": {
+        "real_multiplier": 0.0005075149415682132,
+        "multiplier_q31": 1089880,
+        "shift": 31
+      },
+      "residual_requant": {
+        "real_multiplier": 0.0004024180286084694,
+        "multiplier_q31": 864186,
+        "shift": 31
+      },
+      "attention_vectors": [
+        {
+          "out3_q": -2048,
+          "residual_q": -1024,
+          "sim_att_q": -2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -1024,
+          "residual_q": 512,
+          "sim_att_q": -512,
+          "q31_output_q": 161,
+          "float_reference_q": 161,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -17,
+          "residual_q": 23,
+          "sim_att_q": -3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 0,
+          "residual_q": 0,
+          "sim_att_q": 0,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 17,
+          "residual_q": -23,
+          "sim_att_q": 3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 512,
+          "residual_q": -1024,
+          "sim_att_q": 512,
+          "q31_output_q": -78,
+          "float_reference_q": -78,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 1536,
+          "residual_q": 1024,
+          "sim_att_q": 2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 2047,
+          "residual_q": 2047,
+          "sim_att_q": 2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        }
+      ],
+      "attention_q31_max_abs_error_vs_float": 0
+    },
+    {
+      "id": 15,
+      "name": "block_6.act1",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_6_act1_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -134,
+      "q_max": 2047,
+      "zero_count": 1,
+      "input_scale_ref": "block_6.c1_r.output",
+      "input_scale": 0.0023401821963489056,
+      "output_scale_ref": "block_6.act1",
+      "output_scale": 0.002077924320474267
+    },
+    {
+      "id": 16,
+      "name": "block_6.act2",
+      "kind": "silu",
+      "macro_kind": "SILU",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_6_act2_silu_s12.mem",
+      "value_count": 4096,
+      "q_min": -134,
+      "q_max": 2047,
+      "zero_count": 138,
+      "input_scale_ref": "block_6.c2_r.output",
+      "input_scale": 0.00474812975153327,
+      "output_scale_ref": "block_6.act2",
+      "output_scale": 0.0020782737992703915
+    },
+    {
+      "id": 17,
+      "name": "block_6.attention",
+      "kind": "span_attention",
+      "macro_kind": "SIM_ATT",
+      "mem": "G:/UESTC/feitengspan1/rtl/generated/reds_span_x4_f48_w8a12/postprocess/mem/block_6_attention_sim_att_s12.mem",
+      "value_count": 4096,
+      "q_min": -2047,
+      "q_max": 2047,
+      "zero_count": 1,
+      "input_scale_ref": "block_6.c3_r.output",
+      "input_scale": 0.0033815214410424232,
+      "output_scale_ref": "block_6.sim_att",
+      "output_scale": 0.00024377874797210097,
+      "residual_scale_ref": "block_5.out",
+      "residual_scale": 0.002156845759600401,
+      "attention_output_scale_ref": "block_6.out",
+      "attention_output_scale": 0.0016966337570920587,
+      "out3_requant": {
+        "real_multiplier": 0.00048586977577943363,
+        "multiplier_q31": 1043397,
+        "shift": 31
+      },
+      "residual_requant": {
+        "real_multiplier": 0.00030990374713839406,
+        "multiplier_q31": 665513,
+        "shift": 31
+      },
+      "attention_vectors": [
+        {
+          "out3_q": -2048,
+          "residual_q": -1024,
+          "sim_att_q": -2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -1024,
+          "residual_q": 512,
+          "sim_att_q": -512,
+          "q31_output_q": 173,
+          "float_reference_q": 173,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": -17,
+          "residual_q": 23,
+          "sim_att_q": -3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 0,
+          "residual_q": 0,
+          "sim_att_q": 0,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 17,
+          "residual_q": -23,
+          "sim_att_q": 3,
+          "q31_output_q": 0,
+          "float_reference_q": 0,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 512,
+          "residual_q": -1024,
+          "sim_att_q": 512,
+          "q31_output_q": -35,
+          "float_reference_q": -35,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 1536,
+          "residual_q": 1024,
+          "sim_att_q": 2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        },
+        {
+          "out3_q": 2047,
+          "residual_q": 2047,
+          "sim_att_q": 2047,
+          "q31_output_q": 2047,
+          "float_reference_q": 2047,
+          "q31_minus_float": 0
+        }
+      ],
+      "attention_q31_max_abs_error_vs_float": 0
+    }
+  ]
+}

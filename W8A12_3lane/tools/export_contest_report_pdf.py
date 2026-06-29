@@ -325,7 +325,7 @@ def verify_pdf(pdf_path: Path, render_dir: Path, render_pages: int) -> dict[str,
         "REDS",
         "28.3118",
         "34.4297",
-        "69 / 73",
+        "72 / 76",
     ]
     rendered = render_pdf(pdf_path, render_dir, min(page_count, render_pages))
     render_checks = [image_nonblank(path) for path in rendered]

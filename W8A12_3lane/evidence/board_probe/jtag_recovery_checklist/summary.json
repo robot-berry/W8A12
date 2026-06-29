@@ -1,11 +1,11 @@
 {
   "status": "BLOCKED",
-  "generated_at": "2026-06-28 19:09:50",
+  "generated_at": "2026-06-29 23:58:26",
   "usb_match_count": 3,
   "usb_known_jtag_candidate_count": 0,
   "pnp_history_known_jtag_candidate_count": 4,
   "pnp_history_known_vidpid_count": 3,
-  "vivado_target_count": "not_checked",
+  "vivado_target_count": 0,
   "known_vidpid_pattern": "VID_03FD|VID_0403|VID_1443|VID_04B4",
   "current_devices": [
     {

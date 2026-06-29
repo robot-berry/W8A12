@@ -103,6 +103,9 @@ try {
     error = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_ERROR=(0x[0-9A-Fa-f]+)"
     frame_cycles = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_FRAME_CYCLES=([0-9]+)"
     frame_done = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_FRAME_DONE=(0x[0-9A-Fa-f]+)"
+    perf_ctrl = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_PERF_CTRL=(0x[0-9A-Fa-f]+)"
+    debug_bank1_perf_ctrl = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK1_PERF_CTRL=(0x[0-9A-Fa-f]+)"
+    debug_bank2_perf_ctrl = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK2_PERF_CTRL=(0x[0-9A-Fa-f]+)"
     e2e_cycles = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_E2E_CYCLES=([0-9]+)"
     writeback_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_WRITEBACK_HASH=(0x[0-9A-Fa-f]+)"
     writeback_range = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_WRITEBACK_RANGE=(0x[0-9A-Fa-f]+)"
@@ -112,6 +115,20 @@ try {
     tail_b1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_TAIL_B1_HASH=(0x[0-9A-Fa-f]+)"
     tail_b6_act1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_TAIL_B6_ACT1_HASH=(0x[0-9A-Fa-f]+)"
     tail_rgb_q_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_TAIL_RGB_Q_HASH=(0x[0-9A-Fa-f]+)"
+    tail_feat0_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_TAIL_FEAT0_HASH=(0x[0-9A-Fa-f]+)"
+    src_feat0_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SRC_FEAT0_HASH=(0x[0-9A-Fa-f]+)"
+    src_b1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SRC_B1_HASH=(0x[0-9A-Fa-f]+)"
+    spab_b1_input_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SPAB_B1_INPUT_HASH=(0x[0-9A-Fa-f]+)"
+    spab_b1_c1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SPAB_B1_C1_HASH=(0x[0-9A-Fa-f]+)"
+    spab_b1_c2_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SPAB_B1_C2_HASH=(0x[0-9A-Fa-f]+)"
+    spab_b1_c3_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SPAB_B1_C3_HASH=(0x[0-9A-Fa-f]+)"
+    spab_b1_c1_raw_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SPAB_B1_C1_RAW_HASH=(0x[0-9A-Fa-f]+)"
+    spab_b1_c2_replay_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SPAB_B1_C2_REPLAY_HASH=(0x[0-9A-Fa-f]+)"
+    spab_b1_c2_window_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SPAB_B1_C2_WINDOW_HASH=(0x[0-9A-Fa-f]+)"
+    spab_b1_residual_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SPAB_B1_RESIDUAL_HASH=(0x[0-9A-Fa-f]+)"
+    spab_b1_att_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_SPAB_B1_ATT_HASH=(0x[0-9A-Fa-f]+)"
+    bank2_tail_b1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK2_TAIL_B1_HASH=(0x[0-9A-Fa-f]+)"
+    bank2_tail_rgb_q_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK2_TAIL_RGB_Q_HASH=(0x[0-9A-Fa-f]+)"
     writer_live = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_WRITER_LIVE=([^\r\n]+)"
     stdout_log = $stdoutLog
     stderr_log = $stderrLog
@@ -140,6 +157,9 @@ try {
     "| error | ``$($summary.error)`` |",
     "| frame cycles | ``$($summary.frame_cycles)`` |",
     "| frame done | ``$($summary.frame_done)`` |",
+    "| perf ctrl | ``$($summary.perf_ctrl)`` |",
+    "| debug bank1 perf ctrl | ``$($summary.debug_bank1_perf_ctrl)`` |",
+    "| debug bank2 perf ctrl | ``$($summary.debug_bank2_perf_ctrl)`` |",
     "| e2e cycles | ``$($summary.e2e_cycles)`` |",
     "| writeback hash | ``$($summary.writeback_hash)`` |",
     "| writeback range | ``$($summary.writeback_range)`` |",
@@ -149,6 +169,20 @@ try {
     "| tail b1 hash | ``$($summary.tail_b1_hash)`` |",
     "| tail b6 act1 hash | ``$($summary.tail_b6_act1_hash)`` |",
     "| tail rgb q hash | ``$($summary.tail_rgb_q_hash)`` |",
+    "| tail feat0 hash | ``$($summary.tail_feat0_hash)`` |",
+    "| src feat0 hash | ``$($summary.src_feat0_hash)`` |",
+    "| src b1 hash | ``$($summary.src_b1_hash)`` |",
+    "| SPAB B1 input hash | ``$($summary.spab_b1_input_hash)`` |",
+    "| SPAB B1 C1 hash | ``$($summary.spab_b1_c1_hash)`` |",
+    "| SPAB B1 C2 hash | ``$($summary.spab_b1_c2_hash)`` |",
+    "| SPAB B1 C3 hash | ``$($summary.spab_b1_c3_hash)`` |",
+    "| SPAB B1 C1 raw hash | ``$($summary.spab_b1_c1_raw_hash)`` |",
+    "| SPAB B1 C2 replay hash | ``$($summary.spab_b1_c2_replay_hash)`` |",
+    "| SPAB B1 C2 window hash | ``$($summary.spab_b1_c2_window_hash)`` |",
+    "| SPAB B1 residual hash | ``$($summary.spab_b1_residual_hash)`` |",
+    "| SPAB B1 attention hash | ``$($summary.spab_b1_att_hash)`` |",
+    "| bank2 tail b1 hash | ``$($summary.bank2_tail_b1_hash)`` |",
+    "| bank2 tail rgb q hash | ``$($summary.bank2_tail_rgb_q_hash)`` |",
     "| writer live | ``$($summary.writer_live)`` |",
     "| stdout log | ``$stdoutLog`` |",
     "| stderr log | ``$stderrLog`` |",

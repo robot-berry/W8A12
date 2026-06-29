@@ -1,0 +1,71 @@
+{
+  "source": "REDS SPAN W8A12 RGB normalization constants",
+  "quant_plan": "runs\\reds_span_quant_plan\\reds_span_x4_f48_w8a12_reds_val4\\span_w8a12_quant_plan.json",
+  "manifest": "rtl\\generated\\reds_span_x4_f48_best295k\\official_span_manifest.json",
+  "activation_scale_ref": "conv_1.input",
+  "activation_scale": 0.07424523681402206,
+  "activation_bits": 12,
+  "frac_bits": 16,
+  "rgb_mean": [
+    0.4488,
+    0.4371,
+    0.404
+  ],
+  "gain_q": 882696,
+  "bias_q": {
+    "r": -101019302,
+    "g": -98385777,
+    "b": -90935379
+  },
+  "samples": [
+    {
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "q": [
+        -1541,
+        -1501,
+        -1388
+      ]
+    },
+    {
+      "rgb": [
+        64,
+        96,
+        128
+      ],
+      "q": [
+        -679,
+        -208,
+        336
+      ]
+    },
+    {
+      "rgb": [
+        127,
+        127,
+        127
+      ],
+      "q": [
+        169,
+        209,
+        323
+      ]
+    },
+    {
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "q": [
+        1893,
+        1933,
+        2047
+      ]
+    }
+  ],
+  "formula": "q_s12 = saturate_s12(round((rgb_u8 * gain_q + bias_q[channel]) / 2^frac_bits))"
+}

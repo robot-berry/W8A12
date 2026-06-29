@@ -43,7 +43,12 @@ ROOT_STAGEHASH_SCRIPT_FILES = (
     "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.tcl",
     "scripts/create_vivado_jtag_w8a12_tile_writer_bd_project.tcl",
 )
-FILESYSTEM_DIRS = ("external/SPAN/basicsr",)
+ROOT_RTL_DIRS = (
+    "rtl/board",
+    "rtl/span",
+    "rtl/generated/reds_span_x4_f48_w8a12",
+)
+FILESYSTEM_DIRS = ("external/SPAN/basicsr", *ROOT_RTL_DIRS)
 ADDITIONAL_PATHS = (*ROOT_TOOL_FILES, *ROOT_STAGEHASH_SCRIPT_FILES, *FILESYSTEM_DIRS)
 
 FORBIDDEN_RE = re.compile(
@@ -163,7 +168,7 @@ def main() -> int:
         "total_bytes": total_bytes,
         "forbidden_after_copy": forbidden_after_copy,
         "entries": entries,
-        "included_roots": ["W8A12_3lane/", "tools/*.py required exporters", "scripts/* required JTAG/stage-hash helpers", "external/SPAN/basicsr/"],
+        "included_roots": ["W8A12_3lane/", "tools/*.py required exporters", "scripts/* required JTAG/stage-hash helpers", "rtl/{board,span,generated/reds_span_x4_f48_w8a12}/", "external/SPAN/basicsr/"],
         "note": "This clean tree is for creating or updating a separate upload commit without pushing the current repository history. Existing .git metadata under the export root is preserved.",
     }
 
@@ -204,7 +209,7 @@ def render_md(data: dict) -> str:
         "git push origin HEAD:training-software",
         "```",
         "",
-        "This export includes `W8A12_3lane/` plus the root model/export tools, JTAG/stage-hash helper scripts, and `external/SPAN/basicsr/` source required by the submission scope policy. It preserves any existing local `.git/` metadata under the export root and does not include forbidden generated artifacts.",
+        "This export includes `W8A12_3lane/` plus the root model/export tools, JTAG/stage-hash helper scripts, minimal root RTL needed by the board bitstream Tcl, and `external/SPAN/basicsr/` source required by the submission scope policy. It preserves any existing local `.git/` metadata under the export root and does not include forbidden generated artifacts.",
         "",
     ]
     return "\n".join(lines)

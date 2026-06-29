@@ -50,6 +50,34 @@ def status_from_counts(known_count: int, target_count: int | None) -> str:
     return "USB_READY" if known_count >= 1 else "BLOCKED"
 
 
+def online_matched_devices(diag: dict) -> list[dict]:
+    return [
+        {
+            "name": item.get("Name", ""),
+            "class": item.get("PNPClass", ""),
+            "status": item.get("Status", ""),
+            "known": bool(item.get("IsKnownJtagCandidate")),
+            "id": item.get("DeviceID", ""),
+        }
+        for item in diag.get("Devices", [])
+    ]
+
+
+def historical_known_candidates(diag: dict) -> list[dict]:
+    out = []
+    for item in diag.get("PnpHistoryDevices", []):
+        if item.get("IsKnownJtagCandidate"):
+            out.append(
+                {
+                    "name": item.get("FriendlyName", ""),
+                    "class": item.get("Class", ""),
+                    "status": item.get("Status", ""),
+                    "id": item.get("InstanceId", ""),
+                }
+            )
+    return out
+
+
 def render_md(data: dict) -> str:
     lines = [
         "# JTAG Precondition Summary",
@@ -79,17 +107,43 @@ def render_md(data: dict) -> str:
             "Board programming is currently blocked before Vivado/JTAG use: no online known Xilinx/FTDI JTAG candidate "
             "is visible, or Vivado target count is zero."
         )
-    lines.extend(
-        [
-            "",
-            "## Required Next Step",
-            "",
+        if data["historical_known_candidates"]:
+            lines.append(
+                "Historical Xilinx/FTDI-style devices are present only in PnP history, so this is a current online "
+                "enumeration/driver/cable/power issue rather than a W8A12 bitstream or algorithm result."
+            )
+
+    lines.extend(["", "## Current Online USB Matches", ""])
+    if data["online_matched_devices"]:
+        lines.extend(["| Name | Class | Status | Known JTAG | Device ID |", "| --- | --- | --- | --- | --- |"])
+        for item in data["online_matched_devices"]:
+            device_id = str(item["id"]).replace("|", "/")
+            lines.append(f"| `{item['name']}` | `{item['class']}` | `{item['status']}` | `{item['known']}` | `{device_id}` |")
+    else:
+        lines.append("None")
+    lines.extend(["", "## Historical Known JTAG Candidates", ""])
+    if data["historical_known_candidates"]:
+        lines.extend(["| Name | Class | Status | Instance ID |", "| --- | --- | --- | --- |"])
+        for item in data["historical_known_candidates"]:
+            instance_id = str(item["id"]).replace("|", "/")
+            lines.append(f"| `{item['name']}` | `{item['class']}` | `{item['status']}` | `{instance_id}` |")
+    else:
+        lines.append("None")
+
+    lines.extend(["", "## Required Next Step", ""])
+    if data["status"] == "READY":
+        lines.append("Run the stage-hash true2x2 acceptance wrapper or the recovery preflight with `-RunStageHashAcceptance`.")
+    elif data["status"] == "USB_READY":
+        lines.append(
+            "Run `probe_vivado_hw_targets.ps1`; continue only when it reports `VIVADO_HW_TARGET_COUNT=1` or higher."
+        )
+    else:
+        lines.append(
             "Restore board power/cable/JTAG mode/driver until the USB known candidate count is nonzero and "
             "`probe_vivado_hw_targets.ps1` reports `VIVADO_HW_TARGET_COUNT=1` or higher. Then run the stage-hash "
-            "true2x2 acceptance wrapper.",
-            "",
-        ]
-    )
+            "true2x2 acceptance wrapper."
+        )
+    lines.append("")
     return "\n".join(lines)
 
 
@@ -114,6 +168,8 @@ def main() -> int:
         "vivado_target_count": target_count if target_count is not None else "not_checked",
         "usb_json": str(usb_json),
         "vivado_probe_dir": str(probe_dir) if probe_dir else "not_checked",
+        "online_matched_devices": online_matched_devices(diag),
+        "historical_known_candidates": historical_known_candidates(diag),
     }
 
     out_dir.mkdir(parents=True, exist_ok=True)

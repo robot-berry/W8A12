@@ -12,8 +12,11 @@ Status: PASS
 | `file:jtag_recovery_tool` | PASS | `W8A12_3lane/tools/generate_jtag_recovery_checklist.py` |
 | `file:jtag_recovery_doc` | PASS | `W8A12_3lane/docs/jtag_recovery_checklist.md` |
 | `file:jtag_precondition_current` | PASS | `W8A12_3lane/evidence/board_probe/jtag_precondition_current/summary.md` |
-| `file:recovery_preflight_current` | PASS | `W8A12_3lane/evidence/board_probe/recovery_preflight_current/board_recovery_preflight_summary.md` |
+| `file:recovery_preflight_current` | PASS | `W8A12_3lane/evidence/board_probe/recovery_preflight_force_vivado_current/board_recovery_preflight_summary.md` |
+| `file:dbg2_source_boundary_current` | PASS | `W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_current/summary.md` |
 | `file:jtag_recovery_checklist` | PASS | `W8A12_3lane/evidence/board_probe/jtag_recovery_checklist/summary.md` |
+| `file:stagehash_live_report` | PASS | `W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md` |
+| `file:jtag_endpoint_rtl` | PASS | `rtl/board/sr_jtag_w8a12_tile_writer_endpoint.v` |
 | `file:scripts/run_w8a12_board_recovery_preflight.ps1` | PASS | `scripts/run_w8a12_board_recovery_preflight.ps1` |
 | `file:scripts/run_w8a12_stagehash_true2x2_acceptance.ps1` | PASS | `scripts/run_w8a12_stagehash_true2x2_acceptance.ps1` |
 | `file:scripts/probe_vivado_hw_targets.ps1` | PASS | `scripts/probe_vivado_hw_targets.ps1` |
@@ -36,12 +39,16 @@ Status: PASS
 | `root_wrapper_runs_probe_psu_smoke_regread` | PASS | `root wrapper step chain` |
 | `root_wrapper_records_expected_hashes` | PASS | `stage-hash expected values` |
 | `report_records_bitstream_and_target0` | PASS | `stage-hash report has build and target-fail evidence` |
+| `live_report_records_localized_board_mismatch` | PASS | `2026-06-29 live stage-hash board evidence` |
+| `jtag_endpoint_has_debug_bank_mux` | PASS | `6-bit JTAG endpoint exposes fine-grain hashes through debug banks` |
+| `reg_read_script_reads_debug_banks` | PASS | `register read flow captures banked fine-grain hashes into summary` |
 | `docs_list_board_root_dependencies` | PASS | `submission scope lists board root scripts` |
 | `upload_plan_mentions_board_root_dependencies` | PASS | `upload plan board script scope` |
 | `index_mentions_stagehash_wrapper` | PASS | `delivery index wrapper row` |
 | `index_mentions_recovery_preflight` | PASS | `delivery index recovery preflight row` |
 | `workflow_mentions_stagehash_wrapper` | PASS | `workflow current stage-hash wrapper state` |
 | `jtag_precondition_has_current_counts` | PASS | `current board/JTAG precondition evidence` |
-| `recovery_preflight_has_current_blocked_evidence` | PASS | `current board recovery preflight evidence` |
+| `recovery_preflight_has_current_status_evidence` | PASS | `current board recovery preflight evidence` |
+| `dbg2_source_boundary_has_blocked_or_ready_evidence` | PASS | `current dbg2/source-boundary evidence preserves next low-intrusion step` |
 | `jtag_recovery_doc_has_physical_steps` | PASS | `physical JTAG recovery runbook` |
-| `jtag_recovery_evidence_has_current_blocked_state` | PASS | `current physical/JTAG recovery evidence` |
+| `jtag_recovery_evidence_retains_historical_runbook_and_current_status` | PASS | `historical physical/JTAG recovery evidence plus current explicit precondition and dbg2 continuation` |

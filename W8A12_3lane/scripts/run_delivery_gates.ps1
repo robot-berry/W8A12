@@ -274,8 +274,13 @@ Invoke-GateStep `
 Invoke-GateStep `
     -Name "contest_report_docx" `
     -Action { powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_docx.ps1 } `
-    -ExpectedFiles @("W8A12_3lane\evidence\report_docx\summary.md", "W8A12_3lane\output\docx\W8A12_3lane_contest_submission_report.docx") `
+    -ExpectedFiles @("W8A12_3lane\evidence\report_docx\summary.md") `
     -ExpectedText "Status: PASS"
+
+Invoke-GateStep `
+    -Name "contest_report_docx_artifact" `
+    -Action { if (-not (Test-Path W8A12_3lane\output\docx\W8A12_3lane_contest_submission_report.docx)) { exit 1 } } `
+    -ExpectedFiles @("W8A12_3lane\output\docx\W8A12_3lane_contest_submission_report.docx")
 
 Invoke-GateStep `
     -Name "submission_scope_static" `

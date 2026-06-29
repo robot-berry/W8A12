@@ -184,8 +184,8 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 - debugregs 上板读取已经越过 JTAG-to-AXI master 识别异常：W8A12 debugregs bitstream 可见 `hw_axi_1`，但 true 2x2 输入 `counter_in=4` 后 `counter_out=0/frame_done=0`，输出 `0/192`；
 - 为继续定位，已在 JTAG endpoint 增加 `0x04` endpoint progress、`0x08` front state、`0x10` block/replay 计数读数；新增读数后的 true 2x2 RTL raw compare 仍为 `0/192 mismatch`；
 - 新 `dbgprogress` bitstream 上板可完整输出 `192/192` 且 `frame_done=1`，但退化为 `189/192` mismatch、PSNR 16.3034 dB，`writeback_hash=0xAD24396D` 与 RTL 期望 `0x61d3ea1d` 不一致。
-- 当前已切换为更窄 stage-hash 映射，行为级 RTL raw compare PASS，Default stage-hash bitstream 已生成且 timing PASS；2026-06-29 续跑已恢复 JTAG/PSU/register read，并完成 true2x2 stage-hash 上板读回：输出完整 `192/192`，但 compare FAIL `191/192`、PSNR 11.8292 dB；`tail_b1=0x031DA1C9` 已与 RTL 期望 `0x16ede1c2` 不一致，最早失败边界定位到 front/SPAB block1 或更前输入/halo 路径。
-- 已新增 `docs/jtag_recovery_checklist.md` 和 `evidence/board_probe/jtag_recovery_checklist/summary.md`，当前证据显示在线 USB 设备无已知 JTAG，历史 FTDI `VID_0403&PID_6010` 为 Unknown；常规 preflight 因 USB 侧阻塞将 Vivado target 记为 `not_checked`，强制 Vivado probe 也得到 target count=0；恢复通过条件为 USB known candidate>=1 且 Vivado target>=1。
+- 当前已切换为更窄 stage-hash 映射，行为级 RTL raw compare PASS，Default stage-hash bitstream 已生成且 timing PASS；2026-06-29 续跑曾恢复 JTAG/PSU/register read，并完成 true2x2 stage-hash 上板读回：输出完整 `192/192`，但 compare FAIL `191/192`、PSNR 11.8292 dB；`tail_b1=0x031DA1C9` 已与 RTL 期望 `0x16ede1c2` 不一致，最早失败边界定位到 front/SPAB block1 或更前输入/halo 路径。
+- 已新增 `docs/jtag_recovery_checklist.md` 和 `evidence/board_probe/jtag_recovery_checklist/summary.md`，当前证据显示在线 USB 设备无已知 JTAG；强制 Vivado probe 后 `Vivado target count=0`。这只是当前物理/JTAG 前置条件阻塞，不推翻上面的历史 stage-hash 数值定位；恢复通过条件为 USB known candidate>=1 且 Vivado target>=1。
 - 32x32/64x64/720p x4 和 720p x2 board validation 均待补。
 
 后续排查优先级：
@@ -216,13 +216,17 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 | `tail_rgb_q_hash` | `0x6B02FBCF != 0xb712a61b` |
 | `writeback_hash` | `0x14D11085 != 0x61d3ea1d` |
 
-结论：当前不是板卡插拔、JTAG、PSU init 或寄存器读回问题，而是 PL 计算路径的实板数值偏差。由于 `tail_b1_hash` 是本轮最早失败边界，后续排查优先加 `feat0/input/halo/block1 c1/c2/c3/att` 更窄 hash，把问题继续向 front/SPAB block1 内部拆分。
+结论：这次有效 stage-hash 上板不是板卡插拔、JTAG、PSU init 或寄存器读回问题，而是 PL 计算路径的实板数值偏差。由于 `tail_b1_hash` 是本轮最早失败边界，后续排查不再从头开始，而是在 `halo fetch / conv1 feat0 -> SPAB block1 -> feature buffer/replay -> b1_m_feat -> tail` 链路内继续找第一个错误点。
 
 证据见 `evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md`。
 
+2026-06-29 已落实下一层 debug-bank 路线：JTAG endpoint 保持 6-bit AXI-Lite 地址宽度不变，通过 `REG_PERF_CTRL[15:8]` 选择 bank。bank 0 保持旧 `tail/writeback` 读数，bank 1 读取 `tail_feat0/src_feat0/src_b1/spab_b1_input/c1/c2/c3`，bank 2 读取 `spab_b1_c1_raw/c2_replay/c2_window/residual/att`。同一 true2x2 输入/参考的 RTL raw compare 已重新通过，`0 / 192` mismatch，旧 hash 仍为 `0x16ede1c2/0xc7a092b8/0xb712a61b/0x61d3ea1d`。证据见 `evidence/board_reports/jtag_true2x2_debugbank_20260629.md`。
+
+由于 all-in-one debug-bank 上板曾出现 busy stall，当前改成低侵入 `DebugExportLevel=2` source-boundary 路线：只导出 `tail_feat0=0x000004bf`、`src_feat0=0x00000004`、`src_b1=0x00070004`，不打开 SPAB deep bank。该版本 RTL raw compare PASS，bitstream/timing/resource PASS；当前一键验收脚本因 USB known JTAG candidate `0` 生成 `BLOCKED` summary。恢复 JTAG 后，直接运行 dbg2 一键脚本即可继续在上述历史链路内收窄，而不是重新排查。
+
 ## 12. 当前交付审计状态
 
-严格交付审计当前状态为 `INCOMPLETE`。新增赛题报告、PDF 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查和 board validation readiness 后，当前审计为 `69 / 73`，剩余 4 项均为真实板端 validation：
+严格交付审计当前状态为 `INCOMPLETE`。新增赛题报告、PDF/Word 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查、board validation readiness、submission manifest/archive 和 evidence matrix 后，当前审计为 `72 / 76`，剩余 4 项均为真实板端 validation：
 
 ```text
 a5.board_32x32
@@ -251,6 +255,7 @@ python W8A12_3lane\tools\collect_delivery_manifest.py
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_board_recovery_preflight.ps1 -RunStageHashAcceptance
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_dbg2_source_boundary_acceptance.ps1
 ```
 
 ## 14. 交付文件索引
@@ -282,4 +287,4 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 
 当前 W8A12_3lane 已经形成可用于赛题中期/相当报告的完整离线证据链：模型训练和验证口径明确，x4/x2 FP32 画质达到目标，传统插值 baseline 已对比，W8A12 定点导出和 x2 fixed reference 已通过，A0-A4 和 top shell 的 RTL 仿真/OOC 综合均有 PASS 证据，3-lane scheduler 在 XC7Z045 资源门限内。
 
-剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 续跑已经恢复 JTAG/PSU/register read，并完成 stage-hash 上板读回，说明当前不再是硬件 target 不可见问题，而是 PL 计算路径数值不一致。最新 stage-hash 结果为输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `191/192`、PSNR 11.8292 dB，且 `tail_b1_hash` 首个边界已经不等于 RTL 期望。后续应优先增加 `feat0/input/halo/block1 c1/c2/c3/att` 更窄 hash，定位 front/SPAB block1 或更前路径，再逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。
+剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 有效 stage-hash 续跑已经恢复 JTAG/PSU/register read，并完成上板读回，证明历史数值问题不是硬件 target 不可见，而是 PL 计算路径数值不一致。该 stage-hash 结果为输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `191/192`、PSNR 11.8292 dB，且 `tail_b1_hash` 首个边界已经不等于 RTL 期望。当前最新物理连接又回到 USB/JTAG 枚举阻塞，强制 Vivado probe 后 `Vivado target count=0`，因此不能继续板上读 dbg2 bank；恢复连接后，应直接用低侵入 dbg2 source-boundary 验证 `tail_feat0/src_feat0/src_b1`，在 `halo fetch / conv1 feat0 -> SPAB block1 -> feature buffer/replay -> b1_m_feat -> tail` 链路内收窄第一个错误点，再逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。

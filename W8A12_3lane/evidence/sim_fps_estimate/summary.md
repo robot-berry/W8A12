@@ -13,18 +13,22 @@ This is a model-level throughput estimate from the current A4 3-lane MAC schedul
 | feature_channels | 48 |
 | kernel_taps | 9 |
 | tap_par | 8 |
-| cycles_per_conv_pixel | 54 |
-| equivalent_48x48_conv_stages | 22 |
+| cycle_source | A4 RTL sim measured-compatible model |
+| layer_count | 22 |
+| ideal_one_cycle_tap_groups_per_lr_pixel | 1108 |
+| measured_reference_stage_cycles_per_pixel | 111 |
+| derived_per_layer_overhead_cycles | 3 |
+| cycles_per_lr_pixel | 2282 |
 | tile_overhead_cycles | 1024 |
 
 ## Results
 
 | Tag | LR | Tiles | Total cycles | FPS @100MHz | FPS @timing clock | Target FPS | Sim gate @100MHz | Needed clock MHz | Needed spatial factor @100MHz |
 | --- | --- | --- | ---: | ---: | ---: | ---: | --- | ---: | ---: |
-| `a5_32x32` | `32x32` | `1x1` | 1217536 | 82.133 | 93.206 | 15.0 | PASS | 18.3 | 1 |
-| `a6_64x64` | `64x64` | `2x2` | 4870144 | 20.533 | 23.301 | 15.0 | PASS | 73.1 | 1 |
-| `a7_720p_x4` | `320x180` | `10x6` | 68490240 | 1.460 | 1.657 | 15.0 | FAIL | 1027.4 | 11 |
-| `x2_720p` | `640x360` | `20x12` | 273960960 | 0.365 | 0.414 | 15.0 | FAIL | 4109.4 | 42 |
+| `a5_32x32` | `32x32` | `1x1` | 2337792 | 42.775 | 48.542 | 15.0 | PASS | 35.1 | 1 |
+| `a6_64x64` | `64x64` | `2x2` | 9351168 | 10.694 | 12.136 | 15.0 | FAIL | 140.3 | 2 |
+| `a7_720p_x4` | `320x180` | `10x6` | 131504640 | 0.760 | 0.863 | 15.0 | FAIL | 1972.6 | 20 |
+| `x2_720p` | `640x360` | `20x12` | 526018560 | 0.190 | 0.216 | 15.0 | FAIL | 7890.3 | 79 |
 
 ## Interpretation
 

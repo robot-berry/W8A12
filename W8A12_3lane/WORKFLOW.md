@@ -16,17 +16,18 @@
 当前执行优先级调整为：
 
 ```text
-P0 赛题相当报告主线：
-  先完成模型说明、训练/验证口径、W8A12 量化导出、RTL 架构、RTL 仿真、
-  OOC 综合、资源/时序/PPA 汇总和验证方案文档，最终沉淀为可提交赛题报告。
+P0 FPS 仿真目标 + mismatch 排查主线：
+  先形成 720p x4 15fps 仿真级证据，并继续把 true2x2 板端 mismatch
+  拆到更窄的 PL 数值边界。当前不先写报告，不用报告工作打断定位。
 
 P1 可综合 RTL/PPA 主线：
   只要 Python reference、RTL xsim 和 OOC 综合报告可通过，就继续推进
-  resource/timing/power/performance 表格，不等待真实上板 mismatch 修复。
+  resource/timing/power/performance 表格。若板端 mismatch 尚未修复，
+  PPA/性能结论必须标注为仿真/综合级或 scheduler 级。
 
-P2 板端 mismatch 修复主线：
-  作为次级任务持续推进，必须清楚记录已排查项、通过项、失败项和下一步。
-  该项影响最终板端正确性闭环，但不阻塞当前报告/PPA 材料整理。
+P2 赛题报告主线：
+  根据已经完成的模型、量化、RTL 仿真、PPA 和 mismatch 排查证据写报告。
+  报告只汇总已完成结果和明确风险，不提前替代工程闭环。
 ```
 
 第一阶段目标：
@@ -261,6 +262,179 @@ W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md
 board_runs/jtag_w8a12_tile_writer/true2x2_stagehash_continue_20260629_144641/
 ```
 
+### 5.3 2026-06-29 debug-bank 细粒度定位补充
+
+已在 `rtl/board/sr_jtag_w8a12_tile_writer_endpoint.v` 中给 6-bit JTAG AXI-Lite endpoint 增加 debug bank，而不扩展地址宽度。`REG_PERF_CTRL[15:8]` 选择 bank，`REG_PERF_CTRL[0]` 仍为 `perf_drain_enable`，因此旧 stage-hash 脚本在 bank 0 下保持兼容。
+
+| Bank | 读数 |
+| --- | --- |
+| `0` | 原 `tail_b1/tail_b6_act1/tail_rgb_q/writeback_*` |
+| `1` | `tail_feat0/src_feat0/src_b1/spab_b1_input/c1/c2/c3` |
+| `2` | `spab_b1_c1_raw/c2_replay/c2_window/residual/att` 以及 tail cross-check |
+
+`scripts/read_jtag_w8a12_tile_writer_regs.tcl` 现在会自动切换 bank 1/2 并输出 `JTAG_W8A12_REG_DEBUG_SPAB_B1_*` 字段，`scripts/run_read_jtag_w8a12_tile_writer_regs.ps1` 会把这些字段写入 summary JSON/Markdown。
+
+行为级 true2x2 raw compare 已按 stage-hash 同一输入/参考重新通过：
+
+| 项目 | 结果 |
+| --- | --- |
+| mismatch | `0 / 192` |
+| max diff | `0` |
+| `tail_b1_hash` | `0x16ede1c2` |
+| `tail_b6_act1_hash` | `0xc7a092b8` |
+| `tail_rgb_q_hash` | `0xb712a61b` |
+| `writeback_hash` | `0x61d3ea1d` |
+
+下一步：重新生成 debug-bank bitstream 并上板读取 bank 1/2，把 `tail_b1_hash` 的首次偏差继续拆到 `tail_feat0/src_feat0/src_b1/spab_b1_input/c1/c2/c3/residual/att`。
+
+证据：
+
+```text
+W8A12_3lane/evidence/board_reports/jtag_true2x2_debugbank_20260629.md
+build/xsim_jtag_w8a12_debugbank_refcmp_20260629/
+```
+
+### 5.4 2026-06-29 debug-bank 实板结果
+
+debug-bank bitstream 已完成实现并生成 `.bit`：
+
+| 项目 | 结果 |
+| --- | --- |
+| bitstream | `vivado/bitstreams/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_true2x2_jtagaxi_debugbank_20260629.bit` |
+| timing | PASS，WNS `12.267ns`，WHS `0.009ns` |
+| resource | LUT `40363`，FF `116367`，BRAM tile `311`，DSP `126` |
+| board preflight | READY，USB known JTAG candidate `3` |
+| PSU init | PASS |
+
+但该 all-in-one debug-bank 版本上板后没有输出像素：
+
+| 项目 | 结果 |
+| --- | --- |
+| output bytes | `0 / 192` |
+| counter in/out | `4 / 0` |
+| frame_done | `0x00000000` |
+| error | `0x00000000` |
+| status | `0x00002000` |
+| delayed read | 延迟 10 秒后仍为 `counter_out=0/frame_done=0` |
+| live state | `writer_busy=1/front_busy=1/state=3` |
+
+为排除板子/JTAG/脚本问题，复跑旧 `stagehash_20260628` baseline bitstream。baseline 可完整输出：
+
+| 项目 | 结果 |
+| --- | --- |
+| output bytes | `192 / 192` |
+| frame_done / error | `1 / 0x00000000` |
+| counter in/out | `4 / 64` |
+| compare | FAIL，`190 / 192` mismatch |
+| PSNR | `14.3819 dB` |
+
+当前判断：
+
+1. 板子、JTAG、PSU、输出读回脚本仍然可用。
+2. baseline 仍然是 PL 数值 mismatch，最早可见边界仍需围绕 `tail_b1_hash` 之前继续拆。
+3. 一次性挂上 bank1/bank2 多组内部 hash 的 debug-bank 版本太侵入，导致板端 busy stall，不能作为下一步定位依据。
+4. 下一步应回退到旧 stage-hash baseline，新增低侵入 single-bank/single-group bitstream；每轮只导出 `feat0/src_feat0/src_b1` 或只导出 `block1 C1` 一组信号。
+
+证据：
+
+```text
+W8A12_3lane/evidence/board_reports/jtag_true2x2_debugbank_board_20260629.md
+board_runs/jtag_w8a12_tile_writer/true2x2_debugbank_acceptance_20260629/
+board_runs/jtag_w8a12_tile_writer/true2x2_stagehash_baseline_recheck_after_debugbank_20260629/
+```
+
+### 5.4.1 2026-06-29 dbg0/nondebug 当前复测
+
+为区分“调试探针导致板端 stall”和“当前源码在不导出调试信号时是否仍可回到 baseline 行为”，已生成 `DebugExportLevel=0` bitstream：
+
+| 项目 | 结果 |
+| --- | --- |
+| bitstream | `vivado/bitstreams/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg0_true2x2_jtagaxi_dbg0_nondebug_20260629.bit` |
+| implementation | PASS，WNS `12.797ns`，WHS `0.009ns` |
+| resource | LUT `38964`，FF `115912`，BRAM tile `311`，DSP `125` |
+| RTL raw compare | PASS，`0 / 192` mismatch |
+| board probe | FAIL，`VIVADO_HW_TARGET_COUNT=0` |
+| XSCT psu_init | FAIL，未发现 PS/PMU/DAP target |
+| smoke | FAIL，Vivado exit `1`，输出 `0 / 192` bytes |
+
+本轮未进入 W8A12 计算路径，不能作为新的数值 mismatch 证据；失败原因是 Vivado/XSCT 当前没有枚举到 hardware target。历史有效定位不回退：最早可见的数值失败边界仍在 `tail_b1_hash`，待 JTAG target 恢复后继续在 `halo fetch / conv1 feat0 -> SPAB block1 -> feature buffer/replay -> b1_m_feat -> tail` 链路内查找第一个错误点。
+
+证据：
+
+```text
+W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg0_nondebug_board_20260629.md
+board_runs/jtag_w8a12_tile_writer/true2x2_dbg0_nondebug_acceptance_20260629/
+```
+
+### 5.4.2 2026-06-29 dbg2/source-boundary 低侵入探针准备
+
+已将 debug 等级拆分为：
+
+| Level | 含义 | 用途 |
+| --- | --- | --- |
+| `0` | 不导出 debug bank | 恢复非调试语义 |
+| `1` | 只导出 tail/writeback stage-hash | 复现历史 `tail_b1_hash` 边界 |
+| `2` | 只打开 source/tap 边界 hash，不打开 SPAB deep hash | 下一轮优先上板定位 |
+| `3` | 打开 SPAB block1 deep hash bank2 | 仅当 level2 证明需要深入 SPAB 内部时使用 |
+
+`DebugExportLevel=2` true2x2 source-boundary 版本已经完成 RTL 仿真和 bitstream 生成：
+
+| 项目 | 结果 |
+| --- | --- |
+| RTL raw compare | PASS，`0 / 192` mismatch |
+| frame cycles | `7202120` |
+| bank0 tail b1/b6/rgb/writeback | `0x16ede1c2 / 0xc7a092b8 / 0xb712a61b / 0x61d3ea1d` |
+| bank1 source-boundary | `tail_feat0=0x000004bf`，`src_feat0=0x00000004`，`src_b1=0x00070004` |
+| bitstream | `vivado/bitstreams/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg2_true2x2_jtagaxi_dbg2_src_boundary_20260629.bit` |
+| timing | PASS，WNS `12.072ns`，WHS `0.010ns` |
+| resource | LUT `40501`，FF `116379`，BRAM tile `311`，DSP `126` |
+| board status | 当前 USB known JTAG candidate `0`，Vivado/JTAG 上板仍 blocked |
+
+已新增一键入口：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_dbg2_source_boundary_acceptance.ps1
+```
+
+该脚本会先执行 board recovery preflight；若 `jtag_precondition_current` 为 `READY`，自动使用上述 dbg2 位流进入 true2x2 上板验收；若板卡不可见，则生成 `BLOCKED` summary，不误入烧录。当前实测结果为 `BLOCKED`：USB known JTAG candidate `0`，强制 Vivado probe 后 target count `0`。
+
+板子恢复可见后，重新运行上述一键脚本即可；若 dbg2 完整输出，则比较 bank1 source-boundary hash，用于判断错误是在 halo/conv1/source tap 之前，还是在 `b1_m_feat` replay/tail 交界之后。
+
+证据：
+
+```text
+W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_prepare_20260629.md
+W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_current/summary.md
+build/xsim_jtag_w8a12_tile_writer_raw_compare_dbg2_src_boundary_bankread/
+vivado/jwtw_true2x2_jtagaxi_dbg2_src_boundary_20260629/
+```
+
+### 5.5 2026-06-29 FPS 仿真目标补充
+
+当前 FPS 结论必须区分 correctness RTL 与 performance scheduler：
+
+| 层级 | 结论 |
+| --- | --- |
+| 当前 3-lane correctness RTL | A5 32x32 可满足 15fps 估算；A6/720p/x2 不满足 |
+| packed 2-D performance scheduler | 720p x4 scheduler-level xsim 已满足 15fps |
+| 20/30fps | 当前完整 W8A12/F48 在 900-DSP 规划门限内不满足 |
+
+packed 2-D xsim gate：
+
+| Candidate | Est. DSP | Cycles/LR pixel | FPS @250MHz | 15fps |
+| --- | ---: | ---: | ---: | --- |
+| `24x64` | 792 | 288 | 15.070 | PASS |
+| `24x72` | 888 | 248 | 17.501 | PASS |
+
+该 PASS 是 scheduler/performance-model 级别，不是完整 packed 2-D 像素计算 RTL 的 bit-exact PASS，也不是板端实测 FPS。后续要把 720p15 变成可交付实现，必须继续实现 packed 2-D engine、memory banking 和 line-buffer/halo reuse。
+
+证据：
+
+```text
+W8A12_3lane/evidence/sim_fps_design_space/fps_target_status_20260629.md
+W8A12_3lane/evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md
+```
+
 ## 6. 资源口径
 
 | 项目 | 数值 |
@@ -428,7 +602,7 @@ docs/failure_rollback_flow.md
 
 ## 13. 当前下一步
 
-当前离线门禁已推进到 `69 / 73`。新增赛题报告、PDF 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查和 board validation readiness 已通过，原严格交付审计剩余 4 项仍均为真实板端 validation：
+当前离线门禁已推进到 `72 / 76`。新增赛题报告、PDF/Word 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查、board validation readiness、submission manifest/archive 和 evidence matrix 已通过，原严格交付审计剩余 4 项仍均为真实板端 validation：
 
 ```text
 a5.board_32x32
@@ -446,14 +620,13 @@ x2.board
 5. 继续生成交付索引、硬件设计说明、验证方案和回退流程。
 6. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
 
-当前硬件探测结果仍作为板端风险记录：
+当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；最新 dbg2/source-boundary 一键验收则因 USB known JTAG candidate count=0 处于 `BLOCKED`，待连接恢复后继续读 `tail_feat0/src_feat0/src_b1`：
 
 ```text
-USB/JTAG after replug: board_runs/vivado_hw_target_probe_after_replug_20260628
-Known JTAG candidate count: 3
-Vivado hardware target: PASS, target count = 1, device count = 2
-Current board-side blocker: get_hw_axis returns none after programming JTAG AXI designs
-Evidence: W8A12_3lane/evidence/board_reports/jtag_after_replug_20260628.md; W8A12_3lane/evidence/board_reports/jtag_after_psuinit_20260628.md
+Historical stage-hash: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md
+Current dbg2/source-boundary: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_current/summary.md
+Current blocker: USB known JTAG candidate count = 0, Vivado target count = 0 after forced probe
+Next command after recovery: W8A12_3lane/scripts/run_w8a12_dbg2_source_boundary_acceptance.ps1
 ```
 
 当前第一步仍不是直接跑 32x32，而是先固定 PS init + JTAG-to-AXI 前置流程，再重跑 debugregs true 2x2：

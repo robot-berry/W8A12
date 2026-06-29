@@ -15,6 +15,7 @@ set pl_freq_mhz 100
 set out_lanes 8
 set tap_lanes 16
 set scale_lanes 2
+set debug_export_level 2
 
 if {[info exists ::env(JTAG_W8A12_TILE_WRITER_IMG_W)]} {
   set img_w $::env(JTAG_W8A12_TILE_WRITER_IMG_W)
@@ -39,6 +40,9 @@ if {[info exists ::env(JTAG_W8A12_TILE_WRITER_TAP_LANES)]} {
 }
 if {[info exists ::env(JTAG_W8A12_TILE_WRITER_SCALE_LANES)]} {
   set scale_lanes $::env(JTAG_W8A12_TILE_WRITER_SCALE_LANES)
+}
+if {[info exists ::env(JTAG_W8A12_TILE_WRITER_DEBUG_EXPORT_LEVEL)]} {
+  set debug_export_level $::env(JTAG_W8A12_TILE_WRITER_DEBUG_EXPORT_LEVEL)
 }
 
 proc jwtw_ceil_log2_width {value} {
@@ -160,6 +164,7 @@ set_property -dict [list \
   CONFIG.OUT_LANES $out_lanes \
   CONFIG.TAP_LANES $tap_lanes \
   CONFIG.SCALE_LANES $scale_lanes \
+  CONFIG.DEBUG_EXPORT_LEVEL $debug_export_level \
 ] $sr
 
 connect_bd_intf_net [get_bd_intf_pins ja/M_AXI] [get_bd_intf_pins ai/S00_AXI]
@@ -214,3 +219,4 @@ puts "OUT_PIXELS=$out_pixels"
 puts "IN_IDX_W=$in_idx_w"
 puts "OUT_IDX_W=$out_idx_w"
 puts "PL_FREQ_MHZ=$pl_freq_mhz"
+puts "DEBUG_EXPORT_LEVEL=$debug_export_level"

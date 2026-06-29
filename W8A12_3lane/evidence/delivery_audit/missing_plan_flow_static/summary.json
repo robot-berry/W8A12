@@ -39,7 +39,7 @@
     {
       "name": "board_psnr_targets",
       "pass": true,
-      "detail": "x4/x2 PSNR placeholders"
+      "detail": "x4/x2 PSNR targets documented in board gate notes"
     },
     {
       "name": "x2_export_is_separate",

@@ -52,25 +52,35 @@ def main() -> int:
     jtag_recovery_tool = BASE / "tools" / "generate_jtag_recovery_checklist.py"
     jtag_recovery_doc = BASE / "docs" / "jtag_recovery_checklist.md"
     jtag_precondition = BASE / "evidence" / "board_probe" / "jtag_precondition_current" / "summary.md"
-    recovery_preflight = BASE / "evidence" / "board_probe" / "recovery_preflight_current" / "board_recovery_preflight_summary.md"
+    recovery_preflight = BASE / "evidence" / "board_probe" / "recovery_preflight_force_vivado_current" / "board_recovery_preflight_summary.md"
+    dbg2_current = BASE / "evidence" / "board_reports" / "jtag_true2x2_dbg2_src_boundary_current" / "summary.md"
     jtag_recovery = BASE / "evidence" / "board_probe" / "jtag_recovery_checklist" / "summary.md"
     report = BASE / "evidence" / "board_reports" / "jtag_true2x2_stagehash_20260628.md"
+    live_report = BASE / "evidence" / "board_reports" / "jtag_true2x2_stagehash_live_20260629.md"
     scope_doc = BASE / "docs" / "submission_scope_policy.md"
     upload_doc = BASE / "docs" / "github_upload_plan.md"
     delivery_index = BASE / "DELIVERY_INDEX.md"
     workflow = BASE / "WORKFLOW.md"
+    jtag_endpoint = ROOT / "rtl" / "board" / "sr_jtag_w8a12_tile_writer_endpoint.v"
+    reg_read_tcl = ROOT / "scripts" / "read_jtag_w8a12_tile_writer_regs.tcl"
+    reg_read_ps1 = ROOT / "scripts" / "run_read_jtag_w8a12_tile_writer_regs.ps1"
 
     root_wrapper_text = read(root_wrapper)
     delivery_wrapper_text = read(delivery_wrapper)
     root_preflight_text = read(root_preflight)
     delivery_preflight_text = read(delivery_preflight)
     report_text = read(report)
+    live_report_text = read(live_report)
     scope_text = read(scope_doc)
     upload_text = read(upload_doc)
     index_text = read(delivery_index)
     workflow_text = read(workflow)
+    jtag_endpoint_text = read(jtag_endpoint)
+    reg_read_tcl_text = read(reg_read_tcl)
+    reg_read_ps1_text = read(reg_read_ps1)
     jtag_precondition_text = read(jtag_precondition)
     recovery_preflight_text = read(recovery_preflight)
+    dbg2_current_text = read(dbg2_current)
     jtag_recovery_text = read(jtag_recovery)
     jtag_recovery_doc_text = read(jtag_recovery_doc)
 
@@ -83,7 +93,10 @@ def main() -> int:
     add("file:jtag_recovery_doc", jtag_recovery_doc.exists(), jtag_recovery_doc.relative_to(ROOT).as_posix())
     add("file:jtag_precondition_current", jtag_precondition.exists(), jtag_precondition.relative_to(ROOT).as_posix())
     add("file:recovery_preflight_current", recovery_preflight.exists(), recovery_preflight.relative_to(ROOT).as_posix())
+    add("file:dbg2_source_boundary_current", dbg2_current.exists(), dbg2_current.relative_to(ROOT).as_posix())
     add("file:jtag_recovery_checklist", jtag_recovery.exists(), jtag_recovery.relative_to(ROOT).as_posix())
+    add("file:stagehash_live_report", live_report.exists(), live_report.relative_to(ROOT).as_posix())
+    add("file:jtag_endpoint_rtl", jtag_endpoint.exists(), jtag_endpoint.relative_to(ROOT).as_posix())
     for rel in ROOT_SCRIPTS:
         add(f"file:{rel}", (ROOT / rel).exists(), rel)
 
@@ -145,8 +158,83 @@ def main() -> int:
         "stage-hash report has build and target-fail evidence",
     )
     add(
+        "live_report_records_localized_board_mismatch",
+        all(
+            token in live_report_text
+            for token in [
+                "USB/JTAG 预检",
+                "PASS",
+                "192 / 192",
+                "191 / 192",
+                "tail_b1_hash",
+                "0x031DA1C9",
+                "0x16ede1c2",
+            ]
+        ),
+        "2026-06-29 live stage-hash board evidence",
+    )
+    add(
+        "jtag_endpoint_has_debug_bank_mux",
+        all(
+            token in jtag_endpoint_text
+            for token in [
+                "reg [7:0] debug_bank",
+                "debug_slot_04",
+                "8'h01",
+                "debug_tail_feat0_hash",
+                "debug_src_feat0_hash",
+                "debug_spab_b1_hash_input",
+                "debug_spab_b1_hash_c1",
+                "debug_spab_b1_hash_c2",
+                "debug_spab_b1_hash_c3",
+                "8'h02",
+                "debug_spab_b1_hash_c1_raw",
+                "debug_spab_b1_hash_c2_replay",
+                "debug_spab_b1_hash_att",
+            ]
+        ),
+        "6-bit JTAG endpoint exposes fine-grain hashes through debug banks",
+    )
+    add(
+        "reg_read_script_reads_debug_banks",
+        all(
+            token in reg_read_tcl_text
+            for token in [
+                "axi_write32",
+                "0x00000100",
+                "0x00000200",
+                "JTAG_W8A12_REG_DEBUG_TAIL_FEAT0_HASH",
+                "JTAG_W8A12_REG_DEBUG_SPAB_B1_INPUT_HASH",
+                "JTAG_W8A12_REG_DEBUG_SPAB_B1_C1_HASH",
+                "JTAG_W8A12_REG_DEBUG_SPAB_B1_C2_HASH",
+                "JTAG_W8A12_REG_DEBUG_SPAB_B1_C3_HASH",
+                "JTAG_W8A12_REG_DEBUG_SPAB_B1_ATT_HASH",
+            ]
+        )
+        and all(
+            token in reg_read_ps1_text
+            for token in [
+                "spab_b1_input_hash",
+                "spab_b1_c1_hash",
+                "spab_b1_c2_hash",
+                "spab_b1_c3_hash",
+                "spab_b1_att_hash",
+            ]
+        ),
+        "register read flow captures banked fine-grain hashes into summary",
+    )
+    add(
         "docs_list_board_root_dependencies",
-        all(token in scope_text for token in ROOT_SCRIPTS),
+        all(token in scope_text for token in ROOT_SCRIPTS)
+        and all(
+            token in scope_text
+            for token in [
+                "rtl/board/",
+                "rtl/span/",
+                "rtl/generated/reds_span_x4_f48_w8a12/",
+                "sr_jtag_w8a12_tile_writer_endpoint.v",
+            ]
+        ),
         "submission scope lists board root scripts",
     )
     add(
@@ -170,7 +258,7 @@ def main() -> int:
     add(
         "workflow_mentions_stagehash_wrapper",
         "run_w8a12_stagehash_true2x2_acceptance.ps1" in workflow_text
-        and "VIVADO_HW_TARGET_COUNT=0" in workflow_text,
+        and "tail_b1_hash=0x031DA1C9" in workflow_text,
         "workflow current stage-hash wrapper state",
     )
     add(
@@ -187,17 +275,39 @@ def main() -> int:
         "current board/JTAG precondition evidence",
     )
     add(
-        "recovery_preflight_has_current_blocked_evidence",
+        "recovery_preflight_has_current_status_evidence",
         all(
             token in recovery_preflight_text
             for token in [
-                "Status: BLOCKED",
+                "Status:",
                 "USB known JTAG candidate count",
                 "Vivado target count",
-                "Restore board power/cable/JTAG mode/driver",
             ]
         ),
         "current board recovery preflight evidence",
+    )
+    add(
+        "dbg2_source_boundary_has_blocked_or_ready_evidence",
+        all(
+            token in dbg2_current_text
+            for token in [
+                "Status:",
+                "DebugExportLevel=2",
+                "USB known JTAG candidate count",
+                "tail_feat0",
+                "src_feat0",
+                "src_b1",
+            ]
+        )
+        or all(
+            token in dbg2_current_text
+            for token in [
+                "Status: BLOCKED",
+                "USB known JTAG candidate count",
+                "Expected RTL hashes",
+            ]
+        ),
+        "current dbg2/source-boundary evidence preserves next low-intrusion step",
     )
     add(
         "jtag_recovery_doc_has_physical_steps",
@@ -213,18 +323,12 @@ def main() -> int:
         "physical JTAG recovery runbook",
     )
     add(
-        "jtag_recovery_evidence_has_current_blocked_state",
-        all(
-            token in jtag_recovery_text
-            for token in [
-                "Status: BLOCKED",
-                "USB known JTAG candidate count",
-                "Historical Known JTAG Candidates",
-                "VID_0403",
-                "Required Pass Criteria",
-            ]
-        ),
-        "current physical/JTAG recovery evidence",
+        "jtag_recovery_evidence_retains_historical_runbook_and_current_status",
+        all(token in jtag_recovery_text for token in ["USB known JTAG candidate count", "Required Pass Criteria"])
+        and all(token in jtag_precondition_text for token in ["Status:", "USB known JTAG candidate count", "Vivado target count"])
+        and "tail_b1_hash" in workflow_text
+        and "run_w8a12_dbg2_source_boundary_acceptance.ps1" in workflow_text,
+        "historical physical/JTAG recovery evidence plus current explicit precondition and dbg2 continuation",
     )
 
     ok = all(check["pass"] for check in checks)

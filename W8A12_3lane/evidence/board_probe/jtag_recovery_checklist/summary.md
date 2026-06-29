@@ -4,12 +4,12 @@ Status: BLOCKED
 
 | Field | Value |
 | --- | --- |
-| generated_at | `2026-06-28 19:09:50` |
+| generated_at | `2026-06-29 23:58:26` |
 | USB match count | `3` |
 | USB known JTAG candidate count | `0` |
 | PnP history known JTAG candidate count | `4` |
 | PnP history known VID/PID count | `3` |
-| Vivado target count | `not_checked` |
+| Vivado target count | `0` |
 | known VID/PID pattern | `VID_03FD|VID_0403|VID_1443|VID_04B4` |
 
 ## Current Online USB Matches

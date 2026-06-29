@@ -96,9 +96,13 @@ def main() -> int:
         "44.0265",
         "0x61d3ea1d",
         "writeback_hash",
+        "debug-bank",
+        "REG_PERF_CTRL[15:8]",
+        "spab_b1_input/c1/c2/c3",
+        "evidence/board_reports/jtag_true2x2_debugbank_20260629.md",
     ]), "mismatch and debug hash plan")
     add("states_audit_remaining_gates", all(token in text for token in [
-        "69 / 73",
+        "72 / 76",
         "a5.board_32x32",
         "a6.board_64x64",
         "a7.board_720p_x4",
@@ -112,7 +116,7 @@ def main() -> int:
     add("states_pdf_export", all(token in text for token in [
         "output/pdf/W8A12_3lane_contest_submission_report.pdf",
         "evidence/report_pdf/summary.md",
-        "PDF 报告导出",
+        "PDF/Word 报告导出",
     ]), "PDF report export evidence")
     add("links_repro_commands", all(token in text for token in [
         "run_delivery_gates.ps1",

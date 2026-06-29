@@ -1,0 +1,42 @@
+﻿{
+    "status":  "PASS",
+    "stage":  "packed2d_perf_scheduler",
+    "scope":  "720p x4 FPS simulation gate for next W8A12 performance engine",
+    "model":  "REDS SPAN x4 F48 W8A12, 22 convolution layers",
+    "frame":  "320x180 LR -\u003e 1280x720 SR",
+    "clock_mhz":  250,
+    "dsp_gate":  "XC7Z045/ZC706 900 DSP planning gate",
+    "candidates":  [
+                       {
+                           "candidate":  "24x64",
+                           "output_lanes":  24,
+                           "tap_lanes":  64,
+                           "estimated_dsp":  792,
+                           "cycles_per_lr_pixel":  288,
+                           "frame_pixels":  57600,
+                           "frame_cycles":  16588800,
+                           "fps_x1000":  15070,
+                           "fps":  15.07,
+                           "pass15":  true,
+                           "pass20":  false,
+                           "pass30":  false
+                       },
+                       {
+                           "candidate":  "24x72",
+                           "output_lanes":  24,
+                           "tap_lanes":  72,
+                           "estimated_dsp":  888,
+                           "cycles_per_lr_pixel":  248,
+                           "frame_pixels":  57600,
+                           "frame_cycles":  14284800,
+                           "fps_x1000":  17501,
+                           "fps":  17.501,
+                           "pass15":  true,
+                           "pass20":  false,
+                           "pass30":  false
+                       }
+                   ],
+    "simulate_log":  "G:\\UESTC\\feitengspan1\\build\\vivado_w8a12_packed2d_perf_scheduler_sim\\w8a12_packed2d_perf_scheduler_sim.sim\\sim_1\\behav\\xsim\\simulate.log",
+    "vivado_log":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\sim_fps_design_space\\packed2d_perf_scheduler\\vivado_packed2d_perf_scheduler.log",
+    "vivado_journal":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\sim_fps_design_space\\packed2d_perf_scheduler\\vivado_packed2d_perf_scheduler.jou"
+}

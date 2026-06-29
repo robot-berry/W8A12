@@ -1,0 +1,112 @@
+`timescale 1ns/1ps
+
+// Hardware tile fetch -> complete W8A12 streamed RGB integration shell.
+//
+// A command reads one RGB888 tile from a large-image address space, streams the
+// tile into the full W8A12 x4 core, and emits signed 12-bit RGB q values.
+module sr_tile_fetch_w8a12_full_shell #(
+    parameter integer DATA_W = 24,
+    parameter integer TILE_W = 4,
+    parameter integer TILE_H = 4,
+    parameter integer COORD_W = 16,
+    parameter integer ADDR_W = 32,
+    parameter integer BYTES_PER_PIXEL = 3,
+    parameter integer ACT_W = 12,
+    parameter integer ACC_W = 48,
+    parameter integer CH = 48,
+    parameter integer OUT_LANES = 8,
+    parameter integer TAP_LANES = 16,
+    parameter integer SCALE_LANES = 2
+) (
+    input  wire                       clk,
+    input  wire                       rst,
+
+    input  wire                       cmd_valid,
+    output wire                       cmd_ready,
+    input  wire [COORD_W-1:0]         cmd_image_w,
+    input  wire [COORD_W-1:0]         cmd_valid_w,
+    input  wire [COORD_W-1:0]         cmd_valid_h,
+    input  wire [ADDR_W-1:0]          cmd_input_addr,
+
+    output wire                       rd_req_valid,
+    input  wire                       rd_req_ready,
+    output wire [ADDR_W-1:0]          rd_req_addr,
+    input  wire                       rd_resp_valid,
+    input  wire [DATA_W-1:0]          rd_resp_data,
+
+    output wire                       m_valid,
+    input  wire                       m_ready,
+    output wire signed [3*ACT_W-1:0]  m_rgb,
+    output wire                       m_user,
+    output wire                       m_last,
+
+    output wire                       fetch_busy,
+    output wire                       fetch_done,
+    output wire                       fetch_error
+);
+    wire tile_valid;
+    wire tile_ready;
+    wire [DATA_W-1:0] tile_data;
+    wire tile_pixel_valid;
+    wire tile_user;
+    wire tile_last;
+
+    sr_tile_fetch_stream_shell #(
+        .DATA_W(DATA_W),
+        .TILE_W(TILE_W),
+        .TILE_H(TILE_H),
+        .COORD_W(COORD_W),
+        .ADDR_W(ADDR_W),
+        .BYTES_PER_PIXEL(BYTES_PER_PIXEL)
+    ) u_fetch (
+        .clk(clk),
+        .rst(rst),
+        .cmd_valid(cmd_valid),
+        .cmd_ready(cmd_ready),
+        .cmd_image_w(cmd_image_w),
+        .cmd_valid_w(cmd_valid_w),
+        .cmd_valid_h(cmd_valid_h),
+        .cmd_input_addr(cmd_input_addr),
+        .rd_req_valid(rd_req_valid),
+        .rd_req_ready(rd_req_ready),
+        .rd_req_addr(rd_req_addr),
+        .rd_resp_valid(rd_resp_valid),
+        .rd_resp_data(rd_resp_data),
+        .m_valid(tile_valid),
+        .m_ready(tile_ready),
+        .m_data(tile_data),
+        .m_pixel_valid(tile_pixel_valid),
+        .m_user(tile_user),
+        .m_last(tile_last),
+        .busy(fetch_busy),
+        .done(fetch_done),
+        .error(fetch_error)
+    );
+
+    span_w8a12_full_streamed_rgb #(
+        .DATA_W(DATA_W),
+        .IMG_W(TILE_W),
+        .IMG_H(TILE_H),
+        .ACT_W(ACT_W),
+        .ACC_W(ACC_W),
+        .CH(CH),
+        .OUT_LANES(OUT_LANES),
+        .TAP_LANES(TAP_LANES),
+        .SCALE_LANES(SCALE_LANES)
+    ) u_full (
+        .clk(clk),
+        .rst(rst),
+        .s_valid(tile_valid),
+        .s_ready(tile_ready),
+        .s_data(tile_data),
+        .s_user(tile_user),
+        .s_last(tile_last),
+        .m_valid(m_valid),
+        .m_ready(m_ready),
+        .m_rgb(m_rgb),
+        .m_user(m_user),
+        .m_last(m_last)
+    );
+
+    wire unused_tile_pixel_valid = tile_pixel_valid;
+endmodule

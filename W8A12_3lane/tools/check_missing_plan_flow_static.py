@@ -32,7 +32,11 @@ def main() -> int:
     ]), "A4 cmd fallbacks")
     add("board_resource_args", all(token in text for token in ["--lut-used", "--ff-used", "--bram-tile-used", "--dsp-used"]), "board report resource used arguments")
     add("vivado_probe_gate_mapped", all(token in text for token in ["board.vivado_hw_probe", "probe_vivado_hw_targets.ps1", "check_vivado_hw_probe_log.cmd"]), "Vivado JTAG probe pre-board gate")
-    add("board_psnr_targets", "<psnr_ge_28>" in text and "<psnr_ge_30>" in text, "x4/x2 PSNR placeholders")
+    add(
+        "board_psnr_targets",
+        "PSNR target: x4 >= 28 dB" in text and "PSNR target: x2 >= 30 dB" in text,
+        "x4/x2 PSNR targets documented in board gate notes",
+    )
     add("x2_export_is_separate", '"x2.w8a12_export"' in text and "export_x2_w8a12_to_rtl.cmd" in text, "x2 export commands")
     add("x2_reference_validation_is_separate", '"x2.fixed_reference_validation"' in text and "check_x2_fixed_reference.py" in text, "x2 validation command")
     add("quality_baseline_commands", all(token in text for token in [

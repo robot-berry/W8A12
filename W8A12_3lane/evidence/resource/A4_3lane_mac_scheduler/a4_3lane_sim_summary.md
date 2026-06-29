@@ -5,7 +5,10 @@ Status: PASS
 | Item | Value |
 | --- | --- |
 | top | tb_w8a12_3lane_mac_scheduler |
-| pass_line | PASS w8a12_3lane_mac_scheduler pixels=16 channels=48 |
+| pass_line | PASS w8a12_3lane_mac_scheduler pixels=16 channels=48 accepted=16 cycles=1761 cycles_per_pixel_ceil=111 |
+| single_stage_cycles | 1761 |
+| single_stage_cycles_per_pixel_ceil | 111 |
+| single_stage_pixels_per_second_at_100mhz | 900900.901 |
 | simulate_log | G:\UESTC\feitengspan1\build\vivado_w8a12_3lane_mac_scheduler_sim\w8a12_3lane_mac_scheduler_sim.sim\sim_1\behav\xsim\simulate.log |
 | vivado_log | G:\UESTC\feitengspan1\W8A12_3lane\evidence\resource\A4_3lane_mac_scheduler\vivado_3lane_mac_scheduler.log |
 | expected | lane0/1/2 stitched channels 0..47 bit-exact against A0 full48_output.txt |
