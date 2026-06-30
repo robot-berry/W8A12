@@ -53,6 +53,8 @@
 | A4 single-output scheduler | `rtl/span/w8a12_single_out_mac_scheduler.v` | `evidence/resource/A4_single_out_mac_scheduler/single_out_scheduler_sim_summary.md` |
 | A4 single-lane scheduler | `rtl/span/w8a12_single_lane_mac_scheduler.v` | xsim PASS；OOC PASS，LUT 41003、FF 85414、DSP 224、WNS 1.261ns |
 | A4 3-lane scheduler | `rtl/span/w8a12_3lane_mac_scheduler.v` | xsim PASS；OOC PASS，LUT 123182、FF 256222、DSP 672、WNS 1.188ns |
+| packed 2-D x4 720p15 scheduler | `rtl/span/w8a12_packed2d_perf_scheduler.v` | scheduler-level xsim PASS，`24x64` 为 15.070fps、`24x72` 为 17.501fps @250MHz；证据 `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md` |
+| packed 2-D x2 720p20 scheduler | `rtl/span/w8a12_packed2d_perf_scheduler.v`、`sim/tb_w8a12_packed2d_x2_720p20_perf_scheduler.sv` | scheduler-level xsim 已补充；900-DSP 门限下 20fps FAIL，证据 `evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
 
 ## 4. 上板和 PPA 汇报
 
@@ -124,6 +126,7 @@
 
 - Accelerator top xsim/OOC：`evidence/top/accel_top_sim/summary.md`、`evidence/top/accel_top_ooc/ooc_summary.md`。
 - A4 scheduler xsim/OOC：`evidence/resource/A4_single_lane_mac_scheduler/`、`evidence/resource/A4_3lane_mac_scheduler/`、`evidence/resource/A4_single_lane_mac_scheduler_ooc/`、`evidence/resource/A4_3lane_mac_scheduler_ooc/`。
+- packed 2-D scheduler 性能边界：x4 720p15 scheduler-level PASS，x2 720p20 scheduler-level 已补充但 900-DSP 门限下 FAIL，证据 `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md`。
 - x2 W8A12 export/fixed reference：`evidence/x2/w8a12_export/summary.md`、`evidence/x2/reference/summary.md`、`evidence/x2/reference_validation/validation.md`。
 - x4/x2 传统插值、质量对比和画质指标闭环计划：`evidence/quality_baseline/`、`evidence/quality_comparison/summary.md`、`evidence/quality_metric_completion/summary.md`。
 

@@ -13,7 +13,7 @@ Current branch: `hardware-test`
 | `git.w8a12_changes_present` | PASS | `1 W8A12_3lane status lines` |
 | `git.outside_changes_detected` | PASS | `658 outside status lines; do not stage them for W8A12 upload` |
 | `git.no_staged_outside_upload_scope` | PASS | `[]` |
-| `git.upload_candidate_count` | PASS | `1241` |
+| `git.upload_candidate_count` | PASS | `1246` |
 | `git.no_forbidden_upload_candidates` | PASS | `[]` |
 | `submission_scope.required_root_files_present` | PASS | `[]` |
 | `submission_scope.required_root_rtl_present` | PASS | `[]` |
@@ -23,7 +23,7 @@ Current branch: `hardware-test`
 | `delivery_audit.missing_only_board_validation` | PASS | `["a5.board_32x32", "a6.board_64x64", "a7.board_720p_x4", "x2.board"]` |
 | `submission_manifest.exists` | PASS | `evidence/submission_package/submission_manifest.json` |
 | `submission_manifest.not_final` | PASS | `INCOMPLETE` |
-| `submission_manifest.has_files` | PASS | `374` |
+| `submission_manifest.has_files` | PASS | `377` |
 | `contest_report_pdf.exists` | PASS | `G:/UESTC/feitengspan1/W8A12_3lane/output/pdf/W8A12_3lane_contest_submission_report.pdf` |
 | `contest_report_docx.exists` | PASS | `G:/UESTC/feitengspan1/W8A12_3lane/output/docx/W8A12_3lane_contest_submission_report.docx` |
 | `draft_archive_summary.exists` | PASS | `G:/UESTC/feitengspan1/W8A12_3lane/evidence/submission_package/archive/summary.md` |

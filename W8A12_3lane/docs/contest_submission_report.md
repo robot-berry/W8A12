@@ -130,6 +130,8 @@ XC7Z045 参考门限：
 
 当前 A4 3-lane scheduler 的 DSP 使用量为 672，占 XC7Z045 门限 74.67%，低于 900 DSP 门限；LUT 占比 56.35%，FF 占比 58.61%，均低于对应门限。BRAM 为 0 是因为该 OOC 统计对象是计算 scheduler，不包含完整 tile/frame buffer。完整 accelerator 的最终 BRAM、DDR bandwidth、power 和 board FPS 需在完整集成后重新统计。
 
+性能 scheduler 侧已补充 packed 2-D 规划证据：x4 720p15 在 `24x64` 和 `24x72` candidate 下分别为 15.070fps 和 17.501fps @250MHz，满足 scheduler-level 15fps；x2 720p20 已新增独立 xsim 证据，但 900-DSP 门限内 `24x64/24x72` 仅为 3.861/4.483fps，非门限内 `48x144` 为 17.223fps 且 DSP=3504，因此当前完整 W8A12/F48 packed 2-D 规划不能声明 x2 720p20 已达标。
+
 ## 9. 画质指标与传统插值对比
 
 REDS val 全量 baseline 已生成，模型 FP32 结果与传统插值对比如下：
@@ -277,6 +279,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | 画质指标闭环计划 | `docs/quality_metric_completion_plan.md`、`evidence/quality_metric_completion/summary.md` |
 | A0-A3 reference | `evidence/reference/` |
 | A4 OOC | `evidence/resource/A4_*_ooc/` |
+| packed 2-D FPS scheduler | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
 | x2 W8A12 导出 | `evidence/x2/w8a12_export/summary.md` |
 | x2 fixed reference | `evidence/x2/reference/summary.md` |
 | delivery audit | `evidence/delivery_audit/contest_delivery_audit.md` |

@@ -2,7 +2,7 @@
 
 Status: INCOMPLETE
 
-File count: 374
+File count: 377
 
 ## Missing Final Evidence
 
@@ -16,10 +16,10 @@ File count: 374
 | Path | Bytes | SHA256 |
 | --- | ---: | --- |
 | `.gitignore` | 594 | `0b2f6fd09655485e6f3f034f9ef0a60c65b09980b1817cc6f69e37e832a30fdf` |
-| `DELIVERY_INDEX.md` | 16801 | `37a3f3338e52e8ee428e364e6ca265dde3b6bde8617f546bbbcdac116ffae3f1` |
+| `DELIVERY_INDEX.md` | 17616 | `268f07c22c06379671c0f65ac557a7b4be14c7643e328a1c8de0c885893ef403` |
 | `README.md` | 3812 | `a2aa0c76c40aa14b08fd5ac6f21fc0bd4c4c00048215756bdd223a7c347b0d81` |
-| `STATUS.md` | 16544 | `b49bbe83822e2dbbacb039655937583a571949c6cf3e9e0f33cdc59361c45134` |
-| `WORKFLOW.md` | 42906 | `c68a8b4ba2dffe09441f1b2ecf64a156bf025944e8285d682d66276a2ec8f4f7` |
+| `STATUS.md` | 17105 | `82b20d0fa778bdf9bfb86cf3e2b9e6479c6c4092694dcc061e13f5c3c486ba56` |
+| `WORKFLOW.md` | 43666 | `567bafa28e89c5df48fee5cc8e7a636abbf399fb000af7e07ffecd26bf3625d5` |
 | `docs/a2_a3_tile_scheduler_contract.md` | 2715 | `15610d266861f704d9365cb425706738321ea788f848380163a2413c229bf872` |
 | `docs/a3_tail_rgb_reference.md` | 1527 | `c100f88f8d3a0df21fc37253893e7d0ffbdd6192217869d4ddf2c449eaa97b3d` |
 | `docs/a4_resource_synthesis_plan.md` | 3310 | `981c292d951b324aef12f601613535cd1e7cb8d51150bcf1193df2eb763fca6a` |
@@ -29,7 +29,7 @@ File count: 374
 | `docs/board_report_flow.md` | 10555 | `b8560fd17132a5e5541dba01efe07edaeae890b3dee4df01ab73395847a208fa` |
 | `docs/contest_delivery_audit.md` | 4969 | `c0d5fb4e3f28ba77742a4d4ee0770db9d050bc6e7be02f874722285a7563dd2d` |
 | `docs/contest_submission_readme.md` | 6193 | `58d62fa5d83cc811ab24057654611cea2074e3eb67f4647a02de137a5ae8993e` |
-| `docs/contest_submission_report.md` | 18435 | `de118a37d94f6ca691d511c44e01673c923ff7bb31236dbad2a491a416bfd5cd` |
+| `docs/contest_submission_report.md` | 19024 | `2c3016edad3634ab0aa7d12294fb26f75b1549b74b4ac34c872eceafc1963d69` |
 | `docs/delivery_gate_runner.md` | 6822 | `c190dcb3b58243df013aad6577e9bfe042aa4c265d944bb6bbc71cf56b9b642c` |
 | `docs/failure_rollback_flow.md` | 7256 | `c513299a34afa5d9643e56da7f0a404a5768584d7e5df913075c4930cbb4b8f3` |
 | `docs/github_upload_plan.md` | 5017 | `efca60675025740604231e732420dddae33ed213c0cab9f386920794ed97b017` |
@@ -113,7 +113,7 @@ File count: 374
 | `evidence/delivery_audit/hard_gate_execution_queue.md` | 4933 | `68192147a0abec8d36fc46237298f651385608a667c94ed54a8176ee30ecb84c` |
 | `evidence/delivery_audit/missing_evidence_plan.json` | 5585 | `ecfa9f787ad5abea3b0d222b8e2456da3eff9e43bee98385c7b899cd1f6b813f` |
 | `evidence/delivery_audit/missing_evidence_plan.md` | 5298 | `bc4e5d2d43ccc02f2836f7a406361289a2211b1b0a783d6d8e75af41d880c337` |
-| `evidence/delivery_manifest/manifest.md` | 50683 | `063f6873f101e3cf574a2c32f645362e874a220abeb17e1eb04f743e82fbe141` |
+| `evidence/delivery_manifest/manifest.md` | 51116 | `43b737896b3b6aba7cc81d17eb05a118ad5275433198a8afb96d2a5f327fb8a5` |
 | `evidence/delivery_matrix/summary.json` | 5384 | `6680b78b7c5bc98ec107e9d212f8e9a8c7dcd31baa70dd9f173872cc5d471058` |
 | `evidence/delivery_matrix/summary.md` | 4164 | `250e7e6ac96dfa1dc09514574d70b1ab8b5681a0877f3728456b7747e42d2106` |
 | `evidence/delivery_runs/current_board_probe_force_20260629/summary.json` | 5987 | `0fbe1295c5c32df1f50fbf9f78c502d37313f0cf3ab597c11d60ea78d2b19a85` |
@@ -164,8 +164,8 @@ File count: 374
 | `evidence/delivery_runs/current_usb_diag_enhanced_20260630/summary.md` | 1531 | `5d59d73caabd2f1f1d38dfb7bec492d94ad636e322ae8209eec885eb41213481` |
 | `evidence/github_pr_attempt/summary.json` | 461 | `081a5c466d57e91553351bb492344d62672059578338f208a80c9da6354ef1c5` |
 | `evidence/github_pr_attempt/summary.md` | 573 | `a99c7ce3edf9e5caa8475013a20e1de8a584ec03c1f9758fb165d980b42f3865` |
-| `evidence/github_upload_export/summary.json` | 278527 | `0cd4040090f313579bf5f27fe2a1036c545411d12cb5b8be98f0febd8511a43d` |
-| `evidence/github_upload_export/summary.md` | 1035 | `12e3e5e64b249f7694613628b302ea77734fa0b763799217997cd5cd25bc49f7` |
+| `evidence/github_upload_export/summary.json` | 278527 | `85bf864c4b501c28e7a4371bf0e9a7ac48db4f4e21c4dc25d295ba066ca2cd3e` |
+| `evidence/github_upload_export/summary.md` | 1035 | `24a2ed4a9b166f4b07e6c6a12f7ce705a4e4726aaabafdb3ec4a4d7b26ccb6c1` |
 | `evidence/github_upload_preflight/summary.json` | 3198 | `d8e44384f4d7e688da8a402a28dde8a9351726543f514f9779691de381aa7362` |
 | `evidence/github_upload_preflight/summary.md` | 2104 | `7825521495cacdc18214fef048e27a09b48f320fc1693698e51f88780533ff87` |
 | `evidence/github_upload_push/summary.json` | 678 | `0cce69030da15b5b559d8e5a45d953a7b9c5da0c8dc0af8bdd541ce84d7f991b` |
@@ -238,7 +238,7 @@ File count: 374
 | `evidence/resource/A4_single_out_mac_scheduler/single_out_scheduler_sim_summary.md` | 1251 | `76ccce605c79ea5af583f67057e569ef8650eb31536608fa1a2319a475c22a05` |
 | `evidence/sim_fps_estimate/summary.json` | 3613 | `9ae9aa4007966c4e62c97e0c96d253a4360c1b7ac12864f28bcb9ba0a87bcc63` |
 | `evidence/sim_fps_estimate/summary.md` | 1638 | `38492cd0bc6b35812b81795d4ef58e1620db65947cb14afbf67a003b0bdd064d` |
-| `evidence/submission_package/submission_manifest.md` | 50220 | `e7d08c5c5c507500631421ba6105d27e5d2497db423ba4c6b5608e2231457ea8` |
+| `evidence/submission_package/submission_manifest.md` | 50220 | `6ff2c341f3de3f5e2d0a7e84715f112c56126a93e03f9447b13f843bad5d0beb` |
 | `evidence/top/accel_top_flow_static/summary.json` | 3831 | `297a9806af1fba8e62783de11458c92b7cebf14474ffe44028e1beced229b5d1` |
 | `evidence/top/accel_top_flow_static/summary.md` | 2187 | `c3bd319881b826ebabc9f025729f16f14b041d668070a0b25c3fe67078f72424` |
 | `evidence/top/accel_top_ooc/ooc_summary.json` | 1207 | `8eae99f89acc22e30c5dcddfbf32c8cdbb41607543ce4cbd210bd7d60c426389` |
@@ -265,7 +265,7 @@ File count: 374
 | `rtl/span/w8a12_3lane_mac_scheduler_ooc_top.v` | 1698 | `17fc94858d7e65c713021214ed0cf96a3270399bd79414e1c9c27ed1a7c9ee00` |
 | `rtl/span/w8a12_3lane_tile_pipeline_shell.v` | 5101 | `a57779545ca126f232d4f44cd04dbaf7ac55b91085a562abd15408c87d7c422b` |
 | `rtl/span/w8a12_lane_mac_core.v` | 2417 | `55e39ffe012109cf2986e234a7b10e22d862baa36596d5b231072ccf4cb0eb42` |
-| `rtl/span/w8a12_packed2d_perf_scheduler.v` | 4192 | `bd5c0dc0c042c74b06765deeae14e2162f672e5d7158890d4155d145adf3b956` |
+| `rtl/span/w8a12_packed2d_perf_scheduler.v` | 4511 | `b2ae865c8ac0961e48b00c529f072f4ff83ef185e91b9e13de9659ad198237cc` |
 | `rtl/span/w8a12_single_lane_conv_ooc_top.v` | 1138 | `98ca70187933c70901b4adf69b7090e986008add38ddaeb0ba465bdf67aed8d8` |
 | `rtl/span/w8a12_single_lane_mac_scheduler.v` | 2207 | `4a304bcd8b6b9e8d3d456611e3a312cbef38d29c8c647c3b1c89ee18d2062aea` |
 | `rtl/span/w8a12_single_lane_mac_scheduler_ooc_top.v` | 1163 | `5935a8faaa907030eb833a4b146fa6868d1a75852bd67d1468d2ac2cacbc1e6f` |
@@ -302,6 +302,8 @@ File count: 374
 | `scripts/run_vivado_sim_w8a12_lane_mac_core.tcl` | 798 | `23d6490ca3a3b3d237f4b8ac7ff666de9a64eeab0eee2b57efbcabc39ed29b76` |
 | `scripts/run_vivado_sim_w8a12_packed2d_perf_scheduler.ps1` | 5147 | `0f467af27e6a5ef23b1ab377e507dfe22266d239433c3771fe581dd23582c62e` |
 | `scripts/run_vivado_sim_w8a12_packed2d_perf_scheduler.tcl` | 1003 | `0c79b43f6e6c407d8b22ee426fc8561c0b692a683f35505d7a926502b021147e` |
+| `scripts/run_vivado_sim_w8a12_packed2d_x2_720p20_perf_scheduler.ps1` | 5747 | `2d164707d119d84b2ea33856b96ecee3d0104d10bb7b2d2a46cb3313c1edb30c` |
+| `scripts/run_vivado_sim_w8a12_packed2d_x2_720p20_perf_scheduler.tcl` | 1053 | `25cbb77de106b6443f767938acb4d4e6c125e2787b755b2f4f58a5ace345527e` |
 | `scripts/run_vivado_sim_w8a12_single_lane_mac_scheduler.cmd` | 734 | `a20892d2414bb3f3fb6e360568fa572a4cdf66f524b3973ff47ec62d5a89344b` |
 | `scripts/run_vivado_sim_w8a12_single_lane_mac_scheduler.ps1` | 2400 | `ad45268ebe9da48ce3b7e009628f96cc7e99dc8c0ea6fa7305af596aceed87e0` |
 | `scripts/run_vivado_sim_w8a12_single_lane_mac_scheduler.tcl` | 1537 | `d7d5b42407125f72f318792b6bc8cc3a082f1bd36145685697c441d8937667ff` |
@@ -337,6 +339,7 @@ File count: 374
 | `sim/tb_w8a12_3lane_tile_pipeline_shell.sv` | 3376 | `ef6e259e9e294e2d0dabbc41ac169097c14775260e67f64b286bdd6c2e552749` |
 | `sim/tb_w8a12_lane_mac_core.sv` | 3124 | `80f506eacd3c4b57eb399a438f43c59b47f64809a662ae915c4e16fcde17191c` |
 | `sim/tb_w8a12_packed2d_perf_scheduler.sv` | 5181 | `ca6b1b910b6be3e3834797738e808ae714ddac694e377aa1ef6d837935d8297c` |
+| `sim/tb_w8a12_packed2d_x2_720p20_perf_scheduler.sv` | 7632 | `2cec0dc6b4bd219a4172cbf3519f3829a0930a51e185320ec4b66c875010213c` |
 | `sim/tb_w8a12_single_lane_mac_scheduler.sv` | 4819 | `d75f84bbc6514e7a3498005497118a70fd151131c597bcbb04fb912b8aa9fb71` |
 | `sim/tb_w8a12_single_out_mac_scheduler.sv` | 4594 | `dffa85f6caf5495a896ecacb8653496ee8c6ca48ba51abb969c00ca68cf2b551` |
 | `tools/.gitkeep` | 1 | `01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b` |

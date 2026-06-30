@@ -1,7 +1,7 @@
 {
   "status": "INCOMPLETE",
   "root": "W8A12_3lane",
-  "file_count": 374,
+  "file_count": 377,
   "entries": [
     {
       "path": ".gitignore",
@@ -10,8 +10,8 @@
     },
     {
       "path": "DELIVERY_INDEX.md",
-      "bytes": 16801,
-      "sha256": "37a3f3338e52e8ee428e364e6ca265dde3b6bde8617f546bbbcdac116ffae3f1"
+      "bytes": 17616,
+      "sha256": "268f07c22c06379671c0f65ac557a7b4be14c7643e328a1c8de0c885893ef403"
     },
     {
       "path": "README.md",
@@ -20,13 +20,13 @@
     },
     {
       "path": "STATUS.md",
-      "bytes": 16544,
-      "sha256": "b49bbe83822e2dbbacb039655937583a571949c6cf3e9e0f33cdc59361c45134"
+      "bytes": 17105,
+      "sha256": "82b20d0fa778bdf9bfb86cf3e2b9e6479c6c4092694dcc061e13f5c3c486ba56"
     },
     {
       "path": "WORKFLOW.md",
-      "bytes": 42906,
-      "sha256": "c68a8b4ba2dffe09441f1b2ecf64a156bf025944e8285d682d66276a2ec8f4f7"
+      "bytes": 43666,
+      "sha256": "567bafa28e89c5df48fee5cc8e7a636abbf399fb000af7e07ffecd26bf3625d5"
     },
     {
       "path": "docs/a2_a3_tile_scheduler_contract.md",
@@ -75,8 +75,8 @@
     },
     {
       "path": "docs/contest_submission_report.md",
-      "bytes": 18435,
-      "sha256": "de118a37d94f6ca691d511c44e01673c923ff7bb31236dbad2a491a416bfd5cd"
+      "bytes": 19024,
+      "sha256": "2c3016edad3634ab0aa7d12294fb26f75b1549b74b4ac34c872eceafc1963d69"
     },
     {
       "path": "docs/delivery_gate_runner.md",
@@ -495,8 +495,8 @@
     },
     {
       "path": "evidence/delivery_manifest/manifest.md",
-      "bytes": 50683,
-      "sha256": "063f6873f101e3cf574a2c32f645362e874a220abeb17e1eb04f743e82fbe141"
+      "bytes": 51116,
+      "sha256": "43b737896b3b6aba7cc81d17eb05a118ad5275433198a8afb96d2a5f327fb8a5"
     },
     {
       "path": "evidence/delivery_matrix/summary.json",
@@ -751,12 +751,12 @@
     {
       "path": "evidence/github_upload_export/summary.json",
       "bytes": 278527,
-      "sha256": "0cd4040090f313579bf5f27fe2a1036c545411d12cb5b8be98f0febd8511a43d"
+      "sha256": "85bf864c4b501c28e7a4371bf0e9a7ac48db4f4e21c4dc25d295ba066ca2cd3e"
     },
     {
       "path": "evidence/github_upload_export/summary.md",
       "bytes": 1035,
-      "sha256": "12e3e5e64b249f7694613628b302ea77734fa0b763799217997cd5cd25bc49f7"
+      "sha256": "24a2ed4a9b166f4b07e6c6a12f7ce705a4e4726aaabafdb3ec4a4d7b26ccb6c1"
     },
     {
       "path": "evidence/github_upload_preflight/summary.json",
@@ -1121,7 +1121,7 @@
     {
       "path": "evidence/submission_package/submission_manifest.md",
       "bytes": 50220,
-      "sha256": "e7d08c5c5c507500631421ba6105d27e5d2497db423ba4c6b5608e2231457ea8"
+      "sha256": "6ff2c341f3de3f5e2d0a7e84715f112c56126a93e03f9447b13f843bad5d0beb"
     },
     {
       "path": "evidence/top/accel_top_flow_static/summary.json",
@@ -1255,8 +1255,8 @@
     },
     {
       "path": "rtl/span/w8a12_packed2d_perf_scheduler.v",
-      "bytes": 4192,
-      "sha256": "bd5c0dc0c042c74b06765deeae14e2162f672e5d7158890d4155d145adf3b956"
+      "bytes": 4511,
+      "sha256": "b2ae865c8ac0961e48b00c529f072f4ff83ef185e91b9e13de9659ad198237cc"
     },
     {
       "path": "rtl/span/w8a12_single_lane_conv_ooc_top.v",
@@ -1439,6 +1439,16 @@
       "sha256": "0c79b43f6e6c407d8b22ee426fc8561c0b692a683f35505d7a926502b021147e"
     },
     {
+      "path": "scripts/run_vivado_sim_w8a12_packed2d_x2_720p20_perf_scheduler.ps1",
+      "bytes": 5747,
+      "sha256": "2d164707d119d84b2ea33856b96ecee3d0104d10bb7b2d2a46cb3313c1edb30c"
+    },
+    {
+      "path": "scripts/run_vivado_sim_w8a12_packed2d_x2_720p20_perf_scheduler.tcl",
+      "bytes": 1053,
+      "sha256": "25cbb77de106b6443f767938acb4d4e6c125e2787b755b2f4f58a5ace345527e"
+    },
+    {
       "path": "scripts/run_vivado_sim_w8a12_single_lane_mac_scheduler.cmd",
       "bytes": 734,
       "sha256": "a20892d2414bb3f3fb6e360568fa572a4cdf66f524b3973ff47ec62d5a89344b"
@@ -1612,6 +1622,11 @@
       "path": "sim/tb_w8a12_packed2d_perf_scheduler.sv",
       "bytes": 5181,
       "sha256": "ca6b1b910b6be3e3834797738e808ae714ddac694e377aa1ef6d837935d8297c"
+    },
+    {
+      "path": "sim/tb_w8a12_packed2d_x2_720p20_perf_scheduler.sv",
+      "bytes": 7632,
+      "sha256": "2cec0dc6b4bd219a4172cbf3519f3829a0930a51e185320ec4b66c875010213c"
     },
     {
       "path": "sim/tb_w8a12_single_lane_mac_scheduler.sv",

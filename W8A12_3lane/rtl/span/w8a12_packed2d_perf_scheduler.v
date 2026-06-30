@@ -10,6 +10,7 @@ module w8a12_packed2d_perf_scheduler #(
     parameter integer FRAME_H = 180,
     parameter integer OUT_LANES = 24,
     parameter integer TAP_LANES = 64,
+    parameter integer TAIL_OUT_CHANNELS = 48,
     parameter integer CLOCK_MHZ_X1000 = 250000,
     parameter integer PACKED_MACS_PER_DSP = 2,
     parameter integer REQUANT_DSP_PER_OUT_LANE = 1,
@@ -51,6 +52,16 @@ module w8a12_packed2d_perf_scheduler #(
         end
     endfunction
 
+    function integer layer_out_channels;
+        input integer idx;
+        begin
+            if (idx == 21)
+                layer_out_channels = TAIL_OUT_CHANNELS;
+            else
+                layer_out_channels = 48;
+        end
+    endfunction
+
     function integer calc_cycles_per_lr_pixel;
         input integer unused;
         integer idx;
@@ -59,7 +70,7 @@ module w8a12_packed2d_perf_scheduler #(
         begin
             calc_cycles_per_lr_pixel = 0;
             for (idx = 0; idx < 22; idx = idx + 1) begin
-                out_groups = ceil_div(48, OUT_LANES);
+                out_groups = ceil_div(layer_out_channels(idx), OUT_LANES);
                 tap_groups = ceil_div(layer_taps(idx), TAP_LANES);
                 calc_cycles_per_lr_pixel =
                     calc_cycles_per_lr_pixel +

@@ -18,6 +18,13 @@
 | x4 | REDS_val PSNR >= 28 dB | 28.3118 dB @ 295000 iter | W8A12_3lane 尚未闭环 |
 | x2 | REDS_val PSNR >= 30 dB | 34.4297 dB @ 300000/300001 iter | W8A12 x2 quant plan、RTL manifest、postprocess manifest、fixed reference 和 validation 已 PASS；板端 x2_720p 仍待上板 |
 
+## 当前 FPS / 性能目标
+
+| 场景 | 证据层级 | 当前结论 | 证据 |
+| --- | --- | --- | --- |
+| x4 720p15 | packed 2-D scheduler-level xsim | PASS：`24x64` 为 15.070fps，`24x72` 为 17.501fps @250MHz；仍非完整像素 RTL/板端 FPS | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md` |
+| x2 720p20 | packed 2-D scheduler-level xsim | FAIL：900-DSP 门限内 `24x64/24x72` 只有 3.861/4.483fps；`48x144` 为 17.223fps 且 DSP=3504 超门限 | `evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
+
 ## 最新上板汇报
 
 | Tag | 状态 | 关键结果 | 后续动作 |

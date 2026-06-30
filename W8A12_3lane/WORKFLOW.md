@@ -428,11 +428,22 @@ packed 2-D xsim gate：
 
 该 PASS 是 scheduler/performance-model 级别，不是完整 packed 2-D 像素计算 RTL 的 bit-exact PASS，也不是板端实测 FPS。后续要把 720p15 变成可交付实现，必须继续实现 packed 2-D engine、memory banking 和 line-buffer/halo reuse。
 
+x2 720p20 packed 2-D scheduler 补充：
+
+| Candidate | Est. DSP | Cycles/LR pixel | FPS @250MHz | 900-DSP gate | 20fps |
+| --- | ---: | ---: | ---: | --- | --- |
+| `24x64` | 792 | 281 | 3.861 | PASS | FAIL |
+| `24x72` | 888 | 242 | 4.483 | PASS | FAIL |
+| `48x144` | 3504 | 63 | 17.223 | FAIL | FAIL |
+
+结论：新增 x2 720p20 的 scheduler/performance-model xsim 证据已经生成，但当前完整 W8A12/F48 packed 2-D 规划在 XC7Z045/ZC706 900-DSP 门限下不能闭合 20fps。该项作为性能边界证据收录；若要达成 x2 720p20，需要更小的 student model、更高资源/频率，或比当前 packed 2-D 规划更激进的复用和并行架构。
+
 证据：
 
 ```text
 W8A12_3lane/evidence/sim_fps_design_space/fps_target_status_20260629.md
 W8A12_3lane/evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md
+W8A12_3lane/evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md
 ```
 
 ## 6. 资源口径
