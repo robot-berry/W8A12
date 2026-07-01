@@ -7,7 +7,7 @@ Status: BLOCKED
 | bitstream | `G:\UESTC\feitengspan1\vivado\bitstreams\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg2_true2x2_jtagaxi_dbg2_src_boundary_20260629.bit` |
 | psu_init.tcl | `G:\UESTC\feitengspan1\vivado\jwtw_true2x2_jtagaxi_dbg2_src_boundary_20260629\jwtw.gen\sources_1\bd\jwtw\ip\jwtw_ps_0\psu_init.tcl` |
 | precondition | `BLOCKED` |
-| USB known JTAG candidate count | `0` |
+| USB known JTAG candidate count | `3` |
 | Vivado target count | `0` |
 | output dir | `G:\UESTC\feitengspan1\board_runs\jtag_w8a12_tile_writer\true2x2_dbg2_src_boundary_acceptance_current` |
 | preflight dir | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\dbg2_src_boundary_current` |

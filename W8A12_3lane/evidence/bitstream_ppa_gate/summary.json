@@ -1,0 +1,36 @@
+{
+  "status": "PASS_WITH_SCOPE",
+  "scope": "JTAG-W8A12 true2x2 x4 tile-writer/debug source-boundary configuration",
+  "scale": 4,
+  "image_width": 2,
+  "image_height": 2,
+  "tile_width": 2,
+  "tile_height": 2,
+  "halo": 21,
+  "bitstream": "vivado/bitstreams/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg2_current_dbg2_source_b6_20260701.bit",
+  "sha256": "CA32EF8F7A1DBD5E82321D5B49FB52F932D8E383D6FFB85CFFC5D7C4DE2A7F5B",
+  "utilization_report": "vivado/reports/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg2_current_dbg2_source_b6_20260701_utilization_impl.rpt",
+  "timing_report": "vivado/reports/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg2_current_dbg2_source_b6_20260701_timing_impl.rpt",
+  "rtl_correctness_evidence": "evidence/board_reports/jtag_true2x2_dbg2_src_boundary_prepare_20260629.md",
+  "rtl_mismatch_bytes": 0,
+  "rtl_total_bytes": 192,
+  "resource": {
+    "clb_luts": 38803,
+    "clb_registers": 116441,
+    "bram_tile": 311,
+    "dsp": 128,
+    "uram": 0
+  },
+  "planning_gate": {
+    "lut": 218600,
+    "ff": 437200,
+    "bram_tile": 545,
+    "dsp": 900
+  },
+  "timing": {
+    "wns_ns": 12.517,
+    "whs_ns": 0.010,
+    "constraints_met": true
+  },
+  "scope_note": "Physical board execution is not required for this gate; full 720p packed 2-D bitstream is not claimed."
+}

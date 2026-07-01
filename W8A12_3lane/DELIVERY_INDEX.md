@@ -78,10 +78,12 @@
 | OOC 资源/时序汇总 | `tools/summarize_ooc_result.py` | 已提供，自包含解析器 |
 | OOC 解析器自检 | `evidence/resource/A4_ooc_parser_selfcheck/summary.md` | PASS |
 | PPA 汇总报告 | `tools/generate_ppa_summary.py`、`evidence/ppa_summary/summary.md` | PASS，汇总 MAC core、single-lane、3-lane scheduler 和 top shell |
-| 赛题报告完整性检查 | `tools/check_contest_submission_report_static.py`、`evidence/report_static/summary.md` | PASS，检查章节、证据、PPA、画质和待上板口径 |
+| bitstream/PPA 门槛 | `evidence/bitstream_ppa_gate/summary.md` | PASS_WITH_SCOPE；true2x2/JTAG-W8A12 bitstream 已生成，implementation 为 LUT 38803、FF 116441、BRAM 311、DSP 128、WNS 12.517ns、WHS 0.010ns；不声明 720p packed 2-D 完整 bitstream |
+| 赛题报告完整性检查 | `tools/check_contest_submission_report_static.py`、`evidence/report_static/summary.md` | PASS，检查章节、证据、PPA、画质、评分点映射和待上板口径 |
 | PDF 赛题报告 | `output/pdf/W8A12_3lane_contest_submission_report.pdf`、`evidence/report_pdf/summary.md` | PASS，7 页，已渲染 PNG 并完成非空/关键文本校验 |
 | Word 赛题报告 | `output/docx/W8A12_3lane_contest_submission_report.docx`、`evidence/report_docx/summary.md` | PASS，已生成 DOCX，并完成可见文本黑色字体审计 |
 | 评审证据矩阵 | `tools/generate_delivery_evidence_matrix.py`、`evidence/delivery_matrix/summary.md` | PASS，按赛题交付物和评分点索引模型、文档、RTL、PPA、画质、上板缺口 |
+| Word 完整导出版 | `output/docx/W8A12_3lane_contest_submission_report_complete_20260701.docx`、`evidence/report_docx_complete_20260701/summary.md` | PASS，标准 Word 文件被占用时使用；字体颜色审计 PASS，DOCX PNG 渲染因本机无 LibreOffice 跳过，PDF 渲染检查 PASS |
 | 最新上板报告 | `evidence/board_reports/` | 尚无 PASS |
 | true 2x2 上板结果 | `evidence/board_reports/2x2_samplelatch_result_20260626.md` | 仿真/bitstream PASS，板端控制访问 FAIL |
 | true 2x2 参数配置审计 | `evidence/board_reports/2x2_board_config_audit_20260626.md` | PS/DDR/AXI 参数与 32x32 已跑通例程一致 |
@@ -126,6 +128,7 @@
 
 - Accelerator top xsim/OOC：`evidence/top/accel_top_sim/summary.md`、`evidence/top/accel_top_ooc/ooc_summary.md`。
 - A4 scheduler xsim/OOC：`evidence/resource/A4_single_lane_mac_scheduler/`、`evidence/resource/A4_3lane_mac_scheduler/`、`evidence/resource/A4_single_lane_mac_scheduler_ooc/`、`evidence/resource/A4_3lane_mac_scheduler_ooc/`。
+- bitstream/PPA gate：`evidence/bitstream_ppa_gate/summary.md`，用于“无需真实上板，只看 bitstream + 仿真 + PPA”的赛题评审口径。
 - packed 2-D scheduler 性能边界：x4 720p15 scheduler-level PASS，x2 720p20 scheduler-level 已补充但 900-DSP 门限下 FAIL，证据 `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md`。
 - x2 W8A12 export/fixed reference：`evidence/x2/w8a12_export/summary.md`、`evidence/x2/reference/summary.md`、`evidence/x2/reference_validation/validation.md`。
 - x4/x2 传统插值、质量对比和画质指标闭环计划：`evidence/quality_baseline/`、`evidence/quality_comparison/summary.md`、`evidence/quality_metric_completion/summary.md`。

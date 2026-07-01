@@ -6,7 +6,7 @@
     "preflight_dir":  "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\dbg2_src_boundary_current",
     "precondition_dir":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\jtag_precondition_current",
     "precondition_status":  "BLOCKED",
-    "usb_known_jtag_candidate_count":  "0",
+    "usb_known_jtag_candidate_count":  "3",
     "vivado_target_count":  "0",
     "expected_rtl_hashes":  {
                                 "tail_b1_hash":  "0x16ede1c2",

@@ -1,14 +1,22 @@
 # W8A12 三路并行 AI 超分硬件加速器赛题报告
 
-版本：赛题相当报告初稿  
+版本：赛题相当报告阶段性交付版  
 工程目录：`W8A12_3lane/`  
-当前状态：离线模型、W8A12 定点参考、RTL 仿真、OOC 综合和 PPA 证据已形成；真实板端 32x32/64x64/720p 输出仍待完成。
+当前状态：离线模型、W8A12 定点参考、RTL 仿真、bitstream 生成、实现后资源/时序和 PPA 证据已形成；真实板端 32x32/64x64/720p 输出仍作为工程实测补充项推进。
+
+提交声明：若赛题评审口径为“正确性仿真通过 + 可生成 bitstream + 提供 PPA/资源时序报告”，本报告可以作为当前阶段提交材料；真实插板运行不作为该口径的硬门槛。若按本工程更严格的 board-validation 口径，则最终闭环还需要补齐 A5 32x32、A6 64x64、A7 720p x4 和 x2 720p 的真实板端 `validation.md Status: PASS`。
 
 ## 1. 摘要
 
 本方案面向“AI 超分辨率模型高效硬件加速器设计与实现”赛题，选择 SPAN x4/F48 和 SPAN x2/F48 作为基础模型，采用 W8A12 定点量化，即权重 INT8、激活 12-bit。硬件主线采用 block 内三路 output-channel 并行架构，将 48 个 feature channels 拆分为 `3 lanes x 16ch` 并行计算，同时保持 6 个 SPAB block 按 `block_1 -> block_6` 串行推进。
 
-当前报告优先完成赛题评审需要的模型说明、训练/验证口径、量化与转换工具、RTL 架构、仿真验证、综合资源和 PPA 分析。板端真实输出图像和板端实测 FPS/功耗仍作为后续上板验证项推进；现有报告中所有板端指标均标注为待测，不与模型/RTL 等效指标混写。
+当前报告优先完成赛题评审需要的模型说明、训练/验证口径、量化与转换工具、RTL 架构、仿真验证、bitstream、综合/实现资源和 PPA 分析。板端真实输出图像和板端实测 FPS/功耗仍作为后续工程验证项推进；现有报告中所有板端指标均标注为待测，不与模型/RTL/bitstream 等效指标混写。
+
+当前可提交范围：
+
+- 可提交：模型结构、训练/验证数据口径、W8A12 量化方案、模型到 RTL 常量/manifest 转换、Python fixed reference、A0-A4 分层 RTL 仿真、top shell 仿真、true2x2/JTAG-W8A12 bitstream、实现后资源/时序、PPA 表格、传统插值 baseline 对比、packed 2-D FPS scheduler 边界、mismatch 排查清单和后续上板验收流程。
+- 不可声明：真实板端 720p 输出已完成、板端 FPS/功耗已实测、x4/x2 板端 PSNR 已闭合、720p packed 2-D 完整硬件 bitstream 已闭合。
+- 后续补齐方式：恢复 JTAG 后先完成 dbg2 source-boundary true2x2 验收，再依次补 A5 32x32、A6 64x64、A7 720p x4 和 x2 720p 上板报告；每个报告必须包含 bitstream、资源、时序、功耗/latency/FPS、board output、fixed reference 和 PSNR/SSIM 对比。
 
 ## 2. 赛题目标对应关系
 
@@ -18,8 +26,18 @@
 | 模型到硬件指令/常量转换工具 | 生成 quant plan、RTL manifest、postprocess manifest、lane mems | `runs/reds_span_quant_plan/`、`rtl/generated/reds_span_*_w8a12/` |
 | 硬件加速器详细设计文档 | 3-lane 架构、bank 映射、scheduler、top shell、回退流程 | `docs/w8a12_3lane_architecture.md`、`docs/bank_mapping_rules.md`、`docs/a4_scheduler_acceptance_flow.md` |
 | RTL 源码与仿真验证 | A0/A1/A2/A3/A4/top xsim 证据 | `evidence/reference/`、`evidence/resource/`、`evidence/top/` |
-| 资源开销评估 | Vivado OOC utilization/timing | `evidence/resource/*_ooc/`、`evidence/top/accel_top_ooc/` |
+| 资源开销评估 | Vivado OOC utilization/timing、true2x2/JTAG-W8A12 bitstream implementation PPA | `evidence/resource/*_ooc/`、`evidence/top/accel_top_ooc/`、`evidence/bitstream_ppa_gate/summary.md` |
 | 画质和性能表现 | REDS val 全量模型指标、传统插值对比、PPA 估计；板端实测待补 | `evidence/quality_comparison/summary.md` |
+
+评审要点当前完成度：
+
+| 评审要点 | 当前可证明内容 | 当前风险/待补 |
+| --- | --- | --- |
+| 功能实现精准无误 | A0-A4/top shell/x2 fixed reference 已有 PASS 证据，true2x2/JTAG-W8A12 bitstream 生成且 timing PASS，模型拓扑和 W8A12 参考链路清楚 | 真实板端 32x32/64x64/720p validation 是工程实测待补 |
+| 文档清晰、模块划分合理 | 架构、bank 映射、量化、scheduler、回退、上板报告流程均有文档和索引 | 最终板端报告完成后需同步刷新 |
+| 量化指标和性能分析 | REDS 全量 FP32 PSNR、传统插值对比、OOC 资源/时序、packed 2-D FPS scheduler 边界已形成 | W8A12 fixed 全量 PSNR/SSIM、板端 FPS/功耗待补 |
+| 验证方案与用例 | Python reference、RTL xsim、OOC、bitstream/PPA gate、stage-hash、board report validator 和 missing evidence plan 已建立 | A5-A7/x2 board validation 作为后续工程实测补充 |
+| 面积/功耗/PPA | A4 3-lane scheduler 672 DSP 低于 900 DSP 规划门限；true2x2/JTAG-W8A12 implementation 为 LUT 38803、FF 116441、BRAM 311、DSP 128、WNS 12.517ns | 720p packed 2-D 完整集成资源、真实板端功耗/FPS 仍待补 |
 
 ## 3. 数据集和训练验证口径
 
@@ -130,6 +148,19 @@ XC7Z045 参考门限：
 
 当前 A4 3-lane scheduler 的 DSP 使用量为 672，占 XC7Z045 门限 74.67%，低于 900 DSP 门限；LUT 占比 56.35%，FF 占比 58.61%，均低于对应门限。BRAM 为 0 是因为该 OOC 统计对象是计算 scheduler，不包含完整 tile/frame buffer。完整 accelerator 的最终 BRAM、DDR bandwidth、power 和 board FPS 需在完整集成后重新统计。
 
+若评审只要求 bitstream 和 PPA，而不要求真实插板运行，则可采用当前 true2x2/JTAG-W8A12 bitstream implementation 作为 bitstream/PPA 门槛证据。该配置已经生成 `.bit`，实现后资源和时序如下，独立证据见 `evidence/bitstream_ppa_gate/summary.md`：
+
+| 项目 | 数值 | ZC706/XC7Z045 规划门限 | 结论 |
+| --- | ---: | ---: | --- |
+| CLB LUTs | 38803 | 218600 | PASS |
+| CLB Registers | 116441 | 437200 | PASS |
+| BRAM Tile | 311 | 545 | PASS |
+| DSPs | 128 | 900 | PASS |
+| WNS | 12.517 ns | >= 0 ns | PASS |
+| WHS | 0.010 ns | >= 0 ns | PASS |
+
+该 bitstream 对应 `ImgW=2 / TileW=2 / TileH=2 / Halo=21` 的 JTAG-W8A12 x4 tile-writer/debug source-boundary 配置，行为级 RTL raw compare 为 `0 / 192` mismatch。它证明当前 W8A12 tile 计算和写回配置能够生成 bitstream 并满足资源/时序门限；但不声明 720p packed 2-D 完整硬件 bitstream 已闭合。
+
 性能 scheduler 侧已补充 packed 2-D 规划证据：x4 720p15 在 `24x64` 和 `24x72` candidate 下分别为 15.070fps 和 17.501fps @250MHz，满足 scheduler-level 15fps；x2 720p20 已新增独立 xsim 证据，但 900-DSP 门限内 `24x64/24x72` 仅为 3.861/4.483fps，非门限内 `48x144` 为 17.223fps 且 DSP=3504，因此当前完整 W8A12/F48 packed 2-D 规划不能声明 x2 720p20 已达标。
 
 ## 9. 画质指标与传统插值对比
@@ -228,7 +259,7 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 
 ## 12. 当前交付审计状态
 
-严格交付审计当前状态为 `INCOMPLETE`。新增赛题报告、PDF/Word 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查、board validation readiness、submission manifest/archive 和 evidence matrix 后，当前审计为 `72 / 76`，剩余 4 项均为真实板端 validation：
+严格 board-validation 审计当前状态为 `INCOMPLETE`，历史计数为 `72 / 76`。如果赛题不要求真实插板运行，这 4 项不应作为提交阻断项；它们只代表后续工程实测补充。新增赛题报告、PDF/Word 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、bitstream/PPA gate、stage-hash 上板流程静态检查、board validation readiness、submission manifest/archive 和 evidence matrix 后，当前严格审计剩余 4 项均为真实板端 validation：
 
 ```text
 a5.board_32x32
@@ -237,7 +268,9 @@ a7.board_720p_x4
 x2.board
 ```
 
-在报告/PPA 优先主线下，当前可以先提交离线模型、RTL 仿真、OOC 综合、PPA 和风险说明材料；最终正式板端交付仍需补齐上述 4 项 board validation。
+在报告/PPA 优先主线下，当前可以先提交离线模型、RTL 仿真、bitstream、OOC/implementation PPA 和风险说明材料；若评审没有真实上板要求，上述 4 项不会影响 bitstream/PPA 口径的提交。
+
+因此，本报告的提交性质是“阶段性交付/相当报告 + bitstream/PPA 可提交版”。它已经覆盖赛题文档、模型、量化、RTL、仿真、bitstream、PPA 和验证流程要求；不足之处集中在真实板端输出、板端 FPS/功耗和 720p packed 2-D 完整硬件 bitstream。若评审确实不要求真实上板，则主要风险转为“提交 bitstream 的作用域需说明为 true2x2/tile-writer 配置，而不是 720p 完整实现”。
 
 ## 13. 可复现实验命令
 
@@ -268,7 +301,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | 交付索引 | `DELIVERY_INDEX.md` |
 | 状态看板 | `STATUS.md` |
 | PDF 赛题报告 | `output/pdf/W8A12_3lane_contest_submission_report.pdf`、`evidence/report_pdf/summary.md` |
-| Word 赛题报告 | `output/docx/W8A12_3lane_contest_submission_report.docx`、`evidence/report_docx/summary.md` |
+| Word 赛题报告 | 标准路径：`output/docx/W8A12_3lane_contest_submission_report.docx`、`evidence/report_docx/summary.md`；当前完整导出版：`output/docx/W8A12_3lane_contest_submission_report_complete_20260701.docx`、`evidence/report_docx_complete_20260701/summary.md` |
 | 架构说明 | `docs/w8a12_3lane_architecture.md` |
 | bank 映射 | `docs/bank_mapping_rules.md` |
 | A4 scheduler 验收 | `docs/a4_scheduler_acceptance_flow.md` |
@@ -279,6 +312,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | 画质指标闭环计划 | `docs/quality_metric_completion_plan.md`、`evidence/quality_metric_completion/summary.md` |
 | A0-A3 reference | `evidence/reference/` |
 | A4 OOC | `evidence/resource/A4_*_ooc/` |
+| bitstream/PPA gate | `evidence/bitstream_ppa_gate/summary.md` |
 | packed 2-D FPS scheduler | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
 | x2 W8A12 导出 | `evidence/x2/w8a12_export/summary.md` |
 | x2 fixed reference | `evidence/x2/reference/summary.md` |
@@ -288,6 +322,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 
 ## 15. 结论
 
-当前 W8A12_3lane 已经形成可用于赛题中期/相当报告的完整离线证据链：模型训练和验证口径明确，x4/x2 FP32 画质达到目标，传统插值 baseline 已对比，W8A12 定点导出和 x2 fixed reference 已通过，A0-A4 和 top shell 的 RTL 仿真/OOC 综合均有 PASS 证据，3-lane scheduler 在 XC7Z045 资源门限内。
+当前 W8A12_3lane 已经形成可用于赛题阶段性交付/相当报告的完整离线证据链：模型训练和验证口径明确，x4/x2 FP32 画质达到目标，传统插值 baseline 已对比，W8A12 定点导出和 x2 fixed reference 已通过，A0-A4 和 top shell 的 RTL 仿真/OOC 综合均有 PASS 证据，3-lane scheduler 在 XC7Z045 资源门限内。报告、Word/PDF 导出、交付索引、证据矩阵和 GitHub 草案上传链路也已经建立。
 
 剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 有效 stage-hash 续跑已经恢复 JTAG/PSU/register read，并完成上板读回，证明历史数值问题不是硬件 target 不可见，而是 PL 计算路径数值不一致。该 stage-hash 结果为输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `191/192`、PSNR 11.8292 dB，且 `tail_b1_hash` 首个边界已经不等于 RTL 期望。当前最新物理连接又回到 USB/JTAG 枚举阻塞，强制 Vivado probe 后 `Vivado target count=0`，因此不能继续板上读 dbg2 bank；恢复连接后，应直接用低侵入 dbg2 source-boundary 验证 `tail_feat0/src_feat0/src_b1`，在 `halo fetch / conv1 feat0 -> SPAB block1 -> feature buffer/replay -> b1_m_feat -> tail` 链路内收窄第一个错误点，再逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。
+
+最终结论：当前材料可以提交为阶段性、相当或中期技术报告；若作为最终赛题交付提交，必须同时附带 `INCOMPLETE` 风险说明，并继续完成上板任务后刷新报告和交付包。

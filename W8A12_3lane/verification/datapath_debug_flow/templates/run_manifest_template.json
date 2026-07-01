@@ -1,0 +1,58 @@
+{
+  "tag": "<run_tag>",
+  "date": "<yyyy-mm-dd>",
+  "goal": "Find first mismatching datapath boundary",
+  "git": {
+    "commit": "<commit_sha>",
+    "dirty_files": []
+  },
+  "board": {
+    "part": "xczu19eg-ffvc1760-2-i",
+    "jtag_target_visible": null,
+    "hw_axi_visible": null,
+    "psu_init_pass": null
+  },
+  "build": {
+    "bitstream": "<path_to_bitstream>",
+    "ltx": "<path_to_ltx_or_empty>",
+    "psu_init_tcl": "<path_to_psu_init_tcl>",
+    "synthesis_directive": "Default"
+  },
+  "run": {
+    "acceptance_level": "<L0|L1|L2|L3|L4|L5>",
+    "mode_select": "<MODE_FULL_WITH_HASH|MODE_REPLAY|MODE_LOOPBACK|MODE_REG>",
+    "input_vector": "<vector_tag>",
+    "reference_source": "<reference_path_or_summary>",
+    "frame_done": null,
+    "error": null,
+    "input_count": null,
+    "output_count": null
+  },
+  "localization": {
+    "first_matching_boundary": "<boundary_or_empty>",
+    "first_mismatching_boundary": "<boundary_or_empty>",
+    "suspect_region": "<module_or_interface>",
+    "rtl_owner": "<rtl_target_map_row_or_file>",
+    "next_probe_boundary": "<boundary_or_empty>",
+    "next_action": "<specific_next_step>"
+  },
+  "fix": {
+    "status": "NOT_STARTED",
+    "pre_fix_run": "<run_tag_or_empty>",
+    "post_fix_run": "<run_tag_or_empty>",
+    "patched_files": [],
+    "patch_summary": "<what_changed_and_why>",
+    "module_replay_result": "<PASS|FAIL|NOT_RUN>",
+    "neighbor_interface_result": "<PASS|FAIL|NOT_RUN>",
+    "module_ooc_result": "<PASS|FAIL|NOT_RUN|WAIVED>",
+    "full_path_result": "<PASS|FAIL|NOT_RUN>",
+    "final_compare_result": "<PASS|FAIL|NOT_RUN>",
+    "remaining_mismatch": "<description_or_empty>"
+  },
+  "artifacts": {
+    "boundary_hash_table": "boundary_hash_table.csv",
+    "experiment_log": "experiment_log.md",
+    "board_console_log": "<log_path>",
+    "raw_dump": []
+  }
+}

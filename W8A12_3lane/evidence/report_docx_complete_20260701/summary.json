@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "source": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\docs\\contest_submission_report.md",
+  "docx": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\docx\\W8A12_3lane_contest_submission_report_complete_20260701.docx",
+  "bytes": 53969,
+  "sha256": "7c0469825fce8d7e601fc1b6342fe321cba0f8ef40e448579f3107841b9b0d0c",
+  "text_color_audit": {
+    "status": "PASS",
+    "text_color_count": 682,
+    "non_black_text_colors": [],
+    "non_black_text_color_count": 0
+  }
+}
