@@ -78,6 +78,7 @@ EVIDENCE_PATTERNS = [
     "evidence/ppa_summary/*",
     "evidence/bitstream_ppa_gate/*",
     "evidence/sim_fps_estimate/*",
+    "evidence/sim_fps_design_space/x4_720p15_fps_closure/*",
     "evidence/report_static/*",
     "evidence/report_pdf/*",
     "evidence/report_pdf/rendered/*.png",

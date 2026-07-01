@@ -161,7 +161,15 @@ XC7Z045 参考门限：
 
 该 bitstream 对应 `ImgW=2 / TileW=2 / TileH=2 / Halo=21` 的 JTAG-W8A12 x4 tile-writer/debug source-boundary 配置，行为级 RTL raw compare 为 `0 / 192` mismatch。它证明当前 W8A12 tile 计算和写回配置能够生成 bitstream 并满足资源/时序门限；但不声明 720p packed 2-D 完整硬件 bitstream 已闭合。
 
-性能 scheduler 侧已补充 packed 2-D 规划证据：x4 720p15 在 `24x64` 和 `24x72` candidate 下分别为 15.070fps 和 17.501fps @250MHz，满足 scheduler-level 15fps；x2 720p20 已新增独立 xsim 证据，但 900-DSP 门限内 `24x64/24x72` 仅为 3.861/4.483fps，非门限内 `48x144` 为 17.223fps 且 DSP=3504，因此当前完整 W8A12/F48 packed 2-D 规划不能声明 x2 720p20 已达标。
+性能 scheduler 侧已补充 packed 2-D 规划证据，并新增独立 `x4_720p15_fps_closure` 门禁。该门禁明确输出分辨率为 `1280x720`，输入为 `320x180 LR`，闭合层级为 scheduler/performance-model，不声明板端实测 FPS 或完整 packed 2-D 像素 RTL bit-exact 闭合。证据见 `evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`。
+
+| 目标 | Candidate | DSP | FPS @250MHz | 15fps 余量 | 当前结论 |
+| --- | --- | ---: | ---: | ---: | --- |
+| x4 720p15 最低资源点 | `24x64` | 792 | 15.070 | 0.467% | PASS，但余量很小 |
+| x4 720p15 推荐闭合点 | `24x72` | 888 | 17.501 | 14.291% | PASS，作为本报告推荐 FPS 闭合配置 |
+| x2 720p20 资源门限内 | `24x64/24x72` | 792/888 | 3.861/4.483 | 不达标 | FAIL，不能声明 x2 720p20 |
+
+x2 720p20 已新增独立 xsim 证据，但 900-DSP 门限内 `24x64/24x72` 仅为 3.861/4.483fps，非门限内 `48x144` 为 17.223fps 且 DSP=3504，因此当前完整 W8A12/F48 packed 2-D 规划不能声明 x2 720p20 已达标。
 
 ## 9. 画质指标与传统插值对比
 
@@ -313,7 +321,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | A0-A3 reference | `evidence/reference/` |
 | A4 OOC | `evidence/resource/A4_*_ooc/` |
 | bitstream/PPA gate | `evidence/bitstream_ppa_gate/summary.md` |
-| packed 2-D FPS scheduler | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
+| packed 2-D FPS scheduler | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
 | x2 W8A12 导出 | `evidence/x2/w8a12_export/summary.md` |
 | x2 fixed reference | `evidence/x2/reference/summary.md` |
 | delivery audit | `evidence/delivery_audit/contest_delivery_audit.md` |

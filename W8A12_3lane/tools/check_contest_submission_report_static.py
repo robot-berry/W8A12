@@ -79,6 +79,16 @@ def main() -> int:
         "900",
         "74.67%",
     ]), "PPA evidence and XC7Z045 limits")
+    add("states_x4_720p15_fps_closure", all(token in text for token in [
+        "evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md",
+        "24x64",
+        "24x72",
+        "15.070",
+        "17.501",
+        "14.291%",
+        "scheduler/performance-model",
+        "x2 720p20",
+    ]), "x4 720p15 scheduler-level FPS closure and x2 boundary")
     add("states_rtl_evidence_hashes", all(token in text for token in [
         "0x080D3C47",
         "0xD12E1B43",

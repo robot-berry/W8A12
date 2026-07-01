@@ -1,0 +1,197 @@
+{
+  "status": "PASS",
+  "closure_level": "scheduler/performance-model",
+  "scope_boundary": "Not board-measured FPS and not full packed 2-D pixel RTL bit-exact closure.",
+  "model": "REDS SPAN x4 F48 W8A12",
+  "scale": "x4",
+  "lr_input": {
+    "width": 320,
+    "height": 180,
+    "pixels": 57600
+  },
+  "sr_output": {
+    "width": 1280,
+    "height": 720,
+    "pixels": 921600
+  },
+  "clock_mhz": 250.0,
+  "target_fps": 15.0,
+  "target_frame_cycle_budget": 16666666.666666666,
+  "dsp_gate": 900,
+  "minimum_resource_candidate": {
+    "candidate": "24x64",
+    "output_lanes": 24,
+    "tap_lanes": 64,
+    "estimated_dsp": 792,
+    "cycles_per_lr_pixel": 288,
+    "frame_cycles": 16588800,
+    "fps": 15.07,
+    "fps_x1000": 15070,
+    "frame_cycle_slack_pct_of_15fps_budget": 0.467,
+    "passes_15fps": true,
+    "passes_20fps": false,
+    "passes_30fps": false
+  },
+  "recommended_closure_candidate": {
+    "candidate": "24x72",
+    "output_lanes": 24,
+    "tap_lanes": 72,
+    "estimated_dsp": 888,
+    "cycles_per_lr_pixel": 248,
+    "frame_cycles": 14284800,
+    "fps": 17.501,
+    "fps_x1000": 17501,
+    "frame_cycle_slack_pct_of_15fps_budget": 14.291,
+    "passes_15fps": true,
+    "passes_20fps": false,
+    "passes_30fps": false
+  },
+  "checks": [
+    {
+      "candidate": "global",
+      "check": "source_status_pass",
+      "pass": true,
+      "detail": "PASS"
+    },
+    {
+      "candidate": "global",
+      "check": "source_stage",
+      "pass": true,
+      "detail": "packed2d_perf_scheduler"
+    },
+    {
+      "candidate": "global",
+      "check": "source_frame_720p_x4",
+      "pass": true,
+      "detail": "320x180 LR -> 1280x720 SR"
+    },
+    {
+      "candidate": "global",
+      "check": "source_clock_250mhz",
+      "pass": true,
+      "detail": 250
+    },
+    {
+      "candidate": "global",
+      "check": "has_minimum_candidate_24x64",
+      "pass": true,
+      "detail": [
+        "24x64",
+        "24x72"
+      ]
+    },
+    {
+      "candidate": "global",
+      "check": "has_recommended_candidate_24x72",
+      "pass": true,
+      "detail": [
+        "24x64",
+        "24x72"
+      ]
+    },
+    {
+      "candidate": "global",
+      "check": "scope_scheduler_level",
+      "pass": true,
+      "detail": "scheduler/performance-model only; not board-measured FPS"
+    },
+    {
+      "candidate": "24x64",
+      "check": "fps_ge_15",
+      "pass": true,
+      "detail": 15070
+    },
+    {
+      "candidate": "24x64",
+      "check": "dsp_le_900",
+      "pass": true,
+      "detail": 792
+    },
+    {
+      "candidate": "24x64",
+      "check": "lr_frame_pixels",
+      "pass": true,
+      "detail": 57600
+    },
+    {
+      "candidate": "24x64",
+      "check": "declares_pass15",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "candidate": "24x64",
+      "check": "not_claiming_20_or_30",
+      "pass": true,
+      "detail": {
+        "pass20": false,
+        "pass30": false
+      }
+    },
+    {
+      "candidate": "24x64",
+      "check": "positive_frame_cycles",
+      "pass": true,
+      "detail": 16588800
+    },
+    {
+      "candidate": "24x64",
+      "check": "positive_slack_to_15fps_budget",
+      "pass": true,
+      "detail": 0.467
+    },
+    {
+      "candidate": "24x72",
+      "check": "fps_ge_15",
+      "pass": true,
+      "detail": 17501
+    },
+    {
+      "candidate": "24x72",
+      "check": "dsp_le_900",
+      "pass": true,
+      "detail": 888
+    },
+    {
+      "candidate": "24x72",
+      "check": "lr_frame_pixels",
+      "pass": true,
+      "detail": 57600
+    },
+    {
+      "candidate": "24x72",
+      "check": "declares_pass15",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "candidate": "24x72",
+      "check": "not_claiming_20_or_30",
+      "pass": true,
+      "detail": {
+        "pass20": false,
+        "pass30": false
+      }
+    },
+    {
+      "candidate": "24x72",
+      "check": "positive_frame_cycles",
+      "pass": true,
+      "detail": 14284800
+    },
+    {
+      "candidate": "24x72",
+      "check": "positive_slack_to_15fps_budget",
+      "pass": true,
+      "detail": 14.291
+    },
+    {
+      "candidate": "24x72",
+      "check": "recommended_slack_ge_min",
+      "pass": true,
+      "detail": 14.291
+    }
+  ],
+  "source_summary": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\sim_fps_design_space\\packed2d_perf_scheduler\\summary.json",
+  "source_simulate_log": "G:\\UESTC\\feitengspan1\\build\\vivado_w8a12_packed2d_perf_scheduler_sim\\w8a12_packed2d_perf_scheduler_sim.sim\\sim_1\\behav\\xsim\\simulate.log"
+}
