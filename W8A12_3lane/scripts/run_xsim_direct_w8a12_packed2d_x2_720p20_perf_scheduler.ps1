@@ -1,4 +1,29 @@
+param(
+    [double]$MinFreeMemoryGb = 0.0,
+    [switch]$RequireNoActiveSim
+)
+
 $ErrorActionPreference = "Stop"
+
+if ($MinFreeMemoryGb -gt 0.0) {
+    $Os = Get-CimInstance Win32_OperatingSystem
+    $FreeMemoryGb = [math]::Round($Os.FreePhysicalMemory / 1MB, 2)
+    Write-Host "DIRECT_XSIM_GUARD_FREE_GB=$FreeMemoryGb"
+    Write-Host "DIRECT_XSIM_GUARD_MIN_FREE_GB=$MinFreeMemoryGb"
+    if ($FreeMemoryGb -lt $MinFreeMemoryGb) {
+        Write-Host "DEFER_X2_XSIM_LOW_MEMORY free_gb=$FreeMemoryGb threshold_gb=$MinFreeMemoryGb"
+        exit 2
+    }
+}
+
+if ($RequireNoActiveSim) {
+    $ActiveSim = @(Get-Process -Name xsim,xelab,xvlog,xvhdl -ErrorAction SilentlyContinue)
+    if ($ActiveSim.Count -gt 0) {
+        $SimSummary = ($ActiveSim | ForEach-Object { "$($_.ProcessName):$($_.Id)" }) -join ","
+        Write-Host "DEFER_X2_XSIM_ACTIVE_SIM processes=$SimSummary"
+        exit 2
+    }
+}
 
 $Repo = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 $VivadoBin = "D:\software\2025.2\Vivado\bin"
