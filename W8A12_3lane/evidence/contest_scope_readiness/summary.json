@@ -47,6 +47,12 @@
       "detail": "required contest document"
     },
     {
+      "name": "file:docs/final_submission_guide.md",
+      "pass": true,
+      "evidence": "docs/final_submission_guide.md",
+      "detail": "required contest document"
+    },
+    {
       "name": "file:docs/w8a12_3lane_architecture.md",
       "pass": true,
       "evidence": "docs/w8a12_3lane_architecture.md",
@@ -75,6 +81,12 @@
       "pass": true,
       "evidence": "docs/contest_submission_report.md",
       "detail": "full train/val scope stated"
+    },
+    {
+      "name": "doc.final_submission_guide_scope_boundary",
+      "pass": true,
+      "evidence": "docs/final_submission_guide.md",
+      "detail": "submission boundary stated"
     },
     {
       "name": "quality.fp32_targets",
@@ -187,7 +199,7 @@
       "evidence": "evidence/report_docx_complete_20260701/summary.json",
       "detail": {
         "status": "PASS",
-        "text_color_count": 763,
+        "text_color_count": 765,
         "non_black_text_colors": [],
         "non_black_text_color_count": 0
       }

@@ -38,6 +38,7 @@
 | 赛题交付审计 | `docs/contest_delivery_audit.md` |
 | 可提交赛题技术报告 | `docs/contest_submission_report.md` |
 | 赛题提交说明 | `docs/contest_submission_readme.md` |
+| 最终提交指南 | `docs/final_submission_guide.md` |
 
 ## 3. RTL / 仿真 / 综合源代码
 

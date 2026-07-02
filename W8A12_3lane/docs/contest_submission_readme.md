@@ -29,6 +29,7 @@ W8A12_3lane/evidence/contest_scope_package/summary.md
 | 端侧 FPGA 加速 | `xczu19eg-ffvc1760-2-i` 本地板卡，按 XC7Z045/ZC706 门限评估 | A4 MAC core、single-lane、3-lane scheduler 和 accelerator top shell OOC PASS |
 | 三路并行架构 | 48 channel 拆成 `3 lanes x 16 output channels` | 架构、映射、A4 vector check 已建立 |
 | 可提交报告 | Markdown + PDF + Word 赛题报告 | `docs/contest_submission_report.md`、`output/pdf/W8A12_3lane_contest_submission_report.pdf`、标准 Word `output/docx/W8A12_3lane_contest_submission_report.docx`、当前完整 Word `output/docx/W8A12_3lane_contest_submission_report_complete_20260701.docx`、`evidence/report_pdf/summary.md`、`evidence/report_docx_complete_20260701/summary.md` |
+| 最终提交指南 | 面向评审的一页式入口、可声明/不可声明边界和复现命令 | `docs/final_submission_guide.md` |
 | 评审证据矩阵 | 交付物/评分点/证据/缺口总览 | `evidence/delivery_matrix/summary.md` |
 | bitstream/PPA 门槛 | 无真实上板要求时的 bitstream、仿真、实现后资源/时序证据 | `evidence/bitstream_ppa_gate/summary.md` |
 | 赛题提交口径门禁 | 将报告、RTL 仿真、PPA、FPS scheduler、质量对比和真实上板缺口分开审计 | `evidence/contest_scope_readiness/summary.md` |

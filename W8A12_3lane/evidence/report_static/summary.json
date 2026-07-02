@@ -78,6 +78,11 @@
       "detail": "contest-scope package is separated from strict board archive"
     },
     {
+      "name": "states_final_submission_guide",
+      "pass": true,
+      "detail": "final submission guide is indexed by the contest report"
+    },
+    {
       "name": "states_rtl_evidence_hashes",
       "pass": true,
       "detail": "RTL/fixed reference hashes"

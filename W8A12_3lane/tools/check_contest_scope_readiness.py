@@ -170,6 +170,7 @@ def build_summary() -> dict:
         "DELIVERY_INDEX.md",
         "docs/contest_submission_readme.md",
         "docs/contest_submission_report.md",
+        "docs/final_submission_guide.md",
         "docs/w8a12_3lane_architecture.md",
         "docs/bank_mapping_rules.md",
         "docs/board_report_flow.md",
@@ -179,6 +180,24 @@ def build_summary() -> dict:
 
     passed, detail = check_full_reds_scope()
     add(checks, "model.full_reds_train_val_scope", passed, "docs/contest_submission_report.md", detail)
+
+    guide = read_text("docs/final_submission_guide.md")
+    guide_tokens = [
+        "PASS_WITH_SCOPE",
+        "NOT_CLAIMED",
+        "evidence/contest_scope_package/summary.md",
+        "evidence/submission_package/archive/summary.md",
+        "x2 720p20 scheduler 证据结论为 FAIL",
+        "GITHUB_UPLOAD_PREFLIGHT_STATUS=PASS",
+    ]
+    missing_guide_tokens = [token for token in guide_tokens if token not in guide]
+    add(
+        checks,
+        "doc.final_submission_guide_scope_boundary",
+        not missing_guide_tokens,
+        "docs/final_submission_guide.md",
+        "missing tokens: " + ", ".join(missing_guide_tokens) if missing_guide_tokens else "submission boundary stated",
+    )
 
     passed, detail = check_quality_metrics()
     add(checks, "quality.fp32_targets", passed, "evidence/quality_comparison/summary.json", detail)

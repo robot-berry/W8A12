@@ -112,6 +112,10 @@ def main() -> int:
         "PASS_WITH_SCOPE",
         "严格上板归档",
     ]), "contest-scope package is separated from strict board archive")
+    add("states_final_submission_guide", all(token in text for token in [
+        "docs/final_submission_guide.md",
+        "最终提交指南",
+    ]), "final submission guide is indexed by the contest report")
     add("states_rtl_evidence_hashes", all(token in text for token in [
         "0x080D3C47",
         "0xD12E1B43",
