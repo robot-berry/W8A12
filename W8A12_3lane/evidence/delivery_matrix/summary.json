@@ -13,9 +13,9 @@
   ],
   "latest_delivery_run": "evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md",
   "pdf_status": "PASS",
-  "pdf_sha256": "25eff4621732a064e574a95d792a52861449b041193303b8cbb7c500a93a3026",
+  "pdf_sha256": "6324be97fff8bbc66d393f679b9ed2c81f889cd50a549bfa16fb0fc8e1ea6429",
   "docx_status": "PASS",
-  "docx_sha256": "43b604a3105530d3b1634d23fd72c1a7037dec3a8cbdac3598200bf8193d99fd",
+  "docx_sha256": "66e3f16c44926fcf9e238558329fbf0a30be18c068b8b1ef1a88a2e60ff1578a",
   "rows": [
     {
       "area": "交付物1 模型/训练/量化/转换",

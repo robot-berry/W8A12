@@ -448,6 +448,19 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\wait_and
 
 `wait_and_run_x2_direct_xsim.ps1` 只做资源轮询和安全启动；底层 direct 脚本直接调用 `xvlog -> xelab -> xsim`，输出 `packed2d_x2_direct_xsim_replay` 证据，并检查复跑结果与 Vivado batch summary 一致；它仍然只代表 scheduler/performance-model 级别，不代表板端 FPS。
 
+2026-07-03 后台大实现补充：
+
+| 项目 | 结果 |
+| --- | --- |
+| 目标 | `dma_axis_w8a10_system_wrapper` on `xczu19eg-ffvc1760-2-i` |
+| 目的 | 大集成/资源压力 route 尝试，不作为 W8A12_3lane 720p 成功 bitstream |
+| 结果 | `FAIL_ROUTE_CONGESTION_NO_BITSTREAM` |
+| placed 资源 | LUT `279774`、FF `363066`、BRAM tile `619`、DSP `769`、CLB sites `63744/65340 = 97.56%` |
+| route 边界 | `Route 35-447` congestion，`write_bitstream` 未启动，`.bit` 未生成 |
+| 证据 | `W8A12_3lane/evidence/implementation_runs/dma_axis_w8a10_route_congestion_20260703/summary.md` |
+
+结论：该 run 证明“大集成一次性闭合”当前主要受 CLB/routing congestion 限制，不能作为 bitstream/PPA PASS；报告仍以 true2x2/JTAG-W8A12 bitstream、模块 OOC 和 scheduler FPS 作为可提交范围，完整 720p/大图硬件 bitstream 继续列为待优化项。
+
 证据：
 
 ```text
@@ -455,6 +468,7 @@ W8A12_3lane/evidence/sim_fps_design_space/fps_target_status_20260629.md
 W8A12_3lane/evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md
 W8A12_3lane/evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md
 W8A12_3lane/evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md
+W8A12_3lane/evidence/implementation_runs/dma_axis_w8a10_route_congestion_20260703/summary.md
 ```
 
 ## 6. 资源口径

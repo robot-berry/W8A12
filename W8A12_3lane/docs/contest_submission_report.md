@@ -161,6 +161,8 @@ XC7Z045 参考门限：
 
 该 bitstream 对应 `ImgW=2 / TileW=2 / TileH=2 / Halo=21` 的 JTAG-W8A12 x4 tile-writer/debug source-boundary 配置，行为级 RTL raw compare 为 `0 / 192` mismatch。它证明当前 W8A12 tile 计算和写回配置能够生成 bitstream 并满足资源/时序门限；但不声明 720p packed 2-D 完整硬件 bitstream 已闭合。
 
+2026-07-03 另补跑了一次 `dma_axis_w8a10_system_wrapper` 大集成实现尝试，作为完整计算壳资源压力测试。该 run 在 placed 阶段的资源画像为 LUT `279774`、FF `363066`、BRAM tile `619`、DSP `769`，其中 CLB sites 已达 `63744 / 65340 = 97.56%`；route 阶段因 congestion 失败，`write_bitstream` 未启动且未生成 `.bit`。证据见 `evidence/implementation_runs/dma_axis_w8a10_route_congestion_20260703/summary.md`。因此该 run 只能作为“完整大集成仍需降资源/分阶段闭合”的风险证据，不能作为 bitstream/PPA PASS 计入提交口径。
+
 性能 scheduler 侧已补充 packed 2-D 规划证据，并新增独立 `x4_720p15_fps_closure` 门禁。该门禁明确输出分辨率为 `1280x720`，输入为 `320x180 LR`，闭合层级为 scheduler/performance-model，不声明板端实测 FPS 或完整 packed 2-D 像素 RTL bit-exact 闭合。证据见 `evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`。
 
 | 目标 | Candidate | DSP | FPS @250MHz | 15fps 余量 | 当前结论 |
@@ -330,6 +332,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | A0-A3 reference | `evidence/reference/` |
 | A4 OOC | `evidence/resource/A4_*_ooc/` |
 | bitstream/PPA gate | `evidence/bitstream_ppa_gate/summary.md` |
+| 大集成 route 压力测试 | `evidence/implementation_runs/dma_axis_w8a10_route_congestion_20260703/summary.md` |
 | 赛题提交口径门禁 | `evidence/contest_scope_readiness/summary.md` |
 | 赛题口径提交包 | `evidence/contest_scope_package/summary.md` |
 | packed 2-D FPS scheduler | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`、`evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md` |

@@ -21,7 +21,7 @@
     {
       "name": "git.w8a12_changes_present",
       "pass": true,
-      "detail": "14 W8A12_3lane status lines"
+      "detail": "19 W8A12_3lane status lines"
     },
     {
       "name": "git.outside_changes_detected",
@@ -36,7 +36,7 @@
     {
       "name": "git.upload_candidate_count",
       "pass": true,
-      "detail": 1380
+      "detail": 1382
     },
     {
       "name": "git.no_forbidden_upload_candidates",

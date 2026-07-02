@@ -6,8 +6,8 @@ Status: PASS
 | --- | --- |
 | source | `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\docs\contest_submission_report.md` |
 | pdf | `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\output\pdf\W8A12_3lane_contest_submission_report.pdf` |
-| bytes | `116630` |
-| sha256 | `25eff4621732a064e574a95d792a52861449b041193303b8cbb7c500a93a3026` |
+| bytes | `118182` |
+| sha256 | `6324be97fff8bbc66d393f679b9ed2c81f889cd50a549bfa16fb0fc8e1ea6429` |
 | page_count | `10` |
 | font | `C:\Windows\Fonts\simhei.ttf` |
 
@@ -19,12 +19,12 @@ Status: PASS
 | `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-02.png` | `1241x1754` | 247.52 | `[0, 255]` | `True` |
 | `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-03.png` | `1241x1754` | 249.22 | `[0, 255]` | `True` |
 | `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-04.png` | `1241x1754` | 247.64 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-05.png` | `1241x1754` | 246.24 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-06.png` | `1241x1754` | 247.09 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-07.png` | `1241x1754` | 246.65 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-08.png` | `1241x1754` | 244.81 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-09.png` | `1241x1754` | 248.49 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-10.png` | `1241x1754` | 248.77 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-05.png` | `1241x1754` | 245.00 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-06.png` | `1241x1754` | 248.34 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-07.png` | `1241x1754` | 246.36 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-08.png` | `1241x1754` | 243.88 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-09.png` | `1241x1754` | 249.03 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\report_pdf\rendered\page-10.png` | `1241x1754` | 247.17 | `[0, 255]` | `True` |
 
 ## Required Text Tokens
 

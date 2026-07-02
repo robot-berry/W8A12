@@ -83,6 +83,7 @@
 | OOC 解析器自检 | `evidence/resource/A4_ooc_parser_selfcheck/summary.md` | PASS |
 | PPA 汇总报告 | `tools/generate_ppa_summary.py`、`evidence/ppa_summary/summary.md` | PASS，汇总 MAC core、single-lane、3-lane scheduler 和 top shell |
 | bitstream/PPA 门槛 | `evidence/bitstream_ppa_gate/summary.md` | PASS_WITH_SCOPE；true2x2/JTAG-W8A12 bitstream 已生成，implementation 为 LUT 38803、FF 116441、BRAM 311、DSP 128、WNS 12.517ns、WHS 0.010ns；不声明 720p packed 2-D 完整 bitstream |
+| 大集成 route 压力测试 | `evidence/implementation_runs/dma_axis_w8a10_route_congestion_20260703/summary.md` | FAIL_ROUTE_CONGESTION_NO_BITSTREAM；placed LUT 279774、FF 363066、BRAM tile 619、DSP 769、CLB sites 97.56%，route congestion 失败，不能作为 bitstream/PPA PASS |
 | 赛题提交口径门禁 | `tools/check_contest_scope_readiness.py`、`evidence/contest_scope_readiness/summary.md` | PASS_WITH_SCOPE 时表示报告/RTL 仿真/PPA/FPS scheduler/质量对比/GitHub 上传前检查已具备可追溯证据，真实板端 validation 作为后续工程项单独列出 |
 | 赛题口径提交包 | `tools/create_contest_scope_package.py`、`evidence/contest_scope_package/summary.md` | PASS_WITH_SCOPE；复用 submission manifest 文件列表生成无真实插板硬门槛口径的确定性提交包 |
 | 赛题报告完整性检查 | `tools/check_contest_submission_report_static.py`、`evidence/report_static/summary.md` | PASS，检查章节、证据、PPA、画质、评分点映射和待上板口径 |

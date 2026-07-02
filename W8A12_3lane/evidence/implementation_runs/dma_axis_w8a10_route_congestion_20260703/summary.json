@@ -1,0 +1,53 @@
+{
+  "status": "FAIL_ROUTE_CONGESTION_NO_BITSTREAM",
+  "generated_at": "2026-07-03T02:43:00+08:00",
+  "scope": "2026-07-03 Vivado implementation attempt for dma_axis_w8a10_system_wrapper",
+  "target_part": "xczu19eg-ffvc1760-2-i",
+  "vivado_run": "vivado/dma_axis_w8a10_bd/dma_axis_w8a10_bd.runs/impl_1",
+  "batch_script": "scripts/run_vivado_bitstream_dma_axis_w8a10.tcl",
+  "bitstream_generated": false,
+  "write_bitstream_started": false,
+  "route_design_completed": false,
+  "failure_boundary": "route congestion during Phase 4 Initial Routing",
+  "final_route_warning": "Route 35-447: Congestion is preventing the router from routing all nets.",
+  "intermediate_timing": {
+    "wns_ns": -18.104,
+    "tns_ns": -3913353.601,
+    "whs_ns": -0.108,
+    "ths_ns": -40.190
+  },
+  "route_initialization": {
+    "failed_nets": 679311,
+    "unrouted_nets": 622946,
+    "partially_routed_nets": 56365,
+    "node_overlaps": 6
+  },
+  "placed_utilization": {
+    "clb_luts": {
+      "used": 279774,
+      "available": 522720,
+      "util_percent": 53.52
+    },
+    "clb_registers": {
+      "used": 363066,
+      "available": 1045440,
+      "util_percent": 34.73
+    },
+    "clb_sites": {
+      "used": 63744,
+      "available": 65340,
+      "util_percent": 97.56
+    },
+    "block_ram_tile": {
+      "used": 619,
+      "available": 984,
+      "util_percent": 62.91
+    },
+    "dsp": {
+      "used": 769,
+      "available": 1968,
+      "util_percent": 39.08
+    }
+  },
+  "interpretation": "Large integrated route did not produce a bitstream; current report must keep 720p/full integrated bitstream as pending and use true2x2/JTAG-W8A12 plus module/OOC evidence as the scoped PPA submission baseline."
+}
