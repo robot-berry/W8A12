@@ -58,7 +58,7 @@
 | packed 2-D x4 720p15 scheduler | `rtl/span/w8a12_packed2d_perf_scheduler.v`、`tools/check_x4_720p15_fps_closure.py` | scheduler-level FPS closure PASS；`24x64` 为最低资源点 15.070fps/792 DSP，`24x72` 为推荐闭合点 17.501fps/888 DSP、15fps 余量 14.291%；证据 `evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md` |
 | packed 2-D x2 720p4 scheduler | `rtl/span/w8a12_packed2d_perf_scheduler.v`、`tools/check_x2_720p4_fps_closure.py` | 降目标 scheduler-level FPS closure PASS；`24x72` 为推荐闭合点 4.483fps/888 DSP、4fps 余量 10.789%；`24x64` 为 3.861fps 低资源边界但不达 4fps；证据 `evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md` |
 | packed 2-D x2 720p20 scheduler | `rtl/span/w8a12_packed2d_perf_scheduler.v`、`sim/tb_w8a12_packed2d_x2_720p20_perf_scheduler.sv` | scheduler-level xsim 已补充；900-DSP 门限下 20fps FAIL，证据 `evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
-| packed 2-D x2 direct xsim replay | `scripts/run_xsim_direct_w8a12_packed2d_x2_720p20_perf_scheduler.ps1` | 不启动新的 Vivado batch/project，直接调用 `xvlog/xelab/xsim` 复跑同一 scheduler testbench；复跑结果与 Vivado batch summary 一致，证据 `evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md` |
+| packed 2-D x2 direct xsim replay | `scripts/wait_and_run_x2_direct_xsim.ps1`、`scripts/run_xsim_direct_w8a12_packed2d_x2_720p20_perf_scheduler.ps1` | wrapper 先等待空闲内存和仿真进程安全条件，再由 direct 脚本直接调用 `xvlog/xelab/xsim` 复跑同一 scheduler testbench；复跑结果与 Vivado batch summary 一致，证据 `evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md` |
 
 ## 4. 上板和 PPA 汇报
 
@@ -128,7 +128,7 @@
 3. A7 720p x4 board `validation.md Status: PASS`。
 4. x2 720p board `validation.md Status: PASS`。
 
-当前严格审计为 `72 / 76`，新增赛题报告、PDF/Word 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查、JTAG recovery checklist、board validation readiness、submission manifest/archive 和 evidence matrix 均已形成，剩余 4 项均为真实板端 validation。历史 true2x2 stage-hash 上板曾恢复 JTAG/PSU/register read，并完整输出 `192/192` 且 `frame_done=1`、`error=0`，但 compare FAIL：`191/192` mismatch，PSNR `11.8292 dB`，最早失败边界为 `tail_b1_hash`。当前最新前置状态为 dbg2/source-boundary 一键验收 `BLOCKED`：USB known JTAG candidate count=0，强制 Vivado probe 后 target count=0；这不推翻历史数值定位。恢复连接后直接运行 dbg2 一键脚本，继续在 `halo fetch / conv1 feat0 -> SPAB block1 -> feature buffer/replay -> b1_m_feat -> tail` 链路内收窄第一个错误点。
+当前严格审计为 `72 / 76`，新增赛题报告、PDF/Word 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查、JTAG recovery checklist、board validation readiness、submission manifest/archive 和 evidence matrix 均已形成，剩余 4 项均为真实板端 validation。历史 true2x2 stage-hash 上板曾恢复 JTAG/PSU/register read，并完整输出 `192/192` 且 `frame_done=1`、`error=0`，但 compare FAIL：`191/192` mismatch，PSNR `11.8292 dB`，最早失败边界为 `tail_b1_hash`。当前最新前置状态为 USB-only `USB_READY`：USB known JTAG candidate count=3，Vivado target 尚未在后台实现任务结束后安全复测；这不推翻历史数值定位。恢复 Vivado target probe 后直接运行 dbg2 一键脚本，继续在 `halo fetch / conv1 feat0 -> SPAB block1 -> feature buffer/replay -> b1_m_feat -> tail` 链路内收窄第一个错误点。
 
 已补充并已通过审计的离线证据：
 
