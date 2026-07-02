@@ -441,10 +441,10 @@ x2 720p20 packed 2-D scheduler 补充：
 后台 Vivado 综合或实现任务运行时，优先使用 direct xsim 复跑脚本复核该边界，避免再启动新的 Vivado batch/project：
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\wait_and_run_x2_direct_xsim.ps1 -MinFreeMemoryGb 4 -MaxWaitMinutes 60 -PollSeconds 30
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\wait_and_run_x2_direct_xsim.ps1 -MinFreeMemoryGb 4 -MaxWaitMinutes 60 -PollSeconds 30 -RequireNoActiveVivado
 ```
 
-并行启动条件：后台 Vivado 仍在 place/route 或 bitstream 阶段时，只有系统空闲内存 `>= 4 GB` 且无正在运行的 `xsim/xelab/xvlog` 时才启动 direct xsim；若低于该阈值，记录为 `DEFER_X2_XSIM_LOW_MEMORY`，等待 Vivado 释放资源后再跑。
+并行启动条件：后台 Vivado 仍在 place/route 或 bitstream 阶段时，默认不启动 direct xsim；脚本会要求系统空闲内存 `>= 4 GB`、无正在运行的 `xsim/xelab/xvlog`，并通过 `-RequireNoActiveVivado` 等待现有 Vivado implementation 结束。若低于该阈值或仍有 Vivado 进程，记录为 `DEFER_X2_XSIM_LOW_MEMORY` 或 `WAIT_X2_XSIM_ACTIVE_VIVADO`，等待 Vivado 释放资源后再跑。
 
 `wait_and_run_x2_direct_xsim.ps1` 只做资源轮询和安全启动；底层 direct 脚本直接调用 `xvlog -> xelab -> xsim`，输出 `packed2d_x2_direct_xsim_replay` 证据，并检查复跑结果与 Vivado batch summary 一致；它仍然只代表 scheduler/performance-model 级别，不代表板端 FPS。
 

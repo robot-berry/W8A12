@@ -1,7 +1,8 @@
 param(
     [double]$MinFreeMemoryGb = 4.0,
     [int]$MaxWaitMinutes = 60,
-    [int]$PollSeconds = 30
+    [int]$PollSeconds = 30,
+    [switch]$RequireNoActiveVivado
 )
 
 $ErrorActionPreference = "Stop"
@@ -32,6 +33,14 @@ function Get-ActiveSimSummary {
     ($ActiveSim | ForEach-Object { "$($_.ProcessName):$($_.Id)" }) -join ","
 }
 
+function Get-ActiveVivadoSummary {
+    $ActiveVivado = @(Get-CimInstance Win32_Process -Filter "name='vivado.exe'" -ErrorAction SilentlyContinue)
+    if ($ActiveVivado.Count -eq 0) {
+        return ""
+    }
+    ($ActiveVivado | ForEach-Object { "vivado:$($_.ProcessId)" }) -join ","
+}
+
 $Deadline = (Get-Date).AddMinutes($MaxWaitMinutes)
 $Attempt = 0
 
@@ -40,14 +49,36 @@ while ($true) {
     $FreeGb = Get-FreeMemoryGb
     $ActiveSimSummary = Get-ActiveSimSummary
     $NoActiveSim = [string]::IsNullOrWhiteSpace($ActiveSimSummary)
-    Write-Host "WAIT_X2_XSIM_CHECK attempt=$Attempt free_gb=$FreeGb min_free_gb=$MinFreeMemoryGb no_active_sim=$NoActiveSim"
+    $ActiveVivadoSummary = ""
+    $NoActiveVivado = $true
+    if ($RequireNoActiveVivado) {
+        $ActiveVivadoSummary = Get-ActiveVivadoSummary
+        $NoActiveVivado = [string]::IsNullOrWhiteSpace($ActiveVivadoSummary)
+    }
+    Write-Host "WAIT_X2_XSIM_CHECK attempt=$Attempt free_gb=$FreeGb min_free_gb=$MinFreeMemoryGb no_active_sim=$NoActiveSim no_active_vivado=$NoActiveVivado"
     if (-not $NoActiveSim) {
         Write-Host "WAIT_X2_XSIM_ACTIVE_SIM processes=$ActiveSimSummary"
     }
+    if (-not $NoActiveVivado) {
+        Write-Host "WAIT_X2_XSIM_ACTIVE_VIVADO processes=$ActiveVivadoSummary"
+    }
 
-    if (($FreeGb -ge $MinFreeMemoryGb) -and $NoActiveSim) {
+    if (($FreeGb -ge $MinFreeMemoryGb) -and $NoActiveSim -and $NoActiveVivado) {
         Write-Host "WAIT_X2_XSIM_STATUS=RUNNING"
-        & powershell -NoProfile -ExecutionPolicy Bypass -File $DirectXsim -MinFreeMemoryGb $MinFreeMemoryGb -RequireNoActiveSim
+        $DirectArgs = @(
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            $DirectXsim,
+            "-MinFreeMemoryGb",
+            $MinFreeMemoryGb,
+            "-RequireNoActiveSim"
+        )
+        if ($RequireNoActiveVivado) {
+            $DirectArgs += "-RequireNoActiveVivado"
+        }
+        & powershell @DirectArgs
         exit $LASTEXITCODE
     }
 

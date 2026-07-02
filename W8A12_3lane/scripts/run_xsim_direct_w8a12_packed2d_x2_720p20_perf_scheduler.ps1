@@ -1,6 +1,7 @@
 param(
     [double]$MinFreeMemoryGb = 0.0,
-    [switch]$RequireNoActiveSim
+    [switch]$RequireNoActiveSim,
+    [switch]$RequireNoActiveVivado
 )
 
 $ErrorActionPreference = "Stop"
@@ -21,6 +22,15 @@ if ($RequireNoActiveSim) {
     if ($ActiveSim.Count -gt 0) {
         $SimSummary = ($ActiveSim | ForEach-Object { "$($_.ProcessName):$($_.Id)" }) -join ","
         Write-Host "DEFER_X2_XSIM_ACTIVE_SIM processes=$SimSummary"
+        exit 2
+    }
+}
+
+if ($RequireNoActiveVivado) {
+    $ActiveVivado = @(Get-CimInstance Win32_Process -Filter "name='vivado.exe'" -ErrorAction SilentlyContinue)
+    if ($ActiveVivado.Count -gt 0) {
+        $VivadoSummary = ($ActiveVivado | ForEach-Object { "vivado:$($_.ProcessId)" }) -join ","
+        Write-Host "DEFER_X2_XSIM_ACTIVE_VIVADO processes=$VivadoSummary"
         exit 2
     }
 }
