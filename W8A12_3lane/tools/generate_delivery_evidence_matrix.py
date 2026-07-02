@@ -60,8 +60,9 @@ def jtag_recovery_note() -> str:
         target = current.get("vivado_target_count", "unknown")
         return (
             f"当前 full precondition 为 READY：USB known JTAG candidate={known}，"
-            f"Vivado target={target}；已可进入 stage-hash/dbg2 小图上板验收，"
-            "但真实 board validation PASS 仍取决于后续 compare/PSNR/FPS 结果。"
+            f"Vivado target={target}；stagehash baseline 已完成干净失败复跑："
+            "`error=0`、输出完整 `192/192`，但 compare 仍 FAIL。"
+            "下一步应做低侵入 single-boundary probe，不把 dbg2/source-b6 的 `error=0xC` run 作为根因证据。"
         )
 
     usb_only = load_json(JTAG_USB_ONLY_JSON, {})
@@ -224,6 +225,7 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                     "evidence/delivery_audit/missing_evidence_plan.md",
                     "evidence/board_probe/jtag_recovery_checklist/summary.md",
                     "evidence/board_probe/jtag_precondition_usb_only_current/summary.md",
+                    "evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md",
                 ]
             ),
             [
@@ -231,6 +233,7 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                 "evidence/delivery_audit/missing_evidence_plan.md",
                 "evidence/board_probe/jtag_recovery_checklist/summary.md",
                 "evidence/board_probe/jtag_precondition_current/summary.md",
+                "evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md",
                 "evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md",
             ],
             jtag_recovery_note(),

@@ -1,0 +1,68 @@
+{
+  "status": "FAIL_CLEAN_BOARD_NUMERIC_MISMATCH",
+  "generated_at": "2026-07-03 03:28 CST",
+  "scope": "true2x2 x4 JTAG W8A12 non-intrusive stagehash baseline rerun",
+  "board_run": {
+    "probe": "PASS",
+    "psu_init": "PASS",
+    "smoke": "FAIL",
+    "register_read": "PASS",
+    "output_bytes": 192,
+    "expected_output_bytes": 192,
+    "frame_done": 1,
+    "input_counter": 4,
+    "output_counter": 64,
+    "error_flags": "0x00000000",
+    "frame_cycles": 7202120,
+    "mismatch_bytes": 192,
+    "total_bytes": 192,
+    "max_channel_diff": 133,
+    "psnr_db": 11.883879766827
+  },
+  "hashes": {
+    "tail_b1_hash": {
+      "expected": "0x16ede1c2",
+      "observed": "0x59F2850F",
+      "result": "MISMATCH"
+    },
+    "tail_b6_act1_hash": {
+      "expected": "0xc7a092b8",
+      "observed": "0x755918A6",
+      "result": "MISMATCH"
+    },
+    "tail_rgb_q_hash": {
+      "expected": "0xb712a61b",
+      "observed": "0x86BF4216",
+      "result": "MISMATCH"
+    },
+    "writeback_hash": {
+      "expected": "0x61d3ea1d",
+      "observed": "0x44A4F24C",
+      "result": "MISMATCH"
+    }
+  },
+  "comparison_with_dbg2_source_b6": {
+    "stagehash_error_flags": "0x00000000",
+    "dbg2_error_flags": "0x0000000C",
+    "stagehash_mismatch_bytes": 192,
+    "dbg2_mismatch_bytes": 188,
+    "stagehash_psnr_db": 11.883879766827,
+    "dbg2_psnr_db": 19.2633707572237,
+    "stagehash_is_clean_datapath_baseline": true,
+    "dbg2_is_intrusive_probe_evidence": true
+  },
+  "interpretation": "Board/JTAG/PSU/input/output/register read are functional. This non-intrusive rerun has error_flags 0 and complete output, so it is the preferred baseline for the next single-boundary datapath localization step.",
+  "next_actions": [
+    "Keep stagehash baseline as the clean mismatch reference.",
+    "Build or run a lower-intrusion single-boundary probe for src_feat0 or src_b1.",
+    "Use first mismatching boundary as RTL patch input only after error_flags is 0, frame_done is 1, and output bytes are complete."
+  ],
+  "artifacts": {
+    "analysis_md": "analysis.md",
+    "stagehash_acceptance_summary": "artifacts/stagehash_acceptance_summary.md",
+    "smoke_summary": "artifacts/smoke_summary.md",
+    "compare_summary": "artifacts/compare_summary.md",
+    "reg_read_summary": "artifacts/reg_read_summary.md",
+    "preview_png": "artifacts/jtag_w8a12_validation_preview.png"
+  }
+}

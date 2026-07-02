@@ -2,11 +2,11 @@
   "status": "PASS",
   "source": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\docs\\contest_submission_report.md",
   "docx": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\docx\\W8A12_3lane_contest_submission_report.docx",
-  "bytes": 56404,
-  "sha256": "cd64f677ca8764becef39cfbed2b457d316537959391fd817f4650c92fc81df1",
+  "bytes": 56649,
+  "sha256": "1cfcd48cd8d03ca0dd3e18227edbed6d03791450afe38dc30d64085cc68c3b42",
   "text_color_audit": {
     "status": "PASS",
-    "text_color_count": 808,
+    "text_color_count": 818,
     "non_black_text_colors": [],
     "non_black_text_color_count": 0
   }

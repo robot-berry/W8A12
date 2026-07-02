@@ -21,7 +21,7 @@
     {
       "name": "git.w8a12_changes_present",
       "pass": true,
-      "detail": "20 W8A12_3lane status lines"
+      "detail": "23 W8A12_3lane status lines"
     },
     {
       "name": "git.outside_changes_detected",
@@ -36,7 +36,7 @@
     {
       "name": "git.upload_candidate_count",
       "pass": true,
-      "detail": 1400
+      "detail": 1414
     },
     {
       "name": "git.no_forbidden_upload_candidates",
@@ -91,7 +91,7 @@
     {
       "name": "submission_manifest.has_files",
       "pass": true,
-      "detail": 407
+      "detail": 410
     },
     {
       "name": "contest_report_pdf.exists",

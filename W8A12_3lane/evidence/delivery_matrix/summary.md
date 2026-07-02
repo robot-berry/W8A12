@@ -8,11 +8,11 @@ Audit pass count: `72 / 76`
 
 Submission package status: `INCOMPLETE`
 
-Submission file count: `407`
+Submission file count: `410`
 
-PDF report SHA256: `882a6b311289456b59642aea3d4c820c772148c1530118d5a53140def6a7e200`
+PDF report SHA256: `3558852535f3aff3f2e278d8e6fb69d2e7b62909ab455aa49a8d3ba07fc9676b`
 
-DOCX report SHA256: `cd64f677ca8764becef39cfbed2b457d316537959391fd817f4650c92fc81df1`
+DOCX report SHA256: `1cfcd48cd8d03ca0dd3e18227edbed6d03791450afe38dc30d64085cc68c3b42`
 
 ## Evidence Matrix
 
@@ -26,7 +26,7 @@ DOCX report SHA256: `cd64f677ca8764becef39cfbed2b457d316537959391fd817f4650c92fc
 | 评分点 功能正确性 | 离线功能闭环与板端剩余验证 | `PARTIAL` | `evidence/reference/`<br>`evidence/board_reports/jtag_true2x2_stagehash_20260628.md`<br>`evidence/delivery_audit/missing_evidence_plan.md` | RTL true2x2 raw compare PASS；真实 board validation 仍缺 A5/A6/A7/x2 四项。 |
 | 评分点 文档清晰度 | Markdown + PDF 赛题报告 | `PASS` | `docs/contest_submission_report.md`<br>`output/pdf/W8A12_3lane_contest_submission_report.pdf`<br>`evidence/report_pdf/summary.md`<br>`output/docx/W8A12_3lane_contest_submission_report.docx`<br>`evidence/report_docx/summary.md` | PDF 已生成并完成全页渲染/关键文本校验。 |
 | 评分点 量化指标和性能分析 | 画质 baseline、PPA、板端指标口径 | `PASS` | `evidence/quality_comparison/summary.md`<br>`evidence/quality_metric_completion/summary.md`<br>`evidence/ppa_summary/summary.md` | 传统插值对比已纳入；W8A12 fixed/board 全量 PSNR/SSIM 和 FPS/power 待真实 board output 后补齐。 |
-| 评分点 验证方案与用例 | 分层门禁、缺口计划、JTAG 恢复清单 | `PASS` | `evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md`<br>`evidence/delivery_audit/missing_evidence_plan.md`<br>`evidence/board_probe/jtag_recovery_checklist/summary.md`<br>`evidence/board_probe/jtag_precondition_current/summary.md`<br>`evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md` | 当前 full precondition 为 READY：USB known JTAG candidate=3，Vivado target=1；已可进入 stage-hash/dbg2 小图上板验收，但真实 board validation PASS 仍取决于后续 compare/PSNR/FPS 结果。 |
+| 评分点 验证方案与用例 | 分层门禁、缺口计划、JTAG 恢复清单 | `PASS` | `evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md`<br>`evidence/delivery_audit/missing_evidence_plan.md`<br>`evidence/board_probe/jtag_recovery_checklist/summary.md`<br>`evidence/board_probe/jtag_precondition_current/summary.md`<br>`evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md`<br>`evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md` | 当前 full precondition 为 READY：USB known JTAG candidate=3，Vivado target=1；stagehash baseline 已完成干净失败复跑：`error=0`、输出完整 `192/192`，但 compare 仍 FAIL。下一步应做低侵入 single-boundary probe，不把 dbg2/source-b6 的 `error=0xC` run 作为根因证据。 |
 | 评分点 面积/功耗 | 资源门限已过，真实功耗待板端报告 | `PARTIAL` | `evidence/ppa_summary/summary.md`<br>`evidence/board_reports/validation_readiness/summary.md` | OOC 资源/时序可报告；真实 board power、FPS、latency 需 `validation.md Status: PASS` 后才能声明。 |
 
 ## Remaining Final Evidence
