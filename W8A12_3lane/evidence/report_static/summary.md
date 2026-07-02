@@ -17,6 +17,7 @@ Status: PASS
 | `states_contest_scope_readiness_gate` | PASS | `contest-scope readiness is separated from strict board-validation audit` |
 | `states_contest_scope_package` | PASS | `contest-scope package is separated from strict board archive` |
 | `states_final_submission_guide` | PASS | `final submission guide is indexed by the contest report` |
+| `states_requirement_traceability` | PASS | `contest requirement traceability matrix is indexed by the contest report` |
 | `states_rtl_evidence_hashes` | PASS | `RTL/fixed reference hashes` |
 | `states_board_pending_not_measured` | PASS | `board metrics remain pending` |
 | `states_mismatch_risk` | PASS | `mismatch and debug hash plan` |

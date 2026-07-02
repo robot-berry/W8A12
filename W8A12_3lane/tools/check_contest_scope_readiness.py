@@ -171,6 +171,7 @@ def build_summary() -> dict:
         "docs/contest_submission_readme.md",
         "docs/contest_submission_report.md",
         "docs/final_submission_guide.md",
+        "docs/contest_requirement_traceability.md",
         "docs/w8a12_3lane_architecture.md",
         "docs/bank_mapping_rules.md",
         "docs/board_report_flow.md",
@@ -197,6 +198,25 @@ def build_summary() -> dict:
         not missing_guide_tokens,
         "docs/final_submission_guide.md",
         "missing tokens: " + ", ".join(missing_guide_tokens) if missing_guide_tokens else "submission boundary stated",
+    )
+
+    trace = read_text("docs/contest_requirement_traceability.md")
+    trace_tokens = [
+        "赛题交付内容",
+        "评审要点",
+        "x4 FP32 PSNR RGB",
+        "x2 720p20",
+        "NOT_CLAIMED",
+        "evidence/contest_scope_package/summary.md",
+        "evidence/board_reports/a7_720p_x4/validation.md",
+    ]
+    missing_trace_tokens = [token for token in trace_tokens if token not in trace]
+    add(
+        checks,
+        "doc.contest_requirement_traceability",
+        not missing_trace_tokens,
+        "docs/contest_requirement_traceability.md",
+        "missing tokens: " + ", ".join(missing_trace_tokens) if missing_trace_tokens else "contest requirements traced",
     )
 
     passed, detail = check_quality_metrics()

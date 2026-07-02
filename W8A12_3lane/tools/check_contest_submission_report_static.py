@@ -116,6 +116,10 @@ def main() -> int:
         "docs/final_submission_guide.md",
         "最终提交指南",
     ]), "final submission guide is indexed by the contest report")
+    add("states_requirement_traceability", all(token in text for token in [
+        "docs/contest_requirement_traceability.md",
+        "赛题要求追踪矩阵",
+    ]), "contest requirement traceability matrix is indexed by the contest report")
     add("states_rtl_evidence_hashes", all(token in text for token in [
         "0x080D3C47",
         "0xD12E1B43",

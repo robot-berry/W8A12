@@ -13,6 +13,7 @@
 | 完整 Word 导出版 | `output/docx/W8A12_3lane_contest_submission_report_complete_20260701.docx` |
 | 交付索引 | `DELIVERY_INDEX.md` |
 | 赛题提交说明 | `docs/contest_submission_readme.md` |
+| 赛题要求追踪矩阵 | `docs/contest_requirement_traceability.md` |
 | 赛题口径门禁 | `evidence/contest_scope_readiness/summary.md` |
 | 赛题口径提交包摘要 | `evidence/contest_scope_package/summary.md` |
 | 严格上板归档摘要 | `evidence/submission_package/archive/summary.md` |

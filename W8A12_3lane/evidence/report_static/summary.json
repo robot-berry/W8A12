@@ -83,6 +83,11 @@
       "detail": "final submission guide is indexed by the contest report"
     },
     {
+      "name": "states_requirement_traceability",
+      "pass": true,
+      "detail": "contest requirement traceability matrix is indexed by the contest report"
+    },
+    {
       "name": "states_rtl_evidence_hashes",
       "pass": true,
       "detail": "RTL/fixed reference hashes"

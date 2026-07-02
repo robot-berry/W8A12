@@ -318,6 +318,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | PDF 赛题报告 | `output/pdf/W8A12_3lane_contest_submission_report.pdf`、`evidence/report_pdf/summary.md` |
 | Word 赛题报告 | 标准路径：`output/docx/W8A12_3lane_contest_submission_report.docx`、`evidence/report_docx/summary.md`；当前完整导出版：`output/docx/W8A12_3lane_contest_submission_report_complete_20260701.docx`、`evidence/report_docx_complete_20260701/summary.md` |
 | 最终提交指南 | `docs/final_submission_guide.md` |
+| 赛题要求追踪矩阵 | `docs/contest_requirement_traceability.md` |
 | 架构说明 | `docs/w8a12_3lane_architecture.md` |
 | bank 映射 | `docs/bank_mapping_rules.md` |
 | A4 scheduler 验收 | `docs/a4_scheduler_acceptance_flow.md` |

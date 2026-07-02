@@ -53,6 +53,12 @@
       "detail": "required contest document"
     },
     {
+      "name": "file:docs/contest_requirement_traceability.md",
+      "pass": true,
+      "evidence": "docs/contest_requirement_traceability.md",
+      "detail": "required contest document"
+    },
+    {
       "name": "file:docs/w8a12_3lane_architecture.md",
       "pass": true,
       "evidence": "docs/w8a12_3lane_architecture.md",
@@ -87,6 +93,12 @@
       "pass": true,
       "evidence": "docs/final_submission_guide.md",
       "detail": "submission boundary stated"
+    },
+    {
+      "name": "doc.contest_requirement_traceability",
+      "pass": true,
+      "evidence": "docs/contest_requirement_traceability.md",
+      "detail": "contest requirements traced"
     },
     {
       "name": "quality.fp32_targets",
@@ -199,7 +211,7 @@
       "evidence": "evidence/report_docx_complete_20260701/summary.json",
       "detail": {
         "status": "PASS",
-        "text_color_count": 765,
+        "text_color_count": 767,
         "non_black_text_colors": [],
         "non_black_text_color_count": 0
       }
