@@ -438,12 +438,21 @@ x2 720p20 packed 2-D scheduler 补充：
 
 结论：新增 x2 720p20 的 scheduler/performance-model xsim 证据已经生成，但当前完整 W8A12/F48 packed 2-D 规划在 XC7Z045/ZC706 900-DSP 门限下不能闭合 20fps。该项作为性能边界证据收录；若要达成 x2 720p20，需要更小的 student model、更高资源/频率，或比当前 packed 2-D 规划更激进的复用和并行架构。
 
+后台 Vivado 综合或实现任务运行时，优先使用 direct xsim 复跑脚本复核该边界，避免再启动新的 Vivado batch/project：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_xsim_direct_w8a12_packed2d_x2_720p20_perf_scheduler.ps1
+```
+
+该脚本直接调用 `xvlog -> xelab -> xsim`，输出 `packed2d_x2_direct_xsim_replay` 证据，并检查复跑结果与 Vivado batch summary 一致；它仍然只代表 scheduler/performance-model 级别，不代表板端 FPS。
+
 证据：
 
 ```text
 W8A12_3lane/evidence/sim_fps_design_space/fps_target_status_20260629.md
 W8A12_3lane/evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md
 W8A12_3lane/evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md
+W8A12_3lane/evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md
 ```
 
 ## 6. 资源口径

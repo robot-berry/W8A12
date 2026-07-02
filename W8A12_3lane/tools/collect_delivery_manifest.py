@@ -80,6 +80,7 @@ EVIDENCE_PATTERNS = [
     "evidence/sim_fps_estimate/*",
     "evidence/sim_fps_design_space/x4_720p15_fps_closure/*",
     "evidence/sim_fps_design_space/x2_720p4_fps_closure/*",
+    "evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/*",
     "evidence/contest_scope_readiness/*",
     "evidence/contest_scope_package/*",
     "evidence/contest_scope_package/archive/*.md",

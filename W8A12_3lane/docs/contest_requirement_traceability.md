@@ -38,6 +38,7 @@
 | x4 720p15 scheduler FPS | 17.501 FPS @250MHz | `evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md` | 可声明为 scheduler/performance-model，不是板端实测 |
 | x2 720p4 scheduler FPS | 4.483 FPS @250MHz | `evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md` | 可声明为降目标 scheduler/performance-model，不是板端实测 |
 | x2 720p20 | FAIL under 900-DSP gate | `evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` | 不可声明达成 |
+| x2 direct xsim replay | PASS, matches Vivado batch summary | `evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md` | 仅用于轻量复核 scheduler/performance-model FPS 边界，不是板端实测 |
 | 真实板端 720p 输出 | NOT_CLAIMED | `evidence/contest_scope_readiness/summary.md` | 不可声明完成 |
 
 ## 4. 最终提交口径

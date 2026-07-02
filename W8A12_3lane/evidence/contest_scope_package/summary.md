@@ -7,13 +7,13 @@ Scope: Contest report / RTL simulation / bitstream-PPA evidence; physical board 
 | Field | Value |
 | --- | --- |
 | archive | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\contest_scope_package\archive\W8A12_3lane_contest_scope_submission.zip` |
-| bytes | `3789172` |
-| sha256 | `7153a843ff3847d1fc89313ac54fa034126f81e17bed16c0be9857af0e0e94a0` |
-| archived file count | `400` |
+| bytes | `3838191` |
+| sha256 | `328650efc0a303d06eb700fa1c52f35d61bbc76404ccd9c35ce5934b22e95bb9` |
+| archived file count | `403` |
 | source submission manifest status | `INCOMPLETE` |
 | contest readiness status | `PASS_WITH_SCOPE` |
-| source submission manifest sha256 | `db121a2480f9af38257959dd22ebc42dba910f059eba2f52e37bb452c6a6e324` |
-| contest readiness sha256 | `1fa4f6b6d78581b7787b2ce027235b1df0b42e4ff34f69a4cf22f424484b66bd` |
+| source submission manifest sha256 | `74b8d7a66f7095ed14e22af0d9fb85be6dae7c82a224e5635af063eed9f79236` |
+| contest readiness sha256 | `d3662043b4f4d6c63ff58a6c6d47662754652e5048263986509bbffce66ca135` |
 
 ## Non-Blocking Board Validation Gaps
 
@@ -28,6 +28,7 @@ Scope: Contest report / RTL simulation / bitstream-PPA evidence; physical board 
 | --- | --- |
 | `x4_720p15_scheduler_fps` | `PASS_WITH_SCOPE` |
 | `x2_720p4_scheduler_fps` | `PASS_WITH_SCOPE` |
+| `x2_direct_xsim_replay` | `PASS_WITH_SCOPE` |
 | `x2_720p20_scheduler_fps` | `NOT_CLAIMED` |
 | `true2x2_bitstream_ppa` | `PASS_WITH_SCOPE` |
 | `physical_board_720p_output` | `NOT_CLAIMED` |

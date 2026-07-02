@@ -91,7 +91,9 @@ def main() -> int:
     ]), "x4 720p15 scheduler-level FPS closure and x2 boundary")
     add("states_x2_720p4_fps_closure", all(token in text for token in [
         "evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md",
+        "evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md",
         "x2 720p4",
+        "direct `xvlog/xelab/xsim`",
         "4.483",
         "10.789%",
         "888 DSP",

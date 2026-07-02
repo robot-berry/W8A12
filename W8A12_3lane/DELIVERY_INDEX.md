@@ -58,6 +58,7 @@
 | packed 2-D x4 720p15 scheduler | `rtl/span/w8a12_packed2d_perf_scheduler.v`、`tools/check_x4_720p15_fps_closure.py` | scheduler-level FPS closure PASS；`24x64` 为最低资源点 15.070fps/792 DSP，`24x72` 为推荐闭合点 17.501fps/888 DSP、15fps 余量 14.291%；证据 `evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md` |
 | packed 2-D x2 720p4 scheduler | `rtl/span/w8a12_packed2d_perf_scheduler.v`、`tools/check_x2_720p4_fps_closure.py` | 降目标 scheduler-level FPS closure PASS；`24x72` 为推荐闭合点 4.483fps/888 DSP、4fps 余量 10.789%；`24x64` 为 3.861fps 低资源边界但不达 4fps；证据 `evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md` |
 | packed 2-D x2 720p20 scheduler | `rtl/span/w8a12_packed2d_perf_scheduler.v`、`sim/tb_w8a12_packed2d_x2_720p20_perf_scheduler.sv` | scheduler-level xsim 已补充；900-DSP 门限下 20fps FAIL，证据 `evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
+| packed 2-D x2 direct xsim replay | `scripts/run_xsim_direct_w8a12_packed2d_x2_720p20_perf_scheduler.ps1` | 不启动新的 Vivado batch/project，直接调用 `xvlog/xelab/xsim` 复跑同一 scheduler testbench；复跑结果与 Vivado batch summary 一致，证据 `evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md` |
 
 ## 4. 上板和 PPA 汇报
 
@@ -136,7 +137,7 @@
 - bitstream/PPA gate：`evidence/bitstream_ppa_gate/summary.md`，用于“无需真实上板，只看 bitstream + 仿真 + PPA”的赛题评审口径。
 - 赛题提交口径门禁：`evidence/contest_scope_readiness/summary.md`，将报告/PPA 可提交范围和严格 board-validation 缺口分开，避免把 4 个真实上板 validation 后续项误判为无插板评审口径下的阻断项。
 - 赛题口径提交包：`evidence/contest_scope_package/summary.md`，生成 `PASS_WITH_SCOPE` 的确定性包摘要；严格上板归档仍保留 `INCOMPLETE` 风险说明。
-- packed 2-D scheduler 性能边界：x4 720p15 scheduler-level closure PASS，推荐配置为 `24x72`、17.501fps @250MHz、888 DSP，最低资源配置为 `24x64`、15.070fps、792 DSP；x2 降目标 720p4 scheduler-level closure PASS，推荐配置为 `24x72`、4.483fps @250MHz、888 DSP，`24x64` 仅为 3.861fps 低资源边界；x2 720p20 scheduler-level 已补充但 900-DSP 门限下 FAIL，证据 `evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`、`evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md`、`evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md`。
+- packed 2-D scheduler 性能边界：x4 720p15 scheduler-level closure PASS，推荐配置为 `24x72`、17.501fps @250MHz、888 DSP，最低资源配置为 `24x64`、15.070fps、792 DSP；x2 降目标 720p4 scheduler-level closure PASS，推荐配置为 `24x72`、4.483fps @250MHz、888 DSP，`24x64` 仅为 3.861fps 低资源边界；x2 720p20 scheduler-level 已补充但 900-DSP 门限下 FAIL，且新增 direct `xvlog/xelab/xsim` 复跑证据避免后台实现任务期间再启动 Vivado batch。证据 `evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`、`evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md`、`evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md`。
 - x2 W8A12 export/fixed reference：`evidence/x2/w8a12_export/summary.md`、`evidence/x2/reference/summary.md`、`evidence/x2/reference_validation/validation.md`。
 - x4/x2 传统插值、质量对比和画质指标闭环计划：`evidence/quality_baseline/`、`evidence/quality_comparison/summary.md`、`evidence/quality_metric_completion/summary.md`。
 

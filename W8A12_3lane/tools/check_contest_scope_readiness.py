@@ -131,6 +131,34 @@ def check_x2_fps() -> tuple[bool, dict]:
     }
 
 
+def check_x2_direct_xsim_replay() -> tuple[bool, dict]:
+    data = read_json("evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.json")
+    if data is None:
+        return False, {"status": "missing"}
+    candidates = {item.get("candidate"): item for item in data.get("candidates", [])}
+    rec = candidates.get("24x72", {})
+    boundary = candidates.get("24x64", {})
+    passed = (
+        data.get("status") == "PASS"
+        and data.get("runner") == "direct_xvlog_xelab_xsim"
+        and bool(data.get("matches_vivado_batch_summary"))
+        and data.get("target_status") == "FAIL"
+        and bool(rec.get("resource_gate"))
+        and int(rec.get("estimated_dsp", 99999)) <= 900
+        and int(rec.get("fps_x1000", 0)) == 4483
+        and not bool(rec.get("pass20"))
+        and int(boundary.get("fps_x1000", 0)) == 3861
+    )
+    return passed, {
+        "status": data.get("status"),
+        "runner": data.get("runner"),
+        "matches_vivado_batch_summary": data.get("matches_vivado_batch_summary"),
+        "target_status": data.get("target_status"),
+        "recommended_24x72": rec,
+        "boundary_24x64": boundary,
+    }
+
+
 def check_strict_audit_gap_scope() -> tuple[bool, dict]:
     data = read_json("evidence/delivery_audit/contest_delivery_audit.json")
     if data is None:
@@ -283,6 +311,9 @@ def build_summary() -> dict:
     passed, detail = check_x2_fps()
     add(checks, "fps.x2_720p4_scheduler_closure", passed, "evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.json", detail)
 
+    passed, detail = check_x2_direct_xsim_replay()
+    add(checks, "fps.x2_direct_xsim_replay", passed, "evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.json", detail)
+
     passed, detail = check_strict_audit_gap_scope()
     add(checks, "scope.strict_audit_gaps_are_board_only", passed, "evidence/delivery_audit/contest_delivery_audit.json", detail)
 
@@ -298,6 +329,7 @@ def build_summary() -> dict:
         "claims": {
             "x4_720p15_scheduler_fps": "PASS_WITH_SCOPE",
             "x2_720p4_scheduler_fps": "PASS_WITH_SCOPE",
+            "x2_direct_xsim_replay": "PASS_WITH_SCOPE",
             "x2_720p20_scheduler_fps": "NOT_CLAIMED",
             "true2x2_bitstream_ppa": "PASS_WITH_SCOPE",
             "physical_board_720p_output": "NOT_CLAIMED",

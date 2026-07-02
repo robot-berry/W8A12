@@ -24,6 +24,7 @@
 | --- | --- | --- | --- |
 | x4 720p15 | packed 2-D scheduler-level xsim | PASS：`24x64` 为 15.070fps，`24x72` 为 17.501fps @250MHz；仍非完整像素 RTL/板端 FPS | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md` |
 | x2 720p20 | packed 2-D scheduler-level xsim | FAIL：900-DSP 门限内 `24x64/24x72` 只有 3.861/4.483fps；`48x144` 为 17.223fps 且 DSP=3504 超门限 | `evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
+| x2 direct xsim replay | direct `xvlog/xelab/xsim` | PASS：不启动新的 Vivado batch/project，复跑结果与 Vivado batch summary 一致；仍不声明 x2 720p20 达成 | `evidence/sim_fps_design_space/packed2d_x2_direct_xsim_replay/summary.md` |
 
 ## 最新上板汇报
 

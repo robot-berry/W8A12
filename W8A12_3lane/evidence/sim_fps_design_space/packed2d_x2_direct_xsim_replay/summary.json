@@ -1,0 +1,66 @@
+{
+    "status":  "PASS",
+    "runner":  "direct_xvlog_xelab_xsim",
+    "stage":  "packed2d_x2_720p20_perf_scheduler_direct_replay",
+    "scope":  "Direct xsim replay of the x2 packed 2-D scheduler/performance-model evidence without starting a Vivado batch project",
+    "model":  "REDS SPAN x2 F48 W8A12, 22 convolution layers",
+    "frame":  "640x360 LR -\u003e 1280x720 SR",
+    "clock_mhz":  250,
+    "dsp_gate":  "XC7Z045/ZC706 900 DSP planning gate",
+    "target_status":  "FAIL",
+    "resource_gated_candidate_pass20":  false,
+    "matches_vivado_batch_summary":  true,
+    "mismatch_fields_vs_batch_summary":  [
+
+                                         ],
+    "candidates":  [
+                       {
+                           "candidate":  "24x64",
+                           "output_lanes":  24,
+                           "tap_lanes":  64,
+                           "estimated_dsp":  792,
+                           "cycles_per_lr_pixel":  281,
+                           "frame_pixels":  230400,
+                           "frame_cycles":  64742400,
+                           "fps_x1000":  3861,
+                           "fps":  3.861,
+                           "pass15":  false,
+                           "pass20":  false,
+                           "pass30":  false,
+                           "resource_gate":  true
+                       },
+                       {
+                           "candidate":  "24x72",
+                           "output_lanes":  24,
+                           "tap_lanes":  72,
+                           "estimated_dsp":  888,
+                           "cycles_per_lr_pixel":  242,
+                           "frame_pixels":  230400,
+                           "frame_cycles":  55756800,
+                           "fps_x1000":  4483,
+                           "fps":  4.483,
+                           "pass15":  false,
+                           "pass20":  false,
+                           "pass30":  false,
+                           "resource_gate":  true
+                       },
+                       {
+                           "candidate":  "48x144",
+                           "output_lanes":  48,
+                           "tap_lanes":  144,
+                           "estimated_dsp":  3504,
+                           "cycles_per_lr_pixel":  63,
+                           "frame_pixels":  230400,
+                           "frame_cycles":  14515200,
+                           "fps_x1000":  17223,
+                           "fps":  17.223,
+                           "pass15":  true,
+                           "pass20":  false,
+                           "pass30":  false,
+                           "resource_gate":  false
+                       }
+                   ],
+    "build_dir":  "G:\\UESTC\\feitengspan1\\build\\xsim_direct_w8a12_packed2d_x2_720p20_perf_scheduler",
+    "simulate_log":  "G:\\UESTC\\feitengspan1\\build\\xsim_direct_w8a12_packed2d_x2_720p20_perf_scheduler\\simulate.log",
+    "source_summary_json":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\sim_fps_design_space\\packed2d_x2_720p20_perf_scheduler\\summary.json"
+}

@@ -4,7 +4,7 @@
 
 当前状态分为两个口径：
 
-- 赛题提交口径：以 `evidence/contest_scope_readiness/summary.md` 为准，覆盖模型/量化、RTL 仿真、PDF/Word 报告、x4 720p15 scheduler FPS、x2 720p4 降目标 scheduler FPS、bitstream/PPA 和提交包可追溯性。
+- 赛题提交口径：以 `evidence/contest_scope_readiness/summary.md` 为准，覆盖模型/量化、RTL 仿真、PDF/Word 报告、x4 720p15 scheduler FPS、x2 720p4 降目标 scheduler FPS、x2 direct xsim 复跑、bitstream/PPA 和提交包可追溯性。
 - 严格上板口径：以 `evidence/delivery_audit/contest_delivery_audit.md` 为准，仍要求 A5/A6/A7/x2 的真实板端 `validation.md Status: PASS`。
 
 严格上板审计入口：
@@ -94,7 +94,7 @@ W8A12_3lane/evidence/board_reports/x2_720p/validation.md
 | --- | --- | --- |
 | 功能实现精准无误 | A0-A4/top summary、x2 fixed reference | board bit-exact |
 | 文档清晰、模块划分合理 | `docs/` 全部架构/流程文档 | 完整上板章节随实测更新 |
-| 量化指标和性能分析 | 训练 PSNR、A4/top OOC、PPA summary、传统插值 baseline、x4 720p15 scheduler-level FPS closure、x2 720p4 降目标 scheduler-level FPS closure | impl timing、board FPS/power、x2/x4 board PSNR/SSIM |
+| 量化指标和性能分析 | 训练 PSNR、A4/top OOC、PPA summary、传统插值 baseline、x4 720p15 scheduler-level FPS closure、x2 720p4 降目标 scheduler-level FPS closure、x2 direct xsim 复跑 | impl timing、board FPS/power、x2/x4 board PSNR/SSIM |
 | 验证方案与用例 | A0-A4 分层门禁、failure rollback、board report validator | A5-A7/x2 board validation PASS |
 | 面积和功耗 | MAC core、single-lane、3-lane scheduler 和 top shell XC7Z045 OOC gate PASS | 整机 bitstream 的实测资源/功耗 |
 

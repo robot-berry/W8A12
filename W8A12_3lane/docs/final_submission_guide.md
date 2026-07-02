@@ -30,6 +30,7 @@
 | W8A12 量化 | 权重 INT8、激活 12-bit；x2 W8A12 export/fixed reference/validation PASS |
 | RTL 分层验证 | A0/A1/A2/A3/A4/top shell 证据齐全，分层 reference/hash/xsim/OOC 已收录 |
 | x4 FPS | 720p x4 scheduler/performance-model：`24x72` 为 17.501 FPS @250MHz、888 DSP；`24x64` 为 15.070 FPS、792 DSP |
+| x2 FPS 复核 | 720p x2 direct `xvlog/xelab/xsim` 复跑与 Vivado batch summary 一致；`24x72` 为 4.483 FPS @250MHz、888 DSP，仍不声明 x2 720p20 |
 | x2 FPS | 降目标 720p x2 scheduler/performance-model：`24x72` 为 4.483 FPS @250MHz、888 DSP |
 | PPA | A4 3-lane scheduler OOC 为 LUT 123182、FF 256222、DSP 672、WNS 1.188ns，低于 XC7Z045/ZC706 门限 |
 | bitstream/PPA gate | true2x2/JTAG-W8A12 bitstream implementation 为 `PASS_WITH_SCOPE`，资源为 LUT 38803、FF 116441、BRAM 311、DSP 128、WNS 12.517ns |
