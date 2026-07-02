@@ -1,0 +1,28 @@
+﻿{
+    "status":  "READY",
+    "output_dir":  "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\goal_continue_20260703_fullprobe",
+    "precondition_summary":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\jtag_precondition_current",
+    "usb_known_jtag_candidate_count":  3,
+    "vivado_target_count":  1,
+    "vivado_probe_skipped":  false,
+    "run_stagehash_acceptance_requested":  false,
+    "steps":  {
+                  "usb":  {
+                              "exit":  0,
+                              "log":  "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\goal_continue_20260703_fullprobe\\usb_step.log",
+                              "output_dir":  "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\goal_continue_20260703_fullprobe\\usb",
+                              "known_jtag_candidate_count":  3
+                          },
+                  "vivado_probe":  {
+                                       "exit":  0,
+                                       "log":  "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\goal_continue_20260703_fullprobe\\vivado_probe_step.log",
+                                       "output_dir":  "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\goal_continue_20260703_fullprobe\\vivado_probe"
+                                   },
+                  "precondition":  {
+                                       "exit":  0,
+                                       "log":  "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\goal_continue_20260703_fullprobe\\precondition_summary_step.log",
+                                       "output_dir":  "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\board_probe\\jtag_precondition_current",
+                                       "status":  "READY"
+                                   }
+              }
+}

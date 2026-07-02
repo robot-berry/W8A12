@@ -1,0 +1,21 @@
+﻿{
+    "status":  "FAIL",
+    "scale":  4,
+    "img_w":  2,
+    "output_w":  8,
+    "output_h":  8,
+    "input_raw":  "G:\\UESTC\\feitengspan1\\runs\\reds_span_quant_plan\\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\\reference\\input.rgb",
+    "board_raw":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg2_src_boundary_acceptance_20260703_goal_continue\\smoke\\board_output.rgb",
+    "reference_raw":  "G:\\UESTC\\feitengspan1\\runs\\reds_span_quant_plan\\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\\reference.rgb",
+    "input_png":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg2_src_boundary_acceptance_20260703_goal_continue\\smoke\\compare\\w8a12_input_x4_2x2.png",
+    "board_png":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg2_src_boundary_acceptance_20260703_goal_continue\\smoke\\compare\\w8a12_board_x4_2x2.png",
+    "reference_png":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg2_src_boundary_acceptance_20260703_goal_continue\\smoke\\compare\\w8a12_reference_x4_2x2.png",
+    "preview_png":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg2_src_boundary_acceptance_20260703_goal_continue\\smoke\\compare\\jtag_w8a12_validation_preview.png",
+    "total_bytes":  192,
+    "mismatch_bytes":  188,
+    "max_channel_diff":  89,
+    "mae":  21.6875,
+    "mse":  770.44791666666663,
+    "psnr_db":  19.263370757223669,
+    "mean_signed_diff":  -6.291666666666667
+}

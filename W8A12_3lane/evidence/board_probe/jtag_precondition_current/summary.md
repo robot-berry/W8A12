@@ -1,22 +1,21 @@
 # JTAG Precondition Summary
 
-Status: BLOCKED
+Status: READY
 
 | Field | Value |
 | --- | --- |
-| Generated at | `2026-06-30 11:38:24` |
+| Generated at | `2026-07-03 03:00:45` |
 | USB match count | `6` |
 | USB known JTAG candidate count | `3` |
 | PnP history known candidate count | `4` |
 | PnP history known VID/PID count | `3` |
-| Vivado target count | `0` |
-| USB evidence | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\dbg2_src_boundary_current\usb\usb_jtag_devices.json` |
-| Vivado probe dir | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\dbg2_src_boundary_current\vivado_probe` |
+| Vivado target count | `1` |
+| USB evidence | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\goal_continue_20260703_fullprobe\usb\usb_jtag_devices.json` |
+| Vivado probe dir | `G:\UESTC\feitengspan1\board_runs\w8a12_board_recovery_preflight\goal_continue_20260703_fullprobe\vivado_probe` |
 
 ## Interpretation
 
-Board programming is currently blocked before Vivado/JTAG use: no online known Xilinx/FTDI JTAG candidate is visible, or Vivado target count is zero.
-Historical Xilinx/FTDI-style devices are present only in PnP history, so this is a current online enumeration/driver/cable/power issue rather than a W8A12 bitstream or algorithm result.
+Vivado sees at least one hardware target. Stage-hash programming and register readback can proceed.
 
 ## Current Online USB Matches
 
@@ -40,4 +39,4 @@ Historical Xilinx/FTDI-style devices are present only in PnP history, so this is
 
 ## Required Next Step
 
-Restore board power/cable/JTAG mode/driver until the USB known candidate count is nonzero and `probe_vivado_hw_targets.ps1` reports `VIVADO_HW_TARGET_COUNT=1` or higher. Then run the stage-hash true2x2 acceptance wrapper.
+Run the stage-hash true2x2 acceptance wrapper or the recovery preflight with `-RunStageHashAcceptance`.

@@ -396,15 +396,16 @@ board_runs/jtag_w8a12_tile_writer/true2x2_dbg0_nondebug_acceptance_20260629/
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_dbg2_source_boundary_acceptance.ps1
 ```
 
-该脚本会先执行 board recovery preflight；若 `jtag_precondition_current` 为 `READY`，自动使用上述 dbg2 位流进入 true2x2 上板验收；若板卡不可见，则生成 `BLOCKED` summary，不误入烧录。2026-07-03 已新增 `-SkipVivadoProbe` 安全入口：当后台 Vivado bitstream 任务仍在运行时，只刷新 USB-only 证据，不启动会触发 cleanup 的 Vivado target probe。当前 USB-only 实测为 `USB_READY`：USB known JTAG candidate `3`，Vivado target `not_checked`；等现有 Vivado 任务结束后再跑 target probe，要求 `VIVADO_HW_TARGET_COUNT >= 1`。
+该脚本会先执行 board recovery preflight；若 `jtag_precondition_current` 为 `READY`，自动使用上述 dbg2 位流进入 true2x2 上板验收；若板卡不可见，则生成 `BLOCKED` summary，不误入烧录。2026-07-03 已新增 `-SkipVivadoProbe` 安全入口：当后台 Vivado bitstream 任务仍在运行时，只刷新 USB-only 证据，不启动会触发 cleanup 的 Vivado target probe。
 
-板子恢复可见后，重新运行上述一键脚本即可；若 dbg2 完整输出，则比较 bank1 source-boundary hash，用于判断错误是在 halo/conv1/source tap 之前，还是在 `b1_m_feat` replay/tail 交界之后。
+2026-07-03 full probe 已恢复为 `READY`：USB known JTAG candidate `3`，Vivado target count `1`。随后 `dbg2 current source-b6` 上板验收完成，PSU init PASS、寄存器读回 PASS、输出完整 `192/192`，但 compare FAIL `188/192`、PSNR `19.263 dB`，并出现 `error=0x0000000C`。因此本轮 hash 不能直接作为纯 datapath 根因，应视为 debug probe 可能侵入的失败证据。下一步先回到非侵入 stagehash baseline 或更低侵入 single-boundary probe，要求 `error=0` 后再把 first mismatching boundary 作为 RTL 修改依据。
 
 证据：
 
 ```text
 W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_prepare_20260629.md
 W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_current/summary.md
+W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md
 build/xsim_jtag_w8a12_tile_writer_raw_compare_dbg2_src_boundary_bankread/
 vivado/jwtw_true2x2_jtagaxi_dbg2_src_boundary_20260629/
 ```
@@ -658,11 +659,11 @@ x2.board
 7. 运行 `tools/create_contest_scope_package.py`，生成赛题口径提交包摘要；严格上板归档继续保留 `INCOMPLETE` 风险说明。
 8. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
 
-当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 USB-only 复测为 `USB_READY`，USB known JTAG candidate count=3，但 Vivado target 尚未在后台实现任务结束后安全复测；待 `VIVADO_HW_TARGET_COUNT>=1` 后继续 dbg2/source-boundary 上板，读取 `tail_feat0/src_feat0/src_b1`：
+当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 full probe 已恢复为 `READY`，USB known JTAG candidate count=3，Vivado target count=1。随后 dbg2/source-boundary 上板已执行，读取到完整输出但 compare 失败，且 `error=0x0000000C`，因此下一步不从 writer/tail 直接改 RTL，而是回退到更低侵入 single-boundary probe：
 
 ```text
 Historical stage-hash: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md
-Current dbg2/source-boundary: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_current/summary.md
+Current dbg2/source-boundary: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md
 Current blocker: USB known JTAG candidate count = 0, Vivado target count = 0 after forced probe
 Next command after recovery: W8A12_3lane/scripts/run_w8a12_dbg2_source_boundary_acceptance.ps1
 ```

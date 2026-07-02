@@ -13,9 +13,9 @@
   ],
   "latest_delivery_run": "evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md",
   "pdf_status": "PASS",
-  "pdf_sha256": "6324be97fff8bbc66d393f679b9ed2c81f889cd50a549bfa16fb0fc8e1ea6429",
+  "pdf_sha256": "882a6b311289456b59642aea3d4c820c772148c1530118d5a53140def6a7e200",
   "docx_status": "PASS",
-  "docx_sha256": "66e3f16c44926fcf9e238558329fbf0a30be18c068b8b1ef1a88a2e60ff1578a",
+  "docx_sha256": "cd64f677ca8764becef39cfbed2b457d316537959391fd817f4650c92fc81df1",
   "rows": [
     {
       "area": "交付物1 模型/训练/量化/转换",
@@ -115,9 +115,10 @@
         "evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md",
         "evidence/delivery_audit/missing_evidence_plan.md",
         "evidence/board_probe/jtag_recovery_checklist/summary.md",
-        "evidence/board_probe/jtag_precondition_usb_only_current/summary.md"
+        "evidence/board_probe/jtag_precondition_current/summary.md",
+        "evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md"
       ],
-      "note": "当前 USB-only 前置为 USB_READY：USB known JTAG candidate=3，Vivado target=not_checked；等后台 Vivado 任务结束后再安全复测 target，target>=1 后进入 stage-hash/dbg2 上板验收。"
+      "note": "当前 full precondition 为 READY：USB known JTAG candidate=3，Vivado target=1；已可进入 stage-hash/dbg2 小图上板验收，但真实 board validation PASS 仍取决于后续 compare/PSNR/FPS 结果。"
     },
     {
       "area": "评分点 面积/功耗",

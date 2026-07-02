@@ -53,6 +53,17 @@ def latest_delivery_run_summary() -> str:
 
 
 def jtag_recovery_note() -> str:
+    current = load_json(JTAG_CURRENT_JSON, {})
+    status = current.get("status", "UNKNOWN")
+    if status == "READY":
+        known = current.get("usb_known_jtag_candidate_count", "unknown")
+        target = current.get("vivado_target_count", "unknown")
+        return (
+            f"当前 full precondition 为 READY：USB known JTAG candidate={known}，"
+            f"Vivado target={target}；已可进入 stage-hash/dbg2 小图上板验收，"
+            "但真实 board validation PASS 仍取决于后续 compare/PSNR/FPS 结果。"
+        )
+
     usb_only = load_json(JTAG_USB_ONLY_JSON, {})
     if usb_only.get("status") == "USB_READY":
         known = usb_only.get("usb_known_jtag_candidate_count", "unknown")
@@ -63,8 +74,6 @@ def jtag_recovery_note() -> str:
             "target>=1 后进入 stage-hash/dbg2 上板验收。"
         )
 
-    current = load_json(JTAG_CURRENT_JSON, {})
-    status = current.get("status", "UNKNOWN")
     known = current.get("usb_known_jtag_candidate_count", "unknown")
     target = current.get("vivado_target_count", "unknown")
     return (
@@ -221,7 +230,8 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                 latest_run,
                 "evidence/delivery_audit/missing_evidence_plan.md",
                 "evidence/board_probe/jtag_recovery_checklist/summary.md",
-                "evidence/board_probe/jtag_precondition_usb_only_current/summary.md",
+                "evidence/board_probe/jtag_precondition_current/summary.md",
+                "evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md",
             ],
             jtag_recovery_note(),
         ),

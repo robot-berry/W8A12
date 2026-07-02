@@ -1,0 +1,79 @@
+{
+  "status": "FAIL_BOARD_NUMERIC_MISMATCH_DBG2_ERROR",
+  "generated_at": "2026-07-03 03:06 CST",
+  "scope": "true2x2 x4 JTAG W8A12 dbg2 current source-b6 board run",
+  "precondition": {
+    "status": "READY",
+    "usb_known_jtag_candidate_count": 3,
+    "vivado_target_count": 1
+  },
+  "board_run": {
+    "psu_init": "PASS",
+    "smoke": "FAIL",
+    "register_read": "PASS",
+    "output_bytes": 192,
+    "expected_output_bytes": 192,
+    "frame_done": 1,
+    "input_counter": 4,
+    "output_counter": 64,
+    "error_flags": "0x0000000C",
+    "frame_cycles": 3762894,
+    "mismatch_bytes": 188,
+    "total_bytes": 192,
+    "max_channel_diff": 89,
+    "psnr_db": 19.2633707572237
+  },
+  "hashes": {
+    "src_feat0_hash": {
+      "expected": "0xf7f21881",
+      "observed": "0x6576E40D",
+      "result": "MISMATCH"
+    },
+    "src_b1_hash": {
+      "expected": "0x16ede581",
+      "observed": "0x227F387A",
+      "result": "MISMATCH"
+    },
+    "src_b6_act1_hash": {
+      "expected": "0xc7a096fb",
+      "observed": "0x66F9655B",
+      "result": "MISMATCH"
+    },
+    "tail_b1_hash": {
+      "expected": "0x16ede1c2",
+      "observed": "0x227F3C39",
+      "result": "MISMATCH"
+    },
+    "tail_b6_act1_hash": {
+      "expected": "0xc7a092b8",
+      "observed": "0x66F96118",
+      "result": "MISMATCH"
+    },
+    "tail_rgb_q_hash": {
+      "expected": "0xb712a61b",
+      "observed": "0x2FCBACF2",
+      "result": "MISMATCH"
+    },
+    "writeback_hash": {
+      "expected": "0x61d3ea1d",
+      "observed": "0x135E672B",
+      "result": "MISMATCH"
+    }
+  },
+  "interpretation": "Board/JTAG/PSU/input/output/register read are functional. Because error_flags is 0x0000000C, this run is treated as an intrusive dbg2 evidence run and not as a clean datapath first-boundary proof.",
+  "next_actions": [
+    "Rerun the non-intrusive stagehash baseline after target is READY.",
+    "Build a lower-intrusion single-boundary probe that exposes only one source boundary group.",
+    "Use first mismatching boundary as RTL patch input only after error_flags is 0, frame_done is 1, and output bytes are complete."
+  ],
+  "artifacts": {
+    "analysis_md": "analysis.md",
+    "wrapper_summary": "summary.md",
+    "preflight_summary": "artifacts/preflight_summary.md",
+    "stagehash_acceptance_summary": "artifacts/stagehash_acceptance_summary.md",
+    "smoke_summary": "artifacts/smoke_summary.md",
+    "compare_summary": "artifacts/compare_summary.md",
+    "reg_read_summary": "artifacts/reg_read_summary.md",
+    "preview_png": "artifacts/jtag_w8a12_validation_preview.png"
+  }
+}
