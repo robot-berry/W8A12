@@ -2,13 +2,22 @@
 
 本文档面向赛题二“AI 超分辨率模型高效硬件加速器设计与实现”的评审提交包，说明 `W8A12_3lane/` 中各交付物和证据的位置。
 
-当前状态以严格审计为准：
+当前状态分为两个口径：
+
+- 赛题提交口径：以 `evidence/contest_scope_readiness/summary.md` 为准，覆盖模型/量化、RTL 仿真、PDF/Word 报告、x4 720p15 scheduler FPS、x2 720p4 降目标 scheduler FPS、bitstream/PPA 和提交包可追溯性。
+- 严格上板口径：以 `evidence/delivery_audit/contest_delivery_audit.md` 为准，仍要求 A5/A6/A7/x2 的真实板端 `validation.md Status: PASS`。
+
+严格上板审计入口：
 
 ```text
 W8A12_3lane/evidence/delivery_audit/contest_delivery_audit.md
 ```
 
-若该文件显示 `状态：INCOMPLETE`，则本目录只能作为阶段性交付包，不能声明赛题最终交付完成。
+若该文件显示 `状态：INCOMPLETE`，代表真实板端验证仍未闭合；若评审口径不要求真实插板运行，则应同时查看赛题提交口径门禁：
+
+```text
+W8A12_3lane/evidence/contest_scope_readiness/summary.md
+```
 
 ## 1. 赛题目标对应关系
 
@@ -21,6 +30,7 @@ W8A12_3lane/evidence/delivery_audit/contest_delivery_audit.md
 | 可提交报告 | Markdown + PDF + Word 赛题报告 | `docs/contest_submission_report.md`、`output/pdf/W8A12_3lane_contest_submission_report.pdf`、标准 Word `output/docx/W8A12_3lane_contest_submission_report.docx`、当前完整 Word `output/docx/W8A12_3lane_contest_submission_report_complete_20260701.docx`、`evidence/report_pdf/summary.md`、`evidence/report_docx_complete_20260701/summary.md` |
 | 评审证据矩阵 | 交付物/评分点/证据/缺口总览 | `evidence/delivery_matrix/summary.md` |
 | bitstream/PPA 门槛 | 无真实上板要求时的 bitstream、仿真、实现后资源/时序证据 | `evidence/bitstream_ppa_gate/summary.md` |
+| 赛题提交口径门禁 | 将报告、RTL 仿真、PPA、FPS scheduler、质量对比和真实上板缺口分开审计 | `evidence/contest_scope_readiness/summary.md` |
 | 上板验证 | A5 32x32、A6 64x64、A7 720p、x2 720p | 上板 report 工具已建立；真实报告缺 |
 
 ## 2. 交付物 1：模型结构、训练、量化和转换工具
@@ -98,6 +108,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_deli
 python W8A12_3lane\tools\audit_contest_delivery.py
 python W8A12_3lane\tools\generate_missing_evidence_plan.py
 python W8A12_3lane\tools\collect_submission_package.py
+python W8A12_3lane\tools\check_contest_scope_readiness.py
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_pdf.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_docx.ps1
 python W8A12_3lane\tools\create_submission_archive.py --allow-incomplete
@@ -110,9 +121,9 @@ python W8A12_3lane\tools\collect_delivery_manifest.py
 W8A12_3lane/evidence/submission_package/archive/summary.md
 ```
 
-## 7. 最终提交前硬条件
+## 7. 严格上板最终提交前硬条件
 
-最终提交前必须全部满足：
+若评审明确要求真实板端输出，则最终提交前必须全部满足：
 
 ```text
 contest_delivery_audit.md: 状态：PASS

@@ -1,0 +1,309 @@
+{
+  "status": "PASS_WITH_SCOPE",
+  "scope": "Contest report / RTL simulation / bitstream-PPA evidence. Physical board validation remains an engineering follow-up.",
+  "strict_board_validation_status": "INCOMPLETE",
+  "non_blocking_board_validation_gaps": [
+    "evidence/board_reports/a5_32x32/validation.md",
+    "evidence/board_reports/a6_64x64/validation.md",
+    "evidence/board_reports/a7_720p_x4/validation.md",
+    "evidence/board_reports/x2_720p/validation.md"
+  ],
+  "claims": {
+    "x4_720p15_scheduler_fps": "PASS_WITH_SCOPE",
+    "x2_720p4_scheduler_fps": "PASS_WITH_SCOPE",
+    "x2_720p20_scheduler_fps": "NOT_CLAIMED",
+    "true2x2_bitstream_ppa": "PASS_WITH_SCOPE",
+    "physical_board_720p_output": "NOT_CLAIMED"
+  },
+  "checks": [
+    {
+      "name": "file:README.md",
+      "pass": true,
+      "evidence": "README.md",
+      "detail": "required contest document"
+    },
+    {
+      "name": "file:WORKFLOW.md",
+      "pass": true,
+      "evidence": "WORKFLOW.md",
+      "detail": "required contest document"
+    },
+    {
+      "name": "file:DELIVERY_INDEX.md",
+      "pass": true,
+      "evidence": "DELIVERY_INDEX.md",
+      "detail": "required contest document"
+    },
+    {
+      "name": "file:docs/contest_submission_readme.md",
+      "pass": true,
+      "evidence": "docs/contest_submission_readme.md",
+      "detail": "required contest document"
+    },
+    {
+      "name": "file:docs/contest_submission_report.md",
+      "pass": true,
+      "evidence": "docs/contest_submission_report.md",
+      "detail": "required contest document"
+    },
+    {
+      "name": "file:docs/w8a12_3lane_architecture.md",
+      "pass": true,
+      "evidence": "docs/w8a12_3lane_architecture.md",
+      "detail": "required contest document"
+    },
+    {
+      "name": "file:docs/bank_mapping_rules.md",
+      "pass": true,
+      "evidence": "docs/bank_mapping_rules.md",
+      "detail": "required contest document"
+    },
+    {
+      "name": "file:docs/board_report_flow.md",
+      "pass": true,
+      "evidence": "docs/board_report_flow.md",
+      "detail": "required contest document"
+    },
+    {
+      "name": "file:docs/failure_rollback_flow.md",
+      "pass": true,
+      "evidence": "docs/failure_rollback_flow.md",
+      "detail": "required contest document"
+    },
+    {
+      "name": "model.full_reds_train_val_scope",
+      "pass": true,
+      "evidence": "docs/contest_submission_report.md",
+      "detail": "full train/val scope stated"
+    },
+    {
+      "name": "quality.fp32_targets",
+      "pass": true,
+      "evidence": "evidence/quality_comparison/summary.json",
+      "detail": {
+        "x4_span_fp32_psnr_rgb_db": 28.3118,
+        "x2_span_fp32_psnr_rgb_db": 34.4297
+      }
+    },
+    {
+      "name": "quality.file:evidence/quality_baseline/x4_interpolation/summary.md",
+      "pass": true,
+      "evidence": "evidence/quality_baseline/x4_interpolation/summary.md",
+      "detail": "quality/baseline evidence"
+    },
+    {
+      "name": "quality.file:evidence/quality_baseline/x2_interpolation/summary.md",
+      "pass": true,
+      "evidence": "evidence/quality_baseline/x2_interpolation/summary.md",
+      "detail": "quality/baseline evidence"
+    },
+    {
+      "name": "quality.file:evidence/quality_comparison/summary.md",
+      "pass": true,
+      "evidence": "evidence/quality_comparison/summary.md",
+      "detail": "quality/baseline evidence"
+    },
+    {
+      "name": "quality.file:evidence/quality_metric_completion/summary.md",
+      "pass": true,
+      "evidence": "evidence/quality_metric_completion/summary.md",
+      "detail": "quality/baseline evidence"
+    },
+    {
+      "name": "x2.status:evidence/x2/w8a12_export/summary.json",
+      "pass": true,
+      "evidence": "evidence/x2/w8a12_export/summary.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "x2.status:evidence/x2/reference/summary.json",
+      "pass": true,
+      "evidence": "evidence/x2/reference/summary.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "x2.status:evidence/x2/reference_validation/validation.json",
+      "pass": true,
+      "evidence": "evidence/x2/reference_validation/validation.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "x2.status:evidence/x2/flow_static/summary.json",
+      "pass": true,
+      "evidence": "evidence/x2/flow_static/summary.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "rtl.layered_sim_and_ooc_evidence",
+      "pass": true,
+      "evidence": "evidence/reference + evidence/resource + evidence/top",
+      "detail": "all present"
+    },
+    {
+      "name": "gate.status:evidence/ppa_summary/summary.json",
+      "pass": true,
+      "evidence": "evidence/ppa_summary/summary.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "gate.status:evidence/bitstream_ppa_gate/summary.json",
+      "pass": true,
+      "evidence": "evidence/bitstream_ppa_gate/summary.json",
+      "detail": "PASS_WITH_SCOPE"
+    },
+    {
+      "name": "gate.status:evidence/report_static/summary.json",
+      "pass": true,
+      "evidence": "evidence/report_static/summary.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "gate.status:evidence/report_pdf/summary.json",
+      "pass": true,
+      "evidence": "evidence/report_pdf/summary.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "gate.status:evidence/report_docx_complete_20260701/summary.json",
+      "pass": true,
+      "evidence": "evidence/report_docx_complete_20260701/summary.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "gate.status:evidence/delivery_matrix/summary.json",
+      "pass": true,
+      "evidence": "evidence/delivery_matrix/summary.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "gate.status:evidence/github_upload_preflight/summary.json",
+      "pass": true,
+      "evidence": "evidence/github_upload_preflight/summary.json",
+      "detail": "PASS"
+    },
+    {
+      "name": "report.docx_black_font_audit",
+      "pass": true,
+      "evidence": "evidence/report_docx_complete_20260701/summary.json",
+      "detail": {
+        "status": "PASS",
+        "text_color_count": 748,
+        "non_black_text_colors": [],
+        "non_black_text_color_count": 0
+      }
+    },
+    {
+      "name": "fps.x4_720p15_scheduler_closure",
+      "pass": true,
+      "evidence": "evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.json",
+      "detail": {
+        "status": "PASS",
+        "closure_level": "scheduler/performance-model",
+        "recommended": {
+          "candidate": "24x72",
+          "output_lanes": 24,
+          "tap_lanes": 72,
+          "estimated_dsp": 888,
+          "cycles_per_lr_pixel": 248,
+          "frame_cycles": 14284800,
+          "fps": 17.501,
+          "fps_x1000": 17501,
+          "frame_cycle_slack_pct_of_15fps_budget": 14.291,
+          "passes_15fps": true,
+          "passes_20fps": false,
+          "passes_30fps": false
+        },
+        "minimum_resource": {
+          "candidate": "24x64",
+          "output_lanes": 24,
+          "tap_lanes": 64,
+          "estimated_dsp": 792,
+          "cycles_per_lr_pixel": 288,
+          "frame_cycles": 16588800,
+          "fps": 15.07,
+          "fps_x1000": 15070,
+          "frame_cycle_slack_pct_of_15fps_budget": 0.467,
+          "passes_15fps": true,
+          "passes_20fps": false,
+          "passes_30fps": false
+        }
+      }
+    },
+    {
+      "name": "fps.x2_720p4_scheduler_closure",
+      "pass": true,
+      "evidence": "evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.json",
+      "detail": {
+        "status": "PASS",
+        "closure_level": "scheduler/performance-model",
+        "recommended": {
+          "candidate": "24x72",
+          "output_lanes": 24,
+          "tap_lanes": 72,
+          "estimated_dsp": 888,
+          "resource_gate": true,
+          "cycles_per_lr_pixel": 242,
+          "frame_cycles": 55756800,
+          "fps": 4.483,
+          "fps_x1000": 4483,
+          "frame_cycle_slack_pct_of_4fps_budget": 10.789,
+          "passes_4fps": true,
+          "passes_15fps": false,
+          "passes_20fps": false,
+          "passes_30fps": false
+        },
+        "resource_boundary": {
+          "candidate": "24x64",
+          "output_lanes": 24,
+          "tap_lanes": 64,
+          "estimated_dsp": 792,
+          "resource_gate": true,
+          "cycles_per_lr_pixel": 281,
+          "frame_cycles": 64742400,
+          "fps": 3.861,
+          "fps_x1000": 3861,
+          "frame_cycle_slack_pct_of_4fps_budget": -3.588,
+          "passes_4fps": false,
+          "passes_15fps": false,
+          "passes_20fps": false,
+          "passes_30fps": false
+        },
+        "scope_boundary": "Not board-measured FPS and not full packed 2-D pixel RTL bit-exact closure. x2 720p20 remains FAIL under the 900-DSP gate."
+      }
+    },
+    {
+      "name": "scope.strict_audit_gaps_are_board_only",
+      "pass": true,
+      "evidence": "evidence/delivery_audit/contest_delivery_audit.json",
+      "detail": {
+        "strict_audit_status": "INCOMPLETE",
+        "strict_failed_paths": [
+          "evidence/board_reports/a5_32x32/validation.md",
+          "evidence/board_reports/a6_64x64/validation.md",
+          "evidence/board_reports/a7_720p_x4/validation.md",
+          "evidence/board_reports/x2_720p/validation.md"
+        ],
+        "non_blocking_for_contest_scope": [
+          "evidence/board_reports/a5_32x32/validation.md",
+          "evidence/board_reports/a6_64x64/validation.md",
+          "evidence/board_reports/a7_720p_x4/validation.md",
+          "evidence/board_reports/x2_720p/validation.md"
+        ]
+      }
+    },
+    {
+      "name": "scope.submission_missing_is_board_only",
+      "pass": true,
+      "evidence": "evidence/submission_package/submission_manifest.json",
+      "detail": {
+        "submission_manifest_status": "INCOMPLETE",
+        "missing_final_evidence": [
+          "evidence/board_reports/a5_32x32/validation.md",
+          "evidence/board_reports/a6_64x64/validation.md",
+          "evidence/board_reports/a7_720p_x4/validation.md",
+          "evidence/board_reports/x2_720p/validation.md"
+        ]
+      }
+    }
+  ]
+}

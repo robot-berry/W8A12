@@ -68,6 +68,11 @@
       "detail": "x2 lowered-target 720p4 scheduler-level FPS closure and x2 20fps boundary"
     },
     {
+      "name": "states_contest_scope_readiness_gate",
+      "pass": true,
+      "detail": "contest-scope readiness is separated from strict board-validation audit"
+    },
+    {
       "name": "states_rtl_evidence_hashes",
       "pass": true,
       "detail": "RTL/fixed reference hashes"

@@ -99,6 +99,13 @@ def main() -> int:
         "x2 720p20",
         "FAIL",
     ]), "x2 lowered-target 720p4 scheduler-level FPS closure and x2 20fps boundary")
+    add("states_contest_scope_readiness_gate", all(token in text for token in [
+        "evidence/contest_scope_readiness/summary.md",
+        "PASS_WITH_SCOPE",
+        "x4 720p15",
+        "x2 720p4",
+        "bitstream/PPA",
+    ]), "contest-scope readiness is separated from strict board-validation audit")
     add("states_rtl_evidence_hashes", all(token in text for token in [
         "0x080D3C47",
         "0xD12E1B43",

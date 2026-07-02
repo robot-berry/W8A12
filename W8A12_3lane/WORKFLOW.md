@@ -613,7 +613,7 @@ docs/failure_rollback_flow.md
 
 ## 13. 当前下一步
 
-当前离线门禁已推进到 `72 / 76`。新增赛题报告、PDF/Word 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查、board validation readiness、submission manifest/archive 和 evidence matrix 已通过，原严格交付审计剩余 4 项仍均为真实板端 validation：
+当前离线门禁已推进到 `72 / 76`。新增赛题报告、PDF/Word 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、stage-hash 上板流程静态检查、board validation readiness、submission manifest/archive、contest scope readiness 和 evidence matrix 已通过或纳入门禁，原严格交付审计剩余 4 项仍均为真实板端 validation：
 
 ```text
 a5.board_32x32
@@ -629,7 +629,8 @@ x2.board
 3. 汇总 A0/A1/A2/A3/A4/top shell 的 xsim、OOC utilization、timing 和资源占比。
 4. 对 PPA 表格明确标注统计范围：模块级 OOC、scheduler OOC、top shell OOC、真实板端估计/待测，不能把轻量 top shell 资源误写成完整 accelerator datapath 资源。
 5. 继续生成交付索引、硬件设计说明、验证方案和回退流程。
-6. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
+6. 运行 `tools/check_contest_scope_readiness.py`，把“赛题提交口径 PASS_WITH_SCOPE”和“严格 board-validation INCOMPLETE”分开记录。
+7. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
 
 当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；最新 dbg2/source-boundary 一键验收则因 USB known JTAG candidate count=0 处于 `BLOCKED`，待连接恢复后继续读 `tail_feat0/src_feat0/src_b1`：
 
@@ -753,6 +754,7 @@ evidence/resource/A4_3lane_mac_scheduler/a4_3lane_sim_summary.md
 evidence/resource/A4_single_lane_mac_scheduler_ooc/ooc_summary.md
 evidence/resource/A4_3lane_mac_scheduler_ooc/ooc_summary.md
 evidence/ppa_summary/summary.md
+evidence/contest_scope_readiness/summary.md
 evidence/report_static/summary.md
 evidence/x2/w8a12_export/summary.md
 evidence/x2/reference/summary.md
@@ -774,6 +776,7 @@ tools/validate_board_report.py
 tools/check_vivado_hw_probe_log.py
 tools/generate_missing_evidence_plan.py
 tools/collect_delivery_manifest.py
+tools/check_contest_scope_readiness.py
 scripts/run_delivery_gates.ps1
 ```
 
