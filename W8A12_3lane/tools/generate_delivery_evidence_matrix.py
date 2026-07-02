@@ -16,6 +16,8 @@ AUDIT_JSON = BASE / "evidence" / "delivery_audit" / "contest_delivery_audit.json
 SUBMISSION_JSON = BASE / "evidence" / "submission_package" / "submission_manifest.json"
 PDF_JSON = BASE / "evidence" / "report_pdf" / "summary.json"
 DOCX_JSON = BASE / "evidence" / "report_docx" / "summary.json"
+JTAG_USB_ONLY_JSON = BASE / "evidence" / "board_probe" / "jtag_precondition_usb_only_current" / "summary.json"
+JTAG_CURRENT_JSON = BASE / "evidence" / "board_probe" / "jtag_precondition_current" / "summary.json"
 
 
 def load_json(path: Path, default: dict[str, Any]) -> dict[str, Any]:
@@ -48,6 +50,27 @@ def latest_delivery_run_summary() -> str:
     if not summaries:
         return "evidence/delivery_runs/<missing>/summary.md"
     return summaries[0].relative_to(BASE).as_posix()
+
+
+def jtag_recovery_note() -> str:
+    usb_only = load_json(JTAG_USB_ONLY_JSON, {})
+    if usb_only.get("status") == "USB_READY":
+        known = usb_only.get("usb_known_jtag_candidate_count", "unknown")
+        target = usb_only.get("vivado_target_count", "not_checked")
+        return (
+            f"当前 USB-only 前置为 USB_READY：USB known JTAG candidate={known}，"
+            f"Vivado target={target}；等后台 Vivado 任务结束后再安全复测 target，"
+            "target>=1 后进入 stage-hash/dbg2 上板验收。"
+        )
+
+    current = load_json(JTAG_CURRENT_JSON, {})
+    status = current.get("status", "UNKNOWN")
+    known = current.get("usb_known_jtag_candidate_count", "unknown")
+    target = current.get("vivado_target_count", "unknown")
+    return (
+        f"当前 JTAG precondition {status}：USB known JTAG candidate={known}，"
+        f"Vivado target={target}；恢复条件为 USB known candidate>=1 且 Vivado target>=1。"
+    )
 
 
 def make_rows(latest_run: str) -> list[dict[str, Any]]:
@@ -191,14 +214,16 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                     latest_run,
                     "evidence/delivery_audit/missing_evidence_plan.md",
                     "evidence/board_probe/jtag_recovery_checklist/summary.md",
+                    "evidence/board_probe/jtag_precondition_usb_only_current/summary.md",
                 ]
             ),
             [
                 latest_run,
                 "evidence/delivery_audit/missing_evidence_plan.md",
                 "evidence/board_probe/jtag_recovery_checklist/summary.md",
+                "evidence/board_probe/jtag_precondition_usb_only_current/summary.md",
             ],
-            "当前 JTAG precondition BLOCKED，恢复条件为 USB known candidate>=1 且 Vivado target>=1。",
+            jtag_recovery_note(),
         ),
         row(
             "评分点 面积/功耗",

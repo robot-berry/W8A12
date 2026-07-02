@@ -8,7 +8,7 @@ Audit pass count: `72 / 76`
 
 Submission package status: `INCOMPLETE`
 
-Submission file count: `403`
+Submission file count: `407`
 
 PDF report SHA256: `9b767d2bd2b0d36eb74c6db72884af3670523e9c0acaa82a6636a467e269ad68`
 
@@ -26,7 +26,7 @@ DOCX report SHA256: `89618bc31037c46536c40dcfaaaf726095b0562f20df8bbcc00d820d6e9
 | 评分点 功能正确性 | 离线功能闭环与板端剩余验证 | `PARTIAL` | `evidence/reference/`<br>`evidence/board_reports/jtag_true2x2_stagehash_20260628.md`<br>`evidence/delivery_audit/missing_evidence_plan.md` | RTL true2x2 raw compare PASS；真实 board validation 仍缺 A5/A6/A7/x2 四项。 |
 | 评分点 文档清晰度 | Markdown + PDF 赛题报告 | `PASS` | `docs/contest_submission_report.md`<br>`output/pdf/W8A12_3lane_contest_submission_report.pdf`<br>`evidence/report_pdf/summary.md`<br>`output/docx/W8A12_3lane_contest_submission_report.docx`<br>`evidence/report_docx/summary.md` | PDF 已生成并完成全页渲染/关键文本校验。 |
 | 评分点 量化指标和性能分析 | 画质 baseline、PPA、板端指标口径 | `PASS` | `evidence/quality_comparison/summary.md`<br>`evidence/quality_metric_completion/summary.md`<br>`evidence/ppa_summary/summary.md` | 传统插值对比已纳入；W8A12 fixed/board 全量 PSNR/SSIM 和 FPS/power 待真实 board output 后补齐。 |
-| 评分点 验证方案与用例 | 分层门禁、缺口计划、JTAG 恢复清单 | `PASS` | `evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md`<br>`evidence/delivery_audit/missing_evidence_plan.md`<br>`evidence/board_probe/jtag_recovery_checklist/summary.md` | 当前 JTAG precondition BLOCKED，恢复条件为 USB known candidate>=1 且 Vivado target>=1。 |
+| 评分点 验证方案与用例 | 分层门禁、缺口计划、JTAG 恢复清单 | `PASS` | `evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md`<br>`evidence/delivery_audit/missing_evidence_plan.md`<br>`evidence/board_probe/jtag_recovery_checklist/summary.md`<br>`evidence/board_probe/jtag_precondition_usb_only_current/summary.md` | 当前 USB-only 前置为 USB_READY：USB known JTAG candidate=3，Vivado target=not_checked；等后台 Vivado 任务结束后再安全复测 target，target>=1 后进入 stage-hash/dbg2 上板验收。 |
 | 评分点 面积/功耗 | 资源门限已过，真实功耗待板端报告 | `PARTIAL` | `evidence/ppa_summary/summary.md`<br>`evidence/board_reports/validation_readiness/summary.md` | OOC 资源/时序可报告；真实 board power、FPS、latency 需 `validation.md Status: PASS` 后才能声明。 |
 
 ## Remaining Final Evidence

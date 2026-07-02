@@ -4,7 +4,7 @@
   "audit_pass_count": 72,
   "audit_total_count": 76,
   "submission_status": "INCOMPLETE",
-  "submission_file_count": 403,
+  "submission_file_count": 407,
   "missing_final_evidence": [
     "evidence/board_reports/a5_32x32/validation.md",
     "evidence/board_reports/a6_64x64/validation.md",
@@ -114,9 +114,10 @@
       "evidence": [
         "evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md",
         "evidence/delivery_audit/missing_evidence_plan.md",
-        "evidence/board_probe/jtag_recovery_checklist/summary.md"
+        "evidence/board_probe/jtag_recovery_checklist/summary.md",
+        "evidence/board_probe/jtag_precondition_usb_only_current/summary.md"
       ],
-      "note": "当前 JTAG precondition BLOCKED，恢复条件为 USB known candidate>=1 且 Vivado target>=1。"
+      "note": "当前 USB-only 前置为 USB_READY：USB known JTAG candidate=3，Vivado target=not_checked；等后台 Vivado 任务结束后再安全复测 target，target>=1 后进入 stage-hash/dbg2 上板验收。"
     },
     {
       "area": "评分点 面积/功耗",
