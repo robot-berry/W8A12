@@ -4,7 +4,7 @@
   "audit_pass_count": 72,
   "audit_total_count": 76,
   "submission_status": "INCOMPLETE",
-  "submission_file_count": 393,
+  "submission_file_count": 398,
   "missing_final_evidence": [
     "evidence/board_reports/a5_32x32/validation.md",
     "evidence/board_reports/a6_64x64/validation.md",
@@ -13,9 +13,9 @@
   ],
   "latest_delivery_run": "evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md",
   "pdf_status": "PASS",
-  "pdf_sha256": "fb9bee53cd571c9a3845eb8dca5ab06444b43f908ba6d439f1eca10b616302d7",
+  "pdf_sha256": "3f150fc44ef06a02c8f78a0ebb9b2e371fbc81ae8f48d15f02da7de9849a403c",
   "docx_status": "PASS",
-  "docx_sha256": "e76b15ea13311e9422358382eca824f0d54c63bc84e978d6d72f440a2d64e384",
+  "docx_sha256": "5bf519074476baaa3d6aa03adfd9c6449726936d0811f7fff775c2c30b2455e8",
   "rows": [
     {
       "area": "交付物1 模型/训练/量化/转换",

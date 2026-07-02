@@ -279,6 +279,8 @@ x2.board
 
 为避免将真实上板后续项误判为报告/PPA 口径阻断项，本工程新增赛题提交口径门禁 `evidence/contest_scope_readiness/summary.md`。该门禁状态为 `PASS_WITH_SCOPE` 时，表示模型/训练口径、量化与转换、RTL 分层仿真、PDF/Word 报告、画质 baseline、x4 720p15 scheduler FPS、x2 720p4 降目标 scheduler FPS、bitstream/PPA 和 GitHub 上传前检查均已具备可追溯证据；同时明确 `a5.board_32x32`、`a6.board_64x64`、`a7.board_720p_x4`、`x2.board` 是真实板端 validation 后续项，不作为“无真实插板要求”的赛题提交口径阻断项。
 
+在此基础上，`tools/create_contest_scope_package.py` 会从当前 submission manifest 生成独立的赛题口径提交包，证据见 `evidence/contest_scope_package/summary.md`。该包的 `PASS_WITH_SCOPE` 只适用于“无真实插板硬门槛”的赛题报告/PPA 提交口径；严格上板归档仍保留在 `evidence/submission_package/archive/summary.md`，并继续以 `INCOMPLETE` 标记 4 个真实板端 validation 缺口。
+
 在报告/PPA 优先主线下，当前可以先提交离线模型、RTL 仿真、bitstream、OOC/implementation PPA 和风险说明材料；若评审没有真实上板要求，上述 4 项不会影响 bitstream/PPA 口径的提交。
 
 因此，本报告的提交性质是“阶段性交付/相当报告 + bitstream/PPA 可提交版”。它已经覆盖赛题文档、模型、量化、RTL、仿真、bitstream、PPA 和验证流程要求；不足之处集中在真实板端输出、板端 FPS/功耗和 720p packed 2-D 完整硬件 bitstream。若评审确实不要求真实上板，则主要风险转为“提交 bitstream 的作用域需说明为 true2x2/tile-writer 配置，而不是 720p 完整实现”。
@@ -294,6 +296,7 @@ python W8A12_3lane\tools\audit_contest_delivery.py
 python W8A12_3lane\tools\generate_missing_evidence_plan.py
 python W8A12_3lane\tools\collect_submission_package.py
 python W8A12_3lane\tools\check_contest_scope_readiness.py
+python W8A12_3lane\tools\create_contest_scope_package.py
 python W8A12_3lane\tools\create_submission_archive.py --allow-incomplete
 python W8A12_3lane\tools\collect_delivery_manifest.py
 ```
@@ -326,11 +329,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | A4 OOC | `evidence/resource/A4_*_ooc/` |
 | bitstream/PPA gate | `evidence/bitstream_ppa_gate/summary.md` |
 | 赛题提交口径门禁 | `evidence/contest_scope_readiness/summary.md` |
+| 赛题口径提交包 | `evidence/contest_scope_package/summary.md` |
 | packed 2-D FPS scheduler | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`、`evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
 | x2 W8A12 导出 | `evidence/x2/w8a12_export/summary.md` |
 | x2 fixed reference | `evidence/x2/reference/summary.md` |
 | delivery audit | `evidence/delivery_audit/contest_delivery_audit.md` |
-| submission archive summary | `evidence/submission_package/archive/summary.md` |
+| 严格上板归档摘要 | `evidence/submission_package/archive/summary.md` |
 | GitHub 草案上传证明 | `evidence/github_upload_push/summary.md` |
 
 ## 15. 结论
@@ -339,4 +343,4 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 
 剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 有效 stage-hash 续跑已经恢复 JTAG/PSU/register read，并完成上板读回，证明历史数值问题不是硬件 target 不可见，而是 PL 计算路径数值不一致。该 stage-hash 结果为输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `191/192`、PSNR 11.8292 dB，且 `tail_b1_hash` 首个边界已经不等于 RTL 期望。当前最新物理连接又回到 USB/JTAG 枚举阻塞，强制 Vivado probe 后 `Vivado target count=0`，因此不能继续板上读 dbg2 bank；恢复连接后，应直接用低侵入 dbg2 source-boundary 验证 `tail_feat0/src_feat0/src_b1`，在 `halo fetch / conv1 feat0 -> SPAB block1 -> feature buffer/replay -> b1_m_feat -> tail` 链路内收窄第一个错误点，再逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。
 
-最终结论：若评审口径为“正确性仿真通过 + 可生成 bitstream + 提供 PPA/资源时序报告”，当前材料可以作为赛题报告/PPA 提交版，并以 `evidence/contest_scope_readiness/summary.md` 的 `PASS_WITH_SCOPE` 作为提交前门禁；若评审明确要求真实板端 32x32/64x64/720p 输出和板端 FPS/功耗实测，则严格 board-validation 口径仍为 `INCOMPLETE`，必须继续完成上板任务后刷新报告和交付包。
+最终结论：若评审口径为“正确性仿真通过 + 可生成 bitstream + 提供 PPA/资源时序报告”，当前材料可以作为赛题报告/PPA 提交版，并以 `evidence/contest_scope_readiness/summary.md` 与 `evidence/contest_scope_package/summary.md` 的 `PASS_WITH_SCOPE` 作为提交前门禁；若评审明确要求真实板端 32x32/64x64/720p 输出和板端 FPS/功耗实测，则严格 board-validation 口径仍为 `INCOMPLETE`，必须继续完成上板任务后刷新报告和交付包。

@@ -1,0 +1,29 @@
+{
+  "status": "PASS_WITH_SCOPE",
+  "scope": "Contest report / RTL simulation / bitstream-PPA evidence; physical board validation is tracked as a non-blocking engineering follow-up for this package.",
+  "archive": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\contest_scope_package\\archive\\W8A12_3lane_contest_scope_submission.zip",
+  "bytes": 3772719,
+  "sha256": "1b8b9a916ef60f61f432b1363af3270de90a7b7c024d5e1ce42e95377855690d",
+  "archived_file_count": 398,
+  "source_submission_manifest": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\submission_package\\submission_manifest.json",
+  "source_submission_manifest_status": "INCOMPLETE",
+  "source_submission_manifest_sha256": "de355b78a0936b9be4eadfceecd8c9436a6c7475218b824f0c6c74a4719ee81b",
+  "contest_readiness": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\contest_scope_readiness\\summary.json",
+  "contest_readiness_status": "PASS_WITH_SCOPE",
+  "contest_readiness_sha256": "0fbafeb0c27ea3cc50e89cfe8d7ef756379f1f6b36ab4a2ade2655b8d7a9c011",
+  "source_submission_manifest_digest": "c63f1e43aac6cccffe0070cdc80067ca4139eb4ea6576c58cc2bf87aad48ac55",
+  "contest_readiness_digest": "ee3e24d33cd83472f1057e9b3c1c89be453e2e1e207692bc1756892226dfd78f",
+  "non_blocking_missing_final_evidence": [
+    "evidence/board_reports/a5_32x32/validation.md",
+    "evidence/board_reports/a6_64x64/validation.md",
+    "evidence/board_reports/a7_720p_x4/validation.md",
+    "evidence/board_reports/x2_720p/validation.md"
+  ],
+  "claims": {
+    "x4_720p15_scheduler_fps": "PASS_WITH_SCOPE",
+    "x2_720p4_scheduler_fps": "PASS_WITH_SCOPE",
+    "x2_720p20_scheduler_fps": "NOT_CLAIMED",
+    "true2x2_bitstream_ppa": "PASS_WITH_SCOPE",
+    "physical_board_720p_output": "NOT_CLAIMED"
+  }
+}

@@ -15,6 +15,7 @@ Status: PASS
 | `states_x4_720p15_fps_closure` | PASS | `x4 720p15 scheduler-level FPS closure and x2 boundary` |
 | `states_x2_720p4_fps_closure` | PASS | `x2 lowered-target 720p4 scheduler-level FPS closure and x2 20fps boundary` |
 | `states_contest_scope_readiness_gate` | PASS | `contest-scope readiness is separated from strict board-validation audit` |
+| `states_contest_scope_package` | PASS | `contest-scope package is separated from strict board archive` |
 | `states_rtl_evidence_hashes` | PASS | `RTL/fixed reference hashes` |
 | `states_board_pending_not_measured` | PASS | `board metrics remain pending` |
 | `states_mismatch_risk` | PASS | `mismatch and debug hash plan` |

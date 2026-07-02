@@ -106,6 +106,12 @@ def main() -> int:
         "x2 720p4",
         "bitstream/PPA",
     ]), "contest-scope readiness is separated from strict board-validation audit")
+    add("states_contest_scope_package", all(token in text for token in [
+        "evidence/contest_scope_package/summary.md",
+        "tools/create_contest_scope_package.py",
+        "PASS_WITH_SCOPE",
+        "严格上板归档",
+    ]), "contest-scope package is separated from strict board archive")
     add("states_rtl_evidence_hashes", all(token in text for token in [
         "0x080D3C47",
         "0xD12E1B43",

@@ -73,6 +73,11 @@
       "detail": "contest-scope readiness is separated from strict board-validation audit"
     },
     {
+      "name": "states_contest_scope_package",
+      "pass": true,
+      "detail": "contest-scope package is separated from strict board archive"
+    },
+    {
       "name": "states_rtl_evidence_hashes",
       "pass": true,
       "detail": "RTL/fixed reference hashes"

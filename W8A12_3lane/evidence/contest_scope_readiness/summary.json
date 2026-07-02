@@ -187,7 +187,7 @@
       "evidence": "evidence/report_docx_complete_20260701/summary.json",
       "detail": {
         "status": "PASS",
-        "text_color_count": 748,
+        "text_color_count": 763,
         "non_black_text_colors": [],
         "non_black_text_color_count": 0
       }

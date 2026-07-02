@@ -81,6 +81,7 @@
 | PPA 汇总报告 | `tools/generate_ppa_summary.py`、`evidence/ppa_summary/summary.md` | PASS，汇总 MAC core、single-lane、3-lane scheduler 和 top shell |
 | bitstream/PPA 门槛 | `evidence/bitstream_ppa_gate/summary.md` | PASS_WITH_SCOPE；true2x2/JTAG-W8A12 bitstream 已生成，implementation 为 LUT 38803、FF 116441、BRAM 311、DSP 128、WNS 12.517ns、WHS 0.010ns；不声明 720p packed 2-D 完整 bitstream |
 | 赛题提交口径门禁 | `tools/check_contest_scope_readiness.py`、`evidence/contest_scope_readiness/summary.md` | PASS_WITH_SCOPE 时表示报告/RTL 仿真/PPA/FPS scheduler/质量对比/GitHub 上传前检查已具备可追溯证据，真实板端 validation 作为后续工程项单独列出 |
+| 赛题口径提交包 | `tools/create_contest_scope_package.py`、`evidence/contest_scope_package/summary.md` | PASS_WITH_SCOPE；复用 submission manifest 文件列表生成无真实插板硬门槛口径的确定性提交包 |
 | 赛题报告完整性检查 | `tools/check_contest_submission_report_static.py`、`evidence/report_static/summary.md` | PASS，检查章节、证据、PPA、画质、评分点映射和待上板口径 |
 | PDF 赛题报告 | `output/pdf/W8A12_3lane_contest_submission_report.pdf`、`evidence/report_pdf/summary.md` | PASS，7 页，已渲染 PNG 并完成非空/关键文本校验 |
 | Word 赛题报告 | `output/docx/W8A12_3lane_contest_submission_report.docx`、`evidence/report_docx/summary.md` | PASS，已生成 DOCX，并完成可见文本黑色字体审计 |
@@ -106,7 +107,7 @@
 | 缺口计划生成器静态检查 | `evidence/delivery_audit/missing_plan_flow_static/summary.md` | PASS |
 | 交付审计定义静态检查 | `evidence/delivery_audit/audit_flow_static/summary.md` | PASS |
 | 提交包 manifest | `evidence/submission_package/submission_manifest.md` | 上传前生成 |
-| 提交包确定性归档 | `evidence/submission_package/archive/summary.md` | PASS；当前为 `INCOMPLETE` 草案 zip，缺口仍为 4 个真实上板 validation |
+| 严格上板提交包归档 | `evidence/submission_package/archive/summary.md` | 当前为 `INCOMPLETE` 草案 zip，缺口仍为 4 个真实上板 validation |
 | 提交包 manifest 静态检查 | `evidence/submission_package/flow_static/summary.md` | PASS |
 | GitHub 上传前置检查 | `tools/check_github_upload_preflight.py`、`evidence/github_upload_preflight/summary.md` | PASS；已配置 `w8a12=https://github.com/robot-berry/W8A12.git`，上传前仍只允许 stage `W8A12_3lane/` |
 | GitHub 干净上传树 | `tools/export_github_upload_tree.py`、`evidence/github_upload_export/summary.md` | PASS；导出到 `output/github_upload/robot-berry_W8A12_upload_tree/`，用于不携带当前大仓库历史地单独上传 |
@@ -132,6 +133,7 @@
 - A4 scheduler xsim/OOC：`evidence/resource/A4_single_lane_mac_scheduler/`、`evidence/resource/A4_3lane_mac_scheduler/`、`evidence/resource/A4_single_lane_mac_scheduler_ooc/`、`evidence/resource/A4_3lane_mac_scheduler_ooc/`。
 - bitstream/PPA gate：`evidence/bitstream_ppa_gate/summary.md`，用于“无需真实上板，只看 bitstream + 仿真 + PPA”的赛题评审口径。
 - 赛题提交口径门禁：`evidence/contest_scope_readiness/summary.md`，将报告/PPA 可提交范围和严格 board-validation 缺口分开，避免把 4 个真实上板 validation 后续项误判为无插板评审口径下的阻断项。
+- 赛题口径提交包：`evidence/contest_scope_package/summary.md`，生成 `PASS_WITH_SCOPE` 的确定性包摘要；严格上板归档仍保留 `INCOMPLETE` 风险说明。
 - packed 2-D scheduler 性能边界：x4 720p15 scheduler-level closure PASS，推荐配置为 `24x72`、17.501fps @250MHz、888 DSP，最低资源配置为 `24x64`、15.070fps、792 DSP；x2 降目标 720p4 scheduler-level closure PASS，推荐配置为 `24x72`、4.483fps @250MHz、888 DSP，`24x64` 仅为 3.861fps 低资源边界；x2 720p20 scheduler-level 已补充但 900-DSP 门限下 FAIL，证据 `evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`、`evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md`、`evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md`。
 - x2 W8A12 export/fixed reference：`evidence/x2/w8a12_export/summary.md`、`evidence/x2/reference/summary.md`、`evidence/x2/reference_validation/validation.md`。
 - x4/x2 传统插值、质量对比和画质指标闭环计划：`evidence/quality_baseline/`、`evidence/quality_comparison/summary.md`、`evidence/quality_metric_completion/summary.md`。

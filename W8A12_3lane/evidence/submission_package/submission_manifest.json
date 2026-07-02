@@ -1,17 +1,17 @@
 {
   "status": "INCOMPLETE",
   "root": "W8A12_3lane",
-  "file_count": 397,
+  "file_count": 398,
   "entries": [
     {
       "path": ".gitignore",
-      "bytes": 594,
-      "sha256": "0b2f6fd09655485e6f3f034f9ef0a60c65b09980b1817cc6f69e37e832a30fdf"
+      "bytes": 639,
+      "sha256": "b39da24d290825a782bafaa97c709287056f35a9fff98a5286130a466264eed2"
     },
     {
       "path": "DELIVERY_INDEX.md",
-      "bytes": 19766,
-      "sha256": "9fd89567cc14050c2295785a112e3668f20e9abe41f51aee30753726e7b2b8db"
+      "bytes": 20171,
+      "sha256": "6c3107203871d42377ee4c761d319200a821a557d1f1f1fe4c9514e6c489eb64"
     },
     {
       "path": "README.md",
@@ -25,8 +25,8 @@
     },
     {
       "path": "WORKFLOW.md",
-      "bytes": 43945,
-      "sha256": "39676695ec816367e2468ff89cf321d506ee0457e4aa1bf8fb6c4347671d4142"
+      "bytes": 44173,
+      "sha256": "3996dc4917b9690cc42518cfc77344703d6c17717a55aee61c2b74a76161d9a0"
     },
     {
       "path": "docs/a2_a3_tile_scheduler_contract.md",
@@ -70,13 +70,13 @@
     },
     {
       "path": "docs/contest_submission_readme.md",
-      "bytes": 7385,
-      "sha256": "5697b61017d603476cfeec7a0c24b5247913f930f96961774850b401027b2f53"
+      "bytes": 7727,
+      "sha256": "11aa46a3134169a852734549ddcc5310df63052261bd0caaf21083ec92298d36"
     },
     {
       "path": "docs/contest_submission_report.md",
-      "bytes": 26107,
-      "sha256": "9b910fd146032436227f22a8d56c42b5ff9449d3e4339542c443b09f36750b7c"
+      "bytes": 26728,
+      "sha256": "f0212dd1629b4e38ee280d8c96df3f3a744735f97dd1999564d758b3010748f3"
     },
     {
       "path": "docs/delivery_gate_runner.md",
@@ -486,12 +486,12 @@
     {
       "path": "evidence/contest_scope_readiness/summary.json",
       "bytes": 10394,
-      "sha256": "e7aaeaa1f7c52fc206306cf598da75b4d8182f2a22e09f367338f6246b5a8d95"
+      "sha256": "0fbafeb0c27ea3cc50e89cfe8d7ef756379f1f6b36ab4a2ade2655b8d7a9c011"
     },
     {
       "path": "evidence/contest_scope_readiness/summary.md",
       "bytes": 7226,
-      "sha256": "709bc096d0218173d1f78336e58fea4942342bc0c435d5f845a63d87802f704d"
+      "sha256": "87abe350df62afec4b44d5e108a8c44f2db7a4b03d201666f369b3f7d836b3a4"
     },
     {
       "path": "evidence/delivery_audit/contest_delivery_audit.json",
@@ -525,18 +525,18 @@
     },
     {
       "path": "evidence/delivery_manifest/manifest.md",
-      "bytes": 53283,
-      "sha256": "7a56c8f89b1aff6c3b2b7299d04d49dbb058ebbb431a6fdda75bb4cab3993843"
+      "bytes": 54171,
+      "sha256": "3344e44db5e01420199e2dc422e8c55a95989dbbe12fde335f23e4be5b87443e"
     },
     {
       "path": "evidence/delivery_matrix/summary.json",
       "bytes": 5384,
-      "sha256": "06d3e7d1504eec199c2ea08e2b78e06cbbd64bf6569d266b1c4fb927eadefd52"
+      "sha256": "94db4a2309f13519d0a31dd992e44cc1c72f6174d47161b3da6e26286b15b63c"
     },
     {
       "path": "evidence/delivery_matrix/summary.md",
       "bytes": 4164,
-      "sha256": "f16f116ada6b27e26f95eb891ee5790909f193eda625a3055561eea813e52bf7"
+      "sha256": "72838434ff1db23b1c3f925a12a7a8fa4f77936ba57feb5fe061d19bb5fe53fe"
     },
     {
       "path": "evidence/delivery_runs/current_board_probe_force_20260629/summary.json",
@@ -780,23 +780,23 @@
     },
     {
       "path": "evidence/github_upload_export/summary.json",
-      "bytes": 285564,
-      "sha256": "5e2b5cf06476bab4e5791b7c534b64178469816deaafa091395c083f1a0d37fa"
+      "bytes": 286928,
+      "sha256": "125649ad21d19a9f74296677dc915bac9fff885c7219168ac10def09b5c5caea"
     },
     {
       "path": "evidence/github_upload_export/summary.md",
       "bytes": 1035,
-      "sha256": "c94cb3291c53ee41b8ba6142a9d7214a30c54de51a36ce7faeb8c8f4d5d1778c"
+      "sha256": "6b81a9225111894c7a2b9a56bdcbe1d81b45b7ef59f3dcf277482684dde8731d"
     },
     {
       "path": "evidence/github_upload_preflight/summary.json",
       "bytes": 3198,
-      "sha256": "101c2aeb81e425aa927c7fe6ac191c9aea79c502c768732103c0dc341ab8c952"
+      "sha256": "dcb897991f8ff687878e3d8ebc84f00c41a77c7c0dcac11ff71395d24bceea4b"
     },
     {
       "path": "evidence/github_upload_preflight/summary.md",
       "bytes": 2104,
-      "sha256": "45fa8bdd2adeba303fd15d29dd4dab8223b152b8e2536238f9bce86c499bbef4"
+      "sha256": "4fba4a9a55cd10ed37460870a02454dde090a0ae5337e1e9c8f78f99d63dced1"
     },
     {
       "path": "evidence/github_upload_push/summary.json",
@@ -951,12 +951,12 @@
     {
       "path": "evidence/report_docx/summary.json",
       "bytes": 477,
-      "sha256": "95d59eece4c424a1fac800aa85f9488e3ad61fffd0ef66aba60abb3e5f3f2d38"
+      "sha256": "14e893ad65b3ac30ab62775f2be106225b67ada37252238161dc37a6fc69e814"
     },
     {
       "path": "evidence/report_docx/summary.md",
       "bytes": 545,
-      "sha256": "9f7ba4aeef57d6325ac1e18c15acf9aa6b22e2f8232a3c44ee558da36bd41b38"
+      "sha256": "bab6cb9e556ac3ed146cc066bd61a7094534ba41bc2fca907ab2e2b30f832973"
     },
     {
       "path": "evidence/report_docx_complete_20260701/render_note.md",
@@ -966,12 +966,12 @@
     {
       "path": "evidence/report_docx_complete_20260701/summary.json",
       "bytes": 495,
-      "sha256": "8a15ae5597b856fbf089d33ea86cdeb495ad3c979a4da9495fca4e95e5915cd0"
+      "sha256": "97b70716efe42cf7aa2cbae22c48fbfb6f4f072a20de3083db5a06272b7e94ba"
     },
     {
       "path": "evidence/report_docx_complete_20260701/summary.md",
       "bytes": 563,
-      "sha256": "e5c4524cb44a8f19219b5500fa4105974f979f7d6c7066ecdeb947d721b689cf"
+      "sha256": "10534188a1a1119a47bb8589895c85c36b92fcd9436f2afc0cfcc0886e4b1683"
     },
     {
       "path": "evidence/report_pdf/rendered/page-01.png",
@@ -1010,38 +1010,38 @@
     },
     {
       "path": "evidence/report_pdf/rendered/page-08.png",
-      "bytes": 380513,
-      "sha256": "dd4ca04a0896e9a716afaf2039e922557c3816e485846d3058cd51c6b7132ed0"
+      "bytes": 414023,
+      "sha256": "ddd0cf360719fb3b93e724cb06aeaa882159c8e65aa7e7e66a2f59b7b027b01b"
     },
     {
       "path": "evidence/report_pdf/rendered/page-09.png",
-      "bytes": 376219,
-      "sha256": "46d0609a72ee100712a16442679a4b3956b7598f8284668d63b5d543ccf40f5d"
+      "bytes": 358427,
+      "sha256": "ca7c22e146cf6eb154eaa6191a3903036ef2f75eb541dc670fc33817f0cc0ed1"
     },
     {
       "path": "evidence/report_pdf/rendered/page-10.png",
-      "bytes": 84490,
-      "sha256": "aa29f500b31f32050014f584d98fafa35d47ea950ce25eaa4fecfd1de72d169e"
+      "bytes": 141626,
+      "sha256": "11087125796408c0410bb289e09fec49ea4684b25c3218d56f48cb2bad148f89"
     },
     {
       "path": "evidence/report_pdf/summary.json",
-      "bytes": 4244,
-      "sha256": "2ae91e838f758161be26750ca4fed2b2a0d3a0f5f5e291e2fcc29d23d2fe060b"
+      "bytes": 4242,
+      "sha256": "77b0077af28ff3812177e709b7a087fc84f24c4222c89d826e8015ade3a84ee9"
     },
     {
       "path": "evidence/report_pdf/summary.md",
       "bytes": 2014,
-      "sha256": "62df24e9173b83c031b743c89e7c16ab52204589dbd3eea10cb7eb312ee94d20"
+      "sha256": "a56f42b369ff2a495ddd2e33a8daada5b5db54588c6868cfa2a12ea9d9d9544b"
     },
     {
       "path": "evidence/report_static/summary.json",
-      "bytes": 3365,
-      "sha256": "fc89f2d2e686945de34e1c482255677173373422689203257a39635491176a83"
+      "bytes": 3528,
+      "sha256": "75abfca45c864e7d0f44a6312fe2ac21c331c599caa29baf8fdd29f9beae225f"
     },
     {
       "path": "evidence/report_static/summary.md",
-      "bytes": 2189,
-      "sha256": "ac07268521f2674717d90b9ab415fa65e1352011d546177cd3f6708f9c676450"
+      "bytes": 2297,
+      "sha256": "78a576ad5970c1a592cdff4fd22d1a2aed0ace39bfcbb80e462fb6b98aba11fb"
     },
     {
       "path": "evidence/resource/A4_3lane_mac_scheduler/a4_3lane_sim_summary.json",
@@ -1195,8 +1195,8 @@
     },
     {
       "path": "evidence/submission_package/submission_manifest.md",
-      "bytes": 52820,
-      "sha256": "e17117aff8a25a018e7997c671dff284a14199a7efbe9bc5e6b41db1c01136ab"
+      "bytes": 53456,
+      "sha256": "018747883feee8eb1263a8faaaf3ebb8961ddd902e91df1fd1d96e24be80adbd"
     },
     {
       "path": "evidence/top/accel_top_flow_static/summary.json",
@@ -1280,18 +1280,18 @@
     },
     {
       "path": "output/docx/W8A12_3lane_contest_submission_report.docx",
-      "bytes": 55253,
-      "sha256": "e76b15ea13311e9422358382eca824f0d54c63bc84e978d6d72f440a2d64e384"
+      "bytes": 55506,
+      "sha256": "5bf519074476baaa3d6aa03adfd9c6449726936d0811f7fff775c2c30b2455e8"
     },
     {
       "path": "output/docx/W8A12_3lane_contest_submission_report_complete_20260701.docx",
-      "bytes": 55253,
-      "sha256": "c6fe02e0f509c48099fbbb6f9c689fac3853c67c000efdda8972a0fdb35ca40e"
+      "bytes": 55506,
+      "sha256": "5bf519074476baaa3d6aa03adfd9c6449726936d0811f7fff775c2c30b2455e8"
     },
     {
       "path": "output/pdf/W8A12_3lane_contest_submission_report.pdf",
-      "bytes": 114724,
-      "sha256": "fb9bee53cd571c9a3845eb8dca5ab06444b43f908ba6d439f1eca10b616302d7"
+      "bytes": 115754,
+      "sha256": "3f150fc44ef06a02c8f78a0ebb9b2e371fbc81ae8f48d15f02da7de9849a403c"
     },
     {
       "path": "rtl/board/.gitkeep",
@@ -1780,8 +1780,8 @@
     },
     {
       "path": "tools/check_contest_submission_report_static.py",
-      "bytes": 7221,
-      "sha256": "01988ec8616e7051f93aac85dd0f1605efccdcd124d5d2bd06c4acee1941932a"
+      "bytes": 7525,
+      "sha256": "ac4a338262fc0ab8cde33b320be9171fbe20a26243048b5d20f81c99425dece7"
     },
     {
       "path": "tools/check_delivery_audit_flow_static.py",
@@ -1855,8 +1855,8 @@
     },
     {
       "path": "tools/collect_delivery_manifest.py",
-      "bytes": 7112,
-      "sha256": "1ce40be947f881510d15e95fcbfa5f1e0f64b3f1ce13c01edad62765039e54ff"
+      "bytes": 7256,
+      "sha256": "a272e78edea61de1e290f9434d974e1a80519707dcc39efe59faa7891938b7cd"
     },
     {
       "path": "tools/collect_repository_scope_manifest.py",
@@ -1872,6 +1872,11 @@
       "path": "tools/create_board_report.py",
       "bytes": 6781,
       "sha256": "42c5c35ec9456af21b5ce7d076797a7b7062d53e4ea689ae47fc10b099b74d57"
+    },
+    {
+      "path": "tools/create_contest_scope_package.py",
+      "bytes": 5913,
+      "sha256": "157f08396fd4c11829c6ce9522e3de045a740c90b217da917021463351b1a6c2"
     },
     {
       "path": "tools/create_submission_archive.py",

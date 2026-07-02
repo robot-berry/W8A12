@@ -1,5 +1,6 @@
 # Local/generated archives
 evidence/submission_package/archive/*.zip
+evidence/contest_scope_package/archive/*.zip
 output/github_upload/
 evidence/delivery_runs/*/*/stdout.txt
 evidence/delivery_runs/*/*/stderr.txt

@@ -630,7 +630,8 @@ x2.board
 4. 对 PPA 表格明确标注统计范围：模块级 OOC、scheduler OOC、top shell OOC、真实板端估计/待测，不能把轻量 top shell 资源误写成完整 accelerator datapath 资源。
 5. 继续生成交付索引、硬件设计说明、验证方案和回退流程。
 6. 运行 `tools/check_contest_scope_readiness.py`，把“赛题提交口径 PASS_WITH_SCOPE”和“严格 board-validation INCOMPLETE”分开记录。
-7. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
+7. 运行 `tools/create_contest_scope_package.py`，生成赛题口径提交包摘要；严格上板归档继续保留 `INCOMPLETE` 风险说明。
+8. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
 
 当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；最新 dbg2/source-boundary 一键验收则因 USB known JTAG candidate count=0 处于 `BLOCKED`，待连接恢复后继续读 `tail_feat0/src_feat0/src_b1`：
 
@@ -755,6 +756,7 @@ evidence/resource/A4_single_lane_mac_scheduler_ooc/ooc_summary.md
 evidence/resource/A4_3lane_mac_scheduler_ooc/ooc_summary.md
 evidence/ppa_summary/summary.md
 evidence/contest_scope_readiness/summary.md
+evidence/contest_scope_package/summary.md
 evidence/report_static/summary.md
 evidence/x2/w8a12_export/summary.md
 evidence/x2/reference/summary.md
@@ -777,6 +779,7 @@ tools/check_vivado_hw_probe_log.py
 tools/generate_missing_evidence_plan.py
 tools/collect_delivery_manifest.py
 tools/check_contest_scope_readiness.py
+tools/create_contest_scope_package.py
 scripts/run_delivery_gates.ps1
 ```
 

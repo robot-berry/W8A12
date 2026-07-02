@@ -17,6 +17,7 @@ W8A12_3lane/evidence/delivery_audit/contest_delivery_audit.md
 
 ```text
 W8A12_3lane/evidence/contest_scope_readiness/summary.md
+W8A12_3lane/evidence/contest_scope_package/summary.md
 ```
 
 ## 1. 赛题目标对应关系
@@ -31,6 +32,7 @@ W8A12_3lane/evidence/contest_scope_readiness/summary.md
 | 评审证据矩阵 | 交付物/评分点/证据/缺口总览 | `evidence/delivery_matrix/summary.md` |
 | bitstream/PPA 门槛 | 无真实上板要求时的 bitstream、仿真、实现后资源/时序证据 | `evidence/bitstream_ppa_gate/summary.md` |
 | 赛题提交口径门禁 | 将报告、RTL 仿真、PPA、FPS scheduler、质量对比和真实上板缺口分开审计 | `evidence/contest_scope_readiness/summary.md` |
+| 赛题口径提交包 | 无真实插板硬门槛时的确定性归档摘要 | `evidence/contest_scope_package/summary.md` |
 | 上板验证 | A5 32x32、A6 64x64、A7 720p、x2 720p | 上板 report 工具已建立；真实报告缺 |
 
 ## 2. 交付物 1：模型结构、训练、量化和转换工具
@@ -109,13 +111,20 @@ python W8A12_3lane\tools\audit_contest_delivery.py
 python W8A12_3lane\tools\generate_missing_evidence_plan.py
 python W8A12_3lane\tools\collect_submission_package.py
 python W8A12_3lane\tools\check_contest_scope_readiness.py
+python W8A12_3lane\tools\create_contest_scope_package.py
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_pdf.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\export_contest_report_docx.ps1
 python W8A12_3lane\tools\create_submission_archive.py --allow-incomplete
 python W8A12_3lane\tools\collect_delivery_manifest.py
 ```
 
-当前草案归档摘要：
+赛题口径提交包摘要：
+
+```text
+W8A12_3lane/evidence/contest_scope_package/summary.md
+```
+
+严格上板草案归档摘要：
 
 ```text
 W8A12_3lane/evidence/submission_package/archive/summary.md
