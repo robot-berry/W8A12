@@ -6,8 +6,8 @@ Status: PASS
 | --- | --- |
 | source | `G:\UESTC\feitengspan1\W8A12_3lane\docs\contest_submission_report.md` |
 | pdf | `G:\UESTC\feitengspan1\W8A12_3lane\output\pdf\W8A12_3lane_contest_submission_report.pdf` |
-| bytes | `118699` |
-| sha256 | `3558852535f3aff3f2e278d8e6fb69d2e7b62909ab455aa49a8d3ba07fc9676b` |
+| bytes | `119291` |
+| sha256 | `6316cc760cb1f44a5fba468cd63b049d58eaaba20578cff1c3c3c566fea12091` |
 | page_count | `10` |
 | font | `C:\Windows\Fonts\simhei.ttf` |
 
@@ -22,9 +22,9 @@ Status: PASS
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-05.png` | `1241x1754` | 245.00 | `[0, 255]` | `True` |
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-06.png` | `1241x1754` | 248.34 | `[0, 255]` | `True` |
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-07.png` | `1241x1754` | 246.92 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-08.png` | `1241x1754` | 242.79 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-09.png` | `1241x1754` | 249.66 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-10.png` | `1241x1754` | 246.05 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-08.png` | `1241x1754` | 243.20 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-09.png` | `1241x1754` | 248.15 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-10.png` | `1241x1754` | 245.09 | `[0, 255]` | `True` |
 
 ## Required Text Tokens
 

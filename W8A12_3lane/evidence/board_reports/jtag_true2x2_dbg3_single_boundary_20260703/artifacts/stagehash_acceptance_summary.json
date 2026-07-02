@@ -1,0 +1,31 @@
+﻿{
+    "status":  "FAIL",
+    "error":  "W8A12 stage-hash true2x2 acceptance failed",
+    "bitstream":  "G:\\UESTC\\feitengspan1\\vivado\\bitstreams\\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg3_single_boundary_20260703.bit",
+    "psu_init_tcl":  "G:\\UESTC\\feitengspan1\\vivado\\jwtw_dbg3_single_boundary_20260703\\jwtw.gen\\sources_1\\bd\\jwtw\\ip\\jwtw_ps_0\\psu_init.tcl",
+    "input_raw":  "G:\\UESTC\\feitengspan1\\runs\\reds_span_quant_plan\\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\\reference\\input.rgb",
+    "reference_raw":  "G:\\UESTC\\feitengspan1\\runs\\reds_span_quant_plan\\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\\reference.rgb",
+    "output_dir":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg3_single_boundary_20260703",
+    "steps":  {
+                  "probe":  {
+                                "exit":  0,
+                                "log":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg3_single_boundary_20260703\\probe_step.log",
+                                "output_dir":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg3_single_boundary_20260703\\probe"
+                            },
+                  "psu_init":  {
+                                   "exit":  0,
+                                   "log":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg3_single_boundary_20260703\\psu_init_step.log",
+                                   "output_dir":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg3_single_boundary_20260703\\psu_init"
+                               },
+                  "smoke":  {
+                                "exit":  1,
+                                "log":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg3_single_boundary_20260703\\smoke_step.log",
+                                "output_dir":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg3_single_boundary_20260703\\smoke"
+                            },
+                  "reg_read":  {
+                                   "exit":  0,
+                                   "log":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg3_single_boundary_20260703\\reg_read_step.log",
+                                   "output_dir":  "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg3_single_boundary_20260703\\reg_read_after_smoke"
+                               }
+              }
+}

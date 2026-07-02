@@ -6,13 +6,13 @@ Scope: Contest report / RTL simulation / bitstream-PPA evidence; physical board 
 
 | Field | Value |
 | --- | --- |
-| archive | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\contest_scope_package\archive\W8A12_3lane_contest_scope_submission.zip` |
-| bytes | `3844331` |
-| sha256 | `7de857347d29e639962f4b9b68a6652100e9fa8b3a909949dd7b948f2b899eb2` |
-| archived file count | `407` |
+| archive | `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\contest_scope_package\archive\W8A12_3lane_contest_scope_submission.zip` |
+| bytes | `4003928` |
+| sha256 | `d374e6a20299d8cc9b3967b7ee3e09a40e351b4fbfb30d1d4a6acf0decb0324d` |
+| archived file count | `408` |
 | source submission manifest status | `INCOMPLETE` |
 | contest readiness status | `PASS_WITH_SCOPE` |
-| source submission manifest sha256 | `613d7576c6c86a625fad34a9b9f500eb3e92c1215688bc2242d9a033281a145f` |
+| source submission manifest sha256 | `b666a82e8f2f999017b58a4e2f2f94cffda1fde0cf7c69bdaa52a3f9b959c778` |
 | contest readiness sha256 | `d3662043b4f4d6c63ff58a6c6d47662754652e5048263986509bbffce66ca135` |
 
 ## Non-Blocking Board Validation Gaps

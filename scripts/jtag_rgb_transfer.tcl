@@ -48,7 +48,8 @@ proc w8a12_disable_tclapp_autoload {} {
 }
 
 w8a12_disable_tclapp_autoload
-catch {set_param labtools.enable_cs_server 0}
+catch {set_param labtools.enable_cs_server 1}
+catch {puts "JTAG_RGB_TRANSFER_LABTOOLS_ENABLE_CS_SERVER=[get_param labtools.enable_cs_server]"}
 
 set input_file ""
 set output_file ""

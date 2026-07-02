@@ -60,9 +60,10 @@ def jtag_recovery_note() -> str:
         target = current.get("vivado_target_count", "unknown")
         return (
             f"当前 full precondition 为 READY：USB known JTAG candidate={known}，"
-            f"Vivado target={target}；stagehash baseline 已完成干净失败复跑："
-            "`error=0`、输出完整 `192/192`，但 compare 仍 FAIL。"
-            "下一步应做低侵入 single-boundary probe，不把 dbg2/source-b6 的 `error=0xC` run 作为根因证据。"
+            f"Vivado target={target}；stagehash baseline 和 dbg3/single-boundary 均已完成 clean board mismatch 复跑："
+            "输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare 仍 FAIL。"
+            "dbg3 中 `src_feat0_hash` 已与 RTL 匹配，首个已知 mismatch 为 `src_b1_hash`；"
+            "下一步应继续拆 SPAB block1 输出/feature buffer replay 边界，不把 dbg2/source-b6 的 `error=0xC` run 作为根因证据。"
         )
 
     usb_only = load_json(JTAG_USB_ONLY_JSON, {})
@@ -179,9 +180,10 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
             [
                 "evidence/reference/",
                 "evidence/board_reports/jtag_true2x2_stagehash_20260628.md",
+                "evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md",
                 "evidence/delivery_audit/missing_evidence_plan.md",
             ],
-            "RTL true2x2 raw compare PASS；真实 board validation 仍缺 A5/A6/A7/x2 四项。",
+            "RTL true2x2 raw compare PASS；dbg3 实板已把首个已知 mismatch 前移到 src_b1_hash；真实 board validation 仍缺 A5/A6/A7/x2 四项。",
         ),
         row(
             "评分点 文档清晰度",
@@ -226,6 +228,7 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                     "evidence/board_probe/jtag_recovery_checklist/summary.md",
                     "evidence/board_probe/jtag_precondition_usb_only_current/summary.md",
                     "evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md",
+                    "evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md",
                 ]
             ),
             [
@@ -235,6 +238,7 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                 "evidence/board_probe/jtag_precondition_current/summary.md",
                 "evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md",
                 "evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md",
+                "evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md",
             ],
             jtag_recovery_note(),
         ),

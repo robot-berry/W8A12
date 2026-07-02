@@ -8,11 +8,11 @@ Audit pass count: `72 / 76`
 
 Submission package status: `INCOMPLETE`
 
-Submission file count: `410`
+Submission file count: `408`
 
-PDF report SHA256: `3558852535f3aff3f2e278d8e6fb69d2e7b62909ab455aa49a8d3ba07fc9676b`
+PDF report SHA256: `6316cc760cb1f44a5fba468cd63b049d58eaaba20578cff1c3c3c566fea12091`
 
-DOCX report SHA256: `1cfcd48cd8d03ca0dd3e18227edbed6d03791450afe38dc30d64085cc68c3b42`
+DOCX report SHA256: `bba68f0d69c83defe0dbec35f6ba4952c167b3fbbb9760542ae4c400bf802296`
 
 ## Evidence Matrix
 
@@ -23,10 +23,10 @@ DOCX report SHA256: `1cfcd48cd8d03ca0dd3e18227edbed6d03791450afe38dc30d64085cc68
 | 交付物2 硬件设计文档 | 3-lane 架构、bank 映射、scheduler、top shell、回退和上板流程 | `PASS` | `docs/w8a12_3lane_architecture.md`<br>`docs/bank_mapping_rules.md`<br>`docs/board_report_flow.md` | 文档覆盖 48ch 拆为 3x16ch、6 个 SPAB 串行、tile+halo 和 board report 验收口径。 |
 | 交付物3 RTL/仿真/综合 | A0-A4/top shell RTL 仿真 | `PASS` | `evidence/reference/`<br>`evidence/resource/A4_single_lane_mac_scheduler/`<br>`evidence/resource/A4_3lane_mac_scheduler/`<br>`evidence/top/accel_top_sim/summary.md` | 分层 bit-exact/hash 验证已通过，top shell 控制/status 仿真 PASS。 |
 | 交付物3 RTL/仿真/综合 | OOC 综合资源与 PPA 汇总 | `PASS` | `evidence/ppa_summary/summary.md`<br>`evidence/top/accel_top_ooc/`<br>`evidence/resource/A4_3lane_mac_scheduler_ooc/` | A4 3-lane scheduler: LUT 56.35%、FF 58.61%、DSP 74.67%，低于 XC7Z045/ZC706 门限；完整 board FPS/power 待上板。 |
-| 评分点 功能正确性 | 离线功能闭环与板端剩余验证 | `PARTIAL` | `evidence/reference/`<br>`evidence/board_reports/jtag_true2x2_stagehash_20260628.md`<br>`evidence/delivery_audit/missing_evidence_plan.md` | RTL true2x2 raw compare PASS；真实 board validation 仍缺 A5/A6/A7/x2 四项。 |
+| 评分点 功能正确性 | 离线功能闭环与板端剩余验证 | `PARTIAL` | `evidence/reference/`<br>`evidence/board_reports/jtag_true2x2_stagehash_20260628.md`<br>`evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md`<br>`evidence/delivery_audit/missing_evidence_plan.md` | RTL true2x2 raw compare PASS；dbg3 实板已把首个已知 mismatch 前移到 src_b1_hash；真实 board validation 仍缺 A5/A6/A7/x2 四项。 |
 | 评分点 文档清晰度 | Markdown + PDF 赛题报告 | `PASS` | `docs/contest_submission_report.md`<br>`output/pdf/W8A12_3lane_contest_submission_report.pdf`<br>`evidence/report_pdf/summary.md`<br>`output/docx/W8A12_3lane_contest_submission_report.docx`<br>`evidence/report_docx/summary.md` | PDF 已生成并完成全页渲染/关键文本校验。 |
 | 评分点 量化指标和性能分析 | 画质 baseline、PPA、板端指标口径 | `PASS` | `evidence/quality_comparison/summary.md`<br>`evidence/quality_metric_completion/summary.md`<br>`evidence/ppa_summary/summary.md` | 传统插值对比已纳入；W8A12 fixed/board 全量 PSNR/SSIM 和 FPS/power 待真实 board output 后补齐。 |
-| 评分点 验证方案与用例 | 分层门禁、缺口计划、JTAG 恢复清单 | `PASS` | `evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md`<br>`evidence/delivery_audit/missing_evidence_plan.md`<br>`evidence/board_probe/jtag_recovery_checklist/summary.md`<br>`evidence/board_probe/jtag_precondition_current/summary.md`<br>`evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md`<br>`evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md` | 当前 full precondition 为 READY：USB known JTAG candidate=3，Vivado target=1；stagehash baseline 已完成干净失败复跑：`error=0`、输出完整 `192/192`，但 compare 仍 FAIL。下一步应做低侵入 single-boundary probe，不把 dbg2/source-b6 的 `error=0xC` run 作为根因证据。 |
+| 评分点 验证方案与用例 | 分层门禁、缺口计划、JTAG 恢复清单 | `PASS` | `evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md`<br>`evidence/delivery_audit/missing_evidence_plan.md`<br>`evidence/board_probe/jtag_recovery_checklist/summary.md`<br>`evidence/board_probe/jtag_precondition_current/summary.md`<br>`evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md`<br>`evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md`<br>`evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md` | 当前 full precondition 为 READY：USB known JTAG candidate=3，Vivado target=1；stagehash baseline 和 dbg3/single-boundary 均已完成 clean board mismatch 复跑：输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare 仍 FAIL。dbg3 中 `src_feat0_hash` 已与 RTL 匹配，首个已知 mismatch 为 `src_b1_hash`；下一步应继续拆 SPAB block1 输出/feature buffer replay 边界，不把 dbg2/source-b6 的 `error=0xC` run 作为根因证据。 |
 | 评分点 面积/功耗 | 资源门限已过，真实功耗待板端报告 | `PARTIAL` | `evidence/ppa_summary/summary.md`<br>`evidence/board_reports/validation_readiness/summary.md` | OOC 资源/时序可报告；真实 board power、FPS、latency 需 `validation.md Status: PASS` 后才能声明。 |
 
 ## Remaining Final Evidence

@@ -268,6 +268,8 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 
 由于 all-in-one debug-bank 上板曾出现 busy stall，当前改成低侵入 `DebugExportLevel=2` source-boundary 路线。2026-07-03 已完成一次 `dbg2 current source-b6` 实板续跑：probe PASS、PSU init PASS、寄存器读回 PASS、输出完整 `192/192`，但 compare FAIL `188/192`、PSNR `19.263 dB`，并出现 `error=0x0000000C`。证据见 `evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md`。因此该 debug 版本只作为探针侵入性风险证据。随后复跑非侵入 stagehash baseline，得到 probe/PSU/register PASS、输出完整 `192/192`、`error=0`，但 compare FAIL `192/192`、PSNR `11.884 dB`。证据见 `evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md`。当前 clean 结论不是连接问题，而是 PL 数值路径仍不等价；下一步应基于该 baseline 做 single-boundary probe，要求 `error=0` 后再把 first mismatching boundary 作为 RTL 修改依据。
 
+2026-07-03 已继续完成 `dbg3/single-boundary` 版本：行为级 RTL raw compare 为 `0/192` mismatch，bitstream 生成和 timing PASS，实板 probe/PSU/register read PASS，输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `192/192`、PSNR `7.724 dB`。关键边界上，`src_feat0_hash=0xF7F21881` 与 RTL 期望一致，说明输入/JTAG/PSU/写回前置和 conv1 feat0 source 边界可用；`src_b1_hash=0xF657C1B4` 与 RTL 期望 `0x16ede581` 不一致，首个已知 mismatch 前移到 SPAB block1 输出/feature buffer replay 到 `src_b1` 的边界。证据见 `evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md`。
+
 ## 12. 当前交付审计状态
 
 严格 board-validation 审计当前状态为 `INCOMPLETE`，历史计数为 `72 / 76`。如果赛题不要求真实插板运行，这 4 项不应作为提交阻断项；它们只代表后续工程实测补充。新增赛题报告、PDF/Word 报告导出、PPA 汇总、报告完整性检查、画质指标闭环门禁、bitstream/PPA gate、stage-hash 上板流程静态检查、board validation readiness、submission manifest/archive 和 evidence matrix 后，当前严格审计剩余 4 项均为真实板端 validation：
@@ -326,7 +328,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | A4 scheduler 验收 | `docs/a4_scheduler_acceptance_flow.md` |
 | 上板汇报规范 | `docs/board_report_flow.md` |
 | JTAG 恢复清单 | `docs/jtag_recovery_checklist.md`、`evidence/board_probe/jtag_recovery_checklist/summary.md` |
-| 最新上板进展 | `evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md` |
+| 最新上板进展 | `evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md` |
 | 质量对比 | `evidence/quality_comparison/summary.md` |
 | 画质指标闭环计划 | `docs/quality_metric_completion_plan.md`、`evidence/quality_metric_completion/summary.md` |
 | A0-A3 reference | `evidence/reference/` |
@@ -346,6 +348,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 
 当前 W8A12_3lane 已经形成可用于赛题阶段性交付/相当报告的完整离线证据链：模型训练和验证口径明确，x4/x2 FP32 画质达到目标，传统插值 baseline 已对比，W8A12 定点导出和 x2 fixed reference 已通过，A0-A4 和 top shell 的 RTL 仿真/OOC 综合均有 PASS 证据，3-lane scheduler 在 XC7Z045 资源门限内。报告、Word/PDF 导出、交付索引、证据矩阵和 GitHub 草案上传链路也已经建立。
 
-剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 有效 stage-hash 续跑已经恢复 JTAG/PSU/register read，并完成上板读回，证明历史数值问题不是硬件 target 不可见，而是 PL 计算路径数值不一致。2026-07-03 full probe 已恢复到 `READY`；dbg2/source-b6 实板续跑得到输出完整 `192/192`、compare FAIL `188/192`、PSNR 19.263 dB、`error=0x0000000C`，只能作为探针侵入性风险证据。随后非侵入 stagehash baseline 复跑得到输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `192/192`、PSNR 11.884 dB，且 `tail_b1/tail_b6_act1/tail_rgb_q/writeback` 均与 RTL 期望不一致。这是当前最干净的 board mismatch 基线。后续应做低侵入 single-boundary probe，在 `error=0`、`frame_done=1`、输出完整时再沿 `halo fetch / conv1 feat0 -> SPAB block1 -> feature buffer/replay -> b1_m_feat -> tail` 链路收窄第一个错误点，并逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。
+剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 有效 stage-hash 续跑已经恢复 JTAG/PSU/register read，并完成上板读回，证明历史数值问题不是硬件 target 不可见，而是 PL 计算路径数值不一致。2026-07-03 full probe 已恢复到 `READY`；dbg2/source-b6 实板续跑得到输出完整 `192/192`、compare FAIL `188/192`、PSNR 19.263 dB、`error=0x0000000C`，只能作为探针侵入性风险证据。随后非侵入 stagehash baseline 复跑得到输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `192/192`、PSNR 11.884 dB，且 `tail_b1/tail_b6_act1/tail_rgb_q/writeback` 均与 RTL 期望不一致。最新 dbg3/single-boundary 版本保持 `error=0` 和完整输出，并把已知首错从 tail/stage hash 前移到 `src_b1_hash`：`src_feat0_hash` 已与 RTL 匹配，`src_b1_hash` 仍不匹配。后续应继续拆 SPAB block1 内部输出和 feature buffer/replay 到 `src_b1` 的边界，并逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。
 
 最终结论：若评审口径为“正确性仿真通过 + 可生成 bitstream + 提供 PPA/资源时序报告”，当前材料可以作为赛题报告/PPA 提交版，并以 `evidence/contest_scope_readiness/summary.md` 与 `evidence/contest_scope_package/summary.md` 的 `PASS_WITH_SCOPE` 作为提交前门禁；若评审明确要求真实板端 32x32/64x64/720p 输出和板端 FPS/功耗实测，则严格 board-validation 口径仍为 `INCOMPLETE`，必须继续完成上板任务后刷新报告和交付包。

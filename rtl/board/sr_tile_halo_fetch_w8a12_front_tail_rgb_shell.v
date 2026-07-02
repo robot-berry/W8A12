@@ -822,7 +822,7 @@ module sr_tile_halo_fetch_w8a12_front_tail_rgb_shell #(
                             {tail_m_valid_cycle_count, rgb_output_count_dbg16};
                         front_debug_src_b6_act1_hash <=
                             {16'd0, tail_input_count};
-                    end else if (!rgb_output_take && rgb_output_count == {OUT_PIX_W{1'b0}}) begin
+                    end else if (DEBUG_SRC_HASH == 0 && !rgb_output_take && rgb_output_count == {OUT_PIX_W{1'b0}}) begin
                         front_debug_tail_feat0_hash <=
                             {24'd0, state, tail_s_ready, all_tail_inputs_valid,
                              m_valid, m_ready, feat0_m_valid, b1_m_valid,

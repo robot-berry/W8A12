@@ -36,13 +36,48 @@ proc w8a12_disable_tclapp_autoload {} {
     }
 }
 
+set use_cs_server 1
+set cs_url "TCP:localhost:3042"
+
+for {set i 0} {$i < [llength $argv]} {incr i} {
+    set key [lindex $argv $i]
+    switch -- $key {
+        "--use-cs-server" {
+            set use_cs_server 1
+        }
+        "--no-cs-server" {
+            set use_cs_server 0
+        }
+        "--cs-url" {
+            incr i
+            if {$i >= [llength $argv]} {
+                error "--cs-url requires a value"
+            }
+            set cs_url [lindex $argv $i]
+        }
+        default {
+            error "Unknown argument: $key"
+        }
+    }
+}
+
 w8a12_disable_tclapp_autoload
 
-catch {set_param labtools.enable_cs_server 0}
+if {$use_cs_server} {
+    catch {set_param labtools.enable_cs_server 1}
+} else {
+    catch {set_param labtools.enable_cs_server 0}
+}
 catch {puts "VIVADO_HW_TARGET_LABTOOLS_ENABLE_CS_SERVER=[get_param labtools.enable_cs_server]"}
+puts "VIVADO_HW_TARGET_USE_CS_SERVER=$use_cs_server"
+puts "VIVADO_HW_TARGET_CS_URL=$cs_url"
 
 open_hw_manager
-connect_hw_server
+if {$use_cs_server} {
+    connect_hw_server -url localhost:3121 -cs_url $cs_url
+} else {
+    connect_hw_server -url localhost:3121
+}
 
 set targets [get_hw_targets -quiet *]
 puts "VIVADO_HW_TARGET_COUNT=[llength $targets]"

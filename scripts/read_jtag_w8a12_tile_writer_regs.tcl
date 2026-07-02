@@ -37,7 +37,8 @@ proc w8a12_disable_tclapp_autoload {} {
 }
 
 w8a12_disable_tclapp_autoload
-catch {set_param labtools.enable_cs_server 0}
+catch {set_param labtools.enable_cs_server 1}
+catch {puts "JTAG_W8A12_REG_LABTOOLS_ENABLE_CS_SERVER=[get_param labtools.enable_cs_server]"}
 
 set bitstream_file ""
 set base_addr 0xA0000000
@@ -197,6 +198,16 @@ for {set i 0} {$i < $poll_count} {incr i} {
     set debug_bank2_tail_b1_hash     [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_FIRST}]]
     set debug_bank2_tail_rgb_q_hash  [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_LAST}]]
 
+    axi_write32 $axi [expr {$base_addr + $REG_PERF_CTRL}] [expr {$perf_drain | 0x00000300}]
+    set bank3_perf_ctrl [axi_read32 $axi [expr {$base_addr + $REG_PERF_CTRL}]]
+    set debug_bank3_src_feat0_hash    [axi_read32 $axi [expr {$base_addr + $REG_INPUT_FLAGS}]]
+    set debug_src_block6_hash         [axi_read32 $axi [expr {$base_addr + $REG_INPUT_PIXEL}]]
+    set debug_bank3_src_b1_hash       [axi_read32 $axi [expr {$base_addr + $REG_OUTPUT_FLAGS}]]
+    set debug_src_b6_act1_hash        [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_HASH}]]
+    set debug_bank3_tail_b1_hash      [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_RANGE}]]
+    set debug_bank3_tail_b6_act1_hash [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_FIRST}]]
+    set debug_bank3_tail_rgb_q_hash   [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_LAST}]]
+
     axi_write32 $axi [expr {$base_addr + $REG_PERF_CTRL}] $perf_drain
 
     puts [format "JTAG_W8A12_REG_SAMPLE=%d" $i]
@@ -213,6 +224,7 @@ for {set i 0} {$i < $poll_count} {incr i} {
     puts [format "JTAG_W8A12_REG_PERF_CTRL=0x%08X" $perf_ctrl]
     puts [format "JTAG_W8A12_REG_DEBUG_BANK1_PERF_CTRL=0x%08X" $bank1_perf_ctrl]
     puts [format "JTAG_W8A12_REG_DEBUG_BANK2_PERF_CTRL=0x%08X" $bank2_perf_ctrl]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK3_PERF_CTRL=0x%08X" $bank3_perf_ctrl]
     puts [format "JTAG_W8A12_REG_E2E_CYCLES=%d" $e2e_cycles]
     puts [format "JTAG_W8A12_REG_DEBUG_WRITEBACK_HASH=0x%08X" $debug_writeback_hash]
     puts [format "JTAG_W8A12_REG_DEBUG_WRITEBACK_RANGE=0x%08X" $debug_writeback_range]
@@ -224,6 +236,10 @@ for {set i 0} {$i < $poll_count} {incr i} {
     puts [format "JTAG_W8A12_REG_DEBUG_TAIL_FEAT0_HASH=0x%08X" $debug_tail_feat0_hash]
     puts [format "JTAG_W8A12_REG_DEBUG_SRC_FEAT0_HASH=0x%08X" $debug_src_feat0_hash]
     puts [format "JTAG_W8A12_REG_DEBUG_SRC_B1_HASH=0x%08X" $debug_src_b1_hash]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK3_SRC_FEAT0_HASH=0x%08X" $debug_bank3_src_feat0_hash]
+    puts [format "JTAG_W8A12_REG_DEBUG_SRC_BLOCK6_HASH=0x%08X" $debug_src_block6_hash]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK3_SRC_B1_HASH=0x%08X" $debug_bank3_src_b1_hash]
+    puts [format "JTAG_W8A12_REG_DEBUG_SRC_B6_ACT1_HASH=0x%08X" $debug_src_b6_act1_hash]
     puts [format "JTAG_W8A12_REG_DEBUG_SPAB_B1_INPUT_HASH=0x%08X" $debug_spab_b1_input_hash]
     puts [format "JTAG_W8A12_REG_DEBUG_SPAB_B1_C1_HASH=0x%08X" $debug_spab_b1_c1_hash]
     puts [format "JTAG_W8A12_REG_DEBUG_SPAB_B1_C2_HASH=0x%08X" $debug_spab_b1_c2_hash]
@@ -235,6 +251,9 @@ for {set i 0} {$i < $poll_count} {incr i} {
     puts [format "JTAG_W8A12_REG_DEBUG_SPAB_B1_ATT_HASH=0x%08X" $debug_spab_b1_att_hash]
     puts [format "JTAG_W8A12_REG_DEBUG_BANK2_TAIL_B1_HASH=0x%08X" $debug_bank2_tail_b1_hash]
     puts [format "JTAG_W8A12_REG_DEBUG_BANK2_TAIL_RGB_Q_HASH=0x%08X" $debug_bank2_tail_rgb_q_hash]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK3_TAIL_B1_HASH=0x%08X" $debug_bank3_tail_b1_hash]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK3_TAIL_B6_ACT1_HASH=0x%08X" $debug_bank3_tail_b6_act1_hash]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK3_TAIL_RGB_Q_HASH=0x%08X" $debug_bank3_tail_rgb_q_hash]
     if {$counter_out > 0} {
         puts [format "JTAG_W8A12_REG_DEBUG_WRITEBACK_RANGE_DECODE=min=%d max=%d count=%d" \
             [expr {($debug_writeback_range >> 24) & 0xff}] \

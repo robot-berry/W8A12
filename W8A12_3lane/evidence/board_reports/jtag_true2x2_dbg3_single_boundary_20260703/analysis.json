@@ -1,0 +1,119 @@
+{
+  "status": "FAIL_CLEAN_BOARD_NUMERIC_MISMATCH_LOCALIZED_TO_SRC_B1",
+  "generated_at": "2026-07-03 04:58 CST",
+  "scope": "true2x2 x4 JTAG W8A12 DebugExportLevel=3 single-boundary probe",
+  "rtl_sim": {
+    "status": "PASS",
+    "debug_export_level": 3,
+    "mismatch_bytes": 0,
+    "total_bytes": 192,
+    "sim_log": "build/xsim_jtag_raw_compare_dbg3_single_boundary_20260703/jtag_w8a12_tile_writer_raw_compare_sim.sim/sim_1/behav/xsim/simulate.log",
+    "expected_hashes": {
+      "src_feat0_hash": "0xf7f21881",
+      "src_b1_hash": "0x16ede581",
+      "src_block6_hash": "0xae4b81bc",
+      "src_b6_act1_hash": "0xc7a096fb",
+      "tail_b1_hash": "0x16ede1c2",
+      "tail_b6_act1_hash": "0xc7a092b8",
+      "tail_rgb_q_hash": "0xb712a61b",
+      "writeback_hash": "0x61d3ea1d"
+    }
+  },
+  "bitstream": {
+    "status": "PASS",
+    "path": "vivado/bitstreams/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg3_single_boundary_20260703.bit",
+    "utilization_report": "vivado/reports/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg3_single_boundary_20260703_utilization_impl.rpt",
+    "timing_report": "vivado/reports/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg3_single_boundary_20260703_timing_impl.rpt",
+    "wns_ns": 13.131,
+    "whs_ns": 0.010,
+    "lut": 39231,
+    "ff": 116534,
+    "bram_tile": 311,
+    "dsp": 128
+  },
+  "board_run": {
+    "probe": "PASS",
+    "psu_init": "PASS",
+    "smoke": "FAIL",
+    "register_read": "PASS",
+    "output_bytes": 192,
+    "expected_output_bytes": 192,
+    "frame_done": 1,
+    "input_counter": 4,
+    "output_counter": 64,
+    "error_flags": "0x00000000",
+    "frame_cycles": 7521176,
+    "mismatch_bytes": 192,
+    "total_bytes": 192,
+    "max_channel_diff": 157,
+    "psnr_db": 7.7239212457414
+  },
+  "boundary_comparison": [
+    {
+      "boundary": "src_feat0_hash",
+      "expected": "0xf7f21881",
+      "observed": "0xF7F21881",
+      "result": "MATCH"
+    },
+    {
+      "boundary": "src_b1_hash",
+      "expected": "0x16ede581",
+      "observed": "0xF657C1B4",
+      "result": "MISMATCH"
+    },
+    {
+      "boundary": "src_block6_hash",
+      "expected": "0xae4b81bc",
+      "observed": "0x547AB9F3",
+      "result": "MISMATCH"
+    },
+    {
+      "boundary": "src_b6_act1_hash",
+      "expected": "0xc7a096fb",
+      "observed": "0x599FE8A9",
+      "result": "MISMATCH"
+    },
+    {
+      "boundary": "tail_b1_hash",
+      "expected": "0x16ede1c2",
+      "observed": "0xF657C5F7",
+      "result": "MISMATCH"
+    },
+    {
+      "boundary": "tail_b6_act1_hash",
+      "expected": "0xc7a092b8",
+      "observed": "0x599FECEA",
+      "result": "MISMATCH"
+    },
+    {
+      "boundary": "tail_rgb_q_hash",
+      "expected": "0xb712a61b",
+      "observed": "0xE5EDCFCD",
+      "result": "MISMATCH"
+    },
+    {
+      "boundary": "writeback_hash",
+      "expected": "0x61d3ea1d",
+      "observed": "0xDE37538E",
+      "result": "MISMATCH"
+    }
+  ],
+  "first_matching_boundary": "src_feat0_hash",
+  "first_mismatching_boundary": "src_b1_hash",
+  "valid_for_datapath_localization": true,
+  "debug_probe_intrusive": false,
+  "interpretation": "The board keeps error_flags 0, frame_done 1, and complete output. src_feat0 matches RTL, while src_b1 is the first mismatching known boundary. Prioritize SPAB block1 output / feature buffer replay into src_b1 before writer or PS/JTAG changes.",
+  "next_actions": [
+    "Keep DebugExportLevel=3 clean-failure conditions.",
+    "Add a finer block1 internal boundary around spab_b1_input, c1_raw, c1, c2_replay/window, c3/residual/attention, and src_b1.",
+    "Use the first mismatching block1 sub-boundary as RTL patch input only if error_flags remains 0 and output stays complete."
+  ],
+  "artifacts": {
+    "analysis_md": "analysis.md",
+    "stagehash_acceptance_summary": "artifacts/stagehash_acceptance_summary.md",
+    "smoke_summary": "artifacts/smoke_summary.md",
+    "compare_summary": "artifacts/compare_summary.md",
+    "reg_read_summary": "artifacts/reg_read_summary.md",
+    "preview_png": "artifacts/jtag_w8a12_validation_preview.png"
+  }
+}

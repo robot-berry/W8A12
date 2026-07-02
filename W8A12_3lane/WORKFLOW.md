@@ -660,19 +660,22 @@ x2.board
 7. 运行 `tools/create_contest_scope_package.py`，生成赛题口径提交包摘要；严格上板归档继续保留 `INCOMPLETE` 风险说明。
 8. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
 
-当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 full probe 已恢复为 `READY`，USB known JTAG candidate count=3，Vivado target count=1。随后 dbg2/source-boundary 上板已执行，读取到完整输出但 compare 失败，且 `error=0x0000000C`，因此不从该 run 直接改 RTL。已复跑非侵入 stagehash baseline，得到 `error=0` 的完整输出 mismatch；下一步从该 clean baseline 继续做更低侵入 single-boundary probe：
+当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 full probe 已恢复为 `READY`，USB known JTAG candidate count=3，Vivado target count=1。随后 dbg2/source-boundary 上板已执行，读取到完整输出但 compare 失败，且 `error=0x0000000C`，因此不从该 run 直接改 RTL。已复跑非侵入 stagehash baseline，得到 `error=0` 的完整输出 mismatch。2026-07-03 dbg3/single-boundary 已继续推进：RTL raw compare `0/192`、bitstream/timing PASS、真实上板 `error=0` 且输出完整，`src_feat0_hash` 与 RTL 匹配，首个已知 mismatch 前移到 `src_b1_hash`：
 
 ```text
 Historical stage-hash: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md
 Current dbg2/source-boundary: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md
 Current clean baseline: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md
-Next command: build/run a single-boundary probe with error=0 requirement
+Current dbg3/single-boundary: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md
+Next command: split SPAB block1 internal boundaries under the same error=0 requirement
 ```
 
-当前第一步仍不是直接跑 32x32，而是先固定 PS init + JTAG-to-AXI 前置流程，再重跑 debugregs true 2x2：
+当前第一步仍不是直接跑 32x32，而是先固定 PS init + JTAG-to-AXI 前置流程，并在 true2x2 上继续拆 `src_b1` 前后的 block1 内部边界。最近一次可复现命令：
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_jtag_w8a12_tile_writer_smoke.ps1 -Bitstream vivado\bitstreams\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_true2x2_jtagaxi_dbgregs_20260627.bit -ImgW 2 -ImgH 2 -Scale 4 -InputRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference\input.rgb -ReferenceRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference.rgb -OutputDir board_runs\jtag_w8a12_tile_writer\true2x2_jtagaxi_dbgregs_retry
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_sim_sr_jtag_w8a12_tile_writer_endpoint_raw_compare.ps1 -RequireVivadoIdle -ImageW 2 -TileW 2 -TileH 2 -Halo 21 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -InputRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference\input.rgb -ReferenceRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference.rgb -BuildRoot build\xsim_jtag_raw_compare_dbg3_single_boundary_20260703
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_bitstream_jtag_w8a12_tile_writer.ps1 -RequireVivadoIdle -ImgW 2 -TileW 2 -TileH 2 -Halo 21 -PlFreqMhz 25 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -VivadoMaxThreads 1 -SynthDirective RuntimeOptimized -AttemptLabel dbg3_single_boundary_20260703
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_stagehash_true2x2_acceptance.ps1 -Bitstream vivado\bitstreams\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg3_single_boundary_20260703.bit -PsuInitTcl vivado\jwtw_dbg3_single_boundary_20260703\jwtw.gen\sources_1\bd\jwtw\ip\jwtw_ps_0\psu_init.tcl -OutputDir board_runs\jtag_w8a12_tile_writer\true2x2_dbg3_single_boundary_20260703 -ContinueOnError
 ```
 
 判定规则：
@@ -680,7 +683,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_jtag_w8a12_tile_
 - RTL 期望 writeback hash：`0x61d3ea1d`。
 - 若冷启动或重插后显示 `design has no supported soft debug core(s)`，先运行对应工程的 `psu_init.tcl`，再检查/重建 JTAG AXI probe bitstream、`.ltx`/probes 和 `refresh_hw_device` 识别链路。
 - 若板端 debug hash 一致但 `board_output.rgb` 仍 mismatch，则重点查 endpoint 输出缓存/JTAG 读回。
-- 若板端 debug hash 不一致，则重点查 writer 前 PL 计算路径或综合后行为。
+- 当前 `src_feat0_hash` 已匹配而 `src_b1_hash` 首错，因此优先查 SPAB block1 输出/feature buffer replay 到 `src_b1` 的边界。
 
 板端 2x2 修到 bit-exact 或误差边界被解释后，再进入板端扩展：
 
