@@ -1,9 +1,9 @@
 {
   "status": "PASS",
-  "source": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\docs\\contest_submission_report.md",
-  "pdf": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\pdf\\W8A12_3lane_contest_submission_report.pdf",
-  "bytes": 117095,
-  "sha256": "9b767d2bd2b0d36eb74c6db72884af3670523e9c0acaa82a6636a467e269ad68",
+  "source": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\docs\\contest_submission_report.md",
+  "pdf": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\output\\pdf\\W8A12_3lane_contest_submission_report.pdf",
+  "bytes": 116630,
+  "sha256": "25eff4621732a064e574a95d792a52861449b041193303b8cbb7c500a93a3026",
   "font_path": "C:\\Windows\\Fonts\\simhei.ttf",
   "page_count": 10,
   "required_tokens": {
@@ -15,20 +15,20 @@
     "72 / 76": true
   },
   "rendered_pages": [
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-01.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-02.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-03.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-04.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-05.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-06.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-07.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-08.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-09.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-10.png"
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-01.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-02.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-03.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-04.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-05.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-06.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-07.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-08.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-09.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-10.png"
   ],
   "render_checks": [
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-01.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-01.png",
       "width": 1241,
       "height": 1754,
       "mean": 243.80265207096568,
@@ -39,7 +39,7 @@
       "nonblank": true
     },
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-02.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-02.png",
       "width": 1241,
       "height": 1754,
       "mean": 247.51857111223615,
@@ -50,7 +50,7 @@
       "nonblank": true
     },
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-03.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-03.png",
       "width": 1241,
       "height": 1754,
       "mean": 249.2229323650236,
@@ -61,7 +61,7 @@
       "nonblank": true
     },
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-04.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-04.png",
       "width": 1241,
       "height": 1754,
       "mean": 247.64074885354714,
@@ -72,7 +72,7 @@
       "nonblank": true
     },
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-05.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-05.png",
       "width": 1241,
       "height": 1754,
       "mean": 246.24423282066454,
@@ -83,10 +83,10 @@
       "nonblank": true
     },
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-06.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-06.png",
       "width": 1241,
       "height": 1754,
-      "mean": 246.8673973705319,
+      "mean": 247.08630256432403,
       "extrema": [
         0,
         255
@@ -94,10 +94,10 @@
       "nonblank": true
     },
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-07.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-07.png",
       "width": 1241,
       "height": 1754,
-      "mean": 247.2056976708929,
+      "mean": 246.6526103107712,
       "extrema": [
         0,
         255
@@ -105,10 +105,10 @@
       "nonblank": true
     },
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-08.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-08.png",
       "width": 1241,
       "height": 1754,
-      "mean": 244.72739735215558,
+      "mean": 244.8147257747228,
       "extrema": [
         0,
         255
@@ -116,10 +116,10 @@
       "nonblank": true
     },
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-09.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-09.png",
       "width": 1241,
       "height": 1754,
-      "mean": 248.18736820730697,
+      "mean": 248.49004462690093,
       "extrema": [
         0,
         255
@@ -127,10 +127,10 @@
       "nonblank": true
     },
     {
-      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-10.png",
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\github_upload\\robot-berry_W8A12_upload_tree\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-10.png",
       "width": 1241,
       "height": 1754,
-      "mean": 249.38825128151885,
+      "mean": 248.76883504217827,
       "extrema": [
         0,
         255

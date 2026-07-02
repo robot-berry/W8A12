@@ -644,7 +644,7 @@ x2.board
 7. 运行 `tools/create_contest_scope_package.py`，生成赛题口径提交包摘要；严格上板归档继续保留 `INCOMPLETE` 风险说明。
 8. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
 
-当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；最新 dbg2/source-boundary 一键验收则因 USB known JTAG candidate count=0 处于 `BLOCKED`，待连接恢复后继续读 `tail_feat0/src_feat0/src_b1`：
+当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 USB-only 复测为 `USB_READY`，USB known JTAG candidate count=3，但 Vivado target 尚未在后台实现任务结束后安全复测；待 `VIVADO_HW_TARGET_COUNT>=1` 后继续 dbg2/source-boundary 上板，读取 `tail_feat0/src_feat0/src_b1`：
 
 ```text
 Historical stage-hash: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md
