@@ -36,6 +36,7 @@ Status: PASS
 | `delivery_wrapper_delegates_to_root` | PASS | `W8A12_3lane wrapper delegates from repo root` |
 | `delivery_preflight_delegates_to_root` | PASS | `W8A12_3lane preflight delegates from repo root` |
 | `root_preflight_runs_usb_precondition_and_optional_acceptance` | PASS | `board recovery preflight step chain` |
+| `root_preflight_supports_usb_only_skip_vivado` | PASS | `safe USB-only preflight path does not start Vivado while implementation runs are active` |
 | `root_wrapper_runs_probe_psu_smoke_regread` | PASS | `root wrapper step chain` |
 | `root_wrapper_records_expected_hashes` | PASS | `stage-hash expected values` |
 | `report_records_bitstream_and_target0` | PASS | `stage-hash report has build and target-fail evidence` |

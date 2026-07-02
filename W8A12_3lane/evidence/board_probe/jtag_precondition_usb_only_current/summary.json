@@ -1,0 +1,81 @@
+{
+  "status": "USB_READY",
+  "generated_at": "2026-07-03 00:40:03",
+  "usb_match_count": 6,
+  "usb_known_jtag_candidate_count": 3,
+  "pnp_history_known_jtag_candidate_count": 4,
+  "pnp_history_known_vidpid_count": 3,
+  "vivado_target_count": "not_checked",
+  "usb_json": "G:\\UESTC\\feitengspan1\\board_runs\\w8a12_board_recovery_preflight\\usb_only_current_20260703\\usb\\usb_jtag_devices.json",
+  "vivado_probe_dir": "not_checked",
+  "online_matched_devices": [
+    {
+      "name": "USB Composite Device",
+      "class": "USB",
+      "status": "OK",
+      "known": true,
+      "id": "USB\\VID_0403&PID_6010\\210203367162"
+    },
+    {
+      "name": "USB Composite Device",
+      "class": "USB",
+      "status": "OK",
+      "known": false,
+      "id": "USB\\VID_0B05&PID_6208\\6&64C86AE&0&1"
+    },
+    {
+      "name": "USB Composite Device",
+      "class": "USB",
+      "status": "OK",
+      "known": false,
+      "id": "USB\\VID_13D3&PID_3563\\000000000"
+    },
+    {
+      "name": "USB Composite Device",
+      "class": "USB",
+      "status": "OK",
+      "known": false,
+      "id": "USB\\VID_322E&PID_202C\\6&7E781F5&0&4"
+    },
+    {
+      "name": "USB Serial Converter A",
+      "class": "USB",
+      "status": "OK",
+      "known": true,
+      "id": "USB\\VID_0403&PID_6010&MI_00\\7&68AC5D3&0&0000"
+    },
+    {
+      "name": "USB Serial Converter B",
+      "class": "USB",
+      "status": "OK",
+      "known": true,
+      "id": "USB\\VID_0403&PID_6010&MI_01\\7&68AC5D3&0&0001"
+    }
+  ],
+  "historical_known_candidates": [
+    {
+      "name": "Silicon Labs CP210x USB to UART Bridge (COM3)",
+      "class": "Ports",
+      "status": "Unknown",
+      "id": "USB\\VID_10C4&PID_EA60\\0001"
+    },
+    {
+      "name": "USB Composite Device",
+      "class": "USB",
+      "status": "OK",
+      "id": "USB\\VID_0403&PID_6010\\210203367162"
+    },
+    {
+      "name": "USB Serial Converter A",
+      "class": "USB",
+      "status": "OK",
+      "id": "USB\\VID_0403&PID_6010&MI_00\\7&68AC5D3&0&0000"
+    },
+    {
+      "name": "USB Serial Converter B",
+      "class": "USB",
+      "status": "OK",
+      "id": "USB\\VID_0403&PID_6010&MI_01\\7&68AC5D3&0&0001"
+    }
+  ]
+}

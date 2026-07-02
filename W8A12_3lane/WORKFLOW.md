@@ -396,7 +396,7 @@ board_runs/jtag_w8a12_tile_writer/true2x2_dbg0_nondebug_acceptance_20260629/
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_dbg2_source_boundary_acceptance.ps1
 ```
 
-该脚本会先执行 board recovery preflight；若 `jtag_precondition_current` 为 `READY`，自动使用上述 dbg2 位流进入 true2x2 上板验收；若板卡不可见，则生成 `BLOCKED` summary，不误入烧录。当前实测结果为 `BLOCKED`：USB known JTAG candidate `0`，强制 Vivado probe 后 target count `0`。
+该脚本会先执行 board recovery preflight；若 `jtag_precondition_current` 为 `READY`，自动使用上述 dbg2 位流进入 true2x2 上板验收；若板卡不可见，则生成 `BLOCKED` summary，不误入烧录。2026-07-03 已新增 `-SkipVivadoProbe` 安全入口：当后台 Vivado bitstream 任务仍在运行时，只刷新 USB-only 证据，不启动会触发 cleanup 的 Vivado target probe。当前 USB-only 实测为 `USB_READY`：USB known JTAG candidate `3`，Vivado target `not_checked`；等现有 Vivado 任务结束后再跑 target probe，要求 `VIVADO_HW_TARGET_COUNT >= 1`。
 
 板子恢复可见后，重新运行上述一键脚本即可；若 dbg2 完整输出，则比较 bank1 source-boundary hash，用于判断错误是在 halo/conv1/source tap 之前，还是在 `b1_m_feat` replay/tail 交界之后。
 
@@ -580,7 +580,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\probe_vivado_hw_targ
 W8A12_3lane\scripts\check_vivado_hw_probe_log.cmd --probe-dir board_runs\vivado_hw_target_probe_w8a12_3lane
 ```
 
-验收条件：`evidence/board_probe/vivado_hw_probe.md` 显示 `Status: PASS`，且 Vivado probe 日志包含 `VIVADO_HW_TARGET_PROBE_PASS=1`。若当前板卡连接状态变化，先运行 `W8A12_3lane/scripts/run_w8a12_board_recovery_preflight.ps1` 并查看 `evidence/board_probe/jtag_precondition_current/summary.md`；只有 USB known candidate 非 0 且 `VIVADO_HW_TARGET_COUNT>=1` 时，才进入 stage-hash 上板验收。
+验收条件：`evidence/board_probe/vivado_hw_probe.md` 显示 `Status: PASS`，且 Vivado probe 日志包含 `VIVADO_HW_TARGET_PROBE_PASS=1`。若当前板卡连接状态变化，先运行 `W8A12_3lane/scripts/run_w8a12_board_recovery_preflight.ps1` 并查看 `evidence/board_probe/jtag_precondition_current/summary.md`；若另有 Vivado 任务正在运行，可先加 `-SkipVivadoProbe` 只刷新 `evidence/board_probe/jtag_precondition_usb_only_current/summary.md`。只有 USB known candidate 非 0 且 `VIVADO_HW_TARGET_COUNT>=1` 时，才进入 stage-hash 上板验收。
 
 每次完成全流程上板后，必须生成：
 

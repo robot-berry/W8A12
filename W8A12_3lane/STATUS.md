@@ -62,9 +62,11 @@
 | stage-hash acceptance wrapper | FAIL at probe | `board_runs/jtag_w8a12_tile_writer/true2x2_stagehash_acceptance_wrapper_20260628` | 一键入口已补齐；当前第一步 probe 返回 `VIVADO_HW_TARGET_COUNT=0`，尚未进入 PS init/smoke/reg-read |
 | goal continuation target probe | FAIL | `board_runs/vivado_hw_target_probe_goal_continue_20260628_b` | `VIVADO_HW_TARGET_COUNT=0`；USB 在线 match=3、known candidate=0，历史可见 FTDI `VID_0403&PID_6010`，说明当前 PC 侧没有在线 Xilinx/FTDI JTAG 枚举 |
 | JTAG precondition current | BLOCKED | `W8A12_3lane/evidence/board_probe/jtag_precondition_current/summary.md` | USB known candidate=0、Vivado target count=0；下一步先恢复 USB/JTAG 枚举 |
+| JTAG precondition USB-only current | USB_READY / VIVADO NOT CHECKED | `W8A12_3lane/evidence/board_probe/jtag_precondition_usb_only_current/summary.md` | 2026-07-03 USB-only preflight：USB known JTAG candidate=3，Vivado target 未检查；当前另有 Vivado bitstream 任务运行，不启动会触发 cleanup 的 Vivado target probe |
 | JTAG force Vivado probe current | HISTORICAL READY | `W8A12_3lane/evidence/board_probe/recovery_preflight_force_vivado_current/board_recovery_preflight_summary.md` | 历史强制 Vivado probe 显示 USB known candidate=3、Vivado target count=1；不代表当前连接态 |
 | W8A12 board recovery preflight | BLOCKED | `board_runs/w8a12_board_recovery_preflight/dbg2_src_boundary_current/board_recovery_preflight_summary.md` | 当前板卡链路不能进入 stage-hash/debug-bank 上板；恢复后重新运行 dbg2 wrapper |
 | JTAG recovery checklist | CURRENT BLOCKED / HISTORICAL READY | `W8A12_3lane/evidence/board_probe/jtag_recovery_checklist/summary.md`；`W8A12_3lane/evidence/board_probe/jtag_precondition_current/summary.md` | checklist 保留物理恢复流程；最新 current precondition 为 BLOCKED |
+| JTAG recovery checklist USB-only current | BLOCKED UNTIL VIVADO TARGET | `W8A12_3lane/evidence/board_probe/jtag_recovery_checklist_usb_only_current/summary.md` | USB 枚举已恢复到 known candidate=3；下一步等现有 Vivado 任务结束后运行 Vivado target probe，要求 `VIVADO_HW_TARGET_COUNT>=1` |
 | 2026-06-29 stage-hash live retry | PASS TO MISMATCH | `W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md` | JTAG/PSU/register read 均已通过，true2x2 输出完整但 `tail_b1_hash` 首个边界失败，继续查 front/SPAB block1 或更前输入/halo 路径 |
 
 ## 当前交付审计
@@ -91,4 +93,4 @@ W8A12_3lane/evidence/delivery_audit/missing_evidence_plan.md
 2. A6 x4 64x64 board validation 依赖 A5 正确性闭环。
 3. A7 x4 720p tiled board validation 依赖 A6 和完整 tile+halo crop-stitch，上板汇报需包含资源、时序、FPS、latency、power、PSNR/SSIM 和输出文件。
 4. x2_720p board validation 的 W8A12 x2 导出和 fixed reference 已具备，仍缺真实板端 bitstream/output/validation。
-5. 当前技术阻塞点已推进到“W8A12 true2x2 板端数值不一致”，但最新物理连接前置条件又回到 JTAG 枚举阻塞：USB known JTAG candidate=0，强制 Vivado probe 后 Vivado target count=0。恢复 JTAG 后，需直接运行 dbg2/source-boundary 验收，在历史 `tail_b1_hash` 边界之前继续收窄。
+5. 当前技术阻塞点已推进到“W8A12 true2x2 板端数值不一致”。2026-07-03 USB-only 预检显示 USB known JTAG candidate=3，说明 Windows 侧已能看到 FTDI/JTAG 类设备；但当前另有 Vivado bitstream 任务运行，暂未启动会触发 cleanup 的 Vivado target probe。等现有 Vivado 任务结束后，需运行 Vivado target probe，若 `VIVADO_HW_TARGET_COUNT>=1`，直接进入 dbg2/source-boundary 验收，在历史 `tail_b1_hash` 边界之前继续收窄。

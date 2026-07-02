@@ -12,7 +12,7 @@ USB known JTAG candidate count: 0
 Vivado target count: not_checked 或 0
 ```
 
-说明阻塞发生在 PC/USB/JTAG 枚举阶段，尚未进入 W8A12 bitstream、PS init、AXI register probe 或 stage-hash 验收。常规 preflight 在 USB known candidate=0 时会跳过 Vivado probe；最新强制 Vivado probe 证据 `evidence/board_probe/recovery_preflight_force_vivado_current/board_recovery_preflight_summary.md` 也显示 target count=0。此时继续跑 Vivado/JTAG 验收不会产生有效板端输出。
+说明阻塞发生在 PC/USB/JTAG/Vivado target 前置阶段，尚未进入 W8A12 bitstream、PS init、AXI register probe 或 stage-hash 验收。常规 preflight 在 USB known candidate=0 时会跳过 Vivado probe；若后台已有 Vivado 综合/实现任务运行，可使用 `-SkipVivadoProbe` 只刷新 USB-only 证据，避免触发 Vivado cleanup。2026-07-03 USB-only 证据 `evidence/board_probe/jtag_precondition_usb_only_current/summary.md` 显示 USB known JTAG candidate=3，但 Vivado target 尚未安全复测；继续上板前仍必须得到 `VIVADO_HW_TARGET_COUNT>=1`。
 
 ## 2. 恢复动作
 

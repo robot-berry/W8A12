@@ -127,6 +127,19 @@ def main() -> int:
         "board recovery preflight step chain",
     )
     add(
+        "root_preflight_supports_usb_only_skip_vivado",
+        all(
+            token in root_preflight_text
+            for token in [
+                "SkipVivadoProbe",
+                "USB-only precondition evidence",
+                "Vivado probe skipped",
+            ]
+        )
+        and "SkipVivadoProbe" in delivery_preflight_text,
+        "safe USB-only preflight path does not start Vivado while implementation runs are active",
+    )
+    add(
         "root_wrapper_runs_probe_psu_smoke_regread",
         all(
             token in root_wrapper_text

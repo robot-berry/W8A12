@@ -71,11 +71,11 @@
 | board report 校验 | `tools/validate_board_report.py` | 已提供 |
 | Vivado JTAG probe 验收 | `tools/check_vivado_hw_probe_log.py` | 已提供，重插后 PASS |
 | Vivado JTAG probe 历史证据 | `evidence/board_probe/vivado_hw_probe.md` | 历史 PASS，target count=1、device count=2；当前连接态以后续 precondition/probe 为准 |
-| JTAG 当前前置条件 | `evidence/board_probe/jtag_precondition_current/summary.md` | 当前最新复测为 BLOCKED：USB known JTAG candidate=0，Vivado target 未检查；历史 READY 记录只作为成功上板过程证据 |
-| W8A12 board recovery preflight | `scripts/run_w8a12_board_recovery_preflight.ps1`、`W8A12_3lane/scripts/run_w8a12_board_recovery_preflight.ps1`、`board_runs/w8a12_board_recovery_preflight/dbg2_src_boundary_current/board_recovery_preflight_summary.md` | 已提供；当前用于板卡恢复门禁。最新结果 BLOCKED：USB known JTAG candidate=0，强制 Vivado probe 后 target count=0；恢复 JTAG 后可继续进入 dbg2/source-boundary 或 stage-hash smoke |
+| JTAG 当前前置条件 | `evidence/board_probe/jtag_precondition_current/summary.md`、`evidence/board_probe/jtag_precondition_usb_only_current/summary.md` | 2026-07-03 USB-only 复测为 USB_READY：USB known JTAG candidate=3，Vivado target 未检查；历史 READY 记录只作为成功上板过程证据 |
+| W8A12 board recovery preflight | `scripts/run_w8a12_board_recovery_preflight.ps1`、`W8A12_3lane/scripts/run_w8a12_board_recovery_preflight.ps1`、`board_runs/w8a12_board_recovery_preflight/dbg2_src_boundary_current/board_recovery_preflight_summary.md` | 已提供；新增 `-SkipVivadoProbe` 可在后台 Vivado 运行时只刷新 USB-only 证据，不触发 Vivado cleanup。当前 USB 已可见，下一步等现有 Vivado 任务结束后运行 Vivado target probe |
 | 最新上板续跑进展 | `evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md` | 2026-06-29 stage-hash 实板续跑：JTAG/PSU/register read PASS，2x2 输出完整 `192/192`，compare FAIL `191/192`，最早失败边界为 `tail_b1_hash` |
 | JTAG debug-bank 细粒度定位 | `evidence/board_reports/jtag_true2x2_debugbank_20260629.md`、`rtl/board/sr_jtag_w8a12_tile_writer_endpoint.v`、`scripts/read_jtag_w8a12_tile_writer_regs.tcl` | RTL PASS；在 6-bit JTAG AXI-Lite 下通过 `REG_PERF_CTRL[15:8]` 暴露 bank 1/2，读取 `tail_feat0/src_feat0/src_b1/spab_b1_input/c1/c2/c3/residual/att`；同一 true2x2 输入/参考 raw compare 仍 `0/192` |
-| JTAG 物理恢复清单 | `docs/jtag_recovery_checklist.md`、`tools/generate_jtag_recovery_checklist.py`、`evidence/board_probe/jtag_recovery_checklist/summary.md` | 历史 BLOCKED/READY 清单保留；最新 `jtag_precondition_current` 为 BLOCKED，需先恢复 USB/JTAG 枚举 |
+| JTAG 物理恢复清单 | `docs/jtag_recovery_checklist.md`、`tools/generate_jtag_recovery_checklist.py`、`evidence/board_probe/jtag_recovery_checklist/summary.md`、`evidence/board_probe/jtag_recovery_checklist_usb_only_current/summary.md` | 历史 BLOCKED/READY 清单保留；最新 USB-only precondition 为 USB_READY，但严格上板仍需 Vivado target count >= 1 |
 | board validation readiness | `evidence/board_reports/validation_readiness/summary.md` | PASS；4 个剩余上板报告 skeleton 已预建，尺寸/PSNR/FPS/命令链已检查，但仍需真实 `validation.md Status: PASS` |
 | board report flow static | `evidence/board_reports/flow_static/summary.md` | PASS |
 | xsim 日志汇总 | `tools/summarize_xsim_result.py` | 已提供 |
@@ -102,7 +102,7 @@
 | JTAG-W8A12 true2x2 debug-progress | `evidence/board_reports/jtag_true2x2_dbgprogress_20260628.md` | bitstream/timing PASS；上板完整输出 `192/192`、`frame_done=1`，但 compare FAIL：`189/192` mismatch，writeback hash 不等于 RTL |
 | JTAG-W8A12 true2x2 stage-hash | `evidence/board_reports/jtag_true2x2_stagehash_20260628.md`、`evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md` | RTL raw compare PASS；Default stage-hash bitstream 已生成且 timing PASS；2026-06-29 已上板读取，`tail_b1/tail_b6_act1/tail_rgb_q/writeback` 均与 RTL 期望不一致，最早失败边界为 `tail_b1_hash` |
 | JTAG-W8A12 true2x2 debug-bank | `evidence/board_reports/jtag_true2x2_debugbank_20260629.md` | RTL raw compare PASS；all-in-one debugbank 上板曾 stall，不作为下一步首选 |
-| JTAG-W8A12 dbg2 source-boundary 一键验收 | `scripts/run_w8a12_dbg2_source_boundary_acceptance.ps1`、`evidence/board_reports/jtag_true2x2_dbg2_src_boundary_prepare_20260629.md`、`evidence/board_reports/jtag_true2x2_dbg2_src_boundary_current/summary.md` | 已提供；RTL raw compare PASS、bitstream/timing/resource PASS。当前运行结果 BLOCKED：USB known JTAG candidate=0，Vivado target count=0；恢复 JTAG 后会自动进入 dbg2 上板验收 |
+| JTAG-W8A12 dbg2 source-boundary 一键验收 | `scripts/run_w8a12_dbg2_source_boundary_acceptance.ps1`、`evidence/board_reports/jtag_true2x2_dbg2_src_boundary_prepare_20260629.md`、`evidence/board_reports/jtag_true2x2_dbg2_src_boundary_current/summary.md` | 已提供；RTL raw compare PASS、bitstream/timing/resource PASS。当前 USB-only 结果为 USB known JTAG candidate=3，但 Vivado target 尚未安全复测；target count >=1 后会自动进入 dbg2 上板验收 |
 | 交付审计 | `evidence/delivery_audit/contest_delivery_audit.md` | INCOMPLETE |
 | 缺口执行计划 | `evidence/delivery_audit/missing_evidence_plan.md` | 已生成 |
 | 硬门禁执行队列 | `evidence/delivery_audit/hard_gate_execution_queue.md` | 17 项，PASS 队列 |

@@ -162,6 +162,11 @@
       "detail": "board recovery preflight step chain"
     },
     {
+      "name": "root_preflight_supports_usb_only_skip_vivado",
+      "pass": true,
+      "detail": "safe USB-only preflight path does not start Vivado while implementation runs are active"
+    },
+    {
       "name": "root_wrapper_runs_probe_psu_smoke_regread",
       "pass": true,
       "detail": "root wrapper step chain"

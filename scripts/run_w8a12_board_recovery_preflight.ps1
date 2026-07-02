@@ -2,6 +2,7 @@ param(
   [string]$OutputDir = "board_runs\w8a12_board_recovery_preflight",
   [string]$PreconditionOutDir = "W8A12_3lane\evidence\board_probe\jtag_precondition_current",
   [switch]$ForceVivadoProbe,
+  [switch]$SkipVivadoProbe,
   [switch]$RunStageHashAcceptance,
   [switch]$FailOnBlocked
 )
@@ -85,7 +86,13 @@ try {
 
   $probeDir = ""
   $probeExit = $null
-  if ($ForceVivadoProbe -or $knownCount -gt 0) {
+  if ($SkipVivadoProbe) {
+    $steps.vivado_probe = [ordered]@{
+      exit = "skipped"
+      reason = "SkipVivadoProbe was requested; USB-only precondition evidence was generated without starting Vivado"
+      output_dir = ""
+    }
+  } elseif ($ForceVivadoProbe -or $knownCount -gt 0) {
     $probeDir = Join-Path $outDirAbs "vivado_probe"
     $probeLog = Join-Path $outDirAbs "vivado_probe_step.log"
     $probeExit = Invoke-LoggedStep -Name "vivado_probe" -LogPath $probeLog -Arguments @(
@@ -156,6 +163,7 @@ try {
     precondition_summary = $preconditionOutAbs
     usb_known_jtag_candidate_count = $knownCount
     vivado_target_count = $targetCount
+    vivado_probe_skipped = [bool]$SkipVivadoProbe
     run_stagehash_acceptance_requested = [bool]$RunStageHashAcceptance
     steps = $steps
   }
@@ -170,6 +178,7 @@ try {
     "| --- | --- |",
     "| USB known JTAG candidate count | ``$knownCount`` |",
     "| Vivado target count | ``$targetCount`` |",
+    "| Vivado probe skipped | ``$([bool]$SkipVivadoProbe)`` |",
     "| precondition summary | ``$preconditionOutAbs`` |",
     "| summary JSON | ``$summaryJson`` |",
     "",
