@@ -13,6 +13,7 @@ Status: PASS
 | `states_quality_targets_and_results` | PASS | `quality comparison values` |
 | `states_ppa_summary_and_limits` | PASS | `PPA evidence and XC7Z045 limits` |
 | `states_x4_720p15_fps_closure` | PASS | `x4 720p15 scheduler-level FPS closure and x2 boundary` |
+| `states_x2_720p4_fps_closure` | PASS | `x2 lowered-target 720p4 scheduler-level FPS closure and x2 20fps boundary` |
 | `states_rtl_evidence_hashes` | PASS | `RTL/fixed reference hashes` |
 | `states_board_pending_not_measured` | PASS | `board metrics remain pending` |
 | `states_mismatch_risk` | PASS | `mismatch and debug hash plan` |

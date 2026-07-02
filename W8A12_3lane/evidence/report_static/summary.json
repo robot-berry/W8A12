@@ -63,6 +63,11 @@
       "detail": "x4 720p15 scheduler-level FPS closure and x2 boundary"
     },
     {
+      "name": "states_x2_720p4_fps_closure",
+      "pass": true,
+      "detail": "x2 lowered-target 720p4 scheduler-level FPS closure and x2 20fps boundary"
+    },
+    {
       "name": "states_rtl_evidence_hashes",
       "pass": true,
       "detail": "RTL/fixed reference hashes"

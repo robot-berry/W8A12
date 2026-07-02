@@ -167,9 +167,10 @@ XC7Z045 参考门限：
 | --- | --- | ---: | ---: | ---: | --- |
 | x4 720p15 最低资源点 | `24x64` | 792 | 15.070 | 0.467% | PASS，但余量很小 |
 | x4 720p15 推荐闭合点 | `24x72` | 888 | 17.501 | 14.291% | PASS，作为本报告推荐 FPS 闭合配置 |
+| x2 720p4 降目标闭合点 | `24x72` | 888 | 4.483 | 10.789% | PASS，作为 x2 降目标 FPS 闭合配置 |
 | x2 720p20 资源门限内 | `24x64/24x72` | 792/888 | 3.861/4.483 | 不达标 | FAIL，不能声明 x2 720p20 |
 
-x2 720p20 已新增独立 xsim 证据，但 900-DSP 门限内 `24x64/24x72` 仅为 3.861/4.483fps，非门限内 `48x144` 为 17.223fps 且 DSP=3504，因此当前完整 W8A12/F48 packed 2-D 规划不能声明 x2 720p20 已达标。
+x2 720p20 已新增独立 xsim 证据，但 900-DSP 门限内 `24x64/24x72` 仅为 3.861/4.483fps，非门限内 `48x144` 为 17.223fps 且 DSP=3504，因此当前完整 W8A12/F48 packed 2-D 规划不能声明 x2 720p20 已达标。按“降低 x2 FPS 目标”的补充口径，新增 `x2_720p4_fps_closure` 门禁；其中 `24x72` 为 4.483fps @250MHz、888 DSP、4fps 余量 10.789%，在 900-DSP 门限内达成 x2 720p4 scheduler-level 闭合；`24x64` 为 3.861fps，仅作为低资源边界点。证据见 `evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md`。
 
 ## 9. 画质指标与传统插值对比
 
@@ -321,7 +322,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | A0-A3 reference | `evidence/reference/` |
 | A4 OOC | `evidence/resource/A4_*_ooc/` |
 | bitstream/PPA gate | `evidence/bitstream_ppa_gate/summary.md` |
-| packed 2-D FPS scheduler | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
+| packed 2-D FPS scheduler | `evidence/sim_fps_design_space/packed2d_perf_scheduler/summary.md`、`evidence/sim_fps_design_space/x4_720p15_fps_closure/summary.md`、`evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md`、`evidence/sim_fps_design_space/packed2d_x2_720p20_perf_scheduler/summary.md` |
 | x2 W8A12 导出 | `evidence/x2/w8a12_export/summary.md` |
 | x2 fixed reference | `evidence/x2/reference/summary.md` |
 | delivery audit | `evidence/delivery_audit/contest_delivery_audit.md` |

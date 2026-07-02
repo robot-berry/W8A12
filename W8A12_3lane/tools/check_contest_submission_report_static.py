@@ -89,6 +89,16 @@ def main() -> int:
         "scheduler/performance-model",
         "x2 720p20",
     ]), "x4 720p15 scheduler-level FPS closure and x2 boundary")
+    add("states_x2_720p4_fps_closure", all(token in text for token in [
+        "evidence/sim_fps_design_space/x2_720p4_fps_closure/summary.md",
+        "x2 720p4",
+        "4.483",
+        "10.789%",
+        "888 DSP",
+        "3.861",
+        "x2 720p20",
+        "FAIL",
+    ]), "x2 lowered-target 720p4 scheduler-level FPS closure and x2 20fps boundary")
     add("states_rtl_evidence_hashes", all(token in text for token in [
         "0x080D3C47",
         "0xD12E1B43",

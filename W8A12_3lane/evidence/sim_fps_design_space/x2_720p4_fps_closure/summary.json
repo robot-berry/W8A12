@@ -1,0 +1,189 @@
+{
+  "status": "PASS",
+  "closure_level": "scheduler/performance-model",
+  "scope_boundary": "Not board-measured FPS and not full packed 2-D pixel RTL bit-exact closure. x2 720p20 remains FAIL under the 900-DSP gate.",
+  "model": "REDS SPAN x2 F48 W8A12",
+  "scale": "x2",
+  "lr_input": {
+    "width": 640,
+    "height": 360,
+    "pixels": 230400
+  },
+  "sr_output": {
+    "width": 1280,
+    "height": 720,
+    "pixels": 921600
+  },
+  "clock_mhz": 250.0,
+  "target_fps": 4.0,
+  "target_frame_cycle_budget": 62500000.0,
+  "dsp_gate": 900,
+  "resource_boundary_candidate": {
+    "candidate": "24x64",
+    "output_lanes": 24,
+    "tap_lanes": 64,
+    "estimated_dsp": 792,
+    "resource_gate": true,
+    "cycles_per_lr_pixel": 281,
+    "frame_cycles": 64742400,
+    "fps": 3.861,
+    "fps_x1000": 3861,
+    "frame_cycle_slack_pct_of_4fps_budget": -3.588,
+    "passes_4fps": false,
+    "passes_15fps": false,
+    "passes_20fps": false,
+    "passes_30fps": false
+  },
+  "recommended_closure_candidate": {
+    "candidate": "24x72",
+    "output_lanes": 24,
+    "tap_lanes": 72,
+    "estimated_dsp": 888,
+    "resource_gate": true,
+    "cycles_per_lr_pixel": 242,
+    "frame_cycles": 55756800,
+    "fps": 4.483,
+    "fps_x1000": 4483,
+    "frame_cycle_slack_pct_of_4fps_budget": 10.789,
+    "passes_4fps": true,
+    "passes_15fps": false,
+    "passes_20fps": false,
+    "passes_30fps": false
+  },
+  "non_gated_reference_candidate": {
+    "candidate": "48x144",
+    "output_lanes": 48,
+    "tap_lanes": 144,
+    "estimated_dsp": 3504,
+    "resource_gate": false,
+    "cycles_per_lr_pixel": 63,
+    "frame_cycles": 14515200,
+    "fps": 17.223,
+    "fps_x1000": 17223,
+    "frame_cycle_slack_pct_of_4fps_budget": 76.776,
+    "passes_4fps": true,
+    "passes_15fps": true,
+    "passes_20fps": false,
+    "passes_30fps": false
+  },
+  "checks": [
+    {
+      "candidate": "global",
+      "check": "source_status_pass",
+      "pass": true,
+      "detail": "PASS"
+    },
+    {
+      "candidate": "global",
+      "check": "source_stage",
+      "pass": true,
+      "detail": "packed2d_x2_720p20_perf_scheduler"
+    },
+    {
+      "candidate": "global",
+      "check": "source_frame_720p_x2",
+      "pass": true,
+      "detail": "640x360 LR -> 1280x720 SR"
+    },
+    {
+      "candidate": "global",
+      "check": "source_clock_250mhz",
+      "pass": true,
+      "detail": 250
+    },
+    {
+      "candidate": "global",
+      "check": "source_20fps_still_fails",
+      "pass": true,
+      "detail": "FAIL"
+    },
+    {
+      "candidate": "global",
+      "check": "has_boundary_candidate_24x64",
+      "pass": true,
+      "detail": [
+        "24x64",
+        "24x72",
+        "48x144"
+      ]
+    },
+    {
+      "candidate": "global",
+      "check": "has_recommended_candidate_24x72",
+      "pass": true,
+      "detail": [
+        "24x64",
+        "24x72",
+        "48x144"
+      ]
+    },
+    {
+      "candidate": "global",
+      "check": "scope_scheduler_level",
+      "pass": true,
+      "detail": "scheduler/performance-model only; not board-measured FPS"
+    },
+    {
+      "candidate": "24x64",
+      "check": "dsp_le_900",
+      "pass": true,
+      "detail": 792
+    },
+    {
+      "candidate": "24x64",
+      "check": "documents_4fps_fail",
+      "pass": true,
+      "detail": 3861
+    },
+    {
+      "candidate": "24x64",
+      "check": "lr_frame_pixels",
+      "pass": true,
+      "detail": 230400
+    },
+    {
+      "candidate": "24x72",
+      "check": "fps_ge_4",
+      "pass": true,
+      "detail": 4483
+    },
+    {
+      "candidate": "24x72",
+      "check": "dsp_le_900",
+      "pass": true,
+      "detail": 888
+    },
+    {
+      "candidate": "24x72",
+      "check": "resource_gate_true",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "candidate": "24x72",
+      "check": "lr_frame_pixels",
+      "pass": true,
+      "detail": 230400
+    },
+    {
+      "candidate": "24x72",
+      "check": "recommended_slack_ge_min",
+      "pass": true,
+      "detail": 10.789
+    },
+    {
+      "candidate": "24x72",
+      "check": "does_not_claim_20fps",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "candidate": "48x144",
+      "check": "documents_resource_gate_fail",
+      "pass": true,
+      "detail": 3504
+    }
+  ],
+  "source_summary": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\sim_fps_design_space\\packed2d_x2_720p20_perf_scheduler\\summary.json",
+  "source_simulate_log": "G:\\UESTC\\feitengspan1\\build\\vivado_w8a12_packed2d_x2_720p20_perf_scheduler_sim\\w8a12_packed2d_x2_720p20_perf_scheduler_sim.sim\\sim_1\\behav\\xsim\\simulate.log"
+}

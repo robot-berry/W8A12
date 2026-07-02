@@ -6,8 +6,8 @@ Status: PASS
 | --- | --- |
 | source | `G:\UESTC\feitengspan1\W8A12_3lane\docs\contest_submission_report.md` |
 | pdf | `G:\UESTC\feitengspan1\W8A12_3lane\output\pdf\W8A12_3lane_contest_submission_report.pdf` |
-| bytes | `112343` |
-| sha256 | `67c44d68d972f7d33c3054b1ceecc994a5d89328704a594d907e55a42826e0c0` |
+| bytes | `112828` |
+| sha256 | `c19012a03f9b34b214485b471e78ef068bd51ac4e4fde3c39935a57d7287a1a7` |
 | page_count | `9` |
 | font | `C:\Windows\Fonts\simhei.ttf` |
 
@@ -19,11 +19,11 @@ Status: PASS
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-2.png` | `1241x1754` | 247.52 | `[0, 255]` | `True` |
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-3.png` | `1241x1754` | 249.22 | `[0, 255]` | `True` |
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-4.png` | `1241x1754` | 247.64 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-5.png` | `1241x1754` | 247.04 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-6.png` | `1241x1754` | 246.75 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-7.png` | `1241x1754` | 247.00 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-8.png` | `1241x1754` | 247.48 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-9.png` | `1241x1754` | 246.55 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-5.png` | `1241x1754` | 246.14 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-6.png` | `1241x1754` | 247.18 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-7.png` | `1241x1754` | 246.38 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-8.png` | `1241x1754` | 247.67 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-9.png` | `1241x1754` | 246.13 | `[0, 255]` | `True` |
 
 ## Required Text Tokens
 

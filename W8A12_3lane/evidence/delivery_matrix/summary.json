@@ -4,7 +4,7 @@
   "audit_pass_count": 72,
   "audit_total_count": 76,
   "submission_status": "INCOMPLETE",
-  "submission_file_count": 390,
+  "submission_file_count": 393,
   "missing_final_evidence": [
     "evidence/board_reports/a5_32x32/validation.md",
     "evidence/board_reports/a6_64x64/validation.md",
@@ -13,7 +13,7 @@
   ],
   "latest_delivery_run": "evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md",
   "pdf_status": "PASS",
-  "pdf_sha256": "67c44d68d972f7d33c3054b1ceecc994a5d89328704a594d907e55a42826e0c0",
+  "pdf_sha256": "c19012a03f9b34b214485b471e78ef068bd51ac4e4fde3c39935a57d7287a1a7",
   "docx_status": "PASS",
   "docx_sha256": "6244b8af76f7083552be0e138fa2d15d663c3b49319c136b874260aafc4bfb02",
   "rows": [
