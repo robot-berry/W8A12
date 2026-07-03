@@ -165,15 +165,17 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                     "evidence/resource/A4_single_lane_mac_scheduler_ooc/ooc_summary.md",
                     "evidence/resource/A4_3lane_mac_scheduler_ooc/ooc_summary.md",
                     "evidence/ppa_summary/summary.md",
+                    "evidence/resource/bram_accounting/summary.md",
                 ],
                 "Status: PASS",
             ),
             [
                 "evidence/ppa_summary/summary.md",
+                "evidence/resource/bram_accounting/summary.md",
                 "evidence/top/accel_top_ooc/",
                 "evidence/resource/A4_3lane_mac_scheduler_ooc/",
             ],
-            "A4 3-lane scheduler: LUT 56.35%、FF 58.61%、DSP 74.67%，低于 XC7Z045/ZC706 门限；完整 board FPS/power 待上板。",
+            "A4 3-lane scheduler: LUT 56.35%、FF 58.61%、DSP 74.67%，低于 XC7Z045/ZC706 门限；BRAM accounting 已补模型常量、32x32 tile buffer 与 Vivado 实际口径；完整 board FPS/power 待上板。",
         ),
         row(
             "评分点 功能正确性",
@@ -254,8 +256,12 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
             "评分点 面积/功耗",
             "资源门限已过，真实功耗待板端报告",
             "PARTIAL",
-            ["evidence/ppa_summary/summary.md", "evidence/board_reports/validation_readiness/summary.md"],
-            "OOC 资源/时序可报告；真实 board power、FPS、latency 需 `validation.md Status: PASS` 后才能声明。",
+            [
+                "evidence/ppa_summary/summary.md",
+                "evidence/resource/bram_accounting/summary.md",
+                "evidence/board_reports/validation_readiness/summary.md",
+            ],
+            "OOC 资源/时序和 BRAM accounting 可报告；真实 board power、FPS、latency 需 `validation.md Status: PASS` 后才能声明。",
         ),
     ]
 

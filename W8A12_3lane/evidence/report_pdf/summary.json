@@ -2,10 +2,10 @@
   "status": "PASS",
   "source": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\docs\\contest_submission_report.md",
   "pdf": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\pdf\\W8A12_3lane_contest_submission_report.pdf",
-  "bytes": 121860,
-  "sha256": "cb4a05635f2e5c5cbd3570cd5704b778cca09b81a32e12dd36f57d0504fc4389",
+  "bytes": 129266,
+  "sha256": "f7ab608c6cc29f60e5cc006a76123d34383c0d9044b8e9872fb33c4f21f716e9",
   "font_path": "C:\\Windows\\Fonts\\simhei.ttf",
-  "page_count": 11,
+  "page_count": 12,
   "required_tokens": {
     "W8A12": true,
     "三路并行": true,
@@ -25,7 +25,8 @@
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-08.png",
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-09.png",
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-10.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-11.png"
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-11.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-12.png"
   ],
   "render_checks": [
     {
@@ -43,7 +44,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-02.png",
       "width": 1241,
       "height": 1754,
-      "mean": 247.5153318258623,
+      "mean": 247.44715015385577,
       "extrema": [
         0,
         255
@@ -54,7 +55,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-03.png",
       "width": 1241,
       "height": 1754,
-      "mean": 249.2229323650236,
+      "mean": 249.4583748714806,
       "extrema": [
         0,
         255
@@ -65,7 +66,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-04.png",
       "width": 1241,
       "height": 1754,
-      "mean": 247.63749808197127,
+      "mean": 247.1049196173682,
       "extrema": [
         0,
         255
@@ -76,7 +77,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-05.png",
       "width": 1241,
       "height": 1754,
-      "mean": 245.02473223400042,
+      "mean": 244.6870810772568,
       "extrema": [
         0,
         255
@@ -87,7 +88,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-06.png",
       "width": 1241,
       "height": 1754,
-      "mean": 248.33952691993528,
+      "mean": 247.17935888683584,
       "extrema": [
         0,
         255
@@ -98,7 +99,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-07.png",
       "width": 1241,
       "height": 1754,
-      "mean": 246.3522153117038,
+      "mean": 245.82848872199105,
       "extrema": [
         0,
         255
@@ -109,7 +110,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-08.png",
       "width": 1241,
       "height": 1754,
-      "mean": 243.21672851830786,
+      "mean": 246.4129430876082,
       "extrema": [
         0,
         255
@@ -120,7 +121,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-09.png",
       "width": 1241,
       "height": 1754,
-      "mean": 246.85629026137562,
+      "mean": 243.26246213328898,
       "extrema": [
         0,
         255
@@ -131,7 +132,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-10.png",
       "width": 1241,
       "height": 1754,
-      "mean": 246.06658293188724,
+      "mean": 246.77796807481369,
       "extrema": [
         0,
         255
@@ -142,7 +143,18 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-11.png",
       "width": 1241,
       "height": 1754,
-      "mean": 251.36008726915892,
+      "mean": 245.59148560628543,
+      "extrema": [
+        0,
+        255
+      ],
+      "nonblank": true
+    },
+    {
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-12.png",
+      "width": 1241,
+      "height": 1754,
+      "mean": 251.27827036533048,
       "extrema": [
         0,
         255

@@ -4,7 +4,7 @@
   "audit_pass_count": 72,
   "audit_total_count": 76,
   "submission_status": "INCOMPLETE",
-  "submission_file_count": 411,
+  "submission_file_count": 415,
   "missing_final_evidence": [
     "evidence/board_reports/a5_32x32/validation.md",
     "evidence/board_reports/a6_64x64/validation.md",
@@ -13,9 +13,9 @@
   ],
   "latest_delivery_run": "evidence/delivery_runs/current_post_upload_refresh_20260630/summary.md",
   "pdf_status": "PASS",
-  "pdf_sha256": "cb4a05635f2e5c5cbd3570cd5704b778cca09b81a32e12dd36f57d0504fc4389",
+  "pdf_sha256": "f7ab608c6cc29f60e5cc006a76123d34383c0d9044b8e9872fb33c4f21f716e9",
   "docx_status": "PASS",
-  "docx_sha256": "c1cec510db5071843079e7f0f53dfed9e9b1d52c1206692e77df6f05a5c701fb",
+  "docx_sha256": "b338cc39ae9202f2e53d64e71c60b1a0d0737ef46939b67fb3a551ce9c238b97",
   "rows": [
     {
       "area": "交付物1 模型/训练/量化/转换",
@@ -67,10 +67,11 @@
       "status": "PASS",
       "evidence": [
         "evidence/ppa_summary/summary.md",
+        "evidence/resource/bram_accounting/summary.md",
         "evidence/top/accel_top_ooc/",
         "evidence/resource/A4_3lane_mac_scheduler_ooc/"
       ],
-      "note": "A4 3-lane scheduler: LUT 56.35%、FF 58.61%、DSP 74.67%，低于 XC7Z045/ZC706 门限；完整 board FPS/power 待上板。"
+      "note": "A4 3-lane scheduler: LUT 56.35%、FF 58.61%、DSP 74.67%，低于 XC7Z045/ZC706 门限；BRAM accounting 已补模型常量、32x32 tile buffer 与 Vivado 实际口径；完整 board FPS/power 待上板。"
     },
     {
       "area": "评分点 功能正确性",
@@ -133,9 +134,10 @@
       "status": "PARTIAL",
       "evidence": [
         "evidence/ppa_summary/summary.md",
+        "evidence/resource/bram_accounting/summary.md",
         "evidence/board_reports/validation_readiness/summary.md"
       ],
-      "note": "OOC 资源/时序可报告；真实 board power、FPS、latency 需 `validation.md Status: PASS` 后才能声明。"
+      "note": "OOC 资源/时序和 BRAM accounting 可报告；真实 board power、FPS、latency 需 `validation.md Status: PASS` 后才能声明。"
     }
   ]
 }

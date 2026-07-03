@@ -27,7 +27,7 @@
     {
       "name": "git.outside_changes_detected",
       "pass": true,
-      "detail": "718 outside status lines; do not stage them for W8A12 upload"
+      "detail": "723 outside status lines; do not stage them for W8A12 upload"
     },
     {
       "name": "git.no_staged_outside_upload_scope",
@@ -37,7 +37,7 @@
     {
       "name": "git.upload_candidate_count",
       "pass": true,
-      "detail": 1348
+      "detail": 1356
     },
     {
       "name": "git.no_forbidden_upload_candidates",

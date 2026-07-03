@@ -37,7 +37,7 @@
 | 文档清晰、模块划分合理 | 架构、bank 映射、量化、scheduler、回退、上板报告流程均有文档和索引 | 最终板端报告完成后需同步刷新 |
 | 量化指标和性能分析 | REDS 全量 FP32 PSNR、传统插值对比、OOC 资源/时序、packed 2-D FPS scheduler 边界已形成 | W8A12 fixed 全量 PSNR/SSIM、板端 FPS/功耗待补 |
 | 验证方案与用例 | Python reference、RTL xsim、OOC、bitstream/PPA gate、stage-hash、board report validator 和 missing evidence plan 已建立 | A5-A7/x2 board validation 作为后续工程实测补充 |
-| 面积/功耗/PPA | A4 3-lane scheduler 672 DSP 低于 900 DSP 规划门限；true2x2/JTAG-W8A12 implementation 为 LUT 39799、FF 116685、BRAM 311、DSP 128、WNS 12.580ns | 720p packed 2-D 完整集成资源、真实板端功耗/FPS 仍待补 |
+| 面积/功耗/PPA | A4 3-lane scheduler 672 DSP 低于 900 DSP 规划门限；BRAM 消耗计算已补充；true2x2/JTAG-W8A12 implementation 为 LUT 39799、FF 116685、BRAM 311、DSP 128、WNS 12.580ns | 720p packed 2-D 完整集成资源、真实板端功耗/FPS 仍待补 |
 
 ## 3. 数据集和训练验证口径
 
@@ -146,7 +146,20 @@ XC7Z045 参考门限：
 | BRAM tile | 545 |
 | DSP | 900 |
 
-当前 A4 3-lane scheduler 的 DSP 使用量为 672，占 XC7Z045 门限 74.67%，低于 900 DSP 门限；LUT 占比 56.35%，FF 占比 58.61%，均低于对应门限。BRAM 为 0 是因为该 OOC 统计对象是计算 scheduler，不包含完整 tile/frame buffer。完整 accelerator 的最终 BRAM、DDR bandwidth、power 和 board FPS 需在完整集成后重新统计。
+当前 A4 3-lane scheduler 的 DSP 使用量为 672，占 XC7Z045 门限 74.67%，低于 900 DSP 门限；LUT 占比 56.35%，FF 占比 58.61%，均低于对应门限。BRAM 为 0 是因为该 OOC 统计对象是计算 scheduler，不包含完整 tile/frame buffer、权重 ROM 和非线性 LUT。
+
+为避免把“计算 scheduler OOC 资源”和“完整 tile/frame buffer 存储”混在一起，本工程新增 BRAM accounting 证据，见 `evidence/resource/bram_accounting/summary.md`。该证据按 BRAM36=`36864 bit`、XC7Z045/ZC706 等效门限=`545 BRAM tile` 统计，分为模型常量逻辑下限、32x32 tile buffer 理论下限和 Vivado 实际资源三类口径：
+
+| 口径 | x4 W8A12/F48 | x2 W8A12/F48 | 说明 |
+| --- | ---: | ---: | --- |
+| 模型常量存储下限 | 119.32 BRAM36 | 115.84 BRAM36 | unique weight/bias/requant/LUT，不重复统计 raw/grouped 多视图导出文件 |
+| 32x32 tile buffer 下限 | 142.23 BRAM36 | 134.23 BRAM36 | `halo=21`、8 个 48ch/12-bit feature buffer、SR RGB output tile |
+| true2x2/JTAG-W8A12 dbg5 implementation | 311 BRAM tile | 不适用 | 已生成 bitstream，作为当前 PPA 提交口径 |
+| true2x2/JTAG-W8A12 dbg6 synth snapshot | 311 BRAM tile | 不适用 | 已综合到 synth/opt checkpoint，未生成 dbg6 bitstream |
+| A5 32x32 PS-DDR tile-writer attempt | 415.5 BRAM tile | 不适用 | 占 XC7Z045/ZC706 门限 76.24%，资源 PASS，但板端 `frame_done=0` |
+| 大集成压力测试 | 619 BRAM tile | 不适用 | 超过 XC7Z045/ZC706 等效门限且 route 未完成，仅作降资源风险证据 |
+
+因此，当前可报告的 BRAM 结论是：A4 scheduler OOC 的 `BRAM=0` 只说明计算调度逻辑本身不占 BRAM；x4 W8A12/F48 在 32x32 tile 下的常量+buffer 逻辑下限约为 `119.32 + 142.23 = 261.55` BRAM36，真实实现会因 banking、端口、位宽对齐、FIFO、JTAG/PS 壳和调试寄存器增加到 Vivado 报告口径。当前 true2x2/JTAG-W8A12 PPA 口径为 `311 / 545 = 57.06%`，A5 32x32 attempt 口径为 `415.5 / 545 = 76.24%`，二者均未超过 XC7Z045/ZC706 等效 BRAM 门限。完整 accelerator 的 DDR bandwidth、power 和 board FPS 仍需在完整集成和真实 board validation 后重新统计。
 
 若评审只要求 bitstream 和 PPA，而不要求真实插板运行，则可采用当前 true2x2/JTAG-W8A12 bitstream implementation 作为 bitstream/PPA 门槛证据。该配置已经生成 `.bit`，实现后资源和时序如下，独立证据见 `evidence/bitstream_ppa_gate/summary.md`：
 
@@ -231,6 +244,7 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 - 当前已切换为更窄 stage-hash 映射，行为级 RTL raw compare PASS，Default stage-hash bitstream 已生成且 timing PASS；2026-06-29 续跑曾恢复 JTAG/PSU/register read，并完成 true2x2 stage-hash 上板读回：输出完整 `192/192`，但 compare FAIL `191/192`、PSNR 11.8292 dB；`tail_b1=0x031DA1C9` 已与 RTL 期望 `0x16ede1c2` 不一致。2026-07-03 dbg3 clean run 进一步确认 `src_feat0_hash` 匹配、`src_b1_hash` 首错；dbg5/count-view 将 stall 压到 block1 C1 后、C2/C3/attention 前。
 - 已新增 `docs/jtag_recovery_checklist.md`、`evidence/board_probe/jtag_recovery_checklist/summary.md` 和 `evidence/board_probe/jtag_precondition_current/summary.md`。2026-07-03 full probe 显示 `READY`，USB known JTAG candidate=3，Vivado target count=1；该状态允许继续小图上板验收，但不等价于 board validation PASS。
 - 最新 A5 32x32 attempt 已补入 `evidence/board_reports/a5_32x32_attempt/attempt_summary.md`：software reference PASS，bitstream program PASS，资源门限 PASS，DDR input verify mismatch=0；但 XSCT 等待超时，`frame_done=0`、`output_read_pixels=0`、`rgb_output_count=0`、AXI write fire=0。该结果证明失败不在 Python reference、板卡连接或 DDR 输入写入，而是在 PL compute completion/writeback 路径。
+- 最新 dbg6/C1-C2 detail 已补入 `evidence/board_reports/jtag_true2x2_dbg6_c1c2_detail_20260703/analysis.md`：RTL raw compare 仍为 `0/192` mismatch，新增 debug bank6 的 RTL 期望值包括 `C1_DETAIL=0x0000200c`、`C1_CORE_DETAIL=0x17c01af5`、`C1_LANE_DETAIL=0x0dbf1af5`、`C1_IO_DETAIL=0x00021403`、`C2_DETAIL=0x0000200c`、`C2_CORE_DETAIL=0x17c01af5`、`C2_LANE_DETAIL=0x0dbf1af5`。dbg6 build 已生成 synth/opt checkpoint 和综合资源快照，但尚未生成 `.bit`，因此下一步是从 opt checkpoint 继续 place/route/write_bitstream 或重跑 full bitstream，再上板读取 bank6 与 RTL 期望对比。
 - 32x32/64x64/720p x4 和 720p x2 board validation 均待补。
 
 后续排查优先级：
@@ -240,7 +254,7 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 3. 先对比 `counter_in/counter_out/frame_done/frame_cycles`，当前卡点为输入已接收但无输出；
 4. `dbgprogress` 已确认 `counter_out=64/frame_done=1`，但 writeback hash 不一致，因此当前重点不是 JTAG 读回本身，而是 writer 前或 writer 数据生成边界；
 5. 当前 clean baseline 为 dbg3/single-boundary：`src_feat0_hash` 匹配、`src_b1_hash` 首错且输出完整；
-6. 最新 dbg5/count-view 显示 C1 有部分计数，C2/C3/attention 为 0，下一步只挂一个 C1->C2 ready/valid 或 feature replay ready/valid 探针；
+6. 最新 dbg5/count-view 显示 C1 有部分计数，C2/C3/attention 为 0；dbg6 已把 C1/C2 detail bank 接出并通过 RTL raw compare，下一步是生成 dbg6 bitstream 后上板比对 bank6；
 7. 若新窄探针计数一致但 board output 仍 mismatch，再查 endpoint 输出缓存/JTAG 读回；若计数不一致，继续查 front/SPAB block1、attention、feature replay；
 8. 补 writer-only pattern、postprocess-only、tail/pixelshuffle-only 三个最小上板验证。
 
@@ -271,7 +285,9 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 
 2026-07-03 已继续完成 `dbg3/single-boundary` 版本：行为级 RTL raw compare 为 `0/192` mismatch，bitstream 生成和 timing PASS，实板 probe/PSU/register read PASS，输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `192/192`、PSNR `7.724 dB`。关键边界上，`src_feat0_hash=0xF7F21881` 与 RTL 期望一致，说明输入/JTAG/PSU/写回前置和 conv1 feat0 source 边界可用；`src_b1_hash=0xF657C1B4` 与 RTL 期望 `0x16ede581` 不一致，首个已知 mismatch 前移到 SPAB block1 输出/feature buffer replay 到 `src_b1` 的边界。证据见 `evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md`。
 
-2026-07-03 继续补充 `dbg4/bank4` 和 `dbg5/count-view`。dbg4 证明 `sched_feat0_hash` 与 RTL 匹配，但 `sched_b1_hash` 不匹配并伴随 no-output stall。dbg5 使用更低侵入的计数视图，行为级 RTL raw compare 仍为 `0/192` mismatch，bitstream/timing PASS；实板 JTAG/PSU/register read PASS，但 smoke 输出 `0/192`。关键计数上，RTL 期望 `C1/C2/C3/ATT=0x00030003`、`block_counts=0x00060018`、`replay=0x18`，板端为 `C1=0x00000003`、`C2/C3/ATT=0`、`block_counts=0x00010000`、`replay=0x4`。因此 dbg3 仍是 clean correctness baseline，dbg5 是最新定位证据：下一步排查点为 SPAB block1 C1->C2 ready/valid 或 feature replay ready/valid。证据见 `evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md`。
+2026-07-03 继续补充 `dbg4/bank4` 和 `dbg5/count-view`。dbg4 证明 `sched_feat0_hash` 与 RTL 匹配，但 `sched_b1_hash` 不匹配并伴随 no-output stall。dbg5 使用更低侵入的计数视图，行为级 RTL raw compare 仍为 `0/192` mismatch，bitstream/timing PASS；实板 JTAG/PSU/register read PASS，但 smoke 输出 `0/192`。关键计数上，RTL 期望 `C1/C2/C3/ATT=0x00030003`、`block_counts=0x00060018`、`replay=0x18`，板端为 `C1=0x00000003`、`C2/C3/ATT=0`、`block_counts=0x00010000`、`replay=0x4`。因此 dbg3 仍是 clean correctness baseline，dbg5 将排查点压到 SPAB block1 C1->C2 ready/valid 或 feature replay ready/valid。证据见 `evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md`。
+
+2026-07-03 进一步补充 `dbg6/C1-C2 detail`。该版本只接出已有 C1/C2 detail 信号到 JTAG debug bank6，行为级 RTL raw compare 仍为 `0/192` mismatch、max diff 0、PSNR Infinity。RTL 期望 bank6 读数为：`C1_DETAIL=0x0000200c`、`C1_CORE_DETAIL=0x17c01af5`、`C1_LANE_DETAIL=0x0dbf1af5`、`C1_IO_DETAIL=0x00021403`、`C2_DETAIL=0x0000200c`、`C2_CORE_DETAIL=0x17c01af5`、`C2_LANE_DETAIL=0x0dbf1af5`。dbg6 bitstream build 当前为 `BUILD_PARTIAL / NO BITSTREAM`：初次构建推进到 `place_design`，已产生 synth/opt checkpoint 和综合资源快照 `LUT 42817、REG 115888、BRAM 311、DSP 126`；resume from opt checkpoint 在 `open_checkpoint` 后 Vivado 返回 `-1`，未生成 `.bit`。因此 dbg6 的状态是“RTL 证据已可用、板端读取待 bitstream”，不是 mismatch 修复完成。证据见 `evidence/board_reports/jtag_true2x2_dbg6_c1c2_detail_20260703/analysis.md` 和 `evidence/implementation_runs/jtag_true2x2_dbg6_build_attempt_20260703/summary.md`。
 
 ## 12. 当前交付审计状态
 
@@ -302,6 +318,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_deli
 python W8A12_3lane\tools\audit_contest_delivery.py
 python W8A12_3lane\tools\generate_missing_evidence_plan.py
 python W8A12_3lane\tools\collect_submission_package.py
+python W8A12_3lane\tools\calc_bram_accounting.py
 python W8A12_3lane\tools\check_contest_scope_readiness.py
 python W8A12_3lane\tools\create_contest_scope_package.py
 python W8A12_3lane\tools\create_submission_archive.py --allow-incomplete
@@ -331,11 +348,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | A4 scheduler 验收 | `docs/a4_scheduler_acceptance_flow.md` |
 | 上板汇报规范 | `docs/board_report_flow.md` |
 | JTAG 恢复清单 | `docs/jtag_recovery_checklist.md`、`evidence/board_probe/jtag_recovery_checklist/summary.md` |
-| 最新上板进展 | `evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md` |
+| 最新上板进展 | `evidence/board_reports/jtag_true2x2_dbg6_c1c2_detail_20260703/analysis.md`、`evidence/implementation_runs/jtag_true2x2_dbg6_build_attempt_20260703/summary.md` |
 | 质量对比 | `evidence/quality_comparison/summary.md` |
 | 画质指标闭环计划 | `docs/quality_metric_completion_plan.md`、`evidence/quality_metric_completion/summary.md` |
 | A0-A3 reference | `evidence/reference/` |
 | A4 OOC | `evidence/resource/A4_*_ooc/` |
+| BRAM 消耗计算 | `evidence/resource/bram_accounting/summary.md` |
 | bitstream/PPA gate | `evidence/bitstream_ppa_gate/summary.md` |
 | 大集成 route 压力测试 | `evidence/implementation_runs/dma_axis_w8a10_route_congestion_20260703/summary.md` |
 | 赛题提交口径门禁 | `evidence/contest_scope_readiness/summary.md` |
@@ -351,6 +369,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 
 当前 W8A12_3lane 已经形成可用于赛题阶段性交付/相当报告的完整离线证据链：模型训练和验证口径明确，x4/x2 FP32 画质达到目标，传统插值 baseline 已对比，W8A12 定点导出和 x2 fixed reference 已通过，A0-A4 和 top shell 的 RTL 仿真/OOC 综合均有 PASS 证据，3-lane scheduler 在 XC7Z045 资源门限内。报告、Word/PDF 导出、交付索引、证据矩阵和 GitHub 草案上传链路也已经建立。
 
-剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 有效 stage-hash 续跑已经恢复 JTAG/PSU/register read，并完成上板读回，证明历史数值问题不是硬件 target 不可见，而是 PL 计算路径数值不一致。2026-07-03 full probe 已恢复到 `READY`；dbg2/source-b6 实板续跑得到输出完整 `192/192`、compare FAIL `188/192`、PSNR 19.263 dB、`error=0x0000000C`，只能作为探针侵入性风险证据。随后非侵入 stagehash baseline 复跑得到输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `192/192`、PSNR 11.884 dB。dbg3/single-boundary 版本保持 `error=0` 和完整输出，并把已知首错从 tail/stage hash 前移到 `src_b1_hash`：`src_feat0_hash` 已与 RTL 匹配，`src_b1_hash` 仍不匹配。最新 dbg5/count-view 显示 block1 仅 C1 有部分计数，C2/C3/attention 为 0；最新 A5 32x32 attempt 也在 reference/program/DDR 输入均通过后停在 `frame_done=0/output_read_pixels=0`。下一步应查 SPAB block1 C1->C2 ready/valid 和 feature replay ready/valid，并逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。
+剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 有效 stage-hash 续跑已经恢复 JTAG/PSU/register read，并完成上板读回，证明历史数值问题不是硬件 target 不可见，而是 PL 计算路径数值不一致。2026-07-03 full probe 已恢复到 `READY`；dbg2/source-b6 实板续跑得到输出完整 `192/192`、compare FAIL `188/192`、PSNR 19.263 dB、`error=0x0000000C`，只能作为探针侵入性风险证据。随后非侵入 stagehash baseline 复跑得到输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `192/192`、PSNR 11.884 dB。dbg3/single-boundary 版本保持 `error=0` 和完整输出，并把已知首错从 tail/stage hash 前移到 `src_b1_hash`：`src_feat0_hash` 已与 RTL 匹配，`src_b1_hash` 仍不匹配。dbg5/count-view 显示 block1 仅 C1 有部分计数，C2/C3/attention 为 0；dbg6 已把 C1/C2 detail bank 接出，RTL 仍为 `0/192` mismatch，但 dbg6 bitstream 尚未生成。最新 A5 32x32 attempt 也在 reference/program/DDR 输入均通过后停在 `frame_done=0/output_read_pixels=0`。下一步应先完成 dbg6 bitstream/上板 bank6 比对，再查 SPAB block1 C1->C2 ready/valid 和 feature replay ready/valid，并逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。
 
 最终结论：若评审口径为“正确性仿真通过 + 可生成 bitstream + 提供 PPA/资源时序报告”，当前材料可以作为赛题报告/PPA 提交版，并以 `evidence/contest_scope_readiness/summary.md` 与 `evidence/contest_scope_package/summary.md` 的 `PASS_WITH_SCOPE` 作为提交前门禁；若评审明确要求真实板端 32x32/64x64/720p 输出和板端 FPS/功耗实测，则严格 board-validation 口径仍为 `INCOMPLETE`，必须继续完成上板任务后刷新报告和交付包。

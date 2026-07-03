@@ -1,0 +1,174 @@
+{
+  "status": "PASS",
+  "bram36_bits": 36864,
+  "xc7z045_bram_tile_limit": 545,
+  "tile_width": 32,
+  "tile_height": 32,
+  "halo": 21,
+  "model_constants": [
+    {
+      "label": "x4 W8A12/F48",
+      "status": "PASS",
+      "manifest": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x4_f48_w8a12\\span_w8a12_rtl_manifest.json",
+      "postprocess_manifest": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x4_f48_w8a12\\postprocess\\span_w8a12_postprocess_manifest.json",
+      "scale": 4,
+      "channels": 48,
+      "activation_bits": 12,
+      "weight_bits": 8,
+      "layer_count": 22,
+      "postprocess_entry_count": 18,
+      "weight_bits_total": 3401856,
+      "bias_bits": 67584,
+      "requant_q31_bits": 33792,
+      "requant_shift_bits": 8448,
+      "activation_scale_bits": 2240,
+      "postprocess_lut_bits": 884736,
+      "total_bits": 4398656,
+      "bram36_exact": 119.32118055555556,
+      "bram36_ceil": 120
+    },
+    {
+      "label": "x2 W8A12/F48",
+      "status": "PASS",
+      "manifest": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x2_f48_w8a12\\span_w8a12_rtl_manifest.json",
+      "postprocess_manifest": "G:\\UESTC\\feitengspan1\\rtl\\generated\\reds_span_x2_f48_w8a12\\postprocess\\span_w8a12_postprocess_manifest.json",
+      "scale": 2,
+      "channels": 48,
+      "activation_bits": 12,
+      "weight_bits": 8,
+      "layer_count": 22,
+      "postprocess_entry_count": 18,
+      "weight_bits_total": 3277440,
+      "bias_bits": 65280,
+      "requant_q31_bits": 32640,
+      "requant_shift_bits": 8160,
+      "activation_scale_bits": 2240,
+      "postprocess_lut_bits": 884736,
+      "total_bits": 4270496,
+      "bram36_exact": 115.84461805555556,
+      "bram36_ceil": 116
+    }
+  ],
+  "tile_buffers": [
+    {
+      "label": "x4 W8A12/F48",
+      "scale": 4,
+      "tile_width": 32,
+      "tile_height": 32,
+      "halo": 21,
+      "feature_buffer_count": 8,
+      "one_feature_buffer_bits": 589824,
+      "rows": [
+        {
+          "name": "rgb_halo_tile",
+          "formula": "(32+2*21)*(32+2*21)*3*8",
+          "bits": 131424,
+          "bram36_exact": 3.5651041666666665,
+          "bram36_ceil": 4
+        },
+        {
+          "name": "feature_buffer_x8",
+          "formula": "8*32*32*48*12",
+          "bits": 4718592,
+          "bram36_exact": 128.0,
+          "bram36_ceil": 128
+        },
+        {
+          "name": "sr_rgb_output_tile",
+          "formula": "(32*4)*(32*4)*3*8",
+          "bits": 393216,
+          "bram36_exact": 10.666666666666666,
+          "bram36_ceil": 11
+        }
+      ],
+      "total_bits": 5243232,
+      "bram36_exact": 142.23177083333334,
+      "bram36_ceil": 143
+    },
+    {
+      "label": "x2 W8A12/F48",
+      "scale": 2,
+      "tile_width": 32,
+      "tile_height": 32,
+      "halo": 21,
+      "feature_buffer_count": 8,
+      "one_feature_buffer_bits": 589824,
+      "rows": [
+        {
+          "name": "rgb_halo_tile",
+          "formula": "(32+2*21)*(32+2*21)*3*8",
+          "bits": 131424,
+          "bram36_exact": 3.5651041666666665,
+          "bram36_ceil": 4
+        },
+        {
+          "name": "feature_buffer_x8",
+          "formula": "8*32*32*48*12",
+          "bits": 4718592,
+          "bram36_exact": 128.0,
+          "bram36_ceil": 128
+        },
+        {
+          "name": "sr_rgb_output_tile",
+          "formula": "(32*2)*(32*2)*3*8",
+          "bits": 98304,
+          "bram36_exact": 2.6666666666666665,
+          "bram36_ceil": 3
+        }
+      ],
+      "total_bits": 4948320,
+      "bram36_exact": 134.23177083333334,
+      "bram36_ceil": 135
+    }
+  ],
+  "actual_bram": [
+    {
+      "name": "A4 single-lane scheduler",
+      "scope": "one 16-channel output lane scheduler",
+      "status": "PASS",
+      "bram_tile": 0.0,
+      "bram_pct_xc7z045": 0.0,
+      "evidence": "W8A12_3lane/evidence/resource/A4_single_lane_mac_scheduler_ooc/ooc_summary.json"
+    },
+    {
+      "name": "A4 3-lane scheduler",
+      "scope": "three 16-channel output lanes, 48 output channels total",
+      "status": "PASS",
+      "bram_tile": 0.0,
+      "bram_pct_xc7z045": 0.0,
+      "evidence": "W8A12_3lane/evidence/resource/A4_3lane_mac_scheduler_ooc/ooc_summary.json"
+    },
+    {
+      "name": "true2x2 JTAG-W8A12 dbg5 implementation",
+      "scope": "JTAG-W8A12 true2x2 x4 tile-writer/debug count-view configuration",
+      "status": "PASS_WITH_SCOPE",
+      "bram_tile": 311.0,
+      "bram_pct_xc7z045": 57.06422018348624,
+      "evidence": "W8A12_3lane/evidence/bitstream_ppa_gate/summary.json"
+    },
+    {
+      "name": "true2x2 JTAG-W8A12 dbg6 synth snapshot",
+      "scope": "Build true2x2 JTAG-W8A12 dbg6 C1/C2 detail bitstream.",
+      "status": "BUILD_PARTIAL_NO_BITSTREAM",
+      "bram_tile": 311.0,
+      "bram_pct_xc7z045": 57.06422018348624,
+      "evidence": "W8A12_3lane/evidence/implementation_runs/jtag_true2x2_dbg6_build_attempt_20260703/summary.json"
+    },
+    {
+      "name": "A5 32x32 PS-DDR tile-writer attempt",
+      "scope": "32x32 LR tile, x4 output, board attempt resource gate",
+      "status": "PASS",
+      "bram_tile": 415.5,
+      "bram_pct_xc7z045": 76.23853211009174,
+      "evidence": "W8A12_3lane/evidence/board_reports/a5_32x32_attempt/attempt_summary.json"
+    },
+    {
+      "name": "large DMA/AXIS integration stress run",
+      "scope": "2026-07-03 Vivado implementation attempt for dma_axis_w8a10_system_wrapper",
+      "status": "FAIL_ROUTE_CONGESTION_NO_BITSTREAM",
+      "bram_tile": 619.0,
+      "bram_pct_xc7z045": 113.57798165137615,
+      "evidence": "W8A12_3lane/evidence/implementation_runs/dma_axis_w8a10_route_congestion_20260703/summary.json"
+    }
+  ]
+}

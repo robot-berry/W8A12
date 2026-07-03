@@ -1,15 +1,19 @@
-# Contest Report DOCX Render Attempt
+# Contest Report DOCX Render Check
 
-Status: SKIPPED_SOFT_DEPENDENCY
+Status: SKIPPED
 
-| Field | Value |
-| --- | --- |
-| docx | `G:\UESTC\feitengspan1\W8A12_3lane\output\docx\W8A12_3lane_contest_submission_report.docx` |
-| docx_sha256 | `c1cec510db5071843079e7f0f53dfed9e9b1d52c1206692e77df6f05a5c701fb` |
-| render_tool | `documents/render_docx.py` |
-| result | `FileNotFoundError [WinError 2]` |
-| missing_dependency | `soffice / LibreOffice command not found in PATH` |
-| fallback_evidence | `W8A12_3lane/evidence/report_docx/summary.md` |
+## Reason
 
-DOCX export itself is still `PASS` and the generated OOXML text-color audit reports `non-black text colors = 0`.
-Visual DOCX page rendering is not claimed because the local LibreOffice converter is unavailable.
+The DOCX render verification script was invoked after regenerating the report, but this Windows environment does not expose `soffice` / LibreOffice on `PATH`. The script stopped before DOCX-to-PDF conversion with `FileNotFoundError: [WinError 2]`.
+
+## Completed Checks
+
+| Check | Result | Evidence |
+| --- | --- | --- |
+| DOCX export | PASS | `W8A12_3lane/evidence/report_docx/summary.md` |
+| DOCX visible text color audit | PASS, non-black text colors = 0 | `W8A12_3lane/evidence/report_docx/summary.json` |
+| PDF full-page render check | PASS, 12 rendered pages are nonblank | `W8A12_3lane/evidence/report_pdf/summary.md` |
+
+## Note
+
+This skip is an environment limitation for visual DOCX rasterization. The submitted Word artifact itself was generated successfully and passed the structural black-font audit.

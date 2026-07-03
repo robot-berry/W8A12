@@ -33,7 +33,9 @@
 | x2 FPS 复核 | 720p x2 direct `xvlog/xelab/xsim` 复跑与 Vivado batch summary 一致；`24x72` 为 4.483 FPS @250MHz、888 DSP，仍不声明 x2 720p20 |
 | x2 FPS | 降目标 720p x2 scheduler/performance-model：`24x72` 为 4.483 FPS @250MHz、888 DSP |
 | PPA | A4 3-lane scheduler OOC 为 LUT 123182、FF 256222、DSP 672、WNS 1.188ns，低于 XC7Z045/ZC706 门限 |
+| BRAM | `evidence/resource/bram_accounting/summary.md` 已补充：x4 W8A12/F48 模型常量下限 119.32 BRAM36，32x32 tile buffer 下限 142.23 BRAM36；true2x2/JTAG-W8A12 为 311/545，A5 32x32 attempt 为 415.5/545 |
 | bitstream/PPA gate | true2x2/JTAG-W8A12 bitstream implementation 为 `PASS_WITH_SCOPE`，资源为 LUT 39799、FF 116685、BRAM 311、DSP 128、WNS 12.580ns |
+| mismatch 最新定位 | dbg6 已导出 C1/C2 detail bank，RTL raw compare 仍 `0/192` mismatch；dbg6 bitstream 尚未生成，下一步是上板读取 bank6 |
 | A5 最新上板定位 | 32x32 attempt 已通过 software reference、program 和 DDR input verify，资源门限 PASS；但 PL 超时，`frame_done=0/output_read_pixels=0`，不作为 validation PASS |
 
 ## 3. 不可声明内容
@@ -68,6 +70,7 @@ evidence/board_reports/x2_720p/validation.md
 
 ```powershell
 python W8A12_3lane\tools\check_contest_submission_report_static.py
+python W8A12_3lane\tools\calc_bram_accounting.py
 python W8A12_3lane\tools\check_contest_scope_readiness.py
 python W8A12_3lane\tools\collect_submission_package.py
 python W8A12_3lane\tools\create_contest_scope_package.py
