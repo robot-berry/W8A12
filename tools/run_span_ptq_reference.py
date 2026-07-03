@@ -184,7 +184,7 @@ def spab_ptq(
 
 
 def run_fp32(model: torch.nn.Module, x: torch.Tensor) -> torch.Tensor:
-    with torch.inference_mode():
+    with torch.no_grad():
         return model(x)
 
 
@@ -199,7 +199,7 @@ def run_ptq(
     activation_scales: dict | None = None,
 ) -> tuple[torch.Tensor, dict]:
     scales: dict = {"__overrides__": activation_scales or {}}
-    with torch.inference_mode():
+    with torch.no_grad():
         model.mean = model.mean.type_as(x)
         centered = (x - model.mean) * model.img_range
         centered = fake_quant_symmetric(centered, "centered_input", scales, bits=activation_bits, enabled=quant_activations)

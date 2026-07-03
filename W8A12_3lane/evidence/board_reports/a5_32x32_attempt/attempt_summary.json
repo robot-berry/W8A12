@@ -1,37 +1,86 @@
 {
   "status": "FAIL",
-  "tag": "a5_32x32_attempt_wrdebug32_baboon32_plddrindexed_20260625a",
+  "tag": "a5_32x32_acceptance_goal_continue_fixref_20260703_0858",
   "scale": 4,
   "lr_width": 32,
   "lr_height": 32,
   "output_width": 128,
   "output_height": 128,
-  "source_run": "G:/UESTC/feitengspan1/board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a",
-  "bitstream": "vivado/bitstreams/ps_w8a12_ddr_tile_writer_x4_imgw32x32_tile32x32_h21_f50m_ol1_tl4_sl1_ddr_runtime_wrdebug32_20260625a.bit",
+  "source_run": "G:/UESTC/feitengspan1/board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858",
+  "bitstream": "vivado/bitstreams/ps_w8a12_ddr_tile_writer_x4_imgw32x32_tile32x32_h21_f50m_ol1_tl4_sl1_ddr_runtime_plddridx_u32idx_32x32_20260624b.bit",
+  "clock_mhz": 50,
   "preflight_pass": true,
   "program_pass": true,
+  "software_reference_pass": true,
   "xsct_pass": false,
-  "failure_stage": "XSCT DDR/control/hardware status check",
-  "failure_reason": "W8A12 DDR tile writer did not finish before timeout\r\n    while executing\r\n\"error \"W8A12 DDR tile writer did not finish before timeout\"\"\r\n    invoked from within\r\n\"if {$done == 0} {\r\n    error \"W8A12 DDR tile writer did not finish before timeout\"\r\n}\"\r\n    (file \"scripts\\run_xsct_ps_w8a12_ddr_tile_writer_smoke.tcl\" line 538)",
+  "failure_stage": "PL compute completion / XSCT DDR/control/hardware status check",
+  "failure_reason": "W8A12 DDR tile writer did not finish before timeout; frame_done=0 and output_read_pixels=0.",
+  "reference_metrics": {
+    "pytorch_vs_fake": {
+      "psnr": 40.197682,
+      "mae": 1.450012,
+      "max_diff": 27,
+      "mismatch_bytes": "34320 / 49152"
+    },
+    "pytorch_vs_integer": {
+      "psnr": 40.21698,
+      "mae": 1.446065,
+      "max_diff": 27,
+      "mismatch_bytes": "34327 / 49152"
+    },
+    "fake_vs_integer": {
+      "psnr": 56.110817,
+      "mae": 0.159139,
+      "max_diff": 2,
+      "mismatch_bytes": "7820 / 49152"
+    }
+  },
+  "resource_gate": {
+    "device_scope": "ZC706 / XC7Z045 planning gate",
+    "lut": 41052,
+    "lut_limit": 218600,
+    "register": 117083,
+    "register_limit": 437200,
+    "bram_tile": 415.5,
+    "bram_tile_limit": 545,
+    "dsp": 128,
+    "dsp_limit": 900,
+    "status": "PASS"
+  },
   "registers": {
     "status": "0x00000006",
     "error": "0x00000000",
     "frame_done": "0",
     "frame_cycles": "0",
     "tiles_done": "0",
+    "block_starts": "1",
+    "block_outputs": "0",
+    "replay_feature": "1024",
     "rgb_output_count": "0",
-    "debug_state": "0x00017800",
-    "debug_spab_flags": "0x01E00F00",
-    "debug_axi_state": "0x00030504",
-    "wr_fire_count": "0x00000000"
+    "debug_state": "0x00060427",
+    "debug_c1_counts": "0x03FF03FF",
+    "debug_c2_counts": "0x000003FF",
+    "debug_c3_counts": "0x00000000",
+    "debug_att_counts": "0x00000000",
+    "debug_c1_lane_outputs": "49152",
+    "debug_c2_lane_outputs": "0",
+    "debug_c3_lane_outputs": "0",
+    "debug_att_lane_outputs": "0",
+    "debug_spab_flags": "0x81007840",
+    "debug_wr_fire_count": "0x00000000",
+    "debug_axi_write_counts": "0x00000000",
+    "output_read_pixels": "0"
   },
   "artifacts": {
-    "reference_preview": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/reference/span_w8a12_integer_reference_preview.png",
-    "integer_reference": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/reference/integer_w8a12_span.png",
-    "board_output_hex": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/board_output.hex",
-    "preflight_log": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/preflight/probe_vivado_hw_targets.log",
-    "program_log": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/program/program_ps_w8a12_tile_writer_bitstream.log",
-    "xsct_stdout": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/run_xsct_ps_w8a12_ddr_tile_writer_smoke.stdout.log",
-    "xsct_stderr": "board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_baboon32_plddrindexed_20260625a/run_xsct_ps_w8a12_ddr_tile_writer_smoke.stderr.log"
+    "software_reference_summary": "runs/reds_span_quant_plan/span_w8a12_integer_reference_a5_32x32_fixcheck_20260703_0855/span_w8a12_integer_reference_summary.md",
+    "reference_preview": "board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858/reference/span_w8a12_integer_reference_preview.png",
+    "integer_reference": "board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858/reference/integer_w8a12_span.png",
+    "reference_rgb": "board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858/reference.rgb",
+    "board_output_hex": "board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858/board_output.hex",
+    "preflight_log": "board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858/preflight/probe_vivado_hw_targets.log",
+    "program_log": "board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858/program/program_ps_w8a12_tile_writer_bitstream.log",
+    "xsct_log": "board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858/run_xsct_ps_w8a12_ddr_tile_writer_smoke.log",
+    "xsct_stdout": "board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858/run_xsct_ps_w8a12_ddr_tile_writer_smoke.stdout.log",
+    "xsct_stderr": "board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858/run_xsct_ps_w8a12_ddr_tile_writer_smoke.stderr.log"
   }
 }

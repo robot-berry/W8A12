@@ -7,8 +7,8 @@ Scope: Contest report / RTL simulation / bitstream-PPA evidence; physical board 
 | Field | Value |
 | --- | --- |
 | archive | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\contest_scope_package\archive\W8A12_3lane_contest_scope_submission.zip` |
-| bytes | `4187577` |
-| sha256 | `676a84b8fcedd625c3ee89879e5f1a2c376496e6e1cf389a6713ff9727171e50` |
+| bytes | `4187751` |
+| sha256 | `f1d3abf6696e65465f000761686f0ff0e3229bdb975043cf565c8fec9abf39d9` |
 | archived file count | `411` |
 | source submission manifest status | `INCOMPLETE` |
 | contest readiness status | `PASS_WITH_SCOPE` |
