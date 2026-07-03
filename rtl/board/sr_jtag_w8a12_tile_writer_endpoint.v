@@ -144,6 +144,13 @@ module sr_jtag_w8a12_tile_writer_endpoint #(
     wire [31:0] debug_front_c2_counts;
     wire [31:0] debug_front_c3_counts;
     wire [31:0] debug_front_att_counts;
+    wire [31:0] debug_front_c1_detail;
+    wire [31:0] debug_front_c1_core_detail;
+    wire [31:0] debug_front_c1_lane_detail;
+    wire [31:0] debug_front_c1_io_detail;
+    wire [31:0] debug_front_c2_detail;
+    wire [31:0] debug_front_c2_core_detail;
+    wire [31:0] debug_front_c2_lane_detail;
     wire [31:0] debug_sched_feat0_hash;
     wire [31:0] debug_sched_b1_hash;
     wire [31:0] debug_sched_block6_hash;
@@ -233,6 +240,13 @@ module sr_jtag_w8a12_tile_writer_endpoint #(
         .front_debug_c2_counts(debug_front_c2_counts),
         .front_debug_c3_counts(debug_front_c3_counts),
         .front_debug_att_counts(debug_front_att_counts),
+        .front_debug_c1_detail(debug_front_c1_detail),
+        .front_debug_c1_core_detail(debug_front_c1_core_detail),
+        .front_debug_c1_lane_detail(debug_front_c1_lane_detail),
+        .front_debug_c1_io_detail(debug_front_c1_io_detail),
+        .front_debug_c2_detail(debug_front_c2_detail),
+        .front_debug_c2_core_detail(debug_front_c2_core_detail),
+        .front_debug_c2_lane_detail(debug_front_c2_lane_detail),
         .front_debug_sched_feat0_hash(debug_sched_feat0_hash),
         .front_debug_sched_b1_hash(debug_sched_b1_hash),
         .front_debug_sched_block6_hash(debug_sched_block6_hash),
@@ -320,6 +334,17 @@ module sr_jtag_w8a12_tile_writer_endpoint #(
                         debug_slot_34 = debug_front_att_counts;
                         debug_slot_38 = {block_start_count, block_output_count[15:0]};
                         debug_slot_3c = replay_feature_count;
+                    end
+                end
+                8'h06: begin
+                    if (DEBUG_EXPORT_LEVEL >= 3) begin
+                        debug_slot_04 = debug_front_c1_detail;
+                        debug_slot_08 = debug_front_c1_core_detail;
+                        debug_slot_10 = debug_front_c1_lane_detail;
+                        debug_slot_30 = debug_front_c1_io_detail;
+                        debug_slot_34 = debug_front_c2_detail;
+                        debug_slot_38 = debug_front_c2_core_detail;
+                        debug_slot_3c = debug_front_c2_lane_detail;
                     end
                 end
                 default: begin

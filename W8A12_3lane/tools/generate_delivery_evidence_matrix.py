@@ -64,7 +64,8 @@ def jtag_recovery_note() -> str:
             "输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare 仍 FAIL。"
             "dbg3 中 `src_feat0_hash` 已与 RTL 匹配，首个已知 mismatch 为 `src_b1_hash`；"
             "dbg5/count-view 显示 block1 仅 C1 有部分计数，C2/C3/attention 为 0；"
-            "下一步应查 SPAB block1 C1->C2 ready/valid 或 feature replay ready/valid，不把 dbg2/source-b6 的 `error=0xC` run 作为根因证据。"
+            "dbg6 已接出 C1/C2 detail bank 且 true2x2 RTL raw compare 仍为 0 mismatch；"
+            "下一步应生成 dbg6 bitstream 并上板比对 bank6，不把 dbg2/source-b6 的 `error=0xC` run 作为根因证据。"
         )
 
     usb_only = load_json(JTAG_USB_ONLY_JSON, {})
@@ -183,9 +184,10 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                 "evidence/board_reports/jtag_true2x2_stagehash_20260628.md",
                 "evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md",
                 "evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md",
+                "evidence/board_reports/jtag_true2x2_dbg6_c1c2_detail_20260703/analysis.md",
                 "evidence/delivery_audit/missing_evidence_plan.md",
             ],
-            "RTL true2x2 raw compare PASS；dbg3 clean run 已把首个已知 mismatch 前移到 src_b1_hash；dbg5/count-view 进一步定位到 block1 C1->C2/feature replay 握手；真实 board validation 仍缺 A5/A6/A7/x2 四项。",
+            "RTL true2x2 raw compare PASS；dbg3 clean run 已把首个已知 mismatch 前移到 src_b1_hash；dbg5/count-view 进一步定位到 block1 C1->C2/feature replay 握手；dbg6 已导出 C1/C2 detail bank 并保持 RTL bit-exact；真实 board validation 仍缺 A5/A6/A7/x2 四项。",
         ),
         row(
             "评分点 文档清晰度",
@@ -232,6 +234,7 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                     "evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md",
                     "evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md",
                     "evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md",
+                    "evidence/board_reports/jtag_true2x2_dbg6_c1c2_detail_20260703/analysis.md",
                 ]
             ),
             [
@@ -243,6 +246,7 @@ def make_rows(latest_run: str) -> list[dict[str, Any]]:
                 "evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md",
                 "evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md",
                 "evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md",
+                "evidence/board_reports/jtag_true2x2_dbg6_c1c2_detail_20260703/analysis.md",
             ],
             jtag_recovery_note(),
         ),

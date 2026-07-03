@@ -1,0 +1,26 @@
+{
+  "status": "RTL_PASS_BOARD_NEXT",
+  "tag": "jtag_true2x2_dbg6_c1c2_detail_20260703",
+  "scope": "Expose existing C1/C2 detail signals through JTAG endpoint debug bank 6 and verify true2x2 behavioral raw compare remains bit-exact.",
+  "verification_command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\run_vivado_sim_sr_jtag_w8a12_tile_writer_endpoint_raw_compare.ps1 -RequireVivadoIdle -ImageW 2 -TileW 2 -TileH 2 -Halo 21 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -SimRuntime 300ms -MaxCycles 22000000 -InputRaw runs\\reds_span_quant_plan\\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\\reference\\input.rgb -ReferenceRaw runs\\reds_span_quant_plan\\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\\reference.rgb -BuildRoot build\\xsim_jtag_raw_compare_dbg6_c1c2_detail_rerun_20260703",
+  "rtl_compare": {
+    "status": "PASS",
+    "mismatch_bytes": 0,
+    "total_bytes": 192,
+    "max_diff": 0,
+    "psnr_db": "Infinity"
+  },
+  "bank6_expected": {
+    "JTAG_DEBUG_BANK6_C1_DETAIL": "0x0000200c",
+    "JTAG_DEBUG_BANK6_C1_CORE_DETAIL": "0x17c01af5",
+    "JTAG_DEBUG_BANK6_C1_LANE_DETAIL": "0x0dbf1af5",
+    "JTAG_DEBUG_BANK6_C1_IO_DETAIL": "0x00021403",
+    "JTAG_DEBUG_BANK6_C2_DETAIL": "0x0000200c",
+    "JTAG_DEBUG_BANK6_C2_CORE_DETAIL": "0x17c01af5",
+    "JTAG_DEBUG_BANK6_C2_LANE_DETAIL": "0x0dbf1af5"
+  },
+  "simulate_log": "build/xsim_jtag_raw_compare_dbg6_c1c2_detail_rerun_20260703/jtag_w8a12_tile_writer_raw_compare_sim.sim/sim_1/behav/xsim/simulate.log",
+  "simulate_log_sha256": "F72AA4778EC54C9CA2497F566D5AB799C1F0FC2F480BB85FC8AF43919C100167",
+  "board_status": "NOT_RUN",
+  "next_step": "Build/program dbg6 bitstream, run true2x2 board acceptance, and compare board bank 6 values against the RTL expected values."
+}

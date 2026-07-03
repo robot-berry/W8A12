@@ -228,6 +228,16 @@ for {set i 0} {$i < $poll_count} {incr i} {
     set debug_bank5_block_counts       [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_FIRST}]]
     set debug_bank5_replay_count       [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_LAST}]]
 
+    axi_write32 $axi [expr {$base_addr + $REG_PERF_CTRL}] [expr {$perf_drain | 0x00000600}]
+    set bank6_perf_ctrl [axi_read32 $axi [expr {$base_addr + $REG_PERF_CTRL}]]
+    set debug_bank6_c1_detail          [axi_read32 $axi [expr {$base_addr + $REG_INPUT_FLAGS}]]
+    set debug_bank6_c1_core_detail     [axi_read32 $axi [expr {$base_addr + $REG_INPUT_PIXEL}]]
+    set debug_bank6_c1_lane_detail     [axi_read32 $axi [expr {$base_addr + $REG_OUTPUT_FLAGS}]]
+    set debug_bank6_c1_io_detail       [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_HASH}]]
+    set debug_bank6_c2_detail          [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_RANGE}]]
+    set debug_bank6_c2_core_detail     [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_FIRST}]]
+    set debug_bank6_c2_lane_detail     [axi_read32 $axi [expr {$base_addr + $REG_DEBUG_WRITEBACK_LAST}]]
+
     axi_write32 $axi [expr {$base_addr + $REG_PERF_CTRL}] $perf_drain
 
     puts [format "JTAG_W8A12_REG_SAMPLE=%d" $i]
@@ -247,6 +257,7 @@ for {set i 0} {$i < $poll_count} {incr i} {
     puts [format "JTAG_W8A12_REG_DEBUG_BANK3_PERF_CTRL=0x%08X" $bank3_perf_ctrl]
     puts [format "JTAG_W8A12_REG_DEBUG_BANK4_PERF_CTRL=0x%08X" $bank4_perf_ctrl]
     puts [format "JTAG_W8A12_REG_DEBUG_BANK5_PERF_CTRL=0x%08X" $bank5_perf_ctrl]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK6_PERF_CTRL=0x%08X" $bank6_perf_ctrl]
     puts [format "JTAG_W8A12_REG_E2E_CYCLES=%d" $e2e_cycles]
     puts [format "JTAG_W8A12_REG_DEBUG_WRITEBACK_HASH=0x%08X" $debug_writeback_hash]
     puts [format "JTAG_W8A12_REG_DEBUG_WRITEBACK_RANGE=0x%08X" $debug_writeback_range]
@@ -290,6 +301,13 @@ for {set i 0} {$i < $poll_count} {incr i} {
     puts [format "JTAG_W8A12_REG_DEBUG_BANK5_ATT_COUNTS=0x%08X" $debug_bank5_att_counts]
     puts [format "JTAG_W8A12_REG_DEBUG_BANK5_BLOCK_COUNTS=0x%08X" $debug_bank5_block_counts]
     puts [format "JTAG_W8A12_REG_DEBUG_BANK5_REPLAY_COUNT=0x%08X" $debug_bank5_replay_count]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK6_C1_DETAIL=0x%08X" $debug_bank6_c1_detail]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK6_C1_CORE_DETAIL=0x%08X" $debug_bank6_c1_core_detail]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK6_C1_LANE_DETAIL=0x%08X" $debug_bank6_c1_lane_detail]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK6_C1_IO_DETAIL=0x%08X" $debug_bank6_c1_io_detail]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK6_C2_DETAIL=0x%08X" $debug_bank6_c2_detail]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK6_C2_CORE_DETAIL=0x%08X" $debug_bank6_c2_core_detail]
+    puts [format "JTAG_W8A12_REG_DEBUG_BANK6_C2_LANE_DETAIL=0x%08X" $debug_bank6_c2_lane_detail]
     if {$counter_out > 0} {
         puts [format "JTAG_W8A12_REG_DEBUG_WRITEBACK_RANGE_DECODE=min=%d max=%d count=%d" \
             [expr {($debug_writeback_range >> 24) & 0xff}] \

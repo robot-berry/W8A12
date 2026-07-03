@@ -441,6 +441,8 @@ x2 720p20 packed 2-D scheduler 补充：
 
 结论：新增 x2 720p20 的 scheduler/performance-model xsim 证据已经生成，但当前完整 W8A12/F48 packed 2-D 规划在 XC7Z045/ZC706 900-DSP 门限下不能闭合 20fps。该项作为性能边界证据收录；若要达成 x2 720p20，需要更小的 student model、更高资源/频率，或比当前 packed 2-D 规划更激进的复用和并行架构。
 
+x2 降级闭合档：当前资源门限内可声明的 x2 性能闭合点为 `24x72`，即 4.483fps @250MHz、888 DSP。该档位只作为 x2 资源受限实现的当前闭合证据；提交报告中必须继续标注 x2 720p20 未达成，不能把该结果写成板端 FPS 或完整像素 RTL bit-exact 闭环。
+
 后台 Vivado 综合或实现任务运行时，优先使用 direct xsim 复跑脚本复核该边界，避免再启动新的 Vivado batch/project：
 
 ```powershell
@@ -663,7 +665,7 @@ x2.board
 7. 运行 `tools/create_contest_scope_package.py`，生成赛题口径提交包摘要；严格上板归档继续保留 `INCOMPLETE` 风险说明。
 8. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
 
-当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 full probe 已恢复为 `READY`，USB known JTAG candidate count=3，Vivado target count=1。随后 dbg2/source-boundary 上板已执行，读取到完整输出但 compare 失败，且 `error=0x0000000C`，因此不从该 run 直接改 RTL。已复跑非侵入 stagehash baseline，得到 `error=0` 的完整输出 mismatch。2026-07-03 dbg3/single-boundary 已继续推进：RTL raw compare `0/192`、bitstream/timing PASS、真实上板 `error=0` 且输出完整，`src_feat0_hash` 与 RTL 匹配，首个已知 mismatch 前移到 `src_b1_hash`。dbg4/bank4 再次通过 RTL raw compare 和 bitstream/timing，板端 JTAG/PSU/register read PASS，且 `sched_feat0_hash` 与 RTL 匹配；但该探针版本进入 no-output stall（`counter_out=0`、`frame_done=0`），`sched_b1_hash` 已与 RTL 期望不一致。最新 dbg5/count-view 仍为 no-output stall，但计数信息更明确：RTL 期望 `C1/C2/C3/ATT=0x00030003`、`block_counts=0x00060018`、`replay=0x18`，板端为 `C1=0x00000003`、`C2/C3/ATT=0`、`block_counts=0x00010000`、`replay=0x4`。最新 A5 32x32 attempt 进一步证明 software reference、bitstream program、DDR input verify 和资源门限都已过，失败集中在 PL compute completion/writeback：`frame_done=0`、`output_read_pixels=0`、AXI write fire=0。因此 dbg4/dbg5 和 A5 attempt 均作为 block1/握手定位证据，不替代 dbg3 clean baseline：
+当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 full probe 已恢复为 `READY`，USB known JTAG candidate count=3，Vivado target count=1。随后 dbg2/source-boundary 上板已执行，读取到完整输出但 compare 失败，且 `error=0x0000000C`，因此不从该 run 直接改 RTL。已复跑非侵入 stagehash baseline，得到 `error=0` 的完整输出 mismatch。2026-07-03 dbg3/single-boundary 已继续推进：RTL raw compare `0/192`、bitstream/timing PASS、真实上板 `error=0` 且输出完整，`src_feat0_hash` 与 RTL 匹配，首个已知 mismatch 前移到 `src_b1_hash`。dbg4/bank4 再次通过 RTL raw compare 和 bitstream/timing，板端 JTAG/PSU/register read PASS，且 `sched_feat0_hash` 与 RTL 匹配；但该探针版本进入 no-output stall（`counter_out=0`、`frame_done=0`），`sched_b1_hash` 已与 RTL 期望不一致。dbg5/count-view 仍为 no-output stall，但计数信息更明确：RTL 期望 `C1/C2/C3/ATT=0x00030003`、`block_counts=0x00060018`、`replay=0x18`，板端为 `C1=0x00000003`、`C2/C3/ATT=0`、`block_counts=0x00010000`、`replay=0x4`。最新 dbg6/C1-C2-detail 已把现有 C1/C2 detail 信号接到 JTAG debug bank6，true2x2 RTL raw compare 仍为 `0/192` mismatch，bank6 RTL 期望值已经记录，待 dbg6 bitstream/上板读取。最新 A5 32x32 attempt 进一步证明 software reference、bitstream program、DDR input verify 和资源门限都已过，失败集中在 PL compute completion/writeback：`frame_done=0`、`output_read_pixels=0`、AXI write fire=0。因此 dbg4/dbg5/dbg6 和 A5 attempt 均作为 block1/握手定位证据，不替代 dbg3 clean baseline：
 
 ```text
 Historical stage-hash: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md
@@ -672,8 +674,10 @@ Current clean baseline: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehas
 Current dbg3/single-boundary: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md
 Current dbg4/bank4: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg4_bank4_20260703/analysis.md
 Current dbg5/count-view: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md
+Current dbg6/C1-C2-detail: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg6_c1c2_detail_20260703/analysis.md
+Current dbg6 build attempt: W8A12_3lane/evidence/implementation_runs/jtag_true2x2_dbg6_build_attempt_20260703/summary.md
 Current A5 32x32 attempt: W8A12_3lane/evidence/board_reports/a5_32x32_attempt/attempt_summary.md
-Next command: use a single ready/valid probe around SPAB block1 C1->C2 or feature replay; keep dbg3 as clean baseline
+Next command: resume dbg6 place/route/write_bitstream from `jwtw_wrapper_opt.dcp` or rerun full bitstream, then program dbg6 and compare bank6 board values against RTL expected values; keep dbg3 as clean baseline
 ```
 
 当前第一步仍不是直接跑 32x32，而是先固定 PS init + JTAG-to-AXI 前置流程，并在 true2x2 上继续拆 `src_b1` 前后的 block1 内部边界。最近一次可复现命令：
@@ -688,6 +692,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_sim_sr_jtag_w8a12_tile_writer_endpoint_raw_compare.ps1 -RequireVivadoIdle -ImageW 2 -TileW 2 -TileH 2 -Halo 21 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -SimRuntime 300ms -MaxCycles 22000000 -InputRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference\input.rgb -ReferenceRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference.rgb -BuildRoot build\xsim_jtag_raw_compare_dbg5_countview_20260703
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_bitstream_jtag_w8a12_tile_writer.ps1 -RequireVivadoIdle -ImgW 2 -TileW 2 -TileH 2 -Halo 21 -PlFreqMhz 25 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -VivadoMaxThreads 1 -SynthDirective RuntimeOptimized -AttemptLabel dbg5_countview_20260703
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_stagehash_true2x2_acceptance.ps1 -Bitstream vivado\bitstreams\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg5_countview_20260703.bit -PsuInitTcl vivado\jwtw_dbg5_countview_20260703\jwtw.gen\sources_1\bd\jwtw\ip\jwtw_ps_0\psu_init.tcl -OutputDir board_runs\jtag_w8a12_tile_writer\true2x2_dbg5_countview_20260703 -ContinueOnError
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_sim_sr_jtag_w8a12_tile_writer_endpoint_raw_compare.ps1 -RequireVivadoIdle -ImageW 2 -TileW 2 -TileH 2 -Halo 21 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -SimRuntime 300ms -MaxCycles 22000000 -InputRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference\input.rgb -ReferenceRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference.rgb -BuildRoot build\xsim_jtag_raw_compare_dbg6_c1c2_detail_rerun_20260703
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_bitstream_jtag_w8a12_tile_writer.ps1 -RequireVivadoIdle -ImgW 2 -TileW 2 -TileH 2 -Halo 21 -PlFreqMhz 25 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -VivadoMaxThreads 1 -SynthDirective Default -AttemptLabel dbg6_c1c2_detail_20260703
+$env:JTAG_W8A12_TILE_WRITER_OPT_DCP='G:\UESTC\feitengspan1\vivado\jwtw_dbg6_c1c2_detail_20260703\jwtw.runs\impl_1\jwtw_wrapper_opt.dcp'; D:\software\2025.2\Vivado\bin\vivado.bat -mode batch -source scripts\resume_jtag_w8a12_tile_writer_from_opt_dcp.tcl -journal vivado\logs\jwtw_dbg6_resume_from_opt_20260703.jou -log vivado\logs\jwtw_dbg6_resume_from_opt_20260703.log
 ```
 
 判定规则：
@@ -696,6 +703,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 - 若冷启动或重插后显示 `design has no supported soft debug core(s)`，先运行对应工程的 `psu_init.tcl`，再检查/重建 JTAG AXI probe bitstream、`.ltx`/probes 和 `refresh_hw_device` 识别链路。
 - 若板端 debug hash 一致但 `board_output.rgb` 仍 mismatch，则重点查 endpoint 输出缓存/JTAG 读回。
 - 当前 clean run 中 `src_feat0_hash` 已匹配而 `src_b1_hash` 首错；dbg4 中 `sched_feat0_hash` 已匹配而 `sched_b1_hash` 不匹配并伴随 stall；dbg5/count-view 显示 C1 有部分计数但 C2/C3/attention 计数为 0。因此优先查 SPAB block1 C1->C2 ready/valid、feature replay ready/valid 和小图 halo 边界下的 enable/reset 门控。下一轮探针必须更窄，优先只导出一个 ready/valid/done 单项。
+- dbg6 已完成“导出 C1/C2 detail bank + RTL bit-exact 验证”，bitstream attempt 已生成综合/opt checkpoint 和资源快照，但尚未生成/烧录 dbg6 `.bit`。下一步读取板端 bank6 后，若 C1 detail 与 RTL 匹配而 C2 detail 不匹配，优先查 C1->C2 valid/ready；若 C1 detail 已不匹配，优先查 C1 core/window/replay 输入侧；若两者均匹配但输出仍不推进，则继续查 attention/residual 或 block output latch。
 
 板端 2x2 修到 bit-exact 或误差边界被解释后，再进入板端扩展：
 

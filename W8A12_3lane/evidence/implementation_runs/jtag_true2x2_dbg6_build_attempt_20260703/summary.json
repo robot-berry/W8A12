@@ -1,0 +1,30 @@
+{
+  "status": "BUILD_PARTIAL_NO_BITSTREAM",
+  "tag": "jtag_true2x2_dbg6_build_attempt_20260703",
+  "scope": "Build true2x2 JTAG-W8A12 dbg6 C1/C2 detail bitstream.",
+  "initial_build": {
+    "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts\\run_vivado_bitstream_jtag_w8a12_tile_writer.ps1 -RequireVivadoIdle -ImgW 2 -TileW 2 -TileH 2 -Halo 21 -PlFreqMhz 25 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -VivadoMaxThreads 1 -SynthDirective Default -AttemptLabel dbg6_c1c2_detail_20260703",
+    "result": "interrupted_before_bitstream",
+    "latest_visible_stage": "place_design"
+  },
+  "resume": {
+    "script": "scripts/resume_jtag_w8a12_tile_writer_from_opt_dcp.tcl",
+    "exit_code": -1,
+    "latest_logged_stage": "open_checkpoint",
+    "console_log": "vivado/logs/jwtw_dbg6_resume_from_opt_20260703.console.log",
+    "vivado_log": "vivado/logs/jwtw_dbg6_resume_from_opt_20260703.log"
+  },
+  "artifacts": {
+    "bitstream": null,
+    "synth_checkpoint": "vivado/jwtw_dbg6_c1c2_detail_20260703/jwtw.runs/impl_1/jwtw_wrapper_synth.dcp",
+    "opt_checkpoint": "vivado/jwtw_dbg6_c1c2_detail_20260703/jwtw.runs/impl_1/jwtw_wrapper_opt.dcp",
+    "synth_utilization_report": "vivado/jwtw_dbg6_c1c2_detail_20260703/reports/jtag_w8a12_tile_writer_utilization_synth.rpt"
+  },
+  "synth_resources": {
+    "clb_luts": 42817,
+    "clb_registers": 115888,
+    "bram_tiles": 311,
+    "dsps": 126
+  },
+  "next_step": "Resume place/route/write_bitstream from jwtw_wrapper_opt.dcp or rerun the full bitstream script with a longer Vivado window."
+}
