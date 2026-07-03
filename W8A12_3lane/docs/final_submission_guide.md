@@ -34,6 +34,7 @@
 | x2 FPS | 降目标 720p x2 scheduler/performance-model：`24x72` 为 4.483 FPS @250MHz、888 DSP |
 | PPA | A4 3-lane scheduler OOC 为 LUT 123182、FF 256222、DSP 672、WNS 1.188ns，低于 XC7Z045/ZC706 门限 |
 | bitstream/PPA gate | true2x2/JTAG-W8A12 bitstream implementation 为 `PASS_WITH_SCOPE`，资源为 LUT 39799、FF 116685、BRAM 311、DSP 128、WNS 12.580ns |
+| A5 最新上板定位 | 32x32 attempt 已通过 software reference、program 和 DDR input verify，资源门限 PASS；但 PL 超时，`frame_done=0/output_read_pixels=0`，不作为 validation PASS |
 
 ## 3. 不可声明内容
 
@@ -43,6 +44,7 @@
 
 - 真实板端 720p 输出已完成。
 - x4/x2 板端 PSNR、FPS 或功耗已实测闭合。
+- A5 32x32 board validation 已通过。当前只有失败定位证据，没有 `validation.md Status: PASS`。
 - 720p packed 2-D 完整像素计算 RTL bit-exact 闭合。
 - x2 720p20 已在 900-DSP 门限内达成。当前 x2 720p20 scheduler 证据结论为 FAIL。
 - 严格 board-validation audit 已 PASS。当前严格审计仍为 `INCOMPLETE`。

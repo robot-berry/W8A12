@@ -1,0 +1,10 @@
+{
+  "status": "SKIPPED_SOFT_DEPENDENCY",
+  "docx": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\docx\\W8A12_3lane_contest_submission_report.docx",
+  "docx_sha256": "c1cec510db5071843079e7f0f53dfed9e9b1d52c1206692e77df6f05a5c701fb",
+  "render_tool": "documents/render_docx.py",
+  "result": "FileNotFoundError [WinError 2]",
+  "missing_dependency": "soffice / LibreOffice command not found in PATH",
+  "fallback_evidence": "W8A12_3lane/evidence/report_docx/summary.md",
+  "claim": "DOCX export PASS and black text-color audit PASS; visual page rendering not claimed."
+}

@@ -7,7 +7,7 @@
 | A2 6 block feature | RTL SIM PASS / TILE SHELL STATIC PASS | `evidence/reference/A2_tile_pipeline_shell/tile_pipeline_shell_static_check.md` | 6 个 SPAB block 的 3-lane RTL 语义仿真已通过，`block_6_output_hash == 0xD2AC6553`；tile pipeline shell 静态检查 22 项 PASS，真实 tile scheduler 待接入 datapath |
 | A3 tail/pixelshuffle/RGB | RTL SIM PASS / BOARD TODO | `evidence/reference/A3_tail_rgb/a3_rtl_sim_summary.md` | Tail/RGB RTL 语义仿真已通过，`rgb_q_hash == 0x280F9356`；板端 writer 待接入 |
 | A4 OOC/resource/timing | PASS | `evidence/resource/A4_single_lane_mac_scheduler/single_lane_scheduler_sim_summary.md`；`evidence/resource/A4_3lane_mac_scheduler/a4_3lane_sim_summary.md`；`evidence/resource/A4_single_lane_mac_scheduler_ooc/ooc_summary.md`；`evidence/resource/A4_3lane_mac_scheduler_ooc/ooc_summary.md` | single-lane xsim PASS；3-lane xsim PASS；single-lane OOC：LUT 41003、FF 85414、DSP 224、WNS 1.261ns、WHS 0.072ns；3-lane OOC：LUT 123182、FF 256222、DSP 672、WNS 1.188ns、WHS 0.072ns，均低于 ZC706/XC7Z045 门限 |
-| A5 board bring-up | IN_PROGRESS | `evidence/board_reports/2x2_samplelatch_result_20260626.md`；`evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md`；`evidence/board_reports/jtag_true2x2_dbg4_bank4_20260703/analysis.md`；`evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md` | true 2x2 RTL raw compare PASS；JTAG/PSU/register read 已恢复。dbg3 clean run 输出完整 `192/192` 且 `error=0`，`src_feat0_hash` 匹配、`src_b1_hash` 首错；dbg4/bank4 进一步确认 `sched_feat0_hash` 匹配但 no-output stall；dbg5/count-view 将 stall 压到 SPAB block1 C1 后、C2/C3/attention 之前，仍只作为定位证据，不替代 dbg3 clean baseline |
+| A5 board bring-up | IN_PROGRESS | `evidence/board_reports/2x2_samplelatch_result_20260626.md`；`evidence/board_reports/a5_32x32_attempt/attempt_summary.md`；`evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md`；`evidence/board_reports/jtag_true2x2_dbg4_bank4_20260703/analysis.md`；`evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md` | true 2x2 RTL raw compare PASS；JTAG/PSU/register read 已恢复。最新 A5 32x32 attempt 已通过 software reference、bitstream program 和 DDR input verify，但 `frame_done=0/output_read_pixels=0`，不能作为 validation PASS。dbg3 clean run 输出完整且 `src_feat0_hash` 匹配、`src_b1_hash` 首错；dbg5/count-view 将 stall 压到 SPAB block1 C1 后、C2/C3/attention 之前 |
 | A6 64x64 tile | TODO |  | 依赖 A5 |
 | A7 tile-based 720p 输出 | TODO |  | SD/DDR 输入，PS 降采样，LR tile+halo 送 PL，拼接 1280x720；FPS 分级目标 15/20/30 |
 
@@ -30,6 +30,7 @@
 
 | Tag | 状态 | 关键结果 | 后续动作 |
 | --- | --- | --- | --- |
+| `a5_32x32_acceptance_goal_continue_fixref_20260703_0858` | BOARD FAIL / A5 ATTEMPT UPDATED | software reference PASS；resource gate PASS；bitstream program PASS；DDR input verify mismatch=0；XSCT timeout，`frame_done=0`、`output_read_pixels=0`、`rgb_output_count=0`、AXI write fire=0；block1 C1 有活动但 C2/C3/attention/output 未完成 | 不创建 A5 validation PASS；下一步只导出 C1->C2 ready/valid 或 feature replay ready/valid 单项探针 |
 | `live_retry_20260625_direct` | FAIL | 32x32 bitstream 上板 `FRAME_DONE=1`、写回非零，但 board-vs-reference mismatch 约 49k/49k，PSNR 约 5 dB | 不作为交付证据；用于定位 PL compute/writeback 问题 |
 | `wrdebug32_runtime_2x2_20260625_2230` | PARTIAL PASS | 使用 32x32 bitstream 跑 2x2 runtime 时，输入 DDR 校验 mismatch=0；但内部 tile 尺寸固化导致 `ERROR=0x00000005` | 必须生成 true 2x2 bitstream |
 | `true2x2_samplelatch_20260626_2229` | BUILD PASS / BOARD FAIL | true 2x2 bitstream 已生成，timing PASS；板测 JTAG/program PASS，但首次写 `0xA0000000` AP transaction timeout | 下一个动作是物理重上电后重跑，若仍失败则用最小 AXI-Lite register-only bit 隔离 |
@@ -92,7 +93,7 @@ W8A12_3lane/evidence/delivery_audit/missing_evidence_plan.md
 
 ## 当前最近缺口
 
-1. A5 x4 32x32 board validation 仍缺 `Status: PASS`，当前 true 2x2 上板有效 baseline 是 `153/192` bytes mismatch、max diff 4、PSNR 44.0265 dB。
+1. A5 x4 32x32 board validation 仍缺 `Status: PASS`。最新 A5 32x32 attempt 已证明 reference、bitstream program 和 DDR input 路径可达，但 PL 计算未完成：`frame_done=0`、`output_read_pixels=0`；当前 true 2x2 上板有效 baseline 仍是 `153/192` bytes mismatch、max diff 4、PSNR 44.0265 dB。
 2. A6 x4 64x64 board validation 依赖 A5 正确性闭环。
 3. A7 x4 720p tiled board validation 依赖 A6 和完整 tile+halo crop-stitch，上板汇报需包含资源、时序、FPS、latency、power、PSNR/SSIM 和输出文件。
 4. x2_720p board validation 的 W8A12 x2 导出和 fixed reference 已具备，仍缺真实板端 bitstream/output/validation。

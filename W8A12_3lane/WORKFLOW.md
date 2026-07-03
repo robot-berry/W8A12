@@ -184,6 +184,7 @@ x2 训练 PSNR 已超过 30 dB；当前已经生成 x2 W8A12 导出和固定点 
 | --- | --- | --- |
 | 32x32 bitstream | 已能生成并上板运行，但输出不正确 | `vivado/bitstreams/ps_w8a12_ddr_tile_writer_x4_imgw32x32_tile32x32_h21_f50m_ol1_tl4_sl1_ddr_runtime_wrdebug32_20260625a.bit` |
 | 32x32 上板 smoke | `FRAME_DONE=1`、写回计数非零，但 board-vs-reference mismatch 约 49k/49k，PSNR 约 5 dB | `board_runs/w8a12_ps_ddr_tile_writer_smoke/live_retry_20260625_direct` |
+| 32x32 A5 最新 attempt | reference 生成、bitstream program、DDR input verify 均通过；XSCT timeout，`frame_done=0`、`output_read_pixels=0`、AXI write fire=0；block1 C1 有活动但未推进到 C2/C3/attention/output | `W8A12_3lane/evidence/board_reports/a5_32x32_attempt/attempt_summary.md`；`board_runs/w8a12_ps_ddr_tile_writer_smoke/a5_32x32_acceptance_goal_continue_fixref_20260703_0858` |
 | 输入 DDR | 已验证 PS 写入 DDR 的输入像素正确；2x2 runtime readback mismatch=0 | `board_runs/w8a12_ps_ddr_tile_writer_smoke/wrdebug32_runtime_2x2_20260625_2230` |
 | 2x2 runtime 复用 32x32 bit | 不可行；32x32 bit 内部 `TILE_W/TILE_H/OUT_PIXELS` 固化，2x2 runtime 会触发 core error | 同上，`STATUS=0x00000039`、`ERROR=0x00000005` |
 | 真 2x2 RTL/endpoint 仿真 | PASS；2x2->8x8 endpoint compare mismatch=0 | `W8A12_3lane/evidence/board_reports/2x2_samplelatch_result_20260626.md` |
@@ -662,7 +663,7 @@ x2.board
 7. 运行 `tools/create_contest_scope_package.py`，生成赛题口径提交包摘要；严格上板归档继续保留 `INCOMPLETE` 风险说明。
 8. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
 
-当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 full probe 已恢复为 `READY`，USB known JTAG candidate count=3，Vivado target count=1。随后 dbg2/source-boundary 上板已执行，读取到完整输出但 compare 失败，且 `error=0x0000000C`，因此不从该 run 直接改 RTL。已复跑非侵入 stagehash baseline，得到 `error=0` 的完整输出 mismatch。2026-07-03 dbg3/single-boundary 已继续推进：RTL raw compare `0/192`、bitstream/timing PASS、真实上板 `error=0` 且输出完整，`src_feat0_hash` 与 RTL 匹配，首个已知 mismatch 前移到 `src_b1_hash`。dbg4/bank4 再次通过 RTL raw compare 和 bitstream/timing，板端 JTAG/PSU/register read PASS，且 `sched_feat0_hash` 与 RTL 匹配；但该探针版本进入 no-output stall（`counter_out=0`、`frame_done=0`），`sched_b1_hash` 已与 RTL 期望不一致。最新 dbg5/count-view 仍为 no-output stall，但计数信息更明确：RTL 期望 `C1/C2/C3/ATT=0x00030003`、`block_counts=0x00060018`、`replay=0x18`，板端为 `C1=0x00000003`、`C2/C3/ATT=0`、`block_counts=0x00010000`、`replay=0x4`。因此 dbg4/dbg5 作为 block1/握手定位证据，不替代 dbg3 clean baseline：
+当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 full probe 已恢复为 `READY`，USB known JTAG candidate count=3，Vivado target count=1。随后 dbg2/source-boundary 上板已执行，读取到完整输出但 compare 失败，且 `error=0x0000000C`，因此不从该 run 直接改 RTL。已复跑非侵入 stagehash baseline，得到 `error=0` 的完整输出 mismatch。2026-07-03 dbg3/single-boundary 已继续推进：RTL raw compare `0/192`、bitstream/timing PASS、真实上板 `error=0` 且输出完整，`src_feat0_hash` 与 RTL 匹配，首个已知 mismatch 前移到 `src_b1_hash`。dbg4/bank4 再次通过 RTL raw compare 和 bitstream/timing，板端 JTAG/PSU/register read PASS，且 `sched_feat0_hash` 与 RTL 匹配；但该探针版本进入 no-output stall（`counter_out=0`、`frame_done=0`），`sched_b1_hash` 已与 RTL 期望不一致。最新 dbg5/count-view 仍为 no-output stall，但计数信息更明确：RTL 期望 `C1/C2/C3/ATT=0x00030003`、`block_counts=0x00060018`、`replay=0x18`，板端为 `C1=0x00000003`、`C2/C3/ATT=0`、`block_counts=0x00010000`、`replay=0x4`。最新 A5 32x32 attempt 进一步证明 software reference、bitstream program、DDR input verify 和资源门限都已过，失败集中在 PL compute completion/writeback：`frame_done=0`、`output_read_pixels=0`、AXI write fire=0。因此 dbg4/dbg5 和 A5 attempt 均作为 block1/握手定位证据，不替代 dbg3 clean baseline：
 
 ```text
 Historical stage-hash: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md
@@ -671,6 +672,7 @@ Current clean baseline: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehas
 Current dbg3/single-boundary: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md
 Current dbg4/bank4: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg4_bank4_20260703/analysis.md
 Current dbg5/count-view: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md
+Current A5 32x32 attempt: W8A12_3lane/evidence/board_reports/a5_32x32_attempt/attempt_summary.md
 Next command: use a single ready/valid probe around SPAB block1 C1->C2 or feature replay; keep dbg3 as clean baseline
 ```
 
@@ -759,7 +761,7 @@ PSNR: 44.0265 dB
 | RuntimeOptimized bitstream | FAIL/DEGRADED | mismatch 退化到 `189/192` 或 `185/192`，暂不用于 correctness |
 | debugregs/progress 上板读取 | FAIL / MORE LOCALIZED | Vivado hardware target 与 JTAG-to-AXI master 已恢复；`dbgregs` 版本曾停在 `counter_out=0`，新 `dbgprogress` 版本可完整输出 `192/192`、`frame_done=1`，但 `189/192` mismatch 且 writeback hash 不等于 RTL 期望 |
 | dbg3/dbg4/dbg5 block1 边界定位 | FAIL / MORE LOCALIZED | dbg3 clean run：`src_feat0_hash` 匹配、`src_b1_hash` 首错且输出完整；dbg4/bank4：`sched_feat0_hash` 匹配、`sched_b1_hash` 不匹配但 stall；dbg5/count-view：C1 有部分计数，C2/C3/attention 为 0，定位到 block1 C1->C2/feature replay 握手 |
-| 32x32 board validation | FAIL/PENDING | 旧 32x32 有 frame_done 和写回，但 mismatch 很大 |
+| 32x32 board validation | FAIL/PENDING | 旧 32x32 有 frame_done 和写回但 mismatch 很大；最新 A5 32x32 attempt reference/program/DDR 输入均过，但 PL 超时且无输出像素 |
 | 64x64/720p/x2 board validation | PENDING | 依赖 2x2/32x32 正确性闭环 |
 
 下一步排查顺序：

@@ -37,7 +37,7 @@
     {
       "name": "git.upload_candidate_count",
       "pass": true,
-      "detail": 1346
+      "detail": 1348
     },
     {
       "name": "git.no_forbidden_upload_candidates",

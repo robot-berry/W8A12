@@ -13,7 +13,7 @@ Current branch: `hardware-test`
 | `git.w8a12_changes_present` | PASS | `1 W8A12_3lane status lines` |
 | `git.outside_changes_detected` | PASS | `718 outside status lines; do not stage them for W8A12 upload` |
 | `git.no_staged_outside_upload_scope` | PASS | `[]` |
-| `git.upload_candidate_count` | PASS | `1346` |
+| `git.upload_candidate_count` | PASS | `1348` |
 | `git.no_forbidden_upload_candidates` | PASS | `[]` |
 | `submission_scope.required_root_files_present` | PASS | `[]` |
 | `submission_scope.required_root_rtl_present` | PASS | `[]` |
