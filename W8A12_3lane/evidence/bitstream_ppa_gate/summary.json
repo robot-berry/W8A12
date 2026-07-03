@@ -1,22 +1,22 @@
 {
   "status": "PASS_WITH_SCOPE",
-  "scope": "JTAG-W8A12 true2x2 x4 tile-writer/debug source-boundary configuration",
+  "scope": "JTAG-W8A12 true2x2 x4 tile-writer/debug count-view configuration",
   "scale": 4,
   "image_width": 2,
   "image_height": 2,
   "tile_width": 2,
   "tile_height": 2,
   "halo": 21,
-  "bitstream": "vivado/bitstreams/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg2_current_dbg2_source_b6_20260701.bit",
-  "sha256": "CA32EF8F7A1DBD5E82321D5B49FB52F932D8E383D6FFB85CFFC5D7C4DE2A7F5B",
-  "utilization_report": "vivado/reports/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg2_current_dbg2_source_b6_20260701_utilization_impl.rpt",
-  "timing_report": "vivado/reports/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg2_current_dbg2_source_b6_20260701_timing_impl.rpt",
-  "rtl_correctness_evidence": "evidence/board_reports/jtag_true2x2_dbg2_src_boundary_prepare_20260629.md",
+  "bitstream": "vivado/bitstreams/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg5_countview_20260703.bit",
+  "sha256": "4C596961793015A30A972BB89A375C5133874B3FBA5EEB7979CDD84533ACD8F5",
+  "utilization_report": "vivado/reports/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg5_countview_20260703_utilization_impl.rpt",
+  "timing_report": "vivado/reports/jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg5_countview_20260703_timing_impl.rpt",
+  "rtl_correctness_evidence": "evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md",
   "rtl_mismatch_bytes": 0,
   "rtl_total_bytes": 192,
   "resource": {
-    "clb_luts": 38803,
-    "clb_registers": 116441,
+    "clb_luts": 39799,
+    "clb_registers": 116685,
     "bram_tile": 311,
     "dsp": 128,
     "uram": 0
@@ -28,7 +28,7 @@
     "dsp": 900
   },
   "timing": {
-    "wns_ns": 12.517,
+    "wns_ns": 12.580,
     "whs_ns": 0.010,
     "constraints_met": true
   },

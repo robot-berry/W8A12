@@ -1,12 +1,12 @@
 {
   "status": "PASS",
   "target_repo": "https://github.com/robot-berry/W8A12.git",
-  "current_branch": "codex/w8a12-3lane-delivery-draft",
+  "current_branch": "hardware-test",
   "checks": [
     {
       "name": "git.branch_detected",
       "pass": true,
-      "detail": "codex/w8a12-3lane-delivery-draft"
+      "detail": "hardware-test"
     },
     {
       "name": "git.target_remote_configured",
@@ -14,19 +14,20 @@
       "detail": {
         "target": "https://github.com/robot-berry/W8A12.git",
         "configured": [
-          "https://github.com/robot-berry/W8A12.git"
+          "https://github.com/robot-berry/W8A12.git",
+          "https://github.com/robot-berry/feitengspan1.git"
         ]
       }
     },
     {
       "name": "git.w8a12_changes_present",
       "pass": true,
-      "detail": "27 W8A12_3lane status lines"
+      "detail": "1 W8A12_3lane status lines"
     },
     {
       "name": "git.outside_changes_detected",
       "pass": true,
-      "detail": "8 outside status lines; do not stage them for W8A12 upload"
+      "detail": "717 outside status lines; do not stage them for W8A12 upload"
     },
     {
       "name": "git.no_staged_outside_upload_scope",
@@ -36,7 +37,7 @@
     {
       "name": "git.upload_candidate_count",
       "pass": true,
-      "detail": 1429
+      "detail": 1346
     },
     {
       "name": "git.no_forbidden_upload_candidates",
@@ -91,22 +92,22 @@
     {
       "name": "submission_manifest.has_files",
       "pass": true,
-      "detail": 408
+      "detail": 411
     },
     {
       "name": "contest_report_pdf.exists",
       "pass": true,
-      "detail": "G:/UESTC/feitengspan1/W8A12_3lane/output/github_upload/robot-berry_W8A12_upload_tree/W8A12_3lane/output/pdf/W8A12_3lane_contest_submission_report.pdf"
+      "detail": "G:/UESTC/feitengspan1/W8A12_3lane/output/pdf/W8A12_3lane_contest_submission_report.pdf"
     },
     {
       "name": "contest_report_docx.exists",
       "pass": true,
-      "detail": "G:/UESTC/feitengspan1/W8A12_3lane/output/github_upload/robot-berry_W8A12_upload_tree/W8A12_3lane/output/docx/W8A12_3lane_contest_submission_report.docx"
+      "detail": "G:/UESTC/feitengspan1/W8A12_3lane/output/docx/W8A12_3lane_contest_submission_report.docx"
     },
     {
       "name": "draft_archive_summary.exists",
       "pass": true,
-      "detail": "G:/UESTC/feitengspan1/W8A12_3lane/output/github_upload/robot-berry_W8A12_upload_tree/W8A12_3lane/evidence/submission_package/archive/summary.md"
+      "detail": "G:/UESTC/feitengspan1/W8A12_3lane/evidence/submission_package/archive/summary.md"
     }
   ],
   "note": "This preflight permits an INCOMPLETE draft package, but blocks upload if the target remote is not configured or if staged files include paths outside the documented upload scope."

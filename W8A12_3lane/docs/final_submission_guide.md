@@ -33,7 +33,7 @@
 | x2 FPS 复核 | 720p x2 direct `xvlog/xelab/xsim` 复跑与 Vivado batch summary 一致；`24x72` 为 4.483 FPS @250MHz、888 DSP，仍不声明 x2 720p20 |
 | x2 FPS | 降目标 720p x2 scheduler/performance-model：`24x72` 为 4.483 FPS @250MHz、888 DSP |
 | PPA | A4 3-lane scheduler OOC 为 LUT 123182、FF 256222、DSP 672、WNS 1.188ns，低于 XC7Z045/ZC706 门限 |
-| bitstream/PPA gate | true2x2/JTAG-W8A12 bitstream implementation 为 `PASS_WITH_SCOPE`，资源为 LUT 38803、FF 116441、BRAM 311、DSP 128、WNS 12.517ns |
+| bitstream/PPA gate | true2x2/JTAG-W8A12 bitstream implementation 为 `PASS_WITH_SCOPE`，资源为 LUT 39799、FF 116685、BRAM 311、DSP 128、WNS 12.580ns |
 
 ## 3. 不可声明内容
 

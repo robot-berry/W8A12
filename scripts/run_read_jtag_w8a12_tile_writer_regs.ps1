@@ -107,6 +107,8 @@ try {
     debug_bank1_perf_ctrl = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK1_PERF_CTRL=(0x[0-9A-Fa-f]+)"
     debug_bank2_perf_ctrl = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK2_PERF_CTRL=(0x[0-9A-Fa-f]+)"
     debug_bank3_perf_ctrl = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK3_PERF_CTRL=(0x[0-9A-Fa-f]+)"
+    debug_bank4_perf_ctrl = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK4_PERF_CTRL=(0x[0-9A-Fa-f]+)"
+    debug_bank5_perf_ctrl = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK5_PERF_CTRL=(0x[0-9A-Fa-f]+)"
     e2e_cycles = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_E2E_CYCLES=([0-9]+)"
     writeback_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_WRITEBACK_HASH=(0x[0-9A-Fa-f]+)"
     writeback_range = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_WRITEBACK_RANGE=(0x[0-9A-Fa-f]+)"
@@ -137,6 +139,20 @@ try {
     bank3_tail_b1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK3_TAIL_B1_HASH=(0x[0-9A-Fa-f]+)"
     bank3_tail_b6_act1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK3_TAIL_B6_ACT1_HASH=(0x[0-9A-Fa-f]+)"
     bank3_tail_rgb_q_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK3_TAIL_RGB_Q_HASH=(0x[0-9A-Fa-f]+)"
+    bank4_sched_feat0_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK4_SCHED_FEAT0_HASH=(0x[0-9A-Fa-f]+)"
+    bank4_sched_b1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK4_SCHED_B1_HASH=(0x[0-9A-Fa-f]+)"
+    bank4_src_b1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK4_SRC_B1_HASH=(0x[0-9A-Fa-f]+)"
+    bank4_tail_b1_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK4_TAIL_B1_HASH=(0x[0-9A-Fa-f]+)"
+    bank4_spab_b1_att_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK4_SPAB_B1_ATT_HASH=(0x[0-9A-Fa-f]+)"
+    bank4_spab_b1_c3_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK4_SPAB_B1_C3_HASH=(0x[0-9A-Fa-f]+)"
+    bank4_spab_b1_residual_hash = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK4_SPAB_B1_RESIDUAL_HASH=(0x[0-9A-Fa-f]+)"
+    bank5_front_state = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK5_FRONT_STATE=(0x[0-9A-Fa-f]+)"
+    bank5_c1_counts = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK5_C1_COUNTS=(0x[0-9A-Fa-f]+)"
+    bank5_c2_counts = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK5_C2_COUNTS=(0x[0-9A-Fa-f]+)"
+    bank5_c3_counts = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK5_C3_COUNTS=(0x[0-9A-Fa-f]+)"
+    bank5_att_counts = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK5_ATT_COUNTS=(0x[0-9A-Fa-f]+)"
+    bank5_block_counts = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK5_BLOCK_COUNTS=(0x[0-9A-Fa-f]+)"
+    bank5_replay_count = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_BANK5_REPLAY_COUNT=(0x[0-9A-Fa-f]+)"
     writer_live = Get-LastRegexGroup $stdoutText "JTAG_W8A12_REG_DEBUG_WRITER_LIVE=([^\r\n]+)"
     stdout_log = $stdoutLog
     stderr_log = $stderrLog
@@ -169,6 +185,8 @@ try {
     "| debug bank1 perf ctrl | ``$($summary.debug_bank1_perf_ctrl)`` |",
     "| debug bank2 perf ctrl | ``$($summary.debug_bank2_perf_ctrl)`` |",
     "| debug bank3 perf ctrl | ``$($summary.debug_bank3_perf_ctrl)`` |",
+    "| debug bank4 perf ctrl | ``$($summary.debug_bank4_perf_ctrl)`` |",
+    "| debug bank5 perf ctrl | ``$($summary.debug_bank5_perf_ctrl)`` |",
     "| e2e cycles | ``$($summary.e2e_cycles)`` |",
     "| writeback hash | ``$($summary.writeback_hash)`` |",
     "| writeback range | ``$($summary.writeback_range)`` |",
@@ -199,6 +217,20 @@ try {
     "| bank3 tail b1 hash | ``$($summary.bank3_tail_b1_hash)`` |",
     "| bank3 tail b6 act1 hash | ``$($summary.bank3_tail_b6_act1_hash)`` |",
     "| bank3 tail rgb q hash | ``$($summary.bank3_tail_rgb_q_hash)`` |",
+    "| bank4 scheduler feat0 hash | ``$($summary.bank4_sched_feat0_hash)`` |",
+    "| bank4 scheduler b1 hash | ``$($summary.bank4_sched_b1_hash)`` |",
+    "| bank4 src b1 hash | ``$($summary.bank4_src_b1_hash)`` |",
+    "| bank4 tail b1 hash | ``$($summary.bank4_tail_b1_hash)`` |",
+    "| bank4 SPAB B1 attention hash | ``$($summary.bank4_spab_b1_att_hash)`` |",
+    "| bank4 SPAB B1 C3 hash | ``$($summary.bank4_spab_b1_c3_hash)`` |",
+    "| bank4 SPAB B1 residual hash | ``$($summary.bank4_spab_b1_residual_hash)`` |",
+    "| bank5 front state | ``$($summary.bank5_front_state)`` |",
+    "| bank5 C1 counts | ``$($summary.bank5_c1_counts)`` |",
+    "| bank5 C2 counts | ``$($summary.bank5_c2_counts)`` |",
+    "| bank5 C3 counts | ``$($summary.bank5_c3_counts)`` |",
+    "| bank5 attention counts | ``$($summary.bank5_att_counts)`` |",
+    "| bank5 block counts | ``$($summary.bank5_block_counts)`` |",
+    "| bank5 replay count | ``$($summary.bank5_replay_count)`` |",
     "| writer live | ``$($summary.writer_live)`` |",
     "| stdout log | ``$stdoutLog`` |",
     "| stderr log | ``$stderrLog`` |",

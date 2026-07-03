@@ -1,0 +1,78 @@
+{
+  "status": "BOARD_FAIL_BLOCK1_C1_STALL",
+  "date": "2026-07-03",
+  "rtl_raw_compare": {
+    "status": "PASS",
+    "mismatch_bytes": 0,
+    "total_bytes": 192,
+    "psnr_db": "Infinity",
+    "log": "G:\\UESTC\\feitengspan1\\build\\xsim_jtag_raw_compare_dbg5_countview_20260703\\jtag_w8a12_tile_writer_raw_compare_sim.sim\\sim_1\\behav\\xsim\\simulate.log"
+  },
+  "bitstream": {
+    "status": "PASS",
+    "path": "G:\\UESTC\\feitengspan1\\vivado\\bitstreams\\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg5_countview_20260703.bit",
+    "timing_report": "G:\\UESTC\\feitengspan1\\vivado\\reports\\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg5_countview_20260703_timing_impl.rpt",
+    "utilization_report": "G:\\UESTC\\feitengspan1\\vivado\\reports\\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg5_countview_20260703_utilization_impl.rpt",
+    "wns_ns": 12.580,
+    "whs_ns": 0.010,
+    "lut": 39799,
+    "registers": 116685,
+    "bram_tile": 311,
+    "uram": 0,
+    "dsp": 128
+  },
+  "board": {
+    "status": "FAIL",
+    "run_dir": "G:\\UESTC\\feitengspan1\\board_runs\\jtag_w8a12_tile_writer\\true2x2_dbg5_countview_20260703",
+    "probe": "PASS",
+    "psu_init": "PASS",
+    "smoke": "FAIL",
+    "reg_read_after_smoke": "PASS",
+    "delayed_reg_read": "PASS",
+    "output_bytes": 0,
+    "expected_output_bytes": 192,
+    "counter_in": 4,
+    "counter_out": 0,
+    "frame_done": "0x00000000",
+    "error": "0x00000000",
+    "writer_live": "valid_h=2 valid_w=2 tile_last=1 sched_done=0 sched_busy=0 writer_busy=1 front_busy=1 writer_done=0 front_done=0 writer_error=0 front_error=0 tile_is_full=1 sched_tile_ready=0 sched_tile_valid=0 sched_error=0 state=3"
+  },
+  "bank5_compare": {
+    "front_state": {
+      "expected": "0x00017800",
+      "board": "0x00060427",
+      "status": "FAIL"
+    },
+    "c1_counts": {
+      "expected": "0x00030003",
+      "board": "0x00000003",
+      "status": "PARTIAL"
+    },
+    "c2_counts": {
+      "expected": "0x00030003",
+      "board": "0x00000000",
+      "status": "FAIL"
+    },
+    "c3_counts": {
+      "expected": "0x00030003",
+      "board": "0x00000000",
+      "status": "FAIL"
+    },
+    "att_counts": {
+      "expected": "0x00030003",
+      "board": "0x00000000",
+      "status": "FAIL"
+    },
+    "block_counts": {
+      "expected": "0x00060018",
+      "board": "0x00010000",
+      "status": "FAIL"
+    },
+    "replay_count": {
+      "expected": "0x00000018",
+      "board": "0x00000004",
+      "status": "FAIL"
+    }
+  },
+  "conclusion": "dbg5/count-view localizes the board stall to SPAB block1 after partial C1 activity and before C2/C3/attention/block output completion. It is localization evidence; dbg3 remains the clean correctness baseline."
+}

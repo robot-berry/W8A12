@@ -450,6 +450,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\wait_and
 
 `wait_and_run_x2_direct_xsim.ps1` 只做资源轮询和安全启动；底层 direct 脚本直接调用 `xvlog -> xelab -> xsim`，输出 `packed2d_x2_direct_xsim_replay` 证据，并检查复跑结果与 Vivado batch summary 一致；它仍然只代表 scheduler/performance-model 级别，不代表板端 FPS。
 
+2026-07-03 direct xsim 复跑：当前系统无活动 Vivado/xsim 进程后，已直接执行 `run_xsim_direct_w8a12_packed2d_x2_720p20_perf_scheduler.ps1`。结果为 `DIRECT_XSIM_REPLAY_STATUS=PASS`，输出仍与 Vivado batch summary 一致：`24x64=3.861fps/792 DSP`，`24x72=4.483fps/888 DSP`，`48x144=17.223fps/3504 DSP`；x2 720p20 仍不声明达成。
+
 2026-07-03 后台大实现补充：
 
 | 项目 | 结果 |
@@ -660,14 +662,16 @@ x2.board
 7. 运行 `tools/create_contest_scope_package.py`，生成赛题口径提交包摘要；严格上板归档继续保留 `INCOMPLETE` 风险说明。
 8. mismatch 修复作为次级风险项放入第 14 节清单，恢复 JTAG 后继续按清单推进。
 
-当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 full probe 已恢复为 `READY`，USB known JTAG candidate count=3，Vivado target count=1。随后 dbg2/source-boundary 上板已执行，读取到完整输出但 compare 失败，且 `error=0x0000000C`，因此不从该 run 直接改 RTL。已复跑非侵入 stagehash baseline，得到 `error=0` 的完整输出 mismatch。2026-07-03 dbg3/single-boundary 已继续推进：RTL raw compare `0/192`、bitstream/timing PASS、真实上板 `error=0` 且输出完整，`src_feat0_hash` 与 RTL 匹配，首个已知 mismatch 前移到 `src_b1_hash`：
+当前硬件探测结果仍作为板端风险记录。历史 stage-hash 续跑曾恢复 USB/JTAG、PSU init 和寄存器读回，并定位到 `tail_b1_hash` 首个边界失败；2026-07-03 full probe 已恢复为 `READY`，USB known JTAG candidate count=3，Vivado target count=1。随后 dbg2/source-boundary 上板已执行，读取到完整输出但 compare 失败，且 `error=0x0000000C`，因此不从该 run 直接改 RTL。已复跑非侵入 stagehash baseline，得到 `error=0` 的完整输出 mismatch。2026-07-03 dbg3/single-boundary 已继续推进：RTL raw compare `0/192`、bitstream/timing PASS、真实上板 `error=0` 且输出完整，`src_feat0_hash` 与 RTL 匹配，首个已知 mismatch 前移到 `src_b1_hash`。dbg4/bank4 再次通过 RTL raw compare 和 bitstream/timing，板端 JTAG/PSU/register read PASS，且 `sched_feat0_hash` 与 RTL 匹配；但该探针版本进入 no-output stall（`counter_out=0`、`frame_done=0`），`sched_b1_hash` 已与 RTL 期望不一致。最新 dbg5/count-view 仍为 no-output stall，但计数信息更明确：RTL 期望 `C1/C2/C3/ATT=0x00030003`、`block_counts=0x00060018`、`replay=0x18`，板端为 `C1=0x00000003`、`C2/C3/ATT=0`、`block_counts=0x00010000`、`replay=0x4`。因此 dbg4/dbg5 作为 block1/握手定位证据，不替代 dbg3 clean baseline：
 
 ```text
 Historical stage-hash: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_live_20260629.md
 Current dbg2/source-boundary: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md
 Current clean baseline: W8A12_3lane/evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md
 Current dbg3/single-boundary: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md
-Next command: split SPAB block1 internal boundaries under the same error=0 requirement
+Current dbg4/bank4: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg4_bank4_20260703/analysis.md
+Current dbg5/count-view: W8A12_3lane/evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md
+Next command: use a single ready/valid probe around SPAB block1 C1->C2 or feature replay; keep dbg3 as clean baseline
 ```
 
 当前第一步仍不是直接跑 32x32，而是先固定 PS init + JTAG-to-AXI 前置流程，并在 true2x2 上继续拆 `src_b1` 前后的 block1 内部边界。最近一次可复现命令：
@@ -676,6 +680,12 @@ Next command: split SPAB block1 internal boundaries under the same error=0 requi
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_sim_sr_jtag_w8a12_tile_writer_endpoint_raw_compare.ps1 -RequireVivadoIdle -ImageW 2 -TileW 2 -TileH 2 -Halo 21 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -InputRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference\input.rgb -ReferenceRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference.rgb -BuildRoot build\xsim_jtag_raw_compare_dbg3_single_boundary_20260703
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_bitstream_jtag_w8a12_tile_writer.ps1 -RequireVivadoIdle -ImgW 2 -TileW 2 -TileH 2 -Halo 21 -PlFreqMhz 25 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -VivadoMaxThreads 1 -SynthDirective RuntimeOptimized -AttemptLabel dbg3_single_boundary_20260703
 powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_stagehash_true2x2_acceptance.ps1 -Bitstream vivado\bitstreams\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg3_single_boundary_20260703.bit -PsuInitTcl vivado\jwtw_dbg3_single_boundary_20260703\jwtw.gen\sources_1\bd\jwtw\ip\jwtw_ps_0\psu_init.tcl -OutputDir board_runs\jtag_w8a12_tile_writer\true2x2_dbg3_single_boundary_20260703 -ContinueOnError
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_sim_sr_jtag_w8a12_tile_writer_endpoint_raw_compare.ps1 -RequireVivadoIdle -ImageW 2 -TileW 2 -TileH 2 -Halo 21 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -SimRuntime 300ms -MaxCycles 22000000 -InputRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference\input.rgb -ReferenceRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference.rgb -BuildRoot build\xsim_jtag_raw_compare_dbg4_bank4_20260703_rerun
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_bitstream_jtag_w8a12_tile_writer.ps1 -RequireVivadoIdle -ImgW 2 -TileW 2 -TileH 2 -Halo 21 -PlFreqMhz 25 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -VivadoMaxThreads 1 -SynthDirective RuntimeOptimized -AttemptLabel dbg4_bank4_20260703
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_stagehash_true2x2_acceptance.ps1 -Bitstream vivado\bitstreams\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg4_bank4_20260703.bit -PsuInitTcl vivado\jwtw_dbg4_bank4_20260703\jwtw.gen\sources_1\bd\jwtw\ip\jwtw_ps_0\psu_init.tcl -OutputDir board_runs\jtag_w8a12_tile_writer\true2x2_dbg4_bank4_20260703 -ContinueOnError
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_sim_sr_jtag_w8a12_tile_writer_endpoint_raw_compare.ps1 -RequireVivadoIdle -ImageW 2 -TileW 2 -TileH 2 -Halo 21 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -SimRuntime 300ms -MaxCycles 22000000 -InputRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference\input.rgb -ReferenceRaw runs\reds_span_quant_plan\endpoint_content_2x2_tile2x2_h21_ol1_tl4_sl1\reference.rgb -BuildRoot build\xsim_jtag_raw_compare_dbg5_countview_20260703
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_vivado_bitstream_jtag_w8a12_tile_writer.ps1 -RequireVivadoIdle -ImgW 2 -TileW 2 -TileH 2 -Halo 21 -PlFreqMhz 25 -OutLanes 1 -TapLanes 4 -ScaleLanes 1 -DebugExportLevel 3 -VivadoMaxThreads 1 -SynthDirective RuntimeOptimized -AttemptLabel dbg5_countview_20260703
+powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a12_stagehash_true2x2_acceptance.ps1 -Bitstream vivado\bitstreams\jtag_w8a12_tile_writer_x4_imgw2_tile2x2_h21_f25m_ol1_tl4_sl1_dbg3_dbg5_countview_20260703.bit -PsuInitTcl vivado\jwtw_dbg5_countview_20260703\jwtw.gen\sources_1\bd\jwtw\ip\jwtw_ps_0\psu_init.tcl -OutputDir board_runs\jtag_w8a12_tile_writer\true2x2_dbg5_countview_20260703 -ContinueOnError
 ```
 
 判定规则：
@@ -683,7 +693,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 - RTL 期望 writeback hash：`0x61d3ea1d`。
 - 若冷启动或重插后显示 `design has no supported soft debug core(s)`，先运行对应工程的 `psu_init.tcl`，再检查/重建 JTAG AXI probe bitstream、`.ltx`/probes 和 `refresh_hw_device` 识别链路。
 - 若板端 debug hash 一致但 `board_output.rgb` 仍 mismatch，则重点查 endpoint 输出缓存/JTAG 读回。
-- 当前 `src_feat0_hash` 已匹配而 `src_b1_hash` 首错，因此优先查 SPAB block1 输出/feature buffer replay 到 `src_b1` 的边界。
+- 当前 clean run 中 `src_feat0_hash` 已匹配而 `src_b1_hash` 首错；dbg4 中 `sched_feat0_hash` 已匹配而 `sched_b1_hash` 不匹配并伴随 stall；dbg5/count-view 显示 C1 有部分计数但 C2/C3/attention 计数为 0。因此优先查 SPAB block1 C1->C2 ready/valid、feature replay ready/valid 和小图 halo 边界下的 enable/reset 门控。下一轮探针必须更窄，优先只导出一个 ready/valid/done 单项。
 
 板端 2x2 修到 bit-exact 或误差边界被解释后，再进入板端扩展：
 
@@ -748,6 +758,7 @@ PSNR: 44.0265 dB
 | true 2x2 board output bit-exact | FAIL | 当前 `153/192` mismatch，不能作为最终板端正确性证据 |
 | RuntimeOptimized bitstream | FAIL/DEGRADED | mismatch 退化到 `189/192` 或 `185/192`，暂不用于 correctness |
 | debugregs/progress 上板读取 | FAIL / MORE LOCALIZED | Vivado hardware target 与 JTAG-to-AXI master 已恢复；`dbgregs` 版本曾停在 `counter_out=0`，新 `dbgprogress` 版本可完整输出 `192/192`、`frame_done=1`，但 `189/192` mismatch 且 writeback hash 不等于 RTL 期望 |
+| dbg3/dbg4/dbg5 block1 边界定位 | FAIL / MORE LOCALIZED | dbg3 clean run：`src_feat0_hash` 匹配、`src_b1_hash` 首错且输出完整；dbg4/bank4：`sched_feat0_hash` 匹配、`sched_b1_hash` 不匹配但 stall；dbg5/count-view：C1 有部分计数，C2/C3/attention 为 0，定位到 block1 C1->C2/feature replay 握手 |
 | 32x32 board validation | FAIL/PENDING | 旧 32x32 有 frame_done 和写回，但 mismatch 很大 |
 | 64x64/720p/x2 board validation | PENDING | 依赖 2x2/32x32 正确性闭环 |
 
@@ -757,9 +768,11 @@ PSNR: 44.0265 dB
 2. 以最小 `jtag_axi_register_probe_f26m.bit` PASS 作为 JTAG-to-AXI 前置门禁。
 3. 已重跑 debug-progress true 2x2：`counter_in=4`、`counter_out=64`、`frame_done=1`、输出 `192/192`，但 `189/192` mismatch。
 4. 因 `writeback_hash=0xAD24396D` 不等于 RTL 期望 `0x61D3EA1D`，当前优先查 writer 前或 writer 数据生成边界，而不是 endpoint 输出缓存/JTAG 读回。
-5. 回退到 Default/inpixfix 的 `153/192` 历史最好 baseline，加更窄、低扰动的 `tail_rgb_q_hash`、`block6_hash`、writer input first/last。
-6. 若新 hash 一致但 board output 仍 mismatch，再查 endpoint 输出缓存/JTAG 读回；若 hash 不一致，继续查 front/SPAB、tail/pixelshuffle/RGB。
-7. 若继续不收敛，优先补 writer-only pattern、postprocess-only、tail/pixelshuffle-only 三个最小上板验证。
+5. 当前 clean baseline 已推进到 dbg3：输出完整、`error=0`、`src_feat0_hash` 匹配、`src_b1_hash` 首错。
+6. dbg4/bank4 进一步显示 `sched_feat0_hash` 匹配、`sched_b1_hash` 不匹配，但该版本 stall；dbg5/count-view 显示 C1 有部分计数，C2/C3/attention 为 0。
+7. 下一轮不再扩大 debug bank，而是只挂一个 C1->C2 ready/valid 或 feature replay ready/valid 探针。
+8. 若新窄探针 hash/计数一致但 board output 仍 mismatch，再查 endpoint 输出缓存/JTAG 读回；若 hash/计数不一致，继续查 front/SPAB block1、attention、feature replay。
+9. 若继续不收敛，优先补 writer-only pattern、postprocess-only、tail/pixelshuffle-only 三个最小上板验证。
 
 已完成的离线门禁仍可一键复跑：
 

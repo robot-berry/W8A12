@@ -139,6 +139,15 @@ module sr_jtag_w8a12_tile_writer_endpoint #(
     wire [31:0] debug_src_block6_hash;
     wire [31:0] debug_src_b1_hash;
     wire [31:0] debug_src_b6_act1_hash;
+    wire [31:0] debug_front_state;
+    wire [31:0] debug_front_c1_counts;
+    wire [31:0] debug_front_c2_counts;
+    wire [31:0] debug_front_c3_counts;
+    wire [31:0] debug_front_att_counts;
+    wire [31:0] debug_sched_feat0_hash;
+    wire [31:0] debug_sched_b1_hash;
+    wire [31:0] debug_sched_block6_hash;
+    wire [31:0] debug_sched_b6_act1_hash;
     wire [31:0] debug_spab_b1_hash_input;
     wire [31:0] debug_spab_b1_hash_c1;
     wire [31:0] debug_spab_b1_hash_c1_raw;
@@ -219,6 +228,15 @@ module sr_jtag_w8a12_tile_writer_endpoint #(
         .front_debug_src_block6_hash(debug_src_block6_hash),
         .front_debug_src_b1_hash(debug_src_b1_hash),
         .front_debug_src_b6_act1_hash(debug_src_b6_act1_hash),
+        .front_debug_state(debug_front_state),
+        .front_debug_c1_counts(debug_front_c1_counts),
+        .front_debug_c2_counts(debug_front_c2_counts),
+        .front_debug_c3_counts(debug_front_c3_counts),
+        .front_debug_att_counts(debug_front_att_counts),
+        .front_debug_sched_feat0_hash(debug_sched_feat0_hash),
+        .front_debug_sched_b1_hash(debug_sched_b1_hash),
+        .front_debug_sched_block6_hash(debug_sched_block6_hash),
+        .front_debug_sched_b6_act1_hash(debug_sched_b6_act1_hash),
         .front_debug_spab_b1_hash_input(debug_spab_b1_hash_input),
         .front_debug_spab_b1_hash_c1(debug_spab_b1_hash_c1),
         .front_debug_spab_b1_hash_c1_raw(debug_spab_b1_hash_c1_raw),
@@ -280,6 +298,28 @@ module sr_jtag_w8a12_tile_writer_endpoint #(
                         debug_slot_34 = debug_tail_b1_hash;
                         debug_slot_38 = debug_tail_b6_act1_hash;
                         debug_slot_3c = debug_tail_rgb_q_hash;
+                    end
+                end
+                8'h04: begin
+                    if (DEBUG_EXPORT_LEVEL >= 3) begin
+                        debug_slot_04 = debug_sched_feat0_hash;
+                        debug_slot_08 = debug_sched_b1_hash;
+                        debug_slot_10 = debug_src_b1_hash;
+                        debug_slot_30 = debug_tail_b1_hash;
+                        debug_slot_34 = debug_spab_b1_hash_att;
+                        debug_slot_38 = debug_spab_b1_hash_c3;
+                        debug_slot_3c = debug_spab_b1_hash_residual;
+                    end
+                end
+                8'h05: begin
+                    if (DEBUG_EXPORT_LEVEL >= 3) begin
+                        debug_slot_04 = debug_front_state;
+                        debug_slot_08 = debug_front_c1_counts;
+                        debug_slot_10 = debug_front_c2_counts;
+                        debug_slot_30 = debug_front_c3_counts;
+                        debug_slot_34 = debug_front_att_counts;
+                        debug_slot_38 = {block_start_count, block_output_count[15:0]};
+                        debug_slot_3c = replay_feature_count;
                     end
                 end
                 default: begin

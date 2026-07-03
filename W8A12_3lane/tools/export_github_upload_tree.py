@@ -17,6 +17,7 @@ OUT = BASE / "evidence" / "github_upload_export"
 DEFAULT_EXPORT_ROOT = BASE / "output" / "github_upload" / "robot-berry_W8A12_upload_tree"
 TARGET_REPO = "https://github.com/robot-berry/W8A12.git"
 SKIP_PREFIXES = ("W8A12_3lane/evidence/github_upload_export/",)
+MANAGED_EXPORT_ROOTS = ("W8A12_3lane", "tools", "scripts", "rtl", "external")
 ROOT_TOOL_FILES = (
     "tools/calibrate_span_activation_scales.py",
     "tools/export_span_w8a12_quant_plan.py",
@@ -43,13 +44,51 @@ ROOT_STAGEHASH_SCRIPT_FILES = (
     "scripts/run_vivado_bitstream_jtag_w8a12_tile_writer.tcl",
     "scripts/create_vivado_jtag_w8a12_tile_writer_bd_project.tcl",
 )
-ROOT_RTL_DIRS = (
-    "rtl/board",
-    "rtl/span",
-    "rtl/generated/reds_span_x4_f48_w8a12",
+ROOT_RTL_FILES = (
+    "rtl/board/sr_tile_scheduler.v",
+    "rtl/board/sr_tile_halo_fetch_stream_shell.v",
+    "rtl/board/sr_tile_rgb_buffer_streamer.v",
+    "rtl/board/sr_stream_cropper.v",
+    "rtl/board/sr_tile_output_writer.v",
+    "rtl/board/sr_feature_tile_buffer_streamer.v",
+    "rtl/board/sr_tile_halo_fetch_w8a12_conv1_shell.v",
+    "rtl/board/sr_tile_halo_fetch_w8a12_conv1_spab6_scheduler_shell.v",
+    "rtl/board/sr_tile_halo_fetch_w8a12_front_tail_rgb_shell.v",
+    "rtl/board/sr_tile_halo_fetch_w8a12_front_tail_writer_shell.v",
+    "rtl/board/sr_jtag_w8a12_tile_writer_endpoint.v",
+    "rtl/board/sr_w8a12_block_group_single_out_tile_engine.v",
+    "rtl/board/sr_w8a12_block_group_single_out_buffered_tile_engine.v",
+    "rtl/board/sr_w8a12_block_group_attention_residual_tile_engine.v",
+    "rtl/board/sr_w8a12_block_group_spab_c1c2c3_attention_buffered_tile_engine.v",
+    "rtl/span/span_w8a12_generated_select.vh",
+    "rtl/span/span_rgb_line_window3x3.v",
+    "rtl/span/span_w8a12_feature_line_window3x3.v",
+    "rtl/span/span_w8a12_rgb_normalize.v",
+    "rtl/span/span_w8a12_rgb_window_normalize.v",
+    "rtl/span/span_w8a12_weight_group_rom.v",
+    "rtl/span/span_w8a12_requant_pipe.v",
+    "rtl/span/span_w8a12_parallel_mac_tile.v",
+    "rtl/span/span_w8a12_parallel_group_accum_engine.v",
+    "rtl/span/span_w8a12_parallel_conv_vector_streamed_weights.v",
+    "rtl/span/span_w8a12_conv1_streamed_frontend.v",
+    "rtl/span/span_w8a12_requant.v",
+    "rtl/span/span_w8a12_block_group_const_bank.v",
+    "rtl/span/span_w8a12_block_group_unary_lut.v",
+    "rtl/span/span_w8a12_block_group_attention.v",
+    "rtl/span/span_w8a12_block_group_single_out_conv_layer.v",
+    "rtl/span/span_w8a12_block_group_single_out_conv_act_kernel.v",
+    "rtl/span/span_w8a12_feature_conv_streamed_frontend.v",
+    "rtl/span/span_w8a12_conv2_streamed_frontend.v",
+    "rtl/span/span_w8a12_conv1x1_streamed_frontend.v",
+    "rtl/span/span_w8a12_conv_cat_scale_concat.v",
+    "rtl/span/span_w8a12_upsampler0_streamed_frontend.v",
+    "rtl/span/span_w8a12_pixelshuffle_x4_streamed_rgb.v",
+    "rtl/span/span_w8a12_upsampler0_pixelshuffle_streamed_rgb.v",
+    "rtl/span/span_w8a12_tail_streamed_rgb.v",
 )
+ROOT_RTL_DIRS = ("rtl/generated/reds_span_x4_f48_w8a12",)
 FILESYSTEM_DIRS = ("external/SPAN/basicsr", *ROOT_RTL_DIRS)
-ADDITIONAL_PATHS = (*ROOT_TOOL_FILES, *ROOT_STAGEHASH_SCRIPT_FILES, *FILESYSTEM_DIRS)
+ADDITIONAL_PATHS = (*ROOT_TOOL_FILES, *ROOT_STAGEHASH_SCRIPT_FILES, *ROOT_RTL_FILES, *FILESYSTEM_DIRS)
 
 FORBIDDEN_RE = re.compile(
     r"((^|/)~\$|"
@@ -91,18 +130,19 @@ def safe_clean_dir(path: Path) -> None:
 
 
 def safe_clean_payload_dir(export_root: Path) -> None:
-    """Refresh only the upload payload and preserve an existing local .git repo."""
+    """Refresh managed upload payload roots and preserve an existing local .git repo."""
     resolved = export_root.resolve()
     allowed = (BASE / "output" / "github_upload").resolve()
     if not str(resolved).startswith(str(allowed)):
         raise RuntimeError(f"refusing to clean outside {allowed}: {resolved}")
     resolved.mkdir(parents=True, exist_ok=True)
-    payload = (resolved / "W8A12_3lane").resolve()
-    if not str(payload).startswith(str(resolved)):
-        raise RuntimeError(f"refusing to clean payload outside {resolved}: {payload}")
-    if payload.exists():
-        shutil.rmtree(payload)
-    payload.mkdir(parents=True, exist_ok=True)
+    for name in MANAGED_EXPORT_ROOTS:
+        payload = (resolved / name).resolve()
+        if not str(payload).startswith(str(resolved)):
+            raise RuntimeError(f"refusing to clean payload outside {resolved}: {payload}")
+        if payload.exists():
+            shutil.rmtree(payload)
+    (resolved / "W8A12_3lane").mkdir(parents=True, exist_ok=True)
 
 
 def collect_git_paths(pathspecs: list[str]) -> list[str]:
@@ -168,7 +208,7 @@ def main() -> int:
         "total_bytes": total_bytes,
         "forbidden_after_copy": forbidden_after_copy,
         "entries": entries,
-        "included_roots": ["W8A12_3lane/", "tools/*.py required exporters", "scripts/* required JTAG/stage-hash helpers", "rtl/{board,span,generated/reds_span_x4_f48_w8a12}/", "external/SPAN/basicsr/"],
+        "included_roots": ["W8A12_3lane/", "tools/*.py required exporters", "scripts/* required JTAG/stage-hash helpers", "explicit W8A12 rtl/board and rtl/span files used by the Vivado Tcl", "rtl/generated/reds_span_x4_f48_w8a12/", "external/SPAN/basicsr/"],
         "note": "This clean tree is for creating or updating a separate upload commit without pushing the current repository history. Existing .git metadata under the export root is preserved.",
     }
 
@@ -209,7 +249,7 @@ def render_md(data: dict) -> str:
         "git push origin HEAD:training-software",
         "```",
         "",
-        "This export includes `W8A12_3lane/` plus the root model/export tools, JTAG/stage-hash helper scripts, minimal root RTL needed by the board bitstream Tcl, and `external/SPAN/basicsr/` source required by the submission scope policy. It preserves any existing local `.git/` metadata under the export root and does not include forbidden generated artifacts.",
+        "This export includes `W8A12_3lane/` plus the root model/export tools, JTAG/stage-hash helper scripts, explicit W8A12 RTL files needed by the board bitstream/simulation Tcl, and `external/SPAN/basicsr/` source required by the submission scope policy. It preserves any existing local `.git/` metadata under the export root and does not include forbidden generated artifacts.",
         "",
     ]
     return "\n".join(lines)

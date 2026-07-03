@@ -37,7 +37,7 @@
 | 文档清晰、模块划分合理 | 架构、bank 映射、量化、scheduler、回退、上板报告流程均有文档和索引 | 最终板端报告完成后需同步刷新 |
 | 量化指标和性能分析 | REDS 全量 FP32 PSNR、传统插值对比、OOC 资源/时序、packed 2-D FPS scheduler 边界已形成 | W8A12 fixed 全量 PSNR/SSIM、板端 FPS/功耗待补 |
 | 验证方案与用例 | Python reference、RTL xsim、OOC、bitstream/PPA gate、stage-hash、board report validator 和 missing evidence plan 已建立 | A5-A7/x2 board validation 作为后续工程实测补充 |
-| 面积/功耗/PPA | A4 3-lane scheduler 672 DSP 低于 900 DSP 规划门限；true2x2/JTAG-W8A12 implementation 为 LUT 38803、FF 116441、BRAM 311、DSP 128、WNS 12.517ns | 720p packed 2-D 完整集成资源、真实板端功耗/FPS 仍待补 |
+| 面积/功耗/PPA | A4 3-lane scheduler 672 DSP 低于 900 DSP 规划门限；true2x2/JTAG-W8A12 implementation 为 LUT 39799、FF 116685、BRAM 311、DSP 128、WNS 12.580ns | 720p packed 2-D 完整集成资源、真实板端功耗/FPS 仍待补 |
 
 ## 3. 数据集和训练验证口径
 
@@ -152,14 +152,14 @@ XC7Z045 参考门限：
 
 | 项目 | 数值 | ZC706/XC7Z045 规划门限 | 结论 |
 | --- | ---: | ---: | --- |
-| CLB LUTs | 38803 | 218600 | PASS |
-| CLB Registers | 116441 | 437200 | PASS |
+| CLB LUTs | 39799 | 218600 | PASS |
+| CLB Registers | 116685 | 437200 | PASS |
 | BRAM Tile | 311 | 545 | PASS |
 | DSPs | 128 | 900 | PASS |
-| WNS | 12.517 ns | >= 0 ns | PASS |
+| WNS | 12.580 ns | >= 0 ns | PASS |
 | WHS | 0.010 ns | >= 0 ns | PASS |
 
-该 bitstream 对应 `ImgW=2 / TileW=2 / TileH=2 / Halo=21` 的 JTAG-W8A12 x4 tile-writer/debug source-boundary 配置，行为级 RTL raw compare 为 `0 / 192` mismatch。它证明当前 W8A12 tile 计算和写回配置能够生成 bitstream 并满足资源/时序门限；但不声明 720p packed 2-D 完整硬件 bitstream 已闭合。
+该 bitstream 对应 `ImgW=2 / TileW=2 / TileH=2 / Halo=21` 的 JTAG-W8A12 x4 tile-writer/debug count-view 配置，行为级 RTL raw compare 为 `0 / 192` mismatch。它证明当前 W8A12 tile 计算和写回配置能够生成 bitstream 并满足资源/时序门限；但不声明 720p packed 2-D 完整硬件 bitstream 已闭合。
 
 2026-07-03 另补跑了一次 `dma_axis_w8a10_system_wrapper` 大集成实现尝试，作为完整计算壳资源压力测试。该 run 在 placed 阶段的资源画像为 LUT `279774`、FF `363066`、BRAM tile `619`、DSP `769`，其中 CLB sites 已达 `63744 / 65340 = 97.56%`；route 阶段因 congestion 失败，`write_bitstream` 未启动且未生成 `.bit`。证据见 `evidence/implementation_runs/dma_axis_w8a10_route_congestion_20260703/summary.md`。因此该 run 只能作为“完整大集成仍需降资源/分阶段闭合”的风险证据，不能作为 bitstream/PPA PASS 计入提交口径。
 
@@ -228,7 +228,7 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 - debugregs 上板读取已经越过 JTAG-to-AXI master 识别异常：W8A12 debugregs bitstream 可见 `hw_axi_1`，但 true 2x2 输入 `counter_in=4` 后 `counter_out=0/frame_done=0`，输出 `0/192`；
 - 为继续定位，已在 JTAG endpoint 增加 `0x04` endpoint progress、`0x08` front state、`0x10` block/replay 计数读数；新增读数后的 true 2x2 RTL raw compare 仍为 `0/192 mismatch`；
 - 新 `dbgprogress` bitstream 上板可完整输出 `192/192` 且 `frame_done=1`，但退化为 `189/192` mismatch、PSNR 16.3034 dB，`writeback_hash=0xAD24396D` 与 RTL 期望 `0x61d3ea1d` 不一致。
-- 当前已切换为更窄 stage-hash 映射，行为级 RTL raw compare PASS，Default stage-hash bitstream 已生成且 timing PASS；2026-06-29 续跑曾恢复 JTAG/PSU/register read，并完成 true2x2 stage-hash 上板读回：输出完整 `192/192`，但 compare FAIL `191/192`、PSNR 11.8292 dB；`tail_b1=0x031DA1C9` 已与 RTL 期望 `0x16ede1c2` 不一致，最早失败边界定位到 front/SPAB block1 或更前输入/halo 路径。
+- 当前已切换为更窄 stage-hash 映射，行为级 RTL raw compare PASS，Default stage-hash bitstream 已生成且 timing PASS；2026-06-29 续跑曾恢复 JTAG/PSU/register read，并完成 true2x2 stage-hash 上板读回：输出完整 `192/192`，但 compare FAIL `191/192`、PSNR 11.8292 dB；`tail_b1=0x031DA1C9` 已与 RTL 期望 `0x16ede1c2` 不一致。2026-07-03 dbg3 clean run 进一步确认 `src_feat0_hash` 匹配、`src_b1_hash` 首错；dbg5/count-view 将 stall 压到 block1 C1 后、C2/C3/attention 前。
 - 已新增 `docs/jtag_recovery_checklist.md`、`evidence/board_probe/jtag_recovery_checklist/summary.md` 和 `evidence/board_probe/jtag_precondition_current/summary.md`。2026-07-03 full probe 显示 `READY`，USB known JTAG candidate=3，Vivado target count=1；该状态允许继续小图上板验收，但不等价于 board validation PASS。
 - 32x32/64x64/720p x4 和 720p x2 board validation 均待补。
 
@@ -238,9 +238,9 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 2. 重跑 debugregs true 2x2；
 3. 先对比 `counter_in/counter_out/frame_done/frame_cycles`，当前卡点为输入已接收但无输出；
 4. `dbgprogress` 已确认 `counter_out=64/frame_done=1`，但 writeback hash 不一致，因此当前重点不是 JTAG 读回本身，而是 writer 前或 writer 数据生成边界；
-5. 回到历史最好 Default/inpixfix baseline，加更窄的 `tail_b1_hash`、`tail_b6_act1_hash`、`tail_rgb_q_hash` 和 writer `hash/first/last`；
-6. 若 writeback/stage hash 一致但 board output mismatch，查 endpoint 输出缓存/JTAG 读回；
-7. 若 hash 不一致，继续查 front/SPAB、tail/pixelshuffle/RGB；
+5. 当前 clean baseline 为 dbg3/single-boundary：`src_feat0_hash` 匹配、`src_b1_hash` 首错且输出完整；
+6. 最新 dbg5/count-view 显示 C1 有部分计数，C2/C3/attention 为 0，下一步只挂一个 C1->C2 ready/valid 或 feature replay ready/valid 探针；
+7. 若新窄探针计数一致但 board output 仍 mismatch，再查 endpoint 输出缓存/JTAG 读回；若计数不一致，继续查 front/SPAB block1、attention、feature replay；
 8. 补 writer-only pattern、postprocess-only、tail/pixelshuffle-only 三个最小上板验证。
 
 ## 11. 最新实板定位
@@ -269,6 +269,8 @@ W8A12 fixed-point 和 board 输出的全量 REDS val PSNR/SSIM 仍待补充。�
 由于 all-in-one debug-bank 上板曾出现 busy stall，当前改成低侵入 `DebugExportLevel=2` source-boundary 路线。2026-07-03 已完成一次 `dbg2 current source-b6` 实板续跑：probe PASS、PSU init PASS、寄存器读回 PASS、输出完整 `192/192`，但 compare FAIL `188/192`、PSNR `19.263 dB`，并出现 `error=0x0000000C`。证据见 `evidence/board_reports/jtag_true2x2_dbg2_src_boundary_20260703_goal_continue/analysis.md`。因此该 debug 版本只作为探针侵入性风险证据。随后复跑非侵入 stagehash baseline，得到 probe/PSU/register PASS、输出完整 `192/192`、`error=0`，但 compare FAIL `192/192`、PSNR `11.884 dB`。证据见 `evidence/board_reports/jtag_true2x2_stagehash_baseline_rerun_20260703_goal_continue/analysis.md`。当前 clean 结论不是连接问题，而是 PL 数值路径仍不等价；下一步应基于该 baseline 做 single-boundary probe，要求 `error=0` 后再把 first mismatching boundary 作为 RTL 修改依据。
 
 2026-07-03 已继续完成 `dbg3/single-boundary` 版本：行为级 RTL raw compare 为 `0/192` mismatch，bitstream 生成和 timing PASS，实板 probe/PSU/register read PASS，输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `192/192`、PSNR `7.724 dB`。关键边界上，`src_feat0_hash=0xF7F21881` 与 RTL 期望一致，说明输入/JTAG/PSU/写回前置和 conv1 feat0 source 边界可用；`src_b1_hash=0xF657C1B4` 与 RTL 期望 `0x16ede581` 不一致，首个已知 mismatch 前移到 SPAB block1 输出/feature buffer replay 到 `src_b1` 的边界。证据见 `evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md`。
+
+2026-07-03 继续补充 `dbg4/bank4` 和 `dbg5/count-view`。dbg4 证明 `sched_feat0_hash` 与 RTL 匹配，但 `sched_b1_hash` 不匹配并伴随 no-output stall。dbg5 使用更低侵入的计数视图，行为级 RTL raw compare 仍为 `0/192` mismatch，bitstream/timing PASS；实板 JTAG/PSU/register read PASS，但 smoke 输出 `0/192`。关键计数上，RTL 期望 `C1/C2/C3/ATT=0x00030003`、`block_counts=0x00060018`、`replay=0x18`，板端为 `C1=0x00000003`、`C2/C3/ATT=0`、`block_counts=0x00010000`、`replay=0x4`。因此 dbg3 仍是 clean correctness baseline，dbg5 是最新定位证据：下一步排查点为 SPAB block1 C1->C2 ready/valid 或 feature replay ready/valid。证据见 `evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md`。
 
 ## 12. 当前交付审计状态
 
@@ -328,7 +330,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 | A4 scheduler 验收 | `docs/a4_scheduler_acceptance_flow.md` |
 | 上板汇报规范 | `docs/board_report_flow.md` |
 | JTAG 恢复清单 | `docs/jtag_recovery_checklist.md`、`evidence/board_probe/jtag_recovery_checklist/summary.md` |
-| 最新上板进展 | `evidence/board_reports/jtag_true2x2_dbg3_single_boundary_20260703/analysis.md` |
+| 最新上板进展 | `evidence/board_reports/jtag_true2x2_dbg5_countview_20260703/analysis.md` |
 | 质量对比 | `evidence/quality_comparison/summary.md` |
 | 画质指标闭环计划 | `docs/quality_metric_completion_plan.md`、`evidence/quality_metric_completion/summary.md` |
 | A0-A3 reference | `evidence/reference/` |
@@ -348,6 +350,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File W8A12_3lane\scripts\run_w8a1
 
 当前 W8A12_3lane 已经形成可用于赛题阶段性交付/相当报告的完整离线证据链：模型训练和验证口径明确，x4/x2 FP32 画质达到目标，传统插值 baseline 已对比，W8A12 定点导出和 x2 fixed reference 已通过，A0-A4 和 top shell 的 RTL 仿真/OOC 综合均有 PASS 证据，3-lane scheduler 在 XC7Z045 资源门限内。报告、Word/PDF 导出、交付索引、证据矩阵和 GitHub 草案上传链路也已经建立。
 
-剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 有效 stage-hash 续跑已经恢复 JTAG/PSU/register read，并完成上板读回，证明历史数值问题不是硬件 target 不可见，而是 PL 计算路径数值不一致。2026-07-03 full probe 已恢复到 `READY`；dbg2/source-b6 实板续跑得到输出完整 `192/192`、compare FAIL `188/192`、PSNR 19.263 dB、`error=0x0000000C`，只能作为探针侵入性风险证据。随后非侵入 stagehash baseline 复跑得到输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `192/192`、PSNR 11.884 dB，且 `tail_b1/tail_b6_act1/tail_rgb_q/writeback` 均与 RTL 期望不一致。最新 dbg3/single-boundary 版本保持 `error=0` 和完整输出，并把已知首错从 tail/stage hash 前移到 `src_b1_hash`：`src_feat0_hash` 已与 RTL 匹配，`src_b1_hash` 仍不匹配。后续应继续拆 SPAB block1 内部输出和 feature buffer/replay 到 `src_b1` 的边界，并逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。
+剩余主要风险集中在真实板端 validation：true 2x2 当前历史最好仍是 `153/192` byte mismatch；2026-06-29 有效 stage-hash 续跑已经恢复 JTAG/PSU/register read，并完成上板读回，证明历史数值问题不是硬件 target 不可见，而是 PL 计算路径数值不一致。2026-07-03 full probe 已恢复到 `READY`；dbg2/source-b6 实板续跑得到输出完整 `192/192`、compare FAIL `188/192`、PSNR 19.263 dB、`error=0x0000000C`，只能作为探针侵入性风险证据。随后非侵入 stagehash baseline 复跑得到输出完整 `192/192`、`frame_done=1`、`error=0`，但 compare FAIL `192/192`、PSNR 11.884 dB。dbg3/single-boundary 版本保持 `error=0` 和完整输出，并把已知首错从 tail/stage hash 前移到 `src_b1_hash`：`src_feat0_hash` 已与 RTL 匹配，`src_b1_hash` 仍不匹配。最新 dbg5/count-view 显示 block1 仅 C1 有部分计数，C2/C3/attention 为 0，下一步应查 SPAB block1 C1->C2 ready/valid 和 feature replay ready/valid，并逐步补齐 32x32、64x64、720p x4 和 720p x2 board validation。
 
 最终结论：若评审口径为“正确性仿真通过 + 可生成 bitstream + 提供 PPA/资源时序报告”，当前材料可以作为赛题报告/PPA 提交版，并以 `evidence/contest_scope_readiness/summary.md` 与 `evidence/contest_scope_package/summary.md` 的 `PASS_WITH_SCOPE` 作为提交前门禁；若评审明确要求真实板端 32x32/64x64/720p 输出和板端 FPS/功耗实测，则严格 board-validation 口径仍为 `INCOMPLETE`，必须继续完成上板任务后刷新报告和交付包。

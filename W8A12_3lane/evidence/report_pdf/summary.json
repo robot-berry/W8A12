@@ -2,10 +2,10 @@
   "status": "PASS",
   "source": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\docs\\contest_submission_report.md",
   "pdf": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\output\\pdf\\W8A12_3lane_contest_submission_report.pdf",
-  "bytes": 119291,
-  "sha256": "6316cc760cb1f44a5fba468cd63b049d58eaaba20578cff1c3c3c566fea12091",
+  "bytes": 121376,
+  "sha256": "116fe2ae4d993f00f2c9388d6bbc312c7b9b7e0df16893cf10517f737727d666",
   "font_path": "C:\\Windows\\Fonts\\simhei.ttf",
-  "page_count": 10,
+  "page_count": 11,
   "required_tokens": {
     "W8A12": true,
     "三路并行": true,
@@ -24,7 +24,8 @@
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-07.png",
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-08.png",
     "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-09.png",
-    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-10.png"
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-10.png",
+    "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-11.png"
   ],
   "render_checks": [
     {
@@ -42,7 +43,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-02.png",
       "width": 1241,
       "height": 1754,
-      "mean": 247.51857111223615,
+      "mean": 247.5153318258623,
       "extrema": [
         0,
         255
@@ -64,7 +65,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-04.png",
       "width": 1241,
       "height": 1754,
-      "mean": 247.64074885354714,
+      "mean": 247.63749808197127,
       "extrema": [
         0,
         255
@@ -75,7 +76,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-05.png",
       "width": 1241,
       "height": 1754,
-      "mean": 245.00408459724153,
+      "mean": 245.02473223400042,
       "extrema": [
         0,
         255
@@ -97,7 +98,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-07.png",
       "width": 1241,
       "height": 1754,
-      "mean": 246.9201925471146,
+      "mean": 246.2598563706578,
       "extrema": [
         0,
         255
@@ -108,7 +109,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-08.png",
       "width": 1241,
       "height": 1754,
-      "mean": 243.1970571237195,
+      "mean": 244.34789411930092,
       "extrema": [
         0,
         255
@@ -119,7 +120,7 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-09.png",
       "width": 1241,
       "height": 1754,
-      "mean": 248.15419343101576,
+      "mean": 246.69763414026832,
       "extrema": [
         0,
         255
@@ -130,7 +131,18 @@
       "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-10.png",
       "width": 1241,
       "height": 1754,
-      "mean": 245.09337974580032,
+      "mean": 245.55897743111865,
+      "extrema": [
+        0,
+        255
+      ],
+      "nonblank": true
+    },
+    {
+      "path": "G:\\UESTC\\feitengspan1\\W8A12_3lane\\evidence\\report_pdf\\rendered\\page-11.png",
+      "width": 1241,
+      "height": 1754,
+      "mean": 252.5922054987472,
       "extrema": [
         0,
         255

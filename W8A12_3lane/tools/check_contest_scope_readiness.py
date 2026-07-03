@@ -288,20 +288,20 @@ def build_summary() -> dict:
         ("evidence/bitstream_ppa_gate/summary.json", {"PASS_WITH_SCOPE"}),
         ("evidence/report_static/summary.json", {"PASS"}),
         ("evidence/report_pdf/summary.json", {"PASS"}),
-        ("evidence/report_docx_complete_20260701/summary.json", {"PASS"}),
+        ("evidence/report_docx/summary.json", {"PASS"}),
         ("evidence/delivery_matrix/summary.json", {"PASS"}),
         ("evidence/github_upload_preflight/summary.json", {"PASS"}),
     ]:
         passed, detail = json_status(rel, allowed)
         add(checks, f"gate.status:{rel}", passed, rel, detail)
 
-    docx = read_json("evidence/report_docx_complete_20260701/summary.json") or {}
+    docx = read_json("evidence/report_docx/summary.json") or {}
     color_audit = docx.get("text_color_audit", {})
     add(
         checks,
         "report.docx_black_font_audit",
         color_audit.get("status") == "PASS" and color_audit.get("non_black_text_color_count") == 0,
-        "evidence/report_docx_complete_20260701/summary.json",
+        "evidence/report_docx/summary.json",
         color_audit,
     )
 

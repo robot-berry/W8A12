@@ -4,12 +4,12 @@ Status: INCOMPLETE
 
 | Field | Value |
 | --- | --- |
-| archive | `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\submission_package\archive\W8A12_3lane_submission_current.zip` |
-| bytes | `4003928` |
-| sha256 | `d374e6a20299d8cc9b3967b7ee3e09a40e351b4fbfb30d1d4a6acf0decb0324d` |
-| manifest | `G:\UESTC\feitengspan1\W8A12_3lane\output\github_upload\robot-berry_W8A12_upload_tree\W8A12_3lane\evidence\submission_package\submission_manifest.json` |
+| archive | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\submission_package\archive\W8A12_3lane_submission_current.zip` |
+| bytes | `4069983` |
+| sha256 | `044d7c9ef4b5d0b503f76509b8fe656ec276fa666439a0578d41884652bdceec` |
+| manifest | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\submission_package\submission_manifest.json` |
 | manifest status | `INCOMPLETE` |
-| archived file count | `408` |
+| archived file count | `410` |
 | missing final evidence count | `4` |
 
 ## Missing Final Evidence

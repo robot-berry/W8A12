@@ -90,6 +90,10 @@ module sr_tile_halo_fetch_w8a12_front_tail_rgb_shell #(
     output reg  [31:0]                front_debug_src_block6_hash,
     output reg  [31:0]                front_debug_src_b1_hash,
     output reg  [31:0]                front_debug_src_b6_act1_hash,
+    output wire [31:0]                front_debug_sched_feat0_hash,
+    output wire [31:0]                front_debug_sched_b1_hash,
+    output wire [31:0]                front_debug_sched_block6_hash,
+    output wire [31:0]                front_debug_sched_b6_act1_hash,
     output wire [31:0]                front_debug_spab_hash_input,
     output wire [31:0]                front_debug_spab_hash_c1,
     output wire [31:0]                front_debug_spab_hash_c2,
@@ -190,6 +194,11 @@ module sr_tile_halo_fetch_w8a12_front_tail_rgb_shell #(
     wire [31:0] sched_debug_hash_block6;
     wire [31:0] sched_debug_hash_b1;
     wire [31:0] sched_debug_hash_b6_act1;
+
+    assign front_debug_sched_feat0_hash = sched_debug_hash_feat0;
+    assign front_debug_sched_b1_hash = sched_debug_hash_b1;
+    assign front_debug_sched_block6_hash = sched_debug_hash_block6;
+    assign front_debug_sched_b6_act1_hash = sched_debug_hash_b6_act1;
 
     wire feat0_load_busy;
     wire feat0_load_done;

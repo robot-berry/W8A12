@@ -25,7 +25,7 @@
 | 设计方案文档清晰 | 架构、bank 映射、scheduler、上板报告、回退流程、最终提交指南均已提供 | PASS_WITH_SCOPE | 后续真实上板完成后需同步更新报告 |
 | 模块量化指标和性能分析 | REDS 全量 FP32 PSNR、传统插值 baseline、PPA summary、x4 720p15 scheduler closure、x2 720p4 scheduler closure | PASS_WITH_SCOPE | W8A12 fixed 全量 PSNR/SSIM、真实板端 FPS/power 仍待实测 |
 | 完善验证方案与用例 | Python reference、分层 RTL xsim、OOC、bitstream/PPA gate、mismatch 排查清单、board report validator | PASS_WITH_SCOPE | 严格 board validation 仍缺 4 个 `validation.md` |
-| 面积越小、功耗越低 | A4 3-lane scheduler 672 DSP/74.67%；true2x2 implementation LUT 38803、FF 116441、BRAM 311、DSP 128、WNS 12.517ns | PASS_WITH_SCOPE | 720p packed 2-D 完整硬件集成资源和真实功耗未声明 |
+| 面积越小、功耗越低 | A4 3-lane scheduler 672 DSP/74.67%；true2x2 implementation LUT 39799、FF 116685、BRAM 311、DSP 128、WNS 12.580ns | PASS_WITH_SCOPE | 720p packed 2-D 完整硬件集成资源和真实功耗未声明 |
 
 ## 3. 画质和性能声明边界
 

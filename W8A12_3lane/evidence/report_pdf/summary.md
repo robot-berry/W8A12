@@ -6,9 +6,9 @@ Status: PASS
 | --- | --- |
 | source | `G:\UESTC\feitengspan1\W8A12_3lane\docs\contest_submission_report.md` |
 | pdf | `G:\UESTC\feitengspan1\W8A12_3lane\output\pdf\W8A12_3lane_contest_submission_report.pdf` |
-| bytes | `119291` |
-| sha256 | `6316cc760cb1f44a5fba468cd63b049d58eaaba20578cff1c3c3c566fea12091` |
-| page_count | `10` |
+| bytes | `121376` |
+| sha256 | `116fe2ae4d993f00f2c9388d6bbc312c7b9b7e0df16893cf10517f737727d666` |
+| page_count | `11` |
 | font | `C:\Windows\Fonts\simhei.ttf` |
 
 ## Render Checks
@@ -19,12 +19,13 @@ Status: PASS
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-02.png` | `1241x1754` | 247.52 | `[0, 255]` | `True` |
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-03.png` | `1241x1754` | 249.22 | `[0, 255]` | `True` |
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-04.png` | `1241x1754` | 247.64 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-05.png` | `1241x1754` | 245.00 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-05.png` | `1241x1754` | 245.02 | `[0, 255]` | `True` |
 | `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-06.png` | `1241x1754` | 248.34 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-07.png` | `1241x1754` | 246.92 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-08.png` | `1241x1754` | 243.20 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-09.png` | `1241x1754` | 248.15 | `[0, 255]` | `True` |
-| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-10.png` | `1241x1754` | 245.09 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-07.png` | `1241x1754` | 246.26 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-08.png` | `1241x1754` | 244.35 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-09.png` | `1241x1754` | 246.70 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-10.png` | `1241x1754` | 245.56 | `[0, 255]` | `True` |
+| `G:\UESTC\feitengspan1\W8A12_3lane\evidence\report_pdf\rendered\page-11.png` | `1241x1754` | 252.59 | `[0, 255]` | `True` |
 
 ## Required Text Tokens
 
