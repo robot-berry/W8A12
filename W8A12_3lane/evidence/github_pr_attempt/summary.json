@@ -3,6 +3,7 @@
   "repository": "robot-berry/W8A12",
   "base": "training-software",
   "head": "codex/w8a12-3lane-delivery-draft",
+  "attempted_head_commit": "d770eca687969de5a55ea3672c118cd7c232efc8",
   "attempted_as": "draft pull request",
   "error": "GitHub API 403: Resource not accessible by integration",
   "manual_pr_url": "https://github.com/robot-berry/W8A12/pull/new/codex/w8a12-3lane-delivery-draft",
